@@ -16,7 +16,7 @@ public class PlayerController: MonoBehaviour
 
     public float interactRange = 1f;
     public KeyCode interactKey = KeyCode.F; //F to interact
-    public TextMeshProUGUI interactionText; //Press F text
+    public GameObject interactionText; //Press F text
     private Interactable currentInteractable; //Track nearest interactable
 
     void Start()
@@ -33,8 +33,20 @@ public class PlayerController: MonoBehaviour
 
     void Update()
     {
-        if (canMove) HandleMovement();
-        DetectInteractable();
+         if (gameManager == null)
+    {
+        gameManager = FindObjectOfType<GameManager>();
+        if (gameManager == null)
+        {
+            return; // Wait until it exists
+        }
+    }
+        if (gameManager.currentState == GameManager.GameState.Game){
+            HandleMovement();
+            DetectInteractable();
+        } else{
+            interactionText.gameObject.SetActive(false);
+        }
 
         if (Input.GetKeyDown(interactKey) && currentInteractable != null)
         {
@@ -72,7 +84,6 @@ public class PlayerController: MonoBehaviour
     }
 
     private void FixedUpdate(){ //updates player position with moveDir
-        if(gameManager.currentState == GameManager.GameState.Game)
         playerRigidbody2D.MovePosition(transform.position + moveDir * playerSpeed * Time.deltaTime);
     }
 

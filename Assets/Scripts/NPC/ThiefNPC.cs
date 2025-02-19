@@ -7,6 +7,12 @@ public class ThiefNPC : NPC
     public Dialogue repeatDialogue;
     public UIManager uiManager;
 
+    void Start()
+    {
+        //find UIManager in the current scene
+        uiManager = FindObjectOfType<UIManager>();
+    }
+
     public override void Interact() //trigger dialogue
     {   
         isInteracting = true;

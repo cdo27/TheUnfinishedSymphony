@@ -8,9 +8,8 @@ using TMPro;
 //Keep track of coin count, support spirits, items of player
 public class PlayerManager : MonoBehaviour
 {
-
-    public static PlayerManager instance;
     public int coinCount = 0;
+    public int hpCount = 3;
     public TextMeshProUGUI coinText;
 
     private HashSet<int> collectedItems = new HashSet<int>(); //collected items
@@ -18,16 +17,7 @@ public class PlayerManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject); //keep
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
+        DontDestroyOnLoad(gameObject);
     }
 
     public void UpdateCoinCount(int amount)

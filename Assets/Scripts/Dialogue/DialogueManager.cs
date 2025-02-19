@@ -7,6 +7,7 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
+    private GameManager gameManager;
     public PlayerController player; // ref to player
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
@@ -21,9 +22,15 @@ public class DialogueManager : MonoBehaviour
     private Queue<bool> isPlayerSpeakingQueue;
     private string npcName;
 
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         sentences = new Queue<string>();
         isPlayerSpeakingQueue = new Queue<bool>(); //check what sentences the player is speaking
         
@@ -32,7 +39,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue, Sprite npcPortraitSprite, NPC npc){
         Debug.Log("NPC Portrait Assigned: " + npcPortraitSprite.name);
         currentNPC = npc;
-        player.StopPlayerMovement(); //prevent player from moving while dialogue is running
+        gameManager.SetGameState(GameManager.GameState.CutScene); //prevent player from moving/interacting while dialogue is running
 
         animator.SetBool("isOpen", true);
         nameText.text = dialogue.npcName;
@@ -73,7 +80,6 @@ public class DialogueManager : MonoBehaviour
 
         StopAllCoroutines();
         StartCoroutine(TypeSentence (sentence));
-
     }
 
     IEnumerator TypeSentence (string sentence){
@@ -86,7 +92,7 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue(){
         animator.SetBool("isOpen", false);
-        player.StartPlayerMovement();
+        gameManager.SetGameState(GameManager.GameState.Game);
 
         if (currentNPC != null)
         {

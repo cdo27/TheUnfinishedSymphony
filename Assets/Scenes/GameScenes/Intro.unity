@@ -1533,7 +1533,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 1
-  hasCompletedIntro: 0
+  hasCompletedPuzzleTut: 0
+  hasCompletedCombatTut: 0
   hasCompletedPuzzle1: 0
   hasCompletedPuzzle2: 0
   hasCompletedPuzzle3: 0

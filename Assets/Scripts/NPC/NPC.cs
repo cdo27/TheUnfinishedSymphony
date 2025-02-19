@@ -9,6 +9,17 @@ public class NPC : Interactable
     public string sceneToLoad;  
     public Sprite portraitSprite;
     public Dialogue dialogue;
+    public GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+
+        if (gameManager == null)
+        {
+            Debug.Log("GameManager was not found.");
+        }
+    }
     
 
     public override void Interact() //trigger dialogue
@@ -27,7 +38,8 @@ public class NPC : Interactable
         if (shouldLoadScene && !string.IsNullOrEmpty(sceneToLoad))
         {
             SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
-            //update gamemanager
+            gameManager.SetGameState(GameManager.GameState.Combat); //update gamestate to combat
+
         }
     }
 

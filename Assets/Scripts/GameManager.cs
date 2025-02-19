@@ -21,8 +21,9 @@ public class GameManager : MonoBehaviour
     }
     public GameState currentState;
 
-    public bool hasCompletedIntro, hasCompletedPuzzle1, hasCompletedPuzzle2, hasCompletedPuzzle3;
-    public bool hasCompletedCombat1, hasCompletedCombat2, hasCompletedCombat3;
+    public bool hasCompletedPuzzleTut, hasCompletedCombatTut,
+    hasCompletedPuzzle1, hasCompletedPuzzle2, hasCompletedPuzzle3,
+    hasCompletedCombat1, hasCompletedCombat2, hasCompletedCombat3 = false;
     void Awake()
     {
         DontDestroyOnLoad(gameObject);

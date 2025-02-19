@@ -6,6 +6,18 @@ using UnityEngine.SceneManagement;
 public class PuzzleBox : Interactable
 {
     public string sceneToLoad;
+    public GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+
+        if (gameManager == null)
+        {
+            Debug.Log("GameManager was not found.");
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +37,7 @@ public class PuzzleBox : Interactable
         if (!string.IsNullOrEmpty(sceneToLoad))
         {
             SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
-            //update gamemanager
+            gameManager.SetGameState(GameManager.GameState.Puzzle);//update gamestate to puzzle
         }
     }
 }

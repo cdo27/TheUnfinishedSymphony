@@ -5,6 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
+    public GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+
+        if (gameManager == null)
+        {
+            Debug.Log("GameManager was not found.");
+        }
+    }
     public void ExitCurrentScene()
     {
         Scene currentScene = SceneManager.GetActiveScene();
@@ -14,8 +25,8 @@ public class SceneController : MonoBehaviour
 
     public void ExitPuzzleScene()
     {
-        Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.UnloadSceneAsync("Puzzle");
+        gameManager.SetGameState(GameManager.GameState.Game); //back to Game state
 
     }
 }

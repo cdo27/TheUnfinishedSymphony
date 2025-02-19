@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NPC : Interactable
 {
+    public bool shouldLoadScene = false; //load combat after dialogue
+    public string sceneToLoad;  
     public Sprite portraitSprite;
     public Dialogue dialogue;
+    
 
     public override void Interact() //trigger dialogue
     {   
@@ -19,6 +23,12 @@ public class NPC : Interactable
     {
         isInteracting = false;
         hasInteracted = true;
+
+        if (shouldLoadScene && !string.IsNullOrEmpty(sceneToLoad))
+        {
+            SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
+            //update gamemanager
+        }
     }
 
 }

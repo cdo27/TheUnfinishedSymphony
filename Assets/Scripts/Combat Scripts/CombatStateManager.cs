@@ -6,16 +6,33 @@ using UnityEngine.UI;
 
 public class CombatStateManager : MonoBehaviour
 {
+    //current song that will be played, when loading combat this should be loaded based on which level
+    public Song currentSong;
+
     public int gameState = 0; // 0 = not started, 1 = attack mode, 2 = defend mode, 98 = victory, 99 = defeat
     public double lastCheckedTime = -1.0; // Track last checked DSP time
     public BeatManager beatManager;
     public GameObject attackBar;
+
+    public GameObject enemy;
+    public Sprite thiefSprite;
+    public Sprite redSpiritSprite;
+    public Sprite yelowSpiritSprite;
+    public Sprite blueSpiritSprite;
 
     // Just for testing
     public TMP_Text modeText;
 
     void Start()
     {
+        //load proper song
+        currentSong = new TestSong();
+
+        if (currentSong.songID == 001)
+        {
+            SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
+            enemySpriteRenderer.sprite = thiefSprite;
+        }
     }
 
     void Update()
@@ -50,28 +67,28 @@ public class CombatStateManager : MonoBehaviour
     void CheckModeSwitch(double currentTime)
     {
         // Check if it's time to switch to attack mode
-        if (beatManager.currentSong.attackModeBeats.Count > 0)
+        if (currentSong.attackModeBeats.Count > 0)
         {
-            double attackModeTime = beatManager.GetDspTimeForBeat(beatManager.currentSong.attackModeBeats[0]);
+            double attackModeTime = beatManager.GetDspTimeForBeat(currentSong.attackModeBeats[0]);
             if (currentTime >= attackModeTime)
             {
                 gameState = 1; // Attack mode
                 attackBar.SetActive(true);
                 Debug.Log("Switched to Attack Mode!");
-                beatManager.currentSong.attackModeBeats.RemoveAt(0); // Remove processed beat
+                currentSong.attackModeBeats.RemoveAt(0); // Remove processed beat
             }
         }
 
         // Check if it's time to switch to defend mode
-        if (beatManager.currentSong.defendModeBeats.Count > 0)
+        if (currentSong.defendModeBeats.Count > 0)
         {
-            double defendModeTime = beatManager.GetDspTimeForBeat(beatManager.currentSong.defendModeBeats[0]);
+            double defendModeTime = beatManager.GetDspTimeForBeat(currentSong.defendModeBeats[0]);
             if (currentTime >= defendModeTime)
             {
                 gameState = 2; // Defend mode
                 attackBar.SetActive(false);
                 Debug.Log("Switched to Defend Mode!");
-                beatManager.currentSong.defendModeBeats.RemoveAt(0); // Remove processed beat
+                currentSong.defendModeBeats.RemoveAt(0); // Remove processed beat
             }
         }
     }

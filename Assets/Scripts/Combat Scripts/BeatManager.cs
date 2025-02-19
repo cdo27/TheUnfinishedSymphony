@@ -6,9 +6,6 @@ using System.Collections;
 public class BeatManager : MonoBehaviour
 {
     //---------------------------initiate all the necessary objects and components------------------------------------
-    //current song that will be played, when loading combat this should be loaded based on which level
-    public Song currentSong;
-
     //managers
     public SongManager songManager;
     public AudioManager audioManager;
@@ -46,7 +43,7 @@ public class BeatManager : MonoBehaviour
         }
 
         //-----------------------------------check for win or lose condition---------------------------------------
-        if(songStarted && AudioSettings.dspTime >=  GetDspTimeForBeat(currentSong.songcompleteBeat))
+        if(songStarted && AudioSettings.dspTime >=  GetDspTimeForBeat(combatStateManager.currentSong.songcompleteBeat))
         {
             combatStateManager.gameState = 98;
         }
@@ -137,17 +134,17 @@ public class BeatManager : MonoBehaviour
     void startSong()
     {
         songStarted = true;
-        currentSong = new TestSong(); //insert whatever the current level song is
-        songBPM = currentSong.BPM; //carry over BPM
+        combatStateManager.currentSong = new TestSong(); //insert whatever the current level song is
+        songBPM = combatStateManager.currentSong.BPM; //carry over BPM
         currentBeat = 0;
 
         crotchet = 60.0f / songBPM; // calculate uration of a single beat
         noteSpawner.setNoteSpeed(); // update note speed based on BPM
 
-        currentSong.PlaySong(songManager); //play the song
+        combatStateManager.currentSong.PlaySong(songManager); //play the song
         dspTimeSongStart = AudioSettings.dspTime; // save reference time for future calculations
 
-        nextBeatTime = dspTimeSongStart + currentSong.offset; //next beat sound time
+        nextBeatTime = dspTimeSongStart + combatStateManager.currentSong.offset; //next beat sound time
     }
 
     //---------------------------playing beat sounds every whole beat-----------------------------
@@ -173,7 +170,7 @@ public class BeatManager : MonoBehaviour
 
     void CheckAndSpawnNotes()
     {
-        if (currentSong.attackBeatsToHit.Count > 0 || currentSong.defendBeatsToHit.Count > 0)
+        if (combatStateManager.currentSong.attackBeatsToHit.Count > 0 || combatStateManager.currentSong.defendBeatsToHit.Count > 0)
         {
             BeatData nextBeat;
             double dspTimeForNoteSpawn;
@@ -181,9 +178,9 @@ public class BeatManager : MonoBehaviour
             switch (combatStateManager.gameState)
             {
                 case 1:  // Attack Mode
-                    if (currentSong.attackBeatsToHit.Count > 0)
+                    if (combatStateManager.currentSong.attackBeatsToHit.Count > 0)
                     {
-                        nextBeat = currentSong.attackBeatsToHit[0]; // Get the first beat for attack mode
+                        nextBeat = combatStateManager.currentSong.attackBeatsToHit[0]; // Get the first beat for attack mode
 
                         dspTimeForNoteSpawn = GetDspTimeForBeat(nextBeat.beatTime - 4);  // Calculate spawn time, 4 beats before the current beat
 
@@ -192,39 +189,39 @@ public class BeatManager : MonoBehaviour
                             Note createdNote = noteSpawner.SpawnNote(nextBeat);
                             activeNotes.Add(createdNote);
 
-                            currentSong.attackBeatsToHit.RemoveAt(0); // Remove the beat from the list after it has been processed
+                            combatStateManager.currentSong.attackBeatsToHit.RemoveAt(0); // Remove the beat from the list after it has been processed
                         }
                     }
                     break;
 
                 case 2:  // Defend Mode
-                    if (currentSong.defendBeatsToHit.Count > 0)
+                    if (combatStateManager.currentSong.defendBeatsToHit.Count > 0)
                     {
                         // If we are not already processing a list, store its size
                         if (processingDefendList == 0)
                         {
                             processingDefendList = 1;  // Mark as processing
-                            currentDefendListSize = currentSong.defendBeatsToHit[0].Count;  // Store list size
+                            currentDefendListSize = combatStateManager.currentSong.defendBeatsToHit[0].Count;  // Store list size
                         }
 
-                        nextBeat = currentSong.defendBeatsToHit[0][0]; // Get the first beat for defend mode
+                        nextBeat = combatStateManager.currentSong.defendBeatsToHit[0][0]; // Get the first beat for defend mode
 
                         dspTimeForNoteSpawn = GetDspTimeForBeat(nextBeat.beatTime - 8);  // Calculate spawn time, 8 beats before the current beat
 
                         if (AudioSettings.dspTime >= dspTimeForNoteSpawn && AudioSettings.dspTime < dspTimeForNoteSpawn + crotchet)
                         {
-                            int position = currentDefendListSize - currentSong.defendBeatsToHit[0].Count + 1; // Get note position
+                            int position = currentDefendListSize - combatStateManager.currentSong.defendBeatsToHit[0].Count + 1; // Get note position
 
                             Note createdNote = noteSpawner.SpawnDefendNote(nextBeat, currentDefendListSize, position);
                             audioManager.playEnemyNotePopSound();
                             activeNotes.Add(createdNote);
 
-                            currentSong.defendBeatsToHit[0].RemoveAt(0);
+                            combatStateManager.currentSong.defendBeatsToHit[0].RemoveAt(0);
 
                             // If the list is now empty, reset variables and remove it
-                            if (currentSong.defendBeatsToHit[0].Count == 0)
+                            if (combatStateManager.currentSong.defendBeatsToHit[0].Count == 0)
                             {
-                                currentSong.defendBeatsToHit.RemoveAt(0);
+                                combatStateManager.currentSong.defendBeatsToHit.RemoveAt(0);
                                 processingDefendList = 0; // Reset processing flag
                                 currentDefendListSize = 0; // Reset list size
                             }
@@ -256,7 +253,7 @@ public class BeatManager : MonoBehaviour
     public double GetDspTimeForBeat(float beatTime)
     {
         // Convert the beat time to DSP time relative to the song's start
-        return dspTimeSongStart + (beatTime * crotchet) + currentSong.offset;
+        return dspTimeSongStart + (beatTime * crotchet) + combatStateManager.currentSong.offset;
     }
 
     //-------------------------retrieve methods---------------------------------

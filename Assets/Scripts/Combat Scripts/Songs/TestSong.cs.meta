@@ -3,7 +3,9 @@ guid: fed646cbad8edf44caf890f45ba9dfb7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - enemySprite: {fileID: 21300000, guid: 8b155024332313d4390e181acf128724, type: 3}
+  - thiefSprite: {fileID: 21300000, guid: 8b155024332313d4390e181acf128724, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

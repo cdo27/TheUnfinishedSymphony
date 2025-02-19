@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Song : MonoBehaviour
 {
+    public int songID;
+  
     public List<float> attackModeBeats; //list of beats where game switch to attack mode
     public List<float> defendModeBeats; //list of beats where game switch to defend mode
     public List<float> cutsceneModeBeats; //list of beats where game switch to cutscene mode

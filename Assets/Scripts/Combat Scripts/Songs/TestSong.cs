@@ -6,6 +6,7 @@ public class TestSong : Song
 {
     public TestSong()
     {
+        songID = 001;
         BPM = 90;
         offset = 0.1f;
 

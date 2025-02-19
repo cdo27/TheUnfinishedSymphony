@@ -10,8 +10,8 @@ public class Song : MonoBehaviour
     public List<float> cutsceneModeBeats; //list of beats where game switch to cutscene mode
     public float songcompleteBeat; //the beat where the song is completed
 
-    public List<float> attackBeatsToHit; // List of beats where the notes should be hit, set this manually
-    public List<List<float>> defendBeatsToHit; // List of beats where the notes should be hit, set this manually
+    public List<BeatData> attackBeatsToHit; // List of beats where the notes should be hit, set this manually
+    public List<List<BeatData>> defendBeatsToHit; // List of beats where the notes should be hit, set this manually
 
     //the BPM of the song
     public float BPM;

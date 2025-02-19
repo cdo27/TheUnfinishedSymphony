@@ -57,10 +57,12 @@ public class BeatManager : MonoBehaviour
             CheckAndSpawnNotes(); // Check and spawn notes based on beats before they arrive
             CheckAndDeleteNotes(); // check if there's any destroyed notes, if yes remove from list
 
-            //player hit
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.J))
+            // Player hit
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow) ||
+                Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) ||
+                Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
-                //set up default behavior when player press the key during attack and defend mode
+                // Set up default behavior when the player presses the key during attack and defend mode
                 if (combatStateManager.gameState == 1) audioManager.playHitSoundA();
                 if (combatStateManager.gameState == 2)
                 {
@@ -68,14 +70,24 @@ public class BeatManager : MonoBehaviour
                     Invoke("HideMusicShield", 0.1f); // Hides after 0.1 seconds
                 }
 
-                
                 bool noteHit = false; // Flag to track if we've already hit a note.
-
 
                 // Loop through all active notes and check if one can be hit
                 for (int i = activeNotes.Count - 1; i >= 0; i--)
                 {
                     Note note = activeNotes[i];
+
+                    // Determine if the player pressed the correct key for this note type
+                    bool correctKeyPressed = false;
+
+                    if ((note.noteType == 0 && (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))) ||  // Red notes
+                        (note.noteType == 1 && (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))) ||  // Green notes
+                        (note.noteType == 2 && (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))))   // Purple notes
+                    {
+                        correctKeyPressed = true;
+                    }
+
+                    if (!correctKeyPressed) continue; // Skip this note if the wrong key was pressed
 
                     // Call checkIfHit() for each note to determine if it's hit
                     int hitResult = note.checkIfHit();
@@ -85,7 +97,7 @@ public class BeatManager : MonoBehaviour
                     {
                         noteHit = true; // Mark that we've hit a note
 
-                        //play block sound if blocking an attack 
+                        // Play block sound if blocking an attack 
                         if (combatStateManager.gameState == 2) audioManager.playMusicBlockSound();
 
                         // If it's a perfect hit
@@ -96,14 +108,12 @@ public class BeatManager : MonoBehaviour
                                 perfectHitMessage.SetActive(true);
                                 Invoke("HidePerfectHitMessage", 0.2f); // Hides after 0.2 seconds
                             }
-                            //Debug.Log("Perfect hit!");
                         }
                         // If it's a slight miss
                         else if (hitResult == 1)
                         {
                             nearMissMessage.SetActive(true);
                             Invoke("HideNearMissMessage", 0.2f); // Hides after 0.2 seconds
-                           // Debug.Log("Slight miss!");
                         }
 
                         // Destroy the note after hitting it
@@ -165,7 +175,7 @@ public class BeatManager : MonoBehaviour
     {
         if (currentSong.attackBeatsToHit.Count > 0 || currentSong.defendBeatsToHit.Count > 0)
         {
-            float nextBeat;
+            BeatData nextBeat;
             double dspTimeForNoteSpawn;
 
             switch (combatStateManager.gameState)
@@ -175,7 +185,7 @@ public class BeatManager : MonoBehaviour
                     {
                         nextBeat = currentSong.attackBeatsToHit[0]; // Get the first beat for attack mode
 
-                        dspTimeForNoteSpawn = GetDspTimeForBeat(nextBeat - 4);  // Calculate spawn time, 4 beats before the current beat
+                        dspTimeForNoteSpawn = GetDspTimeForBeat(nextBeat.beatTime - 4);  // Calculate spawn time, 4 beats before the current beat
 
                         if (AudioSettings.dspTime >= dspTimeForNoteSpawn && AudioSettings.dspTime < dspTimeForNoteSpawn + crotchet)
                         {
@@ -199,7 +209,7 @@ public class BeatManager : MonoBehaviour
 
                         nextBeat = currentSong.defendBeatsToHit[0][0]; // Get the first beat for defend mode
 
-                        dspTimeForNoteSpawn = GetDspTimeForBeat(nextBeat - 8);  // Calculate spawn time, 8 beats before the current beat
+                        dspTimeForNoteSpawn = GetDspTimeForBeat(nextBeat.beatTime - 8);  // Calculate spawn time, 8 beats before the current beat
 
                         if (AudioSettings.dspTime >= dspTimeForNoteSpawn && AudioSettings.dspTime < dspTimeForNoteSpawn + crotchet)
                         {

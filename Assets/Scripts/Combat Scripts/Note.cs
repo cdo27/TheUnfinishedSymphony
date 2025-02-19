@@ -4,7 +4,11 @@ using UnityEngine;
 public class Note : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer; // Reference to the note's sprite renderer
+    public Sprite redNoteSprite;  
+    public Sprite greenNoteSprite;
+    public Sprite purpleNoteSprite;
 
+    public int noteType;
     private int mode;
 
     private Vector2 targetPosition;
@@ -21,14 +25,31 @@ public class Note : MonoBehaviour
     private bool isCharging = false; // Whether the note is charging towards the player
 
     // Initialize method
-    public void Initialize(int mode, float beat, Vector2 targetPosition, float speed, BeatManager beatManager)
+    public void Initialize(BeatData beat, int mode, Vector2 targetPosition, float speed, BeatManager beatManager)
     {
+        this.noteType = beat.noteType;
         this.mode = mode;
         this.targetPosition = targetPosition;
         this.speed = speed; // The speed at which the note will move
         this.beatManager = beatManager; // Reference to the BeatManager for DSP timing
 
         spriteRenderer = GetComponent<SpriteRenderer>(); // Get reference to the sprite renderer
+        //assign proper sprite according to noteType
+        switch (noteType)
+        {
+            case 0:
+                spriteRenderer.sprite = redNoteSprite;
+                break;
+            case 1:
+                spriteRenderer.sprite = greenNoteSprite;
+                break;
+            case 2:
+                spriteRenderer.sprite = purpleNoteSprite;
+                break;
+            default:
+                Debug.LogWarning("Invalid note type: " + noteType);
+                break;
+        }
 
         // Get AudioManager reference
         audioManager = FindObjectOfType<AudioManager>();
@@ -38,7 +59,7 @@ public class Note : MonoBehaviour
         }
 
         // Calculate the target hit time of this note based on the beat manager's DSP time
-        targetHitTime = beatManager.GetDspTimeForBeat(beat);
+        targetHitTime = beatManager.GetDspTimeForBeat(beat.beatTime);
     }
 
     public int checkIfHit()
@@ -87,7 +108,7 @@ public class Note : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, new Vector3(targetPosition.x-3, transform.position.y, transform.position.z), speed * Time.deltaTime);
 
         // Check if the note has passed the target position by checking its x position
-        if (transform.position.x <= targetPosition.x - 3) // Adjust end point as needed
+        if (transform.position.x <= targetPosition.x - 2) // Adjust end point as needed
         {
             Destroy(gameObject); // Remove the note when it reaches this point
         }

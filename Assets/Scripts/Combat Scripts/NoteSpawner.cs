@@ -49,7 +49,7 @@ public class NoteSpawner : MonoBehaviour
         noteSpeed = distanceToHitPoint / timeToHitPoint;
     }
 
-    public Note SpawnNote(float beat)
+    public Note SpawnNote(BeatData beat)
     {
             //Debug.Log("spawning attack mode notes");
             //set the spawn point, x equal some arbitary spawn point (adjust), y is just the y value of the attack bar object
@@ -61,11 +61,11 @@ public class NoteSpawner : MonoBehaviour
             //instantiate the note
             GameObject newNote = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
             Note note = newNote.GetComponent<Note>();
-            note.Initialize(1, beat, targetPosition, noteSpeed, beatManager);
+            note.Initialize(beat, 1, targetPosition, noteSpeed, beatManager);
             return note; 
     }
 
-    public Note SpawnDefendNote(float beat, int listSize, int position)
+    public Note SpawnDefendNote(BeatData beat, int listSize, int position)
     {
         // Reference the character's position
         Vector2 characterPosition = enemy.transform.position;
@@ -96,7 +96,7 @@ public class NoteSpawner : MonoBehaviour
         // Instantiate the note
         GameObject newNote = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
         Note note = newNote.GetComponent<Note>();
-        note.Initialize(2, beat, player.transform.position, 0, beatManager);
+        note.Initialize(beat, 2, player.transform.position, 0, beatManager);
         return note;
     }
 }

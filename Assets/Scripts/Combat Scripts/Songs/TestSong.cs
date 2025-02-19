@@ -9,15 +9,32 @@ public class TestSong : Song
         BPM = 90;
         offset = 0.1f;
 
-      
-        attackBeatsToHit = new List<float> {5f, 6f, 7f, 8f, 9f, 9.25f, 9.5f, 9.75f, 10f, 11f, 12f, 13f, 14f,//first attack mode phase
-                                            52f, 52.5f, 53f, 53.5f, 54f, 54.5f, 57f, 58f, 59f, 60f, 60.25f, 60.5f}; //second attack mode phase
 
-        defendBeatsToHit = new List<List<float>>()
+        attackBeatsToHit = new List<BeatData>
+{
+            new BeatData(5f, 0), new BeatData(6f, 0), new BeatData(7f, 0), new BeatData(8f, 0),
+            new BeatData(9f, 0), new BeatData(9.25f, 0), new BeatData(9.5f, 0), new BeatData(9.75f, 0),
+            new BeatData(10f, 0), new BeatData(11f, 0), new BeatData(12f, 1), new BeatData(13f, 1), new BeatData(14f, 1), // First attack mode phase
+
+            new BeatData(52f, 0), new BeatData(52.5f, 0), new BeatData(53f, 1), new BeatData(53.5f, 1),
+            new BeatData(54f, 0), new BeatData(54.5f, 0), new BeatData(57f, 2), new BeatData(58f, 2),
+            new BeatData(59f, 2), new BeatData(60f, 2), new BeatData(60.25f, 0), new BeatData(60.5f, 2) // Second attack mode phase
+        };
+
+        // Defend mode beats (each phase has a list of BeatData objects)
+        defendBeatsToHit = new List<List<BeatData>>
+{
+            new List<BeatData>
             {
-                new List<float>() {24f, 26f, 28f, 30f},  // Defend Phase 1
-                 new List<float>() {40f, 41f, 42f, 43f, 44f, 45f, 46f}  // Defend Phase 1
-            };
+                new BeatData(24f, 0), new BeatData(26f, 0), new BeatData(28f, 0), new BeatData(30f, 0) // Defend Phase 1
+            },
+            new List<BeatData>
+            {
+                new BeatData(40f, 0), new BeatData(41f, 0), new BeatData(42f, 0), new BeatData(43f, 0),
+                new BeatData(44f, 0), new BeatData(45f, 0), new BeatData(46f, 0) // Defend Phase 2
+            }
+        };
+
         songcompleteBeat = 62f;
 
 

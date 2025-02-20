@@ -10,25 +10,36 @@ public class NPC : Interactable
     public string sceneToLoad;  
     public Sprite portraitSprite;
     public Dialogue dialogue;
+    public Dialogue afterDialogue;
     public GameManager gameManager;
+    public DialogueManager dialogueManager;
 
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
+        dialogueManager = FindObjectOfType<DialogueManager>();
 
         if (gameManager == null)
         {
             Debug.Log("GameManager was not found.");
         }
     }
-    
+
 
     public override void Interact() //trigger dialogue
     {   
-        Debug.Log("Playing dialogue");
         isInteracting = true;
-        DialogueManager dialogueManager = FindObjectOfType<DialogueManager>();
-        dialogueManager.StartDialogue(dialogue, portraitSprite, this);
+
+        if (!hasInteracted)
+        {
+            Debug.Log("Playing dialogue");
+            dialogueManager.StartDialogue(dialogue, portraitSprite, this);
+        }
+        else
+        {
+            Debug.Log("Playing after dialogue");
+            dialogueManager.StartDialogue(afterDialogue, portraitSprite, this);
+        }
 
     }
 

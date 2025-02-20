@@ -1109,7 +1109,12 @@ MonoBehaviour:
     - The First Movement is now completed. Move freely, search the shadows, find
       the rest of my symphony and finish them. Go on!
     isPlayerSpeaking: 0000
+  afterDialogue:
+    npcName: 
+    sentences: []
+    isPlayerSpeaking: 
   gameManager: {fileID: 0}
+  dialogueManager: {fileID: 0}
   fadeDuration: 1
   spriteRenderer: {fileID: 280304763}
 --- !u!1 &284047461
@@ -1607,7 +1612,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasInteracted: 0
   isInteracting: 0
-  shouldLoadScene: 1
+  shouldLoadScene: 0
   shouldDestroy: 1
   sceneToLoad: Puzzle
   portraitSprite: {fileID: 21300000, guid: d5db6e58b9d5d6e4c8ec0ad993531e41, type: 3}
@@ -1636,7 +1641,12 @@ MonoBehaviour:
     - "I cannot...I am bound to this room. But here\u2026 the first movement. I have
       held onto it, but it remains incomplete. Let me show you."
     isPlayerSpeaking: 000100010001000100000100
+  afterDialogue:
+    npcName: 
+    sentences: []
+    isPlayerSpeaking: 
   gameManager: {fileID: 0}
+  dialogueManager: {fileID: 0}
 --- !u!212 &390049319
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5105,6 +5115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TutorialAldric: {fileID: 280304764}
+  TutorialThief: {fileID: 0}
 --- !u!4 &1651437098
 Transform:
   m_ObjectHideFlags: 0

@@ -290,7 +290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasInteracted: 0
   isInteracting: 0
-  shouldLoadScene: 1
+  shouldLoadScene: 0
   shouldDestroy: 0
   sceneToLoad: Combat
   portraitSprite: {fileID: 21300000, guid: 442eec544c4cac840aad9933a065e268, type: 3}
@@ -312,7 +312,21 @@ MonoBehaviour:
     - "Look, I could just hand it over, but what fun would that be? Besides, you\u2019re
       gonna need to learn how to fight in here. So! Consider this a lesson."
     isPlayerSpeaking: 010001000001000100
+  afterDialogue:
+    npcName: Thief Spirit
+    sentences:
+    - "Not bad! You\u2019ve got some fight in you."
+    - Are we done now?
+    - "For now. But trust me, this won\u2019t be your last fight."
+    - "So...You\u2019re a thief?"
+    - "Tell you what\u2014I like you. You need supplies? Maybe wanna get better at
+      dealing with the spirits here? I know a few tricks.\r\n"
+    - "And let me guess\u2026 it comes at a price?"
+    - "Well... I do run a little shop. Drop by anytime. Maybe I\u2019ll even cut
+      you a deal\u2014since you haven\u2019t tried to exorcise me yet."
+    isPlayerSpeaking: 00010001000100
   gameManager: {fileID: 0}
+  dialogueManager: {fileID: 0}
 --- !u!114 &62219383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,7 +418,12 @@ MonoBehaviour:
     - What is it?
     - Some armor to take some hits, slow down time... See for yourself.
     isPlayerSpeaking: 000100
+  afterDialogue:
+    npcName: 
+    sentences: []
+    isPlayerSpeaking: 
   gameManager: {fileID: 0}
+  dialogueManager: {fileID: 0}
   repeatDialogue:
     npcName: Thief Spirit
     sentences:

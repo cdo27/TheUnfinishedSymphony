@@ -20,24 +20,26 @@ public class GameManager : MonoBehaviour
         End
     }
     public GameState currentState;
-    private CutsceneManager cutsceneManager;
+    public CutsceneManager cutsceneManager;
     public int currentSong;
 
     public bool hasCompletedPuzzleTut, hasCompletedCombatTut,
     hasCompletedPuzzle1, hasCompletedPuzzle2, hasCompletedPuzzle3,
     hasCompletedCombat1, hasCompletedCombat2, hasCompletedCombat3 = false;
 
-    private bool hasTriggeredAfterPuzzleTutCutscene = false;
+    private bool hasTriggeredAfterPuzzleTutCutscene, hasTriggeredAfterCombatTutCutscene = false;
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        ReassignCutsceneManager();
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        cutsceneManager = FindObjectOfType<CutsceneManager>();
+        ReassignCutsceneManager();
         SetGameState(GameState.Menu);
     }
 
@@ -47,6 +49,11 @@ public class GameManager : MonoBehaviour
         if (hasCompletedPuzzleTut && !hasTriggeredAfterPuzzleTutCutscene){
             hasTriggeredAfterPuzzleTutCutscene = true;
             cutsceneManager.afterPuzzleTut();
+        }
+
+        if (hasCompletedCombatTut && !hasTriggeredAfterCombatTutCutscene){
+            hasTriggeredAfterCombatTutCutscene = true;
+            cutsceneManager.afterCombatTut();
         }
 
         
@@ -66,6 +73,31 @@ public class GameManager : MonoBehaviour
 
     public void UnloadScene(string sceneToUnload){
         SceneManager.UnloadSceneAsync(sceneToUnload);
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log($"Scene loaded: {scene.name}, mode: {mode}");
+        ReassignCutsceneManager();
+    }
+
+    void ReassignCutsceneManager()
+    {
+        Debug.Log("Reassigning CutsceneManager...");
+        cutsceneManager = FindObjectOfType<CutsceneManager>();
+        if (cutsceneManager != null)
+        {
+            Debug.Log($"Found CutsceneManager on: {cutsceneManager.gameObject.name}");
+        }
+        else
+        {
+            Debug.LogError("Could not find CutsceneManager in the scene!");
+        }
+    }
+
+    void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded; 
     }
 
 }

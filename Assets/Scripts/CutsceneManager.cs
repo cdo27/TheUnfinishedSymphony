@@ -37,8 +37,16 @@ public class CutsceneManager : MonoBehaviour
         if(TutorialThief != null)
         TutorialThief.Interact();
     }
+    
     public void afterCombatTut()
-    { //play after player thief combat
+    { 
+        if(TutorialThief != null){
+            TutorialThief.Interact();
+            Debug.Log("Played after combat tutorial cutscene");
+        }else{
+            Debug.Log("TutorialThief is null");
+        }
+        
     
     }
 }

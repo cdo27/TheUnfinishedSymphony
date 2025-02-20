@@ -398,6 +398,7 @@ MonoBehaviour:
   hasInteracted: 0
   isInteracting: 0
   sceneToLoad: Puzzle
+  gameManager: {fileID: 0}
 --- !u!1 &277189985
 GameObject:
   m_ObjectHideFlags: 0
@@ -2134,8 +2135,17 @@ MonoBehaviour:
   dialogue:
     npcName: Serpentura
     sentences:
-    - Combat!
-    isPlayerSpeaking: 00
+    - "Aldric\u2019s blood\u2026 I should have known. You all come here eventually,
+      chasing after his cursed notes."
+    - I need the missing piece of his symphony. Do you know where that is?
+    - You need it? Just like he needed everything for himself?
+    - ' I just want to finish what he started.'
+    - Finish? Why do you think you deserve it? Why do you think he deserve it?
+    - What are you talking about? Why do you hate him so much?
+    - "Listen carefully\u2014you are walking the same path he did. And that\u2026
+      I cannot allow. I will NOT give you the piece..."
+    isPlayerSpeaking: 00010001000100
+  gameManager: {fileID: 0}
 --- !u!61 &1718386360
 BoxCollider2D:
   m_ObjectHideFlags: 0

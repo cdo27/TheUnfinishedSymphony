@@ -398,6 +398,7 @@ MonoBehaviour:
   hasInteracted: 0
   isInteracting: 0
   sceneToLoad: Puzzle
+  gameManager: {fileID: 0}
 --- !u!1 &277189985
 GameObject:
   m_ObjectHideFlags: 0
@@ -2132,10 +2133,18 @@ MonoBehaviour:
   sceneToLoad: Combat
   portraitSprite: {fileID: 21300000, guid: 442eec544c4cac840aad9933a065e268, type: 3}
   dialogue:
-    npcName: Serpentura
+    npcName: Vengeful Spirit Dueterno
     sentences:
-    - Combat!
-    isPlayerSpeaking: 00
+    - Give me what you stole. I know how this works.
+    - You think this is just another piece to collect, another song to finish?
+    - Two minds. Two hands. Two visions, colliding. One died, the other went mad.
+      Tragic.
+    - Benedict... How did he pass away?
+    - Now you ask this. I thought you only care about finding the pieces. About that,
+      I will NEVER give it up to you.
+    - Here we go, again...
+    isPlayerSpeaking: 010000010001
+  gameManager: {fileID: 0}
 --- !u!61 &1718386360
 BoxCollider2D:
   m_ObjectHideFlags: 0

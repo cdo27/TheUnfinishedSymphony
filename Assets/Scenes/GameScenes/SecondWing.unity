@@ -398,6 +398,7 @@ MonoBehaviour:
   hasInteracted: 0
   isInteracting: 0
   sceneToLoad: Puzzle
+  gameManager: {fileID: 0}
 --- !u!1 &277189985
 GameObject:
   m_ObjectHideFlags: 0
@@ -2132,10 +2133,22 @@ MonoBehaviour:
   sceneToLoad: Combat
   portraitSprite: {fileID: 21300000, guid: 442eec544c4cac840aad9933a065e268, type: 3}
   dialogue:
-    npcName: Serpentura
+    npcName: Sonatine
     sentences:
-    - Combat!
-    isPlayerSpeaking: 00
+    - Well, well...Lucien Vasseur, great grandson of the legendary Aldric Vasseur
+    - Who are you? Another resentful spirit with a grudge against my great-grandfather
+      for no reasons?
+    - "Oh, poor, poor Benedict\u2026 How dare you call this resentment with no cause?"
+    - "Benedict? What are you talking about? Look, I need the missing pieces of Aldric\u2019s
+      symphony. You have them, don\u2019t you? Just like your friend, who I defeated."
+    - "Defeated? Is that what you think you did? Do you understand what you\u2019re
+      meddling with?"
+    - "I don\u2019t need to understand\u2014I just need the missing pieces of the
+      symphony."
+    - ' Spoken like a true Vasseur. Always thinking music is just about the notes,
+      never about the hands that bled to write them. Fight me for it, kid!'
+    isPlayerSpeaking: 00010001000100
+  gameManager: {fileID: 0}
 --- !u!61 &1718386360
 BoxCollider2D:
   m_ObjectHideFlags: 0

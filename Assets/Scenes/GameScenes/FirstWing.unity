@@ -2133,7 +2133,7 @@ MonoBehaviour:
   sceneToLoad: Combat
   portraitSprite: {fileID: 21300000, guid: 442eec544c4cac840aad9933a065e268, type: 3}
   dialogue:
-    npcName: Serpentura
+    npcName: Vengeful Spirit Serpentura
     sentences:
     - "Aldric\u2019s blood\u2026 I should have known. You all come here eventually,
       chasing after his cursed notes."

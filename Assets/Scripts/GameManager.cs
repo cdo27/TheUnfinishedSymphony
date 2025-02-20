@@ -20,11 +20,14 @@ public class GameManager : MonoBehaviour
         End
     }
     public GameState currentState;
+    private CutsceneManager cutsceneManager;
     public int currentSong;
 
     public bool hasCompletedPuzzleTut, hasCompletedCombatTut,
     hasCompletedPuzzle1, hasCompletedPuzzle2, hasCompletedPuzzle3,
     hasCompletedCombat1, hasCompletedCombat2, hasCompletedCombat3 = false;
+
+    private bool hasTriggeredAfterPuzzleTutCutscene = false;
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -34,12 +37,17 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cutsceneManager = FindObjectOfType<CutsceneManager>();
         SetGameState(GameState.Menu);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (hasCompletedPuzzleTut && !hasTriggeredAfterPuzzleTutCutscene){
+            hasTriggeredAfterPuzzleTutCutscene = true;
+            cutsceneManager.afterPuzzleTut();
+        }
 
         
     }

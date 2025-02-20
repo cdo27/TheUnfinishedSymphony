@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class NPC : Interactable
 {
     public bool shouldLoadScene = false; //load combat after dialogue
+    public bool shouldDestroy = false;
     public string sceneToLoad;  
     public Sprite portraitSprite;
     public Dialogue dialogue;
@@ -24,6 +25,7 @@ public class NPC : Interactable
 
     public override void Interact() //trigger dialogue
     {   
+        Debug.Log("Playing dialogue");
         isInteracting = true;
         DialogueManager dialogueManager = FindObjectOfType<DialogueManager>();
         dialogueManager.StartDialogue(dialogue, portraitSprite, this);
@@ -41,6 +43,8 @@ public class NPC : Interactable
             gameManager.SetGameState(GameManager.GameState.Combat); //update gamestate to combat
 
         }
+
+        if (shouldDestroy) Destroy(gameObject);
     }
 
 }

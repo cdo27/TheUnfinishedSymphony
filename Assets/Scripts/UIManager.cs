@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public GameObject shopUI;
     public GameObject gameUI;
     public GameObject menuUI;
+    public GameObject letterUI;
 
     // Map GameObjects
 
@@ -75,6 +76,15 @@ public class UIManager : MonoBehaviour
         if (menuUI != null)
         {
             menuUI.SetActive(false);
+            gameManager.SetGameState(GameManager.GameState.CutScene);
+        }
+    }
+
+    public void letterButton()
+    {
+        if (letterUI != null)
+        {
+            letterUI.SetActive(false);
             gameManager.SetGameState(GameManager.GameState.Game);
         }
     }

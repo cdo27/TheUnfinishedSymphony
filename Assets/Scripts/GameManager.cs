@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
         End
     }
     public GameState currentState;
-    public CutsceneManager cutsceneManager;
+    private CutsceneManager cutsceneManager;
     public int currentSong;
 
     public bool hasCompletedPuzzleTut, hasCompletedCombatTut,
@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cutsceneManager = FindObjectOfType<CutsceneManager>();
         SetGameState(GameState.Menu);
     }
 

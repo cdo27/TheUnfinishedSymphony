@@ -133,8 +133,7 @@ public class BeatManager : MonoBehaviour
     //game initialization. Set up the song before playing
     void startSong()
     {
-        songStarted = true;
-        combatStateManager.currentSong = new TestSong(); //insert whatever the current level song is
+        songStarted = true; 
         songBPM = combatStateManager.currentSong.BPM; //carry over BPM
         currentBeat = 0;
 

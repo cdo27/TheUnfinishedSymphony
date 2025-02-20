@@ -98,9 +98,10 @@ public class DialogueManager : MonoBehaviour
         {
             currentNPC.CompleteInteraction();
         }
-        
     }
 
+    //Cutscene Dialogue
+    
 
 
 }

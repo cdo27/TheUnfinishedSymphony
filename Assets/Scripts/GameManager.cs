@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
         End
     }
     public GameState currentState;
+    public int currentSong;
 
     public bool hasCompletedPuzzleTut, hasCompletedCombatTut,
     hasCompletedPuzzle1, hasCompletedPuzzle2, hasCompletedPuzzle3,

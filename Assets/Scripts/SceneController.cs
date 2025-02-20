@@ -16,16 +16,29 @@ public class SceneController : MonoBehaviour
             Debug.Log("GameManager was not found.");
         }
     }
-    public void ExitCurrentScene()
+
+    public void LoadCutscene(string sceneToLoad)
     {
-        Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.UnloadSceneAsync(currentScene.name);
+        SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
+        gameManager.SetGameState(GameManager.GameState.CutScene);
+
+    }
+    public void ExitCurrentScene(string sceneToUnload)
+    {
+        SceneManager.UnloadSceneAsync(sceneToUnload);
 
     }
 
     public void ExitPuzzleScene()
     {
         SceneManager.UnloadSceneAsync("Puzzle");
+        gameManager.SetGameState(GameManager.GameState.Game); //back to Game state
+
+    }
+
+    public void ExitCombatScene()
+    {
+        SceneManager.UnloadSceneAsync("Combat");
         gameManager.SetGameState(GameManager.GameState.Game); //back to Game state
 
     }

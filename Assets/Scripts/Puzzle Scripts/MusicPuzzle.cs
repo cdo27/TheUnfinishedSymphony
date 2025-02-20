@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.UI;
 using TMPro;
 
@@ -20,12 +21,16 @@ public class PuzzleMechanism : MonoBehaviour
     private int[] playerSequence = new int[4];    // Array to store player's sequence of note indices
     private int attemptCount = 0;                 // Number of attempts made
 
+    private SceneController sceneController;
+
     void Start()
     {
         playButton.onClick.AddListener(PlayMusicSegment);
         SetupNoteButtons();
         UpdateTimerText(countdown);
         feedbackText.text = "";
+
+        sceneController = FindObjectOfType<SceneController>();
     }
 
     void Update()
@@ -89,8 +94,15 @@ public class PuzzleMechanism : MonoBehaviour
         }
 
         feedbackText.text = "Congratulations! You've completed the puzzle.";
+        StartCoroutine(ExitPuzzleWithDelay(2f));
         PauseTimer();  // Pause the timer instead of disabling all buttons immediately
         DisableAllButtons();
+    }
+
+    private IEnumerator ExitPuzzleWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay); // Wait for the specified time
+        sceneController.ExitPuzzleScene();      // Then exit the scene
     }
 
     private void ResetSequence()

@@ -48,7 +48,15 @@ public class BeatManager : MonoBehaviour
         //-----------------------------------check for win or lose condition---------------------------------------
         if(songStarted && AudioSettings.dspTime >=  GetDspTimeForBeat(combatStateManager.currentSong.songcompleteBeat))
         {
-            combatStateManager.gameState = 98;
+            if(advantageBarManager.CheckVictoryCondition() == true)
+            {
+                combatStateManager.gameState = 98; 
+            }
+            else if (advantageBarManager.CheckVictoryCondition() == false)
+            {
+                combatStateManager.gameState = 99;
+            }
+
         }
 
         //----------------------------------code for gameplay once song started-------------------------------------
@@ -125,6 +133,7 @@ public class BeatManager : MonoBehaviour
                             }else if (combatStateManager.gameState == 2)
                             {
                                 nearMissBlockMessage.SetActive(true);
+                                advantageBarManager.HandleDefense("Partial");
                                 Invoke("HideNearMissBlockMessage", 0.2f); // Hides after 0.2 seconds
                             }
 
@@ -156,6 +165,18 @@ public class BeatManager : MonoBehaviour
 
         crotchet = 60.0f / songBPM; // calculate uration of a single beat
         noteSpawner.setNoteSpeed(); // update note speed based on BPM
+
+        //calculate number of attack/defend notes for advantage bar scaling
+        // Get total number of attack notes
+        int totalAttackNotes = combatStateManager.currentSong.attackBeatsToHit.Count;
+
+        // Get total number of defense notes
+        int totalDefenseNotes = 0;
+        foreach (var phase in combatStateManager.currentSong.defendBeatsToHit)
+        {
+            totalDefenseNotes += phase.Count;
+        }
+        advantageBarManager.InitializeBar(totalAttackNotes, totalDefenseNotes);
 
         combatStateManager.currentSong.PlaySong(songManager); //play the song
         dspTimeSongStart = AudioSettings.dspTime; // save reference time for future calculations

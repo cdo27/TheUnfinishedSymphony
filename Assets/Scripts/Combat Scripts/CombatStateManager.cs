@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CombatStateManager : MonoBehaviour
@@ -13,6 +14,12 @@ public class CombatStateManager : MonoBehaviour
     public double lastCheckedTime = -1.0; // Track last checked DSP time
     public BeatManager beatManager;
     public GameObject attackBar;
+
+    public GameObject attackModeBanner;
+    public GameObject defendModeBanner;
+
+    public GameObject VictoryScreen;
+    public GameObject victoryContinueButton;
 
     public GameObject enemy;
     public Sprite thiefSprite;
@@ -39,10 +46,8 @@ public class CombatStateManager : MonoBehaviour
     {
         if(gameState == 98)
         {
-            if (modeText != null)
-            {
-                modeText.text = "YOU WIN";
-            }
+            VictoryScreen.SetActive(true);
+            modeText.text = "YOU WIN";
         }
 
         if (gameState != 98 && gameState != 99 && beatManager.songStarted)
@@ -73,6 +78,7 @@ public class CombatStateManager : MonoBehaviour
             if (currentTime >= attackModeTime)
             {
                 gameState = 1; // Attack mode
+                StartCoroutine(ShowTurnBannerWithDelay(0));
                 attackBar.SetActive(true);
                 Debug.Log("Switched to Attack Mode!");
                 currentSong.attackModeBeats.RemoveAt(0); // Remove processed beat
@@ -86,11 +92,30 @@ public class CombatStateManager : MonoBehaviour
             if (currentTime >= defendModeTime)
             {
                 gameState = 2; // Defend mode
+                StartCoroutine(ShowTurnBannerWithDelay(1));
                 attackBar.SetActive(false);
                 Debug.Log("Switched to Defend Mode!");
                 currentSong.defendModeBeats.RemoveAt(0); // Remove processed beat
             }
         }
+    }
+
+    private IEnumerator ShowTurnBannerWithDelay(int turn)
+    {
+        //soundManager.playBannerSound();
+        if (turn == 0)
+        {
+           attackModeBanner.SetActive(true);
+        }
+        else if (turn == 1)
+        {
+            defendModeBanner.SetActive(true);
+        }
+
+        // banner disappears after a while
+        yield return new WaitForSeconds(0.8f);
+        attackModeBanner.SetActive(false);
+        defendModeBanner.SetActive(false);
     }
 
     string GetModeText()
@@ -104,5 +129,12 @@ public class CombatStateManager : MonoBehaviour
             default:
                 return "Waiting...";
         }
+    }
+
+    public void OnContinueButtonClick()
+    {
+        // Load the UnfinishedSymphony scene
+        Debug.Log("hello");
+        SceneManager.LoadScene("UnfinishedSymphony");
     }
 }

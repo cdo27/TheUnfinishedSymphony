@@ -6,50 +6,118 @@ public class AdvantageBarManager : MonoBehaviour
 {
     public RectTransform leftBar; // Reference to the left bar's RectTransform
     public RectTransform rightBar; // Reference to the right bar's RectTransform
-    //public RectTransform energyClash; // Reference to the energy clashing image's RectTransform
+    public RectTransform energyClash; // Reference to the energy clashing image's RectTransform
     private float advantage = 50f; // Starts in the middle (0 to 100)
-    private float barWidth = 1000f; // Total width of the advantage bar
+    private float barWidth = 930f; // Total width of the advantage bar
+
+    private int totalAttackNotes = 1; // Default to prevent divide by zero
+    private int totalDefenseNotes = 1;
+
+    private float attackUnit; // How much each attack note moves the bar
+    private float defenseUnit; // How much each defense note moves the bar
+
+    private float decayRate = 0.1f; // Rate at which the enemy meter decays per second
+    private float minimumAdvantage = 20f; // Minimum advantage before the decay stops
+    private float winThreshold = 51f; // Advantage required to win (over half)
+
+    private Coroutine decayCoroutine; // Reference to the decay coroutine
+
+    // Start decay coroutine when the game starts
+    private void Start()
+    {
+        decayCoroutine = StartCoroutine(DecayAdvantage());
+    }
 
     // Call this function to initialize the attack and defense notes
-    public void InitializeBar(int totalAttackNotes, int totalDefenseNotes)
+    public void InitializeBar(int attackNotes, int defenseNotes)
     {
-        // Optionally set any other initialization parameters
+        totalAttackNotes = Mathf.Max(attackNotes, 1); // Avoid division by zero
+        totalDefenseNotes = Mathf.Max(defenseNotes, 1);
+
+        // Set scaling factors so that hitting every note perfectly would fully shift the bar
+        attackUnit = 50f / totalAttackNotes;  // 50 means shifting from center to one extreme
+        defenseUnit = 50f / totalDefenseNotes;
+
         UpdateUI();
+    }
+
+    // Coroutine to decay enemy advantage over time
+    private IEnumerator DecayAdvantage()
+    {
+        while (true)
+        {
+            // Decay the enemy advantage if it's above the minimum threshold
+            if (advantage > minimumAdvantage)
+            {
+                advantage -= decayRate; // Apply decay
+                advantage = Mathf.Clamp(advantage, 0f, 100f); // Ensure it's within bounds
+                UpdateUI();
+            }
+            yield return new WaitForSeconds(1f); // Adjust this value to change decay frequency
+        }
     }
 
     // Call this function to handle attacks
     public void HandleAttack(string hitType)
     {
         float moveAmount = 0f;
-        Debug.Log("handling attack!");
         switch (hitType)
         {
             case "Perfect":
-                moveAmount = 1.5f; // Strong attack, adjust the scale
+                moveAmount = attackUnit * 1.5f; // Perfect hits push further
                 break;
             case "NearMiss":
-                moveAmount = 0.75f; // Slight attack
+                moveAmount = attackUnit * 0.75f; // Slight push
                 break;
             case "Miss":
-                moveAmount = 0f; // No attack
+                moveAmount = 0f; // No impact
                 break;
         }
 
-        // Adjust advantage value and clamp between 0 and 100
         advantage = Mathf.Clamp(advantage + moveAmount, 0f, 100f);
         UpdateUI();
     }
 
     // Call this function to handle defense actions
-    public void HandleDefense(bool blocked)
+    public void HandleDefense(string hitType)
     {
-        if (!blocked) // Failed block
+        float moveAmount = 0f;
+        switch (hitType)
         {
-            float penalty = 5f; // Define a penalty for failing to block
-            advantage = Mathf.Clamp(advantage - penalty, 0f, 100f); // Reduce advantage
+            case "PerfectGuard":
+                moveAmount = 0f; // No penalty for perfect block
+                break;
+            case "WeakBlock":
+                moveAmount = defenseUnit * 0.5f; // Partial penalty
+                break;
+            case "Miss":
+                moveAmount = defenseUnit * 1.5f; // Full penalty
+                break;
         }
 
+        advantage = Mathf.Clamp(advantage - moveAmount, 0f, 100f);
         UpdateUI();
+    }
+
+    // Check if the player has won the game
+    public bool CheckVictoryCondition()
+    {
+        if (advantage >= winThreshold) // Returns true if the player has won
+        {
+            StopDecay(); // Stop decay when the player wins
+            return true;
+        }
+        return false;
+    }
+
+    // Stop the decay coroutine
+    public void StopDecay()
+    {
+        if (decayCoroutine != null)
+        {
+            StopCoroutine(decayCoroutine);
+            decayCoroutine = null; // Clear reference
+        }
     }
 
     // Update the UI to reflect the current advantage value
@@ -65,6 +133,6 @@ public class AdvantageBarManager : MonoBehaviour
 
         // Update the position of the energy clashing image
         float energyPosition = (advantage / 100) * barWidth - (barWidth / 2); // Centering it
-        //energyClash.anchoredPosition = new Vector2(energyPosition, energyClash.anchoredPosition.y);
+        energyClash.anchoredPosition = new Vector2(energyPosition, energyClash.anchoredPosition.y);
     }
 }

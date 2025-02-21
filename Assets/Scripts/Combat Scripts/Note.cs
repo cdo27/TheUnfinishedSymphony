@@ -16,6 +16,7 @@ public class Note : MonoBehaviour
 
     private BeatManager beatManager;
     private AudioManager audioManager;
+    private AdvantageBarManager advantageBarManager;
 
     float hitTolerance = 0.2f; // Total time window to register a hit
     float perfectHitThreshold = 0.1f; // Smaller window for a perfect hit
@@ -56,6 +57,13 @@ public class Note : MonoBehaviour
         if (audioManager == null)
         {
             Debug.LogError("AudioManager not found in the scene!");
+        }
+
+        // Get AudioManager reference
+        advantageBarManager = FindObjectOfType<AdvantageBarManager>();
+        if (advantageBarManager == null)
+        {
+            Debug.LogError("advantageBarManager not found in the scene!");
         }
 
         // Calculate the target hit time of this note based on the beat manager's DSP time
@@ -134,6 +142,7 @@ public class Note : MonoBehaviour
             // Optionally, destroy the note when it reaches the target position
             if (transform.position == new Vector3(targetPosition.x, targetPosition.y, transform.position.z))
             {
+                advantageBarManager.HandleDefense("Miss");
                 Destroy(gameObject);
             }
         }

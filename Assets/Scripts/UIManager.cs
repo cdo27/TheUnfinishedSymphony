@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public GameObject gameUI;
     public GameObject menuUI;
     public GameObject letterUI;
+    public ScrollingTextUI typewriterUI;
 
     // Map GameObjects
 
@@ -75,8 +76,10 @@ public class UIManager : MonoBehaviour
     {
         if (menuUI != null)
         {
-            menuUI.SetActive(false);
+            FadeOutAndHide(menuUI);
             gameManager.SetGameState(GameManager.GameState.CutScene);
+            typewriterUI.StartTypewriterText();
+
         }
     }
 
@@ -84,7 +87,7 @@ public class UIManager : MonoBehaviour
     {
         if (letterUI != null)
         {
-            letterUI.SetActive(false);
+            FadeOutAndHide(letterUI);
             gameManager.SetGameState(GameManager.GameState.Game);
         }
     }
@@ -106,6 +109,42 @@ public class UIManager : MonoBehaviour
     }
 
 
+    public void FadeOutAndHide(GameObject uiElement)
+    {
+        if (uiElement != null)
+        {
+            CanvasGroup canvasGroup = uiElement.GetComponent<CanvasGroup>();
+            if (canvasGroup == null)
+            {
+                canvasGroup = uiElement.AddComponent<CanvasGroup>();
+            }
+
+            StartCoroutine(FadeOutCoroutine(canvasGroup, uiElement));
+        }
+        else
+        {
+            Debug.LogError("UI element is null.");
+        }
+    }
+
+    private IEnumerator FadeOutCoroutine(CanvasGroup canvasGroup, GameObject uiElement)
+    {
+        float fadeDuration = 1.0f;
+        float elapsedTime = 0f;
+
+        canvasGroup.alpha = 1f;
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            canvasGroup.alpha = 1f - (elapsedTime / fadeDuration);
+            yield return null;
+        }
+
+        canvasGroup.alpha = 0f;
+
+        uiElement.SetActive(false);
+    }
 
     
 }

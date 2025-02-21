@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 62219380}
   - component: {fileID: 62219377}
   - component: {fileID: 62219382}
-  - component: {fileID: 62219383}
   m_Layer: 0
   m_Name: (Dummy)ThiefSpiritBegin
   m_TagString: Untagged
@@ -327,36 +326,6 @@ MonoBehaviour:
     isPlayerSpeaking: 00010001000100
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
---- !u!114 &62219383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 62219375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Events:
-    m_Signals:
-    - {fileID: 11400000, guid: 4cbc3d7b47290cd4baf01e03689523a5, type: 2}
-    m_Events:
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 62219382}
-          m_TargetAssemblyTypeName: NPC, Assembly-CSharp
-          m_MethodName: Interact
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &141037561
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,9 +383,9 @@ MonoBehaviour:
   dialogue:
     npcName: Thief Spirit
     sentences:
-    - Wanna buy some wares?
+    - Here to buy some wares?
     - What is it?
-    - Some armor to take some hits, slow down time... See for yourself.
+    - Some goodies to make things better... See for yourself.
     isPlayerSpeaking: 000100
   afterDialogue:
     npcName: 
@@ -1250,6 +1219,7 @@ GameObject:
   - component: {fileID: 554738150}
   - component: {fileID: 554738151}
   - component: {fileID: 554738152}
+  - component: {fileID: 554738153}
   m_Layer: 0
   m_Name: CutsceneManager
   m_TagString: Untagged
@@ -1302,9 +1272,39 @@ PlayableDirector:
   m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: 1345571025802993667, guid: 8bc37a0caba16224891ddf8dfdfbfdfe, type: 2}
-    value: {fileID: 62219383}
+    value: {fileID: 554738153}
   m_ExposedReferences:
     m_References: []
+--- !u!114 &554738153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554738149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 4cbc3d7b47290cd4baf01e03689523a5, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 554738151}
+          m_TargetAssemblyTypeName: CutsceneManager, Assembly-CSharp
+          m_MethodName: afterCombatTut
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &590642949
 GameObject:
   m_ObjectHideFlags: 0

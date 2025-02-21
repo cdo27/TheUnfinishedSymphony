@@ -58,23 +58,40 @@ public class PuzzleMechanism : MonoBehaviour
         }
     }
 
-    private void LoadLevelConfig()
+    public void SetLevelConfig(PuzzleLevelConfig config)
+{
+    levelConfig = config;
+    LoadLevelConfig();
+    ResetSequence();
+    UpdateTimerText(countdown);
+    feedbackText.text = "Start playing!";
+}
+
+private void LoadLevelConfig()
+{
+    if (levelConfig == null)
     {
-        if (levelConfig == null)
-        {
-            Debug.LogError("Level configuration not set!");
-            return;
-        }
-
-        countdown = levelConfig.timeLimit;
-        playerSequence = new int[levelConfig.missingNotesCount];
-
-        // Adjust UI for missing notes
-        for (int i = 0; i < missingNoteImages.Length; i++)
-        {
-            missingNoteImages[i].gameObject.SetActive(i < levelConfig.missingNotesCount);
-        }
+        Debug.LogError("Level configuration not set!");
+        return;
     }
+
+    countdown = levelConfig.timeLimit;
+    playerSequence = new int[levelConfig.missingNotesCount];
+
+    // Adjust UI for the number of missing notes
+    foreach (var image in missingNoteImages)
+    {
+        image.gameObject.SetActive(false); // Initially disable all
+    }
+
+    for (int i = 0; i < levelConfig.missingNotesCount; i++)
+    {
+        missingNoteImages[i].gameObject.SetActive(true);
+    }
+
+    audioSource.clip = levelConfig.musicSegment;
+}
+
 
     private void SetupNoteButtons()
     {

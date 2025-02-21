@@ -1,10 +1,11 @@
 using UnityEngine;
 
-[System.Serializable]
-public class PuzzleLevelConfig
+[CreateAssetMenu(fileName = "New Puzzle Level Config", menuName = "Puzzle Level Config")]
+public class PuzzleLevelConfig : ScriptableObject
 {
     public int missingNotesCount;
     public float timeLimit;
-    public int[] correctSequence;  // The answer sequence
-    public AudioClip musicSegment; // The music for the level
+    public int[] correctSequence;
+    public AudioClip musicSegment;
 }
+

@@ -14,6 +14,8 @@ public class CutsceneManager : MonoBehaviour
     public CombatNPC OriginalSerpentura; //keep if not complete
     public NPC DummySerpentura; //after combat dialogue
 
+    public NPC monologueWing1; //after completing puzzle and combat monlogue
+
     //Wing 2
 
     //Wing 3
@@ -77,5 +79,15 @@ public class CutsceneManager : MonoBehaviour
             Debug.Log("Combat 1 is null");
         }
 
+    }
+
+    //play Wing 1 monologue
+    public void PlayWing1Monologue()
+    {
+        if (monologueWing1 != null)
+        {
+            monologueWing1.Interact();
+            Debug.Log("Played Wing 1 monologue");
+        }
     }
 }

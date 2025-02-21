@@ -24,6 +24,7 @@ public class CutsceneManager : MonoBehaviour
     public PuzzleBox puzzle2;
     public CombatNPC OriginalSonatine; //keep if not complete
     public NPC DummySonatine; 
+    public NPC monologueWing2;
 
     //Wing 3
     [Header("Wing 3 Elements")]
@@ -127,6 +128,16 @@ public class CutsceneManager : MonoBehaviour
 
     }
 
+    //play Wing 2 monologue
+    public void PlayWing2Monologue()
+    {
+        if (monologueWing2 != null)
+        {
+            monologueWing2.Interact();
+            Debug.Log("Played Wing 2 monologue");
+        }
+    }
+
 
     //--------------Wing 3----------------------
 
@@ -134,9 +145,9 @@ public class CutsceneManager : MonoBehaviour
         if(puzzle3 != null){
             puzzle3.isCompleted = true; 
             puzzle3.Interact();
-            Debug.Log("Played after puzzle 2 cutscene");
+            Debug.Log("Played after puzzle 3 cutscene");
         }else{
-            Debug.Log("Puzzle 2 is null");
+            Debug.Log("Puzzle 3 is null");
         }
 
     }
@@ -145,9 +156,9 @@ public class CutsceneManager : MonoBehaviour
         if(OriginalDueterno!= null){
             OriginalDueterno.destroyNPC();
             DummyDueterno.Interact();
-            Debug.Log("Played after combat 2 cutscene");
+            Debug.Log("Played after combat 3 cutscene");
         }else{
-            Debug.Log("Combat 2 is null");
+            Debug.Log("Combat 3 is null");
         }
 
     }

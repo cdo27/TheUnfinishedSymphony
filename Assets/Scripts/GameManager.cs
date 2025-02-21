@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     private bool hasTriggeredAfterPuzzleTutCutscene, hasTriggeredAfterCombatTutCutscene,
     hasTriggeredAfterPuzzle1, hasTriggeredAfterCombat1, hasTriggeredWing1Monologue,
-    hasTriggeredAfterCombat2, hasTriggeredAfterPuzzle2,
+    hasTriggeredAfterCombat2, hasTriggeredAfterPuzzle2,hasTriggeredWing2Monologue,
     hasTriggeredAfterPuzzle3, hasTriggeredAfterCombat3 = false;
     void Awake()
     {
@@ -93,6 +93,14 @@ public class GameManager : MonoBehaviour
         if(hasCompletedCombat2 && !hasTriggeredAfterCombat2){
             hasTriggeredAfterCombat2 = true;
             cutsceneManager.afterCombat2();
+        }
+
+        //check Hallway scene and Wing 2 monologue
+        if (SceneManager.GetActiveScene().name == "Hallway" &&
+            hasCompletedPuzzle2 && hasCompletedCombat2 && !hasTriggeredWing2Monologue)
+        {
+            hasTriggeredWing2Monologue = true;
+            cutsceneManager.PlayWing2Monologue();
         }
 
         //--------------Wing 3--------------------------------------------

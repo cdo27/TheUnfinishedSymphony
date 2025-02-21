@@ -2247,7 +2247,7 @@ MonoBehaviour:
   hasInteracted: 0
   isInteracting: 0
   shouldLoadScene: 0
-  shouldDestroy: 0
+  shouldDestroy: 1
   sceneToLoad: 
   portraitSprite: {fileID: 21300000, guid: 442eec544c4cac840aad9933a065e268, type: 3}
   dialogue:
@@ -2531,6 +2531,7 @@ MonoBehaviour:
   puzzle2: {fileID: 0}
   OriginalSonatine: {fileID: 0}
   DummySonatine: {fileID: 0}
+  monologueWing2: {fileID: 0}
   puzzle3: {fileID: 175881006}
   OriginalDueterno: {fileID: 1718386362}
   DummyDueterno: {fileID: 2031958479}

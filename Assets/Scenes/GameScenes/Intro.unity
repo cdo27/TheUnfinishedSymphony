@@ -1209,7 +1209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasInteracted: 0
   isInteracting: 0
-  sceneToLoad: Hallway
+  sceneToLoad: HallwayCutscene
 --- !u!1 &306071240
 GameObject:
   m_ObjectHideFlags: 0

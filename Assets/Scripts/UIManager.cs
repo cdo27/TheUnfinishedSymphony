@@ -23,6 +23,9 @@ public class UIManager : MonoBehaviour
     private GameManager gameManager;
     private PlayerManager playerManager;
 
+    //Puzzle Image
+    public GameObject puzzleImage;
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject);

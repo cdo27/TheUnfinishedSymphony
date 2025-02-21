@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class CutsceneManager : MonoBehaviour
 {
+    //tutorial NPC
     public NPC TutorialAldric; //after puzzle tutorial
 
     public NPC TutorialThief; //beginning of hallway cutscene
 
-    // void Awake()
-    // {
-    //     DontDestroyOnLoad(gameObject);
-    // }
+    //Wing 1
+    public PuzzleBox puzzle1;
+    public CombatNPC OriginalSerpentura; //keep if not complete
+    public NPC DummySerpentura; //after combat dialogue
+
+    public NPC monologueWing1; //after completing puzzle and combat monlogue
+
+    //Wing 2
+
+    //Wing 3
 
     // Start is called before the first frame update
     void Start()
@@ -48,5 +55,39 @@ public class CutsceneManager : MonoBehaviour
         }
         
     
+    }
+
+    //--------------Wing 1----------------------
+
+    public void afterPuzzle1(){
+        if(puzzle1 != null){
+            puzzle1.isCompleted = true; //set it to true so other dialogue plays when they interact afterwords
+            puzzle1.Interact();
+            Debug.Log("Played after puzzle 1 cutscene");
+        }else{
+            Debug.Log("Puzzle 1 is null");
+        }
+
+    }
+
+    public void afterCombat1(){
+        if(DummySerpentura != null){
+            OriginalSerpentura.destroyNPC(); //if needed to destroy
+            DummySerpentura.Interact();
+            Debug.Log("Played after combat 1 cutscene");
+        }else{
+            Debug.Log("Combat 1 is null");
+        }
+
+    }
+
+    //play Wing 1 monologue
+    public void PlayWing1Monologue()
+    {
+        if (monologueWing1 != null)
+        {
+            monologueWing1.Interact();
+            Debug.Log("Played Wing 1 monologue");
+        }
     }
 }

@@ -18,7 +18,7 @@ public class PuzzleMechanism : MonoBehaviour
 
     private float countdown = 30.0f;         // Timer countdown from 30 seconds
     private bool timerActive = true;         // Flag to control whether the timer should run
-    private int[] correctSequence = {1, 3, 5, 6}; // Indices for the correct sequence of notes
+    private int[] correctSequence = {1, 5, 6, 3}; // Indices for the correct sequence of notes
     private int[] playerSequence = new int[4];    // Array to store player's sequence of note indices
     private int attemptCount = 0;                 // Number of attempts made
 

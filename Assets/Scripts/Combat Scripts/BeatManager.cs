@@ -10,6 +10,7 @@ public class BeatManager : MonoBehaviour
     public SongManager songManager;
     public AudioManager audioManager;
     public CombatStateManager combatStateManager;
+    public AdvantageBarManager advantageBarManager;
     public NoteSpawner noteSpawner;
 
     //variables carrying current attribute of songs
@@ -33,6 +34,8 @@ public class BeatManager : MonoBehaviour
     //note hit messages
     public GameObject perfectHitMessage;
     public GameObject nearMissMessage;
+    public GameObject perfectBlockMessage;
+    public GameObject nearMissBlockMessage;
 
     void Update()
     {
@@ -103,14 +106,28 @@ public class BeatManager : MonoBehaviour
                             if (combatStateManager.gameState == 1)
                             {
                                 perfectHitMessage.SetActive(true);
+                                advantageBarManager.HandleAttack("Perfect");
                                 Invoke("HidePerfectHitMessage", 0.2f); // Hides after 0.2 seconds
+                            } else if (combatStateManager.gameState == 2)
+                            {
+                                perfectBlockMessage.SetActive(true); 
+                                Invoke("HidePerfectBlockMessage", 0.2f); // Hides after 0.2 seconds
                             }
                         }
                         // If it's a slight miss
                         else if (hitResult == 1)
                         {
-                            nearMissMessage.SetActive(true);
-                            Invoke("HideNearMissMessage", 0.2f); // Hides after 0.2 seconds
+                            if (combatStateManager.gameState == 1)
+                            {
+                                nearMissMessage.SetActive(true);
+                                advantageBarManager.HandleAttack("NearMiss");
+                                Invoke("HideNearMissMessage", 0.2f); // Hides after 0.2 seconds
+                            }else if (combatStateManager.gameState == 2)
+                            {
+                                nearMissBlockMessage.SetActive(true);
+                                Invoke("HideNearMissBlockMessage", 0.2f); // Hides after 0.2 seconds
+                            }
+
                         }
 
                         // Destroy the note after hitting it
@@ -278,6 +295,15 @@ public class BeatManager : MonoBehaviour
     void HideNearMissMessage()
     {
         nearMissMessage.SetActive(false);
+    }
+
+    void HidePerfectBlockMessage()
+    {
+        perfectBlockMessage.SetActive(false);
+    }
+    void HideNearMissBlockMessage()
+    {
+        nearMissBlockMessage.SetActive(false);
     }
 
 }

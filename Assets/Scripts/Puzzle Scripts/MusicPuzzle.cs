@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.EventSystems; 
 using TMPro;
 
 public class PuzzleMechanism : MonoBehaviour
@@ -49,13 +50,30 @@ public class PuzzleMechanism : MonoBehaviour
     }
 
     private void SetupNoteButtons()
+{
+    for (int i = 0; i < noteButtons.Length; i++)
     {
-        for (int i = 0; i < noteButtons.Length; i++)
+        int index = i;
+        noteButtons[index].onClick.AddListener(() => HandleNotePress(index));
+
+        // Add EventTrigger component and set up pointer enter event
+        EventTrigger trigger = noteButtons[index].gameObject.AddComponent<EventTrigger>();
+
+        EventTrigger.Entry entry = new EventTrigger.Entry
         {
-            int index = i;
-            noteButtons[index].onClick.AddListener(() => HandleNotePress(index));
-        }
+            eventID = EventTriggerType.PointerEnter
+        };
+
+        entry.callback.AddListener((eventData) => PlayNotePreview(index));
+        trigger.triggers.Add(entry);
     }
+}
+
+private void PlayNotePreview(int index)
+{
+    audioSource.PlayOneShot(noteClips[index]); // Play the note sound on hover
+}
+
 
     private void HandleNotePress(int index)
     {

@@ -917,6 +917,7 @@ MonoBehaviour:
   enemyNotePop: {fileID: 8300000, guid: d6cf4ff042e24dd4889a8622f1e15083, type: 3}
   musicBlock: {fileID: 8300000, guid: 5e8d94a6cb7c59544a083a9cd380a7bb, type: 3}
   endEnemyNoteSpawn: {fileID: 8300000, guid: 37e8d210d16be6e4ba419e9d05003e66, type: 3}
+  introBGM: {fileID: 8300000, guid: 9d310fcbd839f4f11a93c374d4579d1d, type: 3}
 --- !u!1 &587459918
 GameObject:
   m_ObjectHideFlags: 0
@@ -2148,7 +2149,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -437.6001, y: 251}
+  m_AnchoredPosition: {x: -437.60004, y: 251}
   m_SizeDelta: {x: -933.6, y: -539}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1659017279

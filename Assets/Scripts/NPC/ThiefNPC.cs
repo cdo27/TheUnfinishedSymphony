@@ -5,7 +5,6 @@ using UnityEngine;
 public class ThiefNPC : NPC
 {
     public Dialogue repeatDialogue;
-    public UIManager uiManager;
 
     void Start()
     {

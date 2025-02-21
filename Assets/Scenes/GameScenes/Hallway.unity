@@ -186,12 +186,12 @@ MonoBehaviour:
     isPlayerSpeaking: 
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
+  uiManager: {fileID: 0}
   repeatDialogue:
     npcName: Thief Spirit
     sentences:
     - Back to buy some wares?
     isPlayerSpeaking: 00
-  uiManager: {fileID: 0}
 --- !u!61 &141037564
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -553,6 +553,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 141037562}
+  - {fileID: 830702441}
+  - {fileID: 1145195640}
+  - {fileID: 1285630331}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &366373059
@@ -989,6 +992,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TutorialAldric: {fileID: 0}
   TutorialThief: {fileID: 0}
+  puzzle1: {fileID: 0}
+  OriginalSerpentura: {fileID: 0}
+  DummySerpentura: {fileID: 0}
+  monologueWing1: {fileID: 830702442}
+  puzzle2: {fileID: 0}
+  OriginalSonatine: {fileID: 0}
+  DummySonatine: {fileID: 0}
+  monologueWing2: {fileID: 1145195639}
+  puzzle3: {fileID: 0}
+  OriginalDueterno: {fileID: 0}
+  DummyDueterno: {fileID: 0}
 --- !u!1 &590642949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,6 +1167,73 @@ Transform:
   - {fileID: 510709047}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &830702440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 830702441}
+  - component: {fileID: 830702442}
+  m_Layer: 0
+  m_Name: Wing1Monolgue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &830702441
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830702440}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.26, y: 7.55, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 283736496}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &830702442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830702440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53a1b4d34573f964b9b7dcb5eb8d110f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasInteracted: 0
+  isInteracting: 0
+  shouldLoadScene: 0
+  shouldDestroy: 0
+  sceneToLoad: 
+  portraitSprite: {fileID: 21300000, guid: 7d06103386fa16d438a918531fa91b8d, type: 3}
+  dialogue:
+    npcName: NPC
+    sentences:
+    - "The scribbles on the sheet\u2026 the way that spirit raged at his name\u2026
+      Aldric wasn\u2019t just obsessed\u2014he was unraveling. But why? What was
+      driving him to madness?"
+    isPlayerSpeaking: 01
+  afterDialogue:
+    npcName: NPC
+    sentences:
+    - "The scribbles on the sheet\u2026 the way that spirit raged at his name\u2026
+      Aldric wasn\u2019t just obsessed\u2014he was unraveling. But why? What was
+      driving him to madness?"
+    isPlayerSpeaking: 01
+  gameManager: {fileID: 0}
+  dialogueManager: {fileID: 0}
+  uiManager: {fileID: 0}
 --- !u!1 &1032113603
 GameObject:
   m_ObjectHideFlags: 0
@@ -1499,6 +1580,142 @@ Transform:
   - {fileID: 1958814385}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1145195638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1145195640}
+  - component: {fileID: 1145195639}
+  m_Layer: 0
+  m_Name: Wing2Monolgue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1145195639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145195638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53a1b4d34573f964b9b7dcb5eb8d110f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasInteracted: 0
+  isInteracting: 0
+  shouldLoadScene: 0
+  shouldDestroy: 0
+  sceneToLoad: 
+  portraitSprite: {fileID: 21300000, guid: 7d06103386fa16d438a918531fa91b8d, type: 3}
+  dialogue:
+    npcName: NPC
+    sentences:
+    - "The scribbles on the sheet\u2026 the way that spirit raged at his name\u2026
+      Aldric wasn\u2019t just obsessed\u2014he was unraveling. But why? What was
+      driving him to madness?"
+    isPlayerSpeaking: 01
+  afterDialogue:
+    npcName: NPC
+    sentences:
+    - "The initials on the sheet\u2026 what that spirit said\u2026 the argument in
+      the study\u2026 This symphony wasn\u2019t just Aldric\u2019s. It was Benedict\u2019s
+      too. But something went wrong. What really happened between them?"
+    isPlayerSpeaking: 01
+  gameManager: {fileID: 0}
+  dialogueManager: {fileID: 0}
+  uiManager: {fileID: 0}
+--- !u!4 &1145195640
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145195638}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.06, y: 7.58, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 283736496}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1285630330
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1285630331}
+  - component: {fileID: 1285630332}
+  m_Layer: 0
+  m_Name: Wing3Monolgue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1285630331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285630330}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.48, y: 8.31, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 283736496}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1285630332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285630330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53a1b4d34573f964b9b7dcb5eb8d110f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasInteracted: 0
+  isInteracting: 0
+  shouldLoadScene: 0
+  shouldDestroy: 0
+  sceneToLoad: 
+  portraitSprite: {fileID: 21300000, guid: 7d06103386fa16d438a918531fa91b8d, type: 3}
+  dialogue:
+    npcName: NPC
+    sentences:
+    - "The scribbles on the sheet\u2026 the way that spirit raged at his name\u2026
+      Aldric wasn\u2019t just obsessed\u2014he was unraveling. But why? What was
+      driving him to madness?"
+    isPlayerSpeaking: 01
+  afterDialogue:
+    npcName: NPC
+    sentences:
+    - "Benedict and Aldric argued. Over control, over the music, over whose hands
+      would shape the final movement. And then\u2026 Aldric lost control\u2026 and
+      Benedict was gone."
+    - "Aldric never meant for it to happen. But that didn\u2019t matter. The music\u2014their
+      music\u2014was suddenly his alone."
+    isPlayerSpeaking: 0101
+  gameManager: {fileID: 0}
+  dialogueManager: {fileID: 0}
+  uiManager: {fileID: 0}
 --- !u!1 &1367643318
 GameObject:
   m_ObjectHideFlags: 0

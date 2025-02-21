@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
         End
     }
     public GameState currentState;
+    public AudioManager audioManager;
     public CutsceneManager cutsceneManager;
     public int currentSong;
 
@@ -27,7 +28,10 @@ public class GameManager : MonoBehaviour
     hasCompletedPuzzle1, hasCompletedPuzzle2, hasCompletedPuzzle3,
     hasCompletedCombat1, hasCompletedCombat2, hasCompletedCombat3 = false;
 
-    private bool hasTriggeredAfterPuzzleTutCutscene, hasTriggeredAfterCombatTutCutscene = false;
+    private bool hasTriggeredAfterPuzzleTutCutscene, hasTriggeredAfterCombatTutCutscene,
+    hasTriggeredAfterPuzzle1, hasTriggeredAfterCombat1, hasTriggeredWing1Monologue,
+    hasTriggeredAfterCombat2, hasTriggeredAfterPuzzle2,hasTriggeredWing2Monologue,
+    hasTriggeredAfterPuzzle3, hasTriggeredAfterCombat3 = false;
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -40,7 +44,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         ReassignCutsceneManager();
+        audioManager = FindObjectOfType<AudioManager>();
         SetGameState(GameState.Menu);
+        // Start the intro music as soon as the game begins
+        PlayIntroMusic();
     }
 
     // Update is called once per frame
@@ -56,7 +63,56 @@ public class GameManager : MonoBehaviour
             cutsceneManager.afterCombatTut();
         }
 
+        //--------------Wing 1--------------------------------------------
         
+        if(hasCompletedPuzzle1 && !hasTriggeredAfterPuzzle1){
+            hasTriggeredAfterPuzzle1 = true;
+            cutsceneManager.afterPuzzle1();
+        }
+
+        if(hasCompletedCombat1 && !hasTriggeredAfterCombat1){
+            hasTriggeredAfterCombat1 = true;
+            cutsceneManager.afterCombat1();
+        }
+
+        //check Hallway scene and Wing 1 monologue
+        if (SceneManager.GetActiveScene().name == "Hallway" &&
+            hasCompletedPuzzle1 && hasCompletedCombat1 && !hasTriggeredWing1Monologue)
+        {
+            hasTriggeredWing1Monologue = true;
+            cutsceneManager.PlayWing1Monologue();
+        }
+
+        //--------------Wing 2--------------------------------------------
+
+        if(hasCompletedPuzzle2 && !hasTriggeredAfterPuzzle2){
+            hasTriggeredAfterPuzzle2 = true;
+            cutsceneManager.afterPuzzle2();
+        }
+
+        if(hasCompletedCombat2 && !hasTriggeredAfterCombat2){
+            hasTriggeredAfterCombat2 = true;
+            cutsceneManager.afterCombat2();
+        }
+
+        //check Hallway scene and Wing 2 monologue
+        if (SceneManager.GetActiveScene().name == "Hallway" &&
+            hasCompletedPuzzle2 && hasCompletedCombat2 && !hasTriggeredWing2Monologue)
+        {
+            hasTriggeredWing2Monologue = true;
+            cutsceneManager.PlayWing2Monologue();
+        }
+
+        //--------------Wing 3--------------------------------------------
+        if(hasCompletedPuzzle3 && !hasTriggeredAfterPuzzle3){
+            hasTriggeredAfterPuzzle3 = true;
+            cutsceneManager.afterPuzzle3();
+        }
+
+        if(hasCompletedCombat3 && !hasTriggeredAfterCombat3){
+            hasTriggeredAfterCombat3 = true;
+            cutsceneManager.afterCombat3();
+        }
     }
 
     public void SetGameState(GameState newState)
@@ -99,5 +155,27 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded; 
     }
+
+    //Audio
+    public void StopIntroMusic()
+    {
+        if (audioManager != null)
+        {
+            audioManager.StopIntroMusic();
+        }
+    }
+
+    public void PlayIntroMusic()
+    {
+        if (audioManager != null)
+        {
+            audioManager.playIntroMusic();
+        }
+        else
+        {
+            Debug.LogError("AudioManager not found!");
+        }
+    }
+
 
 }

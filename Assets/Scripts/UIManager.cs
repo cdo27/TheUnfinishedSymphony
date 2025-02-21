@@ -19,10 +19,12 @@ public class UIManager : MonoBehaviour
     public GameObject inventoryItem2;
 
     // Map GameObjects
-
     public GameObject entranceMap;
     private GameManager gameManager;
     private PlayerManager playerManager;
+
+    //Puzzle Image
+    public GameObject puzzleImage;
 
     void Awake()
     {
@@ -113,8 +115,14 @@ public class UIManager : MonoBehaviour
         if (letterUI != null)
         {
             FadeOutAndHide(letterUI);
+
+            gameManager.StopIntroMusic(); 
             gameManager.SetGameState(GameManager.GameState.Game);
+
+        
         }
+
+         
     }
 
     public void showGameUI() //show coin count and inventory button
@@ -131,6 +139,15 @@ public class UIManager : MonoBehaviour
         {
             gameUI.SetActive(false);
         }
+    }
+
+    //Puzzle Image for wing 1
+    public void displayPuzzleImage(){
+        puzzleImage.SetActive(true);
+    }
+
+    public void hidePuzzleImage(){
+        puzzleImage.SetActive(false);
     }
 
 
@@ -169,11 +186,6 @@ public class UIManager : MonoBehaviour
         canvasGroup.alpha = 0f;
 
         uiElement.SetActive(false);
-    }
-
-
-    public void doExitGame() {
-        Application.Quit();
     }
     
 }

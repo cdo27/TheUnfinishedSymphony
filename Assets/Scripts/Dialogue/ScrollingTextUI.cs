@@ -6,18 +6,18 @@ using System.Collections;
 public class ScrollingTextUI : MonoBehaviour
 {
     [Header("UI Elements")]
-    public TMP_Text displayText;         // TextMeshPro Text component for the typewriter effect
-    public GameObject continueButton;    // The Button GameObject to show when text is fully displayed
-    public RectTransform textRect;       // RectTransform of the text (optional, for future positioning)
+    public TMP_Text displayText; 
+    public GameObject continueButton;  
+    public RectTransform textRect;      
 
     [Header("Settings")]
-    public float typingSpeed = 0.05f;    // Time between each letter (seconds)
+    public float typingSpeed = 0.05f; 
     public float delayBeforeTyping = 0.5f; // Delay before typing starts
-    [TextArea(3, 10)]                    // Allows multi-line text input in Inspector
-    public string defaultText = "Default typewriter text..."; // Default text set in Inspector
+    [TextArea(3, 10)]                    
+    public string defaultText = "Default typewriter text..."; 
 
     private bool isTyping = false;
-    private string fullText = "";        // Full text to display
+    private string fullText = "";       
 
     void Awake()
     {
@@ -27,24 +27,21 @@ public class ScrollingTextUI : MonoBehaviour
         if (continueButton == null)
             Debug.LogError("Continue Button not assigned in TypewriterTextUI!");
 
-        // Hide continue button initially
         if (continueButton != null)
             continueButton.SetActive(false);
 
-        // Set initial text from Inspector
+
         if (displayText != null)
-            displayText.text = ""; // Start with empty text
+            displayText.text = "";
     }
 
-    // Call this method to start the typewriter effect (e.g., from CutsceneManager or DialogueManager)
     public void StartTypewriterText(string text = "")
     {
-        if (isTyping) return; // Prevent multiple typings at once
+        if (isTyping) return; 
 
-        // Use provided text or fall back to defaultText from Inspector
         fullText = string.IsNullOrEmpty(text) ? defaultText : text;
         if (displayText != null)
-            displayText.text = ""; // Clear current text
+            displayText.text = "";
 
         // Hide continue button
         if (continueButton != null)
@@ -65,27 +62,25 @@ public class ScrollingTextUI : MonoBehaviour
         for (int i = 0; i <= fullText.Length; i++)
         {
             if (displayText != null)
-                displayText.text = fullText.Substring(0, i); // Display up to current letter
+                displayText.text = fullText.Substring(0, i);
             yield return new WaitForSeconds(typingSpeed); // Wait between letters
         }
 
-        // Show continue button when typing is complete
         if (continueButton != null)
             continueButton.SetActive(true);
 
         isTyping = false;
     }
 
-    // Optional: Method to handle continue button click (e.g., to proceed with dialogue or cutscene)
     public void OnContinueClicked()
     {
         Debug.Log("Continue button clicked!");
-        // Add logic here, e.g., call CutsceneManager.nextStep(), DialogueManager.NextDialogue(), etc.
+   
         if (continueButton != null)
-            continueButton.SetActive(false); // Hide button after clicking
+            continueButton.SetActive(false);
     }
 
-    // Optional: Skip to full text immediately (e.g., for testing or player input)
+
     public void SkipToFullText()
     {
         if (isTyping && displayText != null)

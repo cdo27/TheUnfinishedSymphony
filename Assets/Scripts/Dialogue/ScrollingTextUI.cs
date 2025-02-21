@@ -5,6 +5,7 @@ using System.Collections;
 
 public class ScrollingTextUI : MonoBehaviour
 {
+
     [Header("UI Elements")]
     public TMP_Text displayText; 
     public GameObject continueButton;  
@@ -17,10 +18,14 @@ public class ScrollingTextUI : MonoBehaviour
     public string defaultText = "Default typewriter text..."; 
 
     private bool isTyping = false;
-    private string fullText = "";       
+    private string fullText = "";    
+    private AudioManager audioManager; // 🔹 Reference to AudioManager
+   
 
     void Awake()
     {
+        audioManager = FindObjectOfType<AudioManager>();
+        
         // Ensure UI elements are assigned
         if (displayText == null)
             displayText = GetComponent<TMP_Text>();
@@ -47,8 +52,15 @@ public class ScrollingTextUI : MonoBehaviour
         if (continueButton != null)
             continueButton.SetActive(false);
 
+        if (audioManager != null)
+        {
+            audioManager.PlayQuillSFX();
+        }
+
         // Start the typing coroutine
         StartCoroutine(TypeText());
+
+        
     }
 
     private IEnumerator TypeText()
@@ -70,6 +82,11 @@ public class ScrollingTextUI : MonoBehaviour
             continueButton.SetActive(true);
 
         isTyping = false;
+        if (audioManager != null)
+        {
+            audioManager.StopQuillSFX();
+        }
+
     }
 
     public void OnContinueClicked()

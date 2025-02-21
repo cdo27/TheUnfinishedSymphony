@@ -101,9 +101,12 @@ public class PuzzleMechanism : MonoBehaviour
 
     private IEnumerator ExitPuzzleWithDelay(float delay)
     {
-        yield return new WaitForSeconds(delay); // Wait for the specified time
-        sceneController.ExitPuzzleScene();      // Then exit the scene
+        Debug.Log("Puzzle completed, preparing to exit scene...");
+        yield return new WaitForSeconds(delay);
+        Debug.Log("Exiting puzzle scene now.");
+        sceneController.ExitPuzzleScene();
     }
+
 
     private void ResetSequence()
     {

@@ -179,9 +179,7 @@ MonoBehaviour:
     npcName: Thief Spirit
     sentences:
     - Here to buy some wares?
-    - What is it?
-    - Some goodies to make things better... See for yourself.
-    isPlayerSpeaking: 000100
+    isPlayerSpeaking: 00
   afterDialogue:
     npcName: 
     sentences: []

@@ -7050,6 +7050,10 @@ MonoBehaviour:
   puzzle2: {fileID: 0}
   OriginalSonatine: {fileID: 0}
   DummySonatine: {fileID: 0}
+  monologueWing2: {fileID: 0}
+  puzzle3: {fileID: 0}
+  OriginalDueterno: {fileID: 0}
+  DummyDueterno: {fileID: 0}
 --- !u!4 &1651437098
 Transform:
   m_ObjectHideFlags: 0

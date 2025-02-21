@@ -29,7 +29,9 @@ public class BeatManager : MonoBehaviour
     private List<Note> activeNotes = new List<Note>();
 
     //magic shield object
-    public GameObject musicShield;
+    public GameObject redShield;
+    public GameObject greenShield;
+    public GameObject purpleShield;
 
     //note hit messages
     public GameObject perfectHitMessage;
@@ -68,8 +70,19 @@ public class BeatManager : MonoBehaviour
                 if (combatStateManager.gameState == 1) audioManager.playHitSoundA();
                 if (combatStateManager.gameState == 2)
                 {
-                    musicShield.SetActive(true);
-                    Invoke("HideMusicShield", 0.1f); // Hides after 0.1 seconds
+                    // generate appropriate shields
+                    if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+                    {
+                        ActivateShield(redShield);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+                    {
+                        ActivateShield(greenShield);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+                    {
+                        ActivateShield(purpleShield);
+                    }
                 }
 
                 bool noteHit = false; // Flag to track if we've already hit a note.
@@ -299,10 +312,28 @@ public class BeatManager : MonoBehaviour
     }
 
     //UI active control
-    void HideMusicShield()
+
+    void ActivateShield(GameObject shield)
     {
-        musicShield.SetActive(false);
+        // Deactivate all shields
+        redShield.SetActive(false);
+        greenShield.SetActive(false);
+        purpleShield.SetActive(false);
+
+        // Activate the selected shield
+        shield.SetActive(true);
+
+        // Schedule the shield to deactivate after 0.1 seconds
+        Invoke(nameof(HideActiveShield), 0.1f);
     }
+
+    void HideActiveShield()
+    {
+        redShield.SetActive(false);
+        greenShield.SetActive(false);
+        purpleShield.SetActive(false);
+    }
+   
     void HidePerfectHitMessage()
     {
         perfectHitMessage.SetActive(false);

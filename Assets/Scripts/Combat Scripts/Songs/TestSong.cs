@@ -27,12 +27,12 @@ public class TestSong : Song
 {
             new List<BeatData>
             {
-                new BeatData(24f, 0), new BeatData(26f, 0), new BeatData(28f, 0), new BeatData(30f, 0) // Defend Phase 1
+                new BeatData(24f, 0), new BeatData(26f, 1), new BeatData(28f, 1), new BeatData(30f, 2) // Defend Phase 1
             },
             new List<BeatData>
             {
-                new BeatData(40f, 0), new BeatData(41f, 0), new BeatData(42f, 0), new BeatData(43f, 0),
-                new BeatData(44f, 0), new BeatData(45f, 0), new BeatData(46f, 0) // Defend Phase 2
+                new BeatData(40f, 0), new BeatData(41f, 0), new BeatData(42f, 1), new BeatData(43f, 1),
+                new BeatData(44f, 0), new BeatData(45f, 0), new BeatData(46f, 2) // Defend Phase 2
             }
         };
 

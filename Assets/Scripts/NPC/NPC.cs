@@ -5,31 +5,37 @@ using UnityEngine.SceneManagement;
 
 public class NPC : Interactable
 {
-    public bool shouldLoadScene = false; //load combat after dialogue
-    public bool shouldDestroy = false;
-    public string sceneToLoad;  
+    public bool shouldLoadScene = false; // Load combat or other scenes after dialogue
+    public bool shouldDestroy = false; // Destroy the NPC after interaction
+    public string sceneToLoad;
     public Sprite portraitSprite;
     public Dialogue dialogue;
     public Dialogue afterDialogue;
     public GameManager gameManager;
     public DialogueManager dialogueManager;
     public UIManager uiManager;
-    
+    public PuzzleLevelConfig levelConfig; // Optional level configuration for tutorials
+
+    private PuzzleMechanism puzzleMechanism; // Reference to the puzzle mechanism
 
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
         dialogueManager = FindObjectOfType<DialogueManager>();
         uiManager = FindObjectOfType<UIManager>();
+        puzzleMechanism = FindObjectOfType<PuzzleMechanism>(); // Find the PuzzleMechanism in the scene
 
         if (gameManager == null)
         {
-            Debug.Log("GameManager was not found.");
+            Debug.LogError("GameManager was not found.");
+        }
+        if (puzzleMechanism == null && levelConfig != null)
+        {
+            Debug.LogError("PuzzleMechanism was not found, but is required for the provided levelConfig.");
         }
     }
 
-
-    public override void Interact() //trigger dialogue
+    public override void Interact() // Trigger dialogue
     {   
         isInteracting = true;
 
@@ -42,8 +48,13 @@ public class NPC : Interactable
         {
             Debug.Log("Playing after dialogue");
             dialogueManager.StartDialogue(afterDialogue, portraitSprite, this);
-        }
 
+            // Check and apply puzzle configuration if applicable
+            if (levelConfig != null && puzzleMechanism != null)
+            {
+                puzzleMechanism.SetLevelConfig(levelConfig);
+            }
+        }
     }
 
     public virtual void CompleteInteraction()
@@ -54,11 +65,10 @@ public class NPC : Interactable
         if (shouldLoadScene && !string.IsNullOrEmpty(sceneToLoad))
         {
             SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
-            gameManager.SetGameState(GameManager.GameState.Combat); //update gamestate to combat
-
+            gameManager.SetGameState(GameManager.GameState.Combat); // Update game state to combat
         }
 
         if (shouldDestroy) Destroy(gameObject);
     }
-
 }
+

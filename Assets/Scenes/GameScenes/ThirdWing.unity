@@ -397,9 +397,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasInteracted: 0
   isInteracting: 0
-  shouldLoadScene: 0
-  shouldDestroy: 0
-  sceneToLoad: 
+  shouldLoadScene: 1
+  shouldDestroy: 1
+  sceneToLoad: Puzzle
   portraitSprite: {fileID: 21300000, guid: 442eec544c4cac840aad9933a065e268, type: 3}
   dialogue:
     npcName: Puzzle 3
@@ -416,6 +416,8 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   uiManager: {fileID: 0}
+  levelConfig: {fileID: 11400000, guid: 796bf9ba6a87283439bd7b5826fe0b6b, type: 2}
+  puzzleMechanism: {fileID: 0}
   isCompleted: 0
   displayImage: 0
 --- !u!1 &248873582

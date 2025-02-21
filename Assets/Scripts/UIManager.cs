@@ -6,16 +6,23 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public Button exitButton;
-    public GameObject inventoryUI;
+    
     public GameObject shopUI;
     public GameObject gameUI;
     public GameObject menuUI;
     public GameObject letterUI;
+    public ScrollingTextUI typewriterUI;
+
+    //inventory 
+    public GameObject inventoryUI;
+    public GameObject inventoryItem1;
+    public GameObject inventoryItem2;
 
     // Map GameObjects
 
     public GameObject entranceMap;
     private GameManager gameManager;
+    private PlayerManager playerManager;
 
     void Awake()
     {
@@ -26,6 +33,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        playerManager = FindObjectOfType<PlayerManager>();
     }
 
     // Update is called once per frame
@@ -50,8 +58,26 @@ public class UIManager : MonoBehaviour
     {
         if (inventoryUI != null)
         {
-            Debug.Log("showing inventory");
+            Debug.Log("Showing inventory");
             inventoryUI.SetActive(true);
+
+            if (playerManager != null && playerManager.GetPurchasedItems().Contains(1))
+            {
+                inventoryItem1.SetActive(true);
+            }
+            else
+            {
+                inventoryItem1.SetActive(false);
+            }
+
+            if (playerManager != null && playerManager.GetPurchasedItems().Contains(2))
+            {
+                inventoryItem2.SetActive(true);
+            }
+            else
+            {
+                inventoryItem2.SetActive(false);
+            }
         }
     }
 
@@ -75,8 +101,10 @@ public class UIManager : MonoBehaviour
     {
         if (menuUI != null)
         {
-            menuUI.SetActive(false);
+            FadeOutAndHide(menuUI);
             gameManager.SetGameState(GameManager.GameState.CutScene);
+            typewriterUI.StartTypewriterText();
+
         }
     }
 
@@ -84,7 +112,7 @@ public class UIManager : MonoBehaviour
     {
         if (letterUI != null)
         {
-            letterUI.SetActive(false);
+            FadeOutAndHide(letterUI);
             gameManager.SetGameState(GameManager.GameState.Game);
         }
     }
@@ -106,6 +134,46 @@ public class UIManager : MonoBehaviour
     }
 
 
+    public void FadeOutAndHide(GameObject uiElement)
+    {
+        if (uiElement != null)
+        {
+            CanvasGroup canvasGroup = uiElement.GetComponent<CanvasGroup>();
+            if (canvasGroup == null)
+            {
+                canvasGroup = uiElement.AddComponent<CanvasGroup>();
+            }
 
+            StartCoroutine(FadeOutCoroutine(canvasGroup, uiElement));
+        }
+        else
+        {
+            Debug.LogError("UI element is null.");
+        }
+    }
+
+    private IEnumerator FadeOutCoroutine(CanvasGroup canvasGroup, GameObject uiElement)
+    {
+        float fadeDuration = 1.0f;
+        float elapsedTime = 0f;
+
+        canvasGroup.alpha = 1f;
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            canvasGroup.alpha = 1f - (elapsedTime / fadeDuration);
+            yield return null;
+        }
+
+        canvasGroup.alpha = 0f;
+
+        uiElement.SetActive(false);
+    }
+
+
+    public void doExitGame() {
+        Application.Quit();
+    }
     
 }

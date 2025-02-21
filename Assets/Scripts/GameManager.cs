@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
         End
     }
     public GameState currentState;
+    public AudioManager audioManager;
     public CutsceneManager cutsceneManager;
     public int currentSong;
 
@@ -42,7 +43,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         ReassignCutsceneManager();
+        audioManager = FindObjectOfType<AudioManager>();
         SetGameState(GameState.Menu);
+        // Start the intro music as soon as the game begins
+        PlayIntroMusic();
     }
 
     // Update is called once per frame
@@ -132,5 +136,27 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded; 
     }
+
+    //Audio
+    public void StopIntroMusic()
+    {
+        if (audioManager != null)
+        {
+            audioManager.StopIntroMusic();
+        }
+    }
+
+    public void PlayIntroMusic()
+    {
+        if (audioManager != null)
+        {
+            audioManager.playIntroMusic();
+        }
+        else
+        {
+            Debug.LogError("AudioManager not found!");
+        }
+    }
+
 
 }

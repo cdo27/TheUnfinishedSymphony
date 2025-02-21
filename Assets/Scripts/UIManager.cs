@@ -6,17 +6,22 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public Button exitButton;
-    public GameObject inventoryUI;
+    
     public GameObject shopUI;
     public GameObject gameUI;
     public GameObject menuUI;
     public GameObject letterUI;
     public ScrollingTextUI typewriterUI;
 
-    // Map GameObjects
+    //inventory 
+    public GameObject inventoryUI;
+    public GameObject inventoryItem1;
+    public GameObject inventoryItem2;
 
+    // Map GameObjects
     public GameObject entranceMap;
     private GameManager gameManager;
+    private PlayerManager playerManager;
 
     void Awake()
     {
@@ -27,6 +32,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        playerManager = FindObjectOfType<PlayerManager>();
     }
 
     // Update is called once per frame
@@ -51,8 +57,26 @@ public class UIManager : MonoBehaviour
     {
         if (inventoryUI != null)
         {
-            Debug.Log("showing inventory");
+            Debug.Log("Showing inventory");
             inventoryUI.SetActive(true);
+
+            if (playerManager != null && playerManager.GetPurchasedItems().Contains(1))
+            {
+                inventoryItem1.SetActive(true);
+            }
+            else
+            {
+                inventoryItem1.SetActive(false);
+            }
+
+            if (playerManager != null && playerManager.GetPurchasedItems().Contains(2))
+            {
+                inventoryItem2.SetActive(true);
+            }
+            else
+            {
+                inventoryItem2.SetActive(false);
+            }
         }
     }
 
@@ -88,8 +112,14 @@ public class UIManager : MonoBehaviour
         if (letterUI != null)
         {
             FadeOutAndHide(letterUI);
+
+            gameManager.StopIntroMusic(); 
             gameManager.SetGameState(GameManager.GameState.Game);
+
+        
         }
+
+         
     }
 
     public void showGameUI() //show coin count and inventory button
@@ -144,11 +174,6 @@ public class UIManager : MonoBehaviour
         canvasGroup.alpha = 0f;
 
         uiElement.SetActive(false);
-    }
-
-
-    public void doExitGame() {
-        Application.Quit();
     }
     
 }

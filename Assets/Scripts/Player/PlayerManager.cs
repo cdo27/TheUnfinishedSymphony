@@ -57,4 +57,22 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    //Test methods
+    public void BuyItemPotion()
+    {
+        BuyItem(2, 10);
+    }
+
+    public void BuyItemArmor()
+    {
+        BuyItem(1, 10);
+    }
+
+    public List<int> GetPurchasedItems()
+    {
+        return new List<int>(purchasedItems);
+    }
+
+
+
 }

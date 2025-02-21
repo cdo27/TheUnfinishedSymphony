@@ -23,10 +23,15 @@ public class PuzzleMechanism : MonoBehaviour
     private int[] playerSequence = new int[4];    // Array to store player's sequence of note indices
     private int attemptCount = 0;                 // Number of attempts made
 
+    private Coroutine[] notePreviewCoroutines;
+
     private SceneController sceneController;
+
+    
 
     void Start()
     {
+        notePreviewCoroutines = new Coroutine[noteButtons.Length];
         exitButton.gameObject.SetActive(false); // Hide the exit button initially
         exitButton.onClick.AddListener(() => sceneController.ExitPuzzleScene());
         playButton.onClick.AddListener(PlayMusicSegment);
@@ -63,15 +68,31 @@ public class PuzzleMechanism : MonoBehaviour
 
         // Setup hover enter delay
         EventTrigger.Entry entryEnter = new EventTrigger.Entry { eventID = EventTriggerType.PointerEnter };
-        entryEnter.callback.AddListener((data) => StartCoroutine(PlayNotePreviewDelayed(index, 1.0f))); // 1 second delay
+        entryEnter.callback.AddListener((data) => StartNotePreviewCoroutine(index, 1.0f)); // Adjusted to use a new method
         trigger.triggers.Add(entryEnter);
 
         // Setup hover exit to cancel delay
         EventTrigger.Entry entryExit = new EventTrigger.Entry { eventID = EventTriggerType.PointerExit };
-        entryExit.callback.AddListener((data) => StopCoroutine(PlayNotePreviewDelayed(index, 1.0f)));
+        entryExit.callback.AddListener((data) => StopNotePreviewCoroutine(index));
         trigger.triggers.Add(entryExit);
     }
 }
+
+private void StartNotePreviewCoroutine(int index, float delay)
+{
+    StopNotePreviewCoroutine(index); // Stop any existing coroutine for this button
+    notePreviewCoroutines[index] = StartCoroutine(PlayNotePreviewDelayed(index, delay));
+}
+
+private void StopNotePreviewCoroutine(int index)
+{
+    if (notePreviewCoroutines[index] != null)
+    {
+        StopCoroutine(notePreviewCoroutines[index]);
+        notePreviewCoroutines[index] = null;
+    }
+}
+
 IEnumerator PlayNotePreviewDelayed(int index, float delay)
 {
     yield return new WaitForSeconds(delay);
@@ -79,27 +100,22 @@ IEnumerator PlayNotePreviewDelayed(int index, float delay)
 }
 
 
-private void PlayNotePreview(int index)
-{
-    audioSource.PlayOneShot(noteClips[index]); // Play the note sound on hover
-}
-
 
     private void HandleNotePress(int index)
+{
+    if (attemptCount < 4) // Only allow interaction if less than 4 notes have been entered
     {
-        if (attemptCount < 4) // Only allow interaction if less than 4 notes have been entered
-        {
-            audioSource.PlayOneShot(noteClips[index]);
-            playerSequence[attemptCount] = index;
-            UpdateMissingNoteDisplay(index, attemptCount);
-            attemptCount++;
+        playerSequence[attemptCount] = index;
+        UpdateMissingNoteDisplay(index, attemptCount);
+        attemptCount++;
 
-            if (attemptCount == 4)
-            {
-                CheckSequence();
-            }
+        if (attemptCount == 4)
+        {
+            CheckSequence();
         }
     }
+}
+
 
     private void UpdateMissingNoteDisplay(int noteIndex, int missingIndex)
     {

@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
     hasCompletedCombat1, hasCompletedCombat2, hasCompletedCombat3 = false;
 
     private bool hasTriggeredAfterPuzzleTutCutscene, hasTriggeredAfterCombatTutCutscene,
-    hasTriggeredAfterPuzzle1, hasTriggeredAfterCombat1, hasTriggeredWing1Monologue = false;
+    hasTriggeredAfterPuzzle1, hasTriggeredAfterCombat1, hasTriggeredWing1Monologue,
+    hasTriggeredAfterCombat2, hasTriggeredAfterPuzzle2 = false;
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -77,6 +78,17 @@ public class GameManager : MonoBehaviour
             cutsceneManager.PlayWing1Monologue();
         }
 
+        //--------------Wing 2--------------------------------------------
+
+        if(hasCompletedPuzzle2 && !hasTriggeredAfterPuzzle2){
+            hasTriggeredAfterPuzzle2 = true;
+            cutsceneManager.afterPuzzle2();
+        }
+
+        if(hasCompletedCombat2 && !hasTriggeredAfterCombat2){
+            hasTriggeredAfterCombat2 = true;
+            cutsceneManager.afterCombat2();
+        }
         
     }
 

@@ -2786,6 +2786,7 @@ MonoBehaviour:
   puzzle1: {fileID: 175881006}
   OriginalSerpentura: {fileID: 1718386362}
   DummySerpentura: {fileID: 1770168684}
+  monologueWing1: {fileID: 0}
 --- !u!4 &1828269165
 Transform:
   m_ObjectHideFlags: 0

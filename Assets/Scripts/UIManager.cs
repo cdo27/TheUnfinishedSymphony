@@ -146,5 +146,9 @@ public class UIManager : MonoBehaviour
         uiElement.SetActive(false);
     }
 
+
+    public void doExitGame() {
+        Application.Quit();
+    }
     
 }

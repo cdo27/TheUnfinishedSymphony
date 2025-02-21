@@ -630,7 +630,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &95747873
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7044,7 +7044,12 @@ MonoBehaviour:
   TutorialAldric: {fileID: 280304764}
   TutorialThief: {fileID: 0}
   puzzle1: {fileID: 0}
+  OriginalSerpentura: {fileID: 0}
   DummySerpentura: {fileID: 0}
+  monologueWing1: {fileID: 0}
+  puzzle2: {fileID: 0}
+  OriginalSonatine: {fileID: 0}
+  DummySonatine: {fileID: 0}
 --- !u!4 &1651437098
 Transform:
   m_ObjectHideFlags: 0
@@ -7152,7 +7157,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1740044925
 Transform:
   m_ObjectHideFlags: 0

@@ -141,6 +141,15 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    //Puzzle Image for wing 1
+    public void displayPuzzleImage(){
+        puzzleImage.SetActive(true);
+    }
+
+    public void hidePuzzleImage(){
+        puzzleImage.SetActive(false);
+    }
+
 
     public void FadeOutAndHide(GameObject uiElement)
     {

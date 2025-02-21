@@ -25,6 +25,12 @@ public class CutsceneManager : MonoBehaviour
     public CombatNPC OriginalSonatine; //keep if not complete
     public NPC DummySonatine; 
 
+    //Wing 3
+    [Header("Wing 3 Elements")]
+    public PuzzleBox puzzle3;
+    public CombatNPC OriginalDueterno; //keep if not complete
+    public NPC DummyDueterno; 
+
 
     // Start is called before the first frame update
     void Start()
@@ -123,4 +129,26 @@ public class CutsceneManager : MonoBehaviour
 
 
     //--------------Wing 3----------------------
+
+    public void afterPuzzle3(){
+        if(puzzle3 != null){
+            puzzle3.isCompleted = true; 
+            puzzle3.Interact();
+            Debug.Log("Played after puzzle 2 cutscene");
+        }else{
+            Debug.Log("Puzzle 2 is null");
+        }
+
+    }
+
+    public void afterCombat3(){
+        if(OriginalDueterno!= null){
+            OriginalDueterno.destroyNPC();
+            DummyDueterno.Interact();
+            Debug.Log("Played after combat 2 cutscene");
+        }else{
+            Debug.Log("Combat 2 is null");
+        }
+
+    }
 }

@@ -30,7 +30,8 @@ public class GameManager : MonoBehaviour
 
     private bool hasTriggeredAfterPuzzleTutCutscene, hasTriggeredAfterCombatTutCutscene,
     hasTriggeredAfterPuzzle1, hasTriggeredAfterCombat1, hasTriggeredWing1Monologue,
-    hasTriggeredAfterCombat2, hasTriggeredAfterPuzzle2 = false;
+    hasTriggeredAfterCombat2, hasTriggeredAfterPuzzle2,
+    hasTriggeredAfterPuzzle3, hasTriggeredAfterCombat3 = false;
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -93,7 +94,17 @@ public class GameManager : MonoBehaviour
             hasTriggeredAfterCombat2 = true;
             cutsceneManager.afterCombat2();
         }
-        
+
+        //--------------Wing 3--------------------------------------------
+        if(hasCompletedPuzzle3 && !hasTriggeredAfterPuzzle3){
+            hasTriggeredAfterPuzzle3 = true;
+            cutsceneManager.afterPuzzle3();
+        }
+
+        if(hasCompletedCombat3 && !hasTriggeredAfterCombat3){
+            hasTriggeredAfterCombat3 = true;
+            cutsceneManager.afterCombat3();
+        }
     }
 
     public void SetGameState(GameState newState)

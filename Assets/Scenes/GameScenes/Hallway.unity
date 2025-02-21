@@ -1003,6 +1003,7 @@ MonoBehaviour:
   puzzle3: {fileID: 0}
   OriginalDueterno: {fileID: 0}
   DummyDueterno: {fileID: 0}
+  monologueWing3: {fileID: 1285630332}
 --- !u!1 &590642949
 GameObject:
   m_ObjectHideFlags: 0

@@ -856,6 +856,7 @@ GameObject:
   - component: {fileID: 599624487}
   - component: {fileID: 599624486}
   - component: {fileID: 599624488}
+  - component: {fileID: 599624489}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -873,7 +874,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: dec362715db5c9a4eb4e274e879138f6, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4963e27de1c078e498fb57c5213e8602, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -987,15 +988,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 599624486}
-  musicSegment: {fileID: 8300000, guid: dec362715db5c9a4eb4e274e879138f6, type: 3}
+  musicSegment: {fileID: 8300000, guid: 4963e27de1c078e498fb57c5213e8602, type: 3}
   noteClips:
-  - {fileID: 8300000, guid: 63ff722e57aa3cc4b89c57bd478729e3, type: 3}
-  - {fileID: 8300000, guid: 63ff722e57aa3cc4b89c57bd478729e3, type: 3}
-  - {fileID: 8300000, guid: 63ff722e57aa3cc4b89c57bd478729e3, type: 3}
-  - {fileID: 8300000, guid: 63ff722e57aa3cc4b89c57bd478729e3, type: 3}
-  - {fileID: 8300000, guid: 63ff722e57aa3cc4b89c57bd478729e3, type: 3}
-  - {fileID: 8300000, guid: 63ff722e57aa3cc4b89c57bd478729e3, type: 3}
-  - {fileID: 8300000, guid: 63ff722e57aa3cc4b89c57bd478729e3, type: 3}
+  - {fileID: 8300000, guid: 6efde7ade0a76054db7691507c36f7db, type: 3}
+  - {fileID: 8300000, guid: c21bf613ba4a8fe45a6c7581971c844e, type: 3}
+  - {fileID: 8300000, guid: f4f22bb6ecdea4940842a0335ecafcd5, type: 3}
+  - {fileID: 8300000, guid: 12597638a44177e4ca8e940bffd8d4bf, type: 3}
+  - {fileID: 8300000, guid: 05c2926528fc0a5409fd77a138ad14aa, type: 3}
+  - {fileID: 8300000, guid: 218acbc6686ca734aa28c804880419ff, type: 3}
+  - {fileID: 8300000, guid: 6e9ca99aad100aa46b78e92a675fc2a2, type: 3}
   playButton: {fileID: 1241318164}
   noteButtons:
   - {fileID: 1384159008}
@@ -1020,6 +1021,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ccd35ba864025104d85e96d526bf4b80, type: 3}
   timerText: {fileID: 214737425}
   feedbackText: {fileID: 897605918}
+--- !u!81 &599624489
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599624485}
+  m_Enabled: 1
 --- !u!1 &729962103
 GameObject:
   m_ObjectHideFlags: 0

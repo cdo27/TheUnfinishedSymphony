@@ -24,6 +24,9 @@ public class UIManager : MonoBehaviour
     private GameManager gameManager;
     private PlayerManager playerManager;
 
+    //Puzzle Image
+    public GameObject puzzleImage;
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -174,6 +177,15 @@ public class UIManager : MonoBehaviour
 
     public void doExitGame() {
         Application.Quit();
+    }
+
+    //Puzzle Image for wing 1
+    public void displayPuzzleImage(){
+        puzzleImage.SetActive(true);
+    }
+
+    public void hidePuzzleImage(){
+        puzzleImage.SetActive(false);
     }
     
 }

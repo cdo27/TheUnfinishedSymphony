@@ -1,20 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class NPC : Interactable
+public class PuzzleBox : NPC
 {
-    public bool shouldLoadScene = false; //load combat after dialogue
-    public bool shouldDestroy = false;
-    public string sceneToLoad;  
-    public Sprite portraitSprite;
-    public Dialogue dialogue;
-    public Dialogue afterDialogue;
-    public GameManager gameManager;
-    public DialogueManager dialogueManager;
-    public UIManager uiManager;
-    
+
+    public bool isCompleted = false;
+    public bool displayImage = false;
 
     private void Awake()
     {
@@ -32,31 +26,35 @@ public class NPC : Interactable
     public override void Interact() //trigger dialogue
     {   
         isInteracting = true;
-
-        if (!hasInteracted)
-        {
-            Debug.Log("Playing dialogue");
-            dialogueManager.StartDialogue(dialogue, portraitSprite, this);
-        }
-        else
+        
+        if(isCompleted)
         {
             Debug.Log("Playing after dialogue");
             dialogueManager.StartDialogue(afterDialogue, portraitSprite, this);
+
+            if(displayImage){ //if there is something to display
+                uiManager.displayPuzzleImage();
+            }
+        }
+        else{
+            Debug.Log("Playing dialogue");
+            dialogueManager.StartDialogue(dialogue, portraitSprite, this);
         }
 
     }
 
-    public virtual void CompleteInteraction()
+    public override void CompleteInteraction()
     {
         isInteracting = false;
-        hasInteracted = true;
+        //hasInteracted = true;
 
         if (shouldLoadScene && !string.IsNullOrEmpty(sceneToLoad))
         {
             SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
             gameManager.SetGameState(GameManager.GameState.Combat); //update gamestate to combat
-
         }
+
+        if(displayImage) uiManager.hidePuzzleImage(); //hide if ther is a diplay image
 
         if (shouldDestroy) Destroy(gameObject);
     }

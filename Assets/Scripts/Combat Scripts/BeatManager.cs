@@ -38,13 +38,7 @@ public class BeatManager : MonoBehaviour
     public GameObject nearMissBlockMessage;
 
     void Update()
-    {
-        //press space bar to start the song
-        if (!songStarted && Input.GetKeyDown(KeyCode.Space))
-        {
-            startSong();
-        }
-
+    { 
         //-----------------------------------check for win or lose condition---------------------------------------
         if(songStarted && AudioSettings.dspTime >=  GetDspTimeForBeat(combatStateManager.currentSong.songcompleteBeat))
         {
@@ -157,7 +151,7 @@ public class BeatManager : MonoBehaviour
     }
 
     //game initialization. Set up the song before playing
-    void startSong()
+    public void startSong()
     {
         songStarted = true; 
         songBPM = combatStateManager.currentSong.BPM; //carry over BPM

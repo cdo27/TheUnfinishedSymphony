@@ -12,12 +12,16 @@ public class CombatStateManager : MonoBehaviour
 
     public int gameState = 0; // 0 = not started, 1 = attack mode, 2 = defend mode, 98 = victory, 99 = defeat
     public double lastCheckedTime = -1.0; // Track last checked DSP time
+
+    public SceneController sceneController;
     public BeatManager beatManager;
     public GameObject attackBar;
 
     public GameObject attackModeBanner;
     public GameObject defendModeBanner;
 
+    public GameObject StartScreen;
+    public GameObject StartButton;
     public GameObject VictoryScreen;
     public GameObject victoryContinueButton;
 
@@ -113,7 +117,7 @@ public class CombatStateManager : MonoBehaviour
         }
 
         // banner disappears after a while
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.9f);
         attackModeBanner.SetActive(false);
         defendModeBanner.SetActive(false);
     }
@@ -131,10 +135,16 @@ public class CombatStateManager : MonoBehaviour
         }
     }
 
+    public void OnStartButtonClick()
+    {
+        beatManager.startSong();
+        StartScreen.SetActive(false);
+
+    }
     public void OnContinueButtonClick()
     {
         // Load the UnfinishedSymphony scene
         Debug.Log("hello");
-        SceneManager.LoadScene("UnfinishedSymphony");
+        //sceneController.ExitCombatScene();
     }
 }

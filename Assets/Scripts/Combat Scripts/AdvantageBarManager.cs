@@ -21,12 +21,7 @@ public class AdvantageBarManager : MonoBehaviour
     private float winThreshold = 51f; // Advantage required to win (over half)
 
     private Coroutine decayCoroutine; // Reference to the decay coroutine
-
-    // Start decay coroutine when the game starts
-    private void Start()
-    {
-        decayCoroutine = StartCoroutine(DecayAdvantage());
-    }
+    private bool decayStarted = false; // Track if decay has been initiated
 
     // Call this function to initialize the attack and defense notes
     public void InitializeBar(int attackNotes, int defenseNotes)
@@ -39,6 +34,17 @@ public class AdvantageBarManager : MonoBehaviour
         defenseUnit = 50f / totalDefenseNotes;
 
         UpdateUI();
+        StartDecay(); // Start decay when the bar is initialized
+    }
+
+    // Start decay manually when the game logic determines it's time
+    private void StartDecay()
+    {
+        if (!decayStarted) // Prevent multiple coroutines from running
+        {
+            decayStarted = true;
+            decayCoroutine = StartCoroutine(DecayAdvantage());
+        }
     }
 
     // Coroutine to decay enemy advantage over time
@@ -118,6 +124,7 @@ public class AdvantageBarManager : MonoBehaviour
             StopCoroutine(decayCoroutine);
             decayCoroutine = null; // Clear reference
         }
+        decayStarted = false; // Reset flag
     }
 
     // Update the UI to reflect the current advantage value

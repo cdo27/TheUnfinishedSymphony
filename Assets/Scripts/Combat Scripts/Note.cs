@@ -18,8 +18,8 @@ public class Note : MonoBehaviour
     private AudioManager audioManager;
     private AdvantageBarManager advantageBarManager;
 
-    float hitTolerance = 0.2f; // Total time window to register a hit
-    float perfectHitThreshold = 0.1f; // Smaller window for a perfect hit
+    float hitTolerance = 0.1f; // Total time window to register a hit
+    float perfectHitThreshold = 0.05f; // Smaller window for a perfect hit
     private double targetHitTime;
 
     // Variables for Defend Mode
@@ -137,7 +137,7 @@ public class Note : MonoBehaviour
         if (isCharging)
         {
             // Move the note instantly towards the target position (with high speed)
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(targetPosition.x, targetPosition.y, transform.position.z), 40 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(targetPosition.x, targetPosition.y, transform.position.z), 60 * Time.deltaTime);
 
             // Optionally, destroy the note when it reaches the target position
             if (transform.position == new Vector3(targetPosition.x, targetPosition.y, transform.position.z))

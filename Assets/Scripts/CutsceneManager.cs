@@ -11,6 +11,7 @@ public class CutsceneManager : MonoBehaviour
 
     //Wing 1
     public PuzzleBox puzzle1;
+    public CombatNPC OriginalSerpentura; //keep if not complete
     public NPC DummySerpentura; //after combat dialogue
 
     //Wing 2
@@ -69,7 +70,7 @@ public class CutsceneManager : MonoBehaviour
 
     public void afterCombat1(){
         if(DummySerpentura != null){
-            DummySerpentura.hasInteracted = true; //if needed to destroy
+            OriginalSerpentura.destroyNPC(); //if needed to destroy
             DummySerpentura.Interact();
             Debug.Log("Played after combat 1 cutscene");
         }else{

@@ -2293,7 +2293,7 @@ GameObject:
   - component: {fileID: 1718386358}
   - component: {fileID: 1718386361}
   - component: {fileID: 1718386360}
-  - component: {fileID: 1718386359}
+  - component: {fileID: 1718386362}
   m_Layer: 0
   m_Name: Serpentura
   m_TagString: Untagged
@@ -2316,47 +2316,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 283736496}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1718386359
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1718386357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53a1b4d34573f964b9b7dcb5eb8d110f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasInteracted: 0
-  isInteracting: 0
-  shouldLoadScene: 0
-  shouldDestroy: 1
-  sceneToLoad: Combat
-  portraitSprite: {fileID: 21300000, guid: 442eec544c4cac840aad9933a065e268, type: 3}
-  dialogue:
-    npcName: Vengeful Spirit Serpentura
-    sentences:
-    - "Aldric\u2019s blood\u2026 I should have known. You all come here eventually,
-      chasing after his cursed notes."
-    - I need the missing piece of his symphony. Do you know where that is?
-    - You need it? Just like he needed everything for himself?
-    - ' I just want to finish what he started.'
-    - Finish? Why do you think you deserve it? Why do you think he deserve it?
-    - What are you talking about? Why do you hate him so much?
-    - "Listen carefully\u2014you are walking the same path he did. And that\u2026
-      I cannot allow. I will NOT give you the piece..."
-    isPlayerSpeaking: 00010001000100
-  afterDialogue:
-    npcName: Vengeful Spirit Serpentura
-    sentences:
-    - "I found the rest of the Second Movement, it\u2019s complete. But something
-      feels off. Who\u2019s that guy? Why was he so mad and hateful? Did Aldric do
-      something?"
-    isPlayerSpeaking: 01
-  gameManager: {fileID: 0}
-  dialogueManager: {fileID: 0}
-  uiManager: {fileID: 0}
 --- !u!61 &1718386360
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2454,6 +2413,49 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1718386362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718386357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb96505923a2f464c933acbcc540aada, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasInteracted: 0
+  isInteracting: 0
+  shouldLoadScene: 0
+  shouldDestroy: 1
+  sceneToLoad: 
+  portraitSprite: {fileID: 21300000, guid: 442eec544c4cac840aad9933a065e268, type: 3}
+  dialogue:
+    npcName: Vengeful Spirit Serpentura
+    sentences:
+    - "Aldric\u2019s blood\u2026 I should have known. You all come here eventually,
+      chasing after his cursed notes."
+    - I need the missing piece of his symphony. Do you know where that is?
+    - You need it? Just like he needed everything for himself?
+    - ' I just want to finish what he started.'
+    - Finish? Why do you think you deserve it? Why do you think he deserve it?
+    - What are you talking about? Why do you hate him so much?
+    - "Listen carefully\u2014you are walking the same path he did. And that\u2026
+      I cannot allow. I will NOT give you the piece..."
+    isPlayerSpeaking: 00010001000100
+  afterDialogue:
+    npcName: Vengeful Spirit Serpentura
+    sentences:
+    - "I found the rest of the Second Movement, it\u2019s complete. But something
+      feels off. Who\u2019s that guy? Why was he so mad and hateful? Did Aldric do
+      something?"
+    isPlayerSpeaking: 01
+  gameManager: {fileID: 0}
+  dialogueManager: {fileID: 0}
+  uiManager: {fileID: 0}
+  isCompleted: 0
+  displayImage: 0
 --- !u!1 &1770168682
 GameObject:
   m_ObjectHideFlags: 0
@@ -2782,6 +2784,7 @@ MonoBehaviour:
   TutorialAldric: {fileID: 0}
   TutorialThief: {fileID: 0}
   puzzle1: {fileID: 175881006}
+  OriginalSerpentura: {fileID: 1718386362}
   DummySerpentura: {fileID: 1770168684}
 --- !u!4 &1828269165
 Transform:

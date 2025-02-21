@@ -11,6 +11,7 @@ public class PuzzleMechanism : MonoBehaviour
     public AudioClip[] noteClips;            // Audio clips for each note
     public Button playButton;                // Button to start the music segment
     public Button[] noteButtons;             // Buttons for playing individual notes
+    public Button exitButton;                // Button to the exit
     public Image[] missingNoteImages;        // Image components on the missing note buttons
     public Sprite[] noteImages;              // Sprites for each note to display on missing buttons
     public TMP_Text timerText;               // TextMeshProUGUI for displaying the timer
@@ -26,6 +27,8 @@ public class PuzzleMechanism : MonoBehaviour
 
     void Start()
     {
+        exitButton.gameObject.SetActive(false); // Hide the exit button initially
+        exitButton.onClick.AddListener(() => sceneController.ExitPuzzleScene());
         playButton.onClick.AddListener(PlayMusicSegment);
         SetupNoteButtons();
         UpdateTimerText(countdown);
@@ -56,18 +59,25 @@ public class PuzzleMechanism : MonoBehaviour
         int index = i;
         noteButtons[index].onClick.AddListener(() => HandleNotePress(index));
 
-        // Add EventTrigger component and set up pointer enter event
-        EventTrigger trigger = noteButtons[index].gameObject.AddComponent<EventTrigger>();
+        EventTrigger trigger = noteButtons[index].gameObject.GetComponent<EventTrigger>() ?? noteButtons[index].gameObject.AddComponent<EventTrigger>();
 
-        EventTrigger.Entry entry = new EventTrigger.Entry
-        {
-            eventID = EventTriggerType.PointerEnter
-        };
+        // Setup hover enter delay
+        EventTrigger.Entry entryEnter = new EventTrigger.Entry { eventID = EventTriggerType.PointerEnter };
+        entryEnter.callback.AddListener((data) => StartCoroutine(PlayNotePreviewDelayed(index, 1.0f))); // 1 second delay
+        trigger.triggers.Add(entryEnter);
 
-        entry.callback.AddListener((eventData) => PlayNotePreview(index));
-        trigger.triggers.Add(entry);
+        // Setup hover exit to cancel delay
+        EventTrigger.Entry entryExit = new EventTrigger.Entry { eventID = EventTriggerType.PointerExit };
+        entryExit.callback.AddListener((data) => StopCoroutine(PlayNotePreviewDelayed(index, 1.0f)));
+        trigger.triggers.Add(entryExit);
     }
 }
+IEnumerator PlayNotePreviewDelayed(int index, float delay)
+{
+    yield return new WaitForSeconds(delay);
+    audioSource.PlayOneShot(noteClips[index]);
+}
+
 
 private void PlayNotePreview(int index)
 {
@@ -100,30 +110,35 @@ private void PlayNotePreview(int index)
     }
 
     private void CheckSequence()
+{
+    for (int i = 0; i < correctSequence.Length; i++)
     {
-        for (int i = 0; i < correctSequence.Length; i++)
+        if (playerSequence[i] != correctSequence[i])
         {
-            if (playerSequence[i] != correctSequence[i])
-            {
-                feedbackText.text = "Incorrect sequence, try again!";
-                ResetSequence();
-                return;
-            }
+            feedbackText.text = "Incorrect sequence, try again!";
+            ResetSequence();
+            return;
         }
-
-        feedbackText.text = "Congratulations! You've completed the puzzle.";
-        StartCoroutine(ExitPuzzleWithDelay(2f));
-        PauseTimer();  // Pause the timer instead of disabling all buttons immediately
-        DisableAllButtons();
     }
 
-    private IEnumerator ExitPuzzleWithDelay(float delay)
-    {
-        Debug.Log("Puzzle completed, preparing to exit scene...");
-        yield return new WaitForSeconds(delay);
-        Debug.Log("Exiting puzzle scene now.");
-        sceneController.ExitPuzzleScene();
-    }
+    feedbackText.text = "Congratulations! You've completed the puzzle.";
+    PauseTimer();
+    ShowExitButton();
+}
+
+private void TimerEnded()
+{
+    feedbackText.text = "Time's up! Please try again.";
+    PauseTimer();
+    ShowExitButton();
+}
+
+private void ShowExitButton()
+{
+    exitButton.gameObject.SetActive(true); // Show the exit button
+    DisableAllButtons(); // Optional: Disable other buttons if necessary
+}
+
 
 
     private void ResetSequence()
@@ -146,12 +161,6 @@ private void PlayNotePreview(int index)
     private void UpdateTimerText(float time)
     {
         timerText.text = "Timer: " + time.ToString("F2") + "s";
-    }
-
-    private void TimerEnded()
-    {
-        feedbackText.text = "Time's up! Please try again.";
-        DisableAllButtons();
     }
 
     private void PauseTimer()

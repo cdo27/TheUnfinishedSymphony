@@ -1166,7 +1166,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &483278918
 Transform:
   m_ObjectHideFlags: 0
@@ -3253,7 +3253,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -437.60004, y: 225.59998}
+  m_AnchoredPosition: {x: -437.6001, y: 225.59998}
   m_SizeDelta: {x: -933.6, y: -589.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1659017279
@@ -3488,6 +3488,7 @@ MonoBehaviour:
   gameState: 0
   lastCheckedTime: -1
   sceneController: {fileID: 0}
+  gameManager: {fileID: 0}
   beatManager: {fileID: 627446222}
   attackBar: {fileID: 842386282}
   attackModeBanner: {fileID: 920321034}
@@ -3499,8 +3500,9 @@ MonoBehaviour:
   enemy: {fileID: 134057236}
   thiefSprite: {fileID: 21300000, guid: 5277c47a9a4a6d54292e3a870e19c850, type: 3}
   redSpiritSprite: {fileID: 21300000, guid: 8b155024332313d4390e181acf128724, type: 3}
-  yelowSpiritSprite: {fileID: 21300000, guid: 8f1c82359343b5e4db469f68872872b3, type: 3}
+  yellowSpiritSprite: {fileID: 0}
   blueSpiritSprite: {fileID: 21300000, guid: 7d378346ea22da84594a5e48a19f23fd, type: 3}
+  aldricSprite: {fileID: 0}
   modeText: {fileID: 1659017279}
 --- !u!4 &1825297036
 Transform:

@@ -27,8 +27,7 @@ public class PuzzleBox : NPC
         if (isCompleted)
         {
             dialogueManager.StartDialogue(afterDialogue, portraitSprite, this);
-            if (displayImage)
-                uiManager.displayPuzzleImage();
+            if (displayImage) uiManager.displayPuzzleImage();
         }
         else
         {
@@ -45,7 +44,7 @@ public class PuzzleBox : NPC
     public override void CompleteInteraction()
     {
         isInteracting = false;
-        //hasInteracted = true;
+        hasInteracted = true;
 
 
         if (shouldLoadScene && !string.IsNullOrEmpty(sceneToLoad))

@@ -55,11 +55,13 @@ public class Door : Interactable
             }else{
                 SceneManager.LoadScene(sceneToLoad);
             }
+        }else if(doorNumber == 0){ //open door
+            SceneManager.LoadScene(sceneToLoad);
+        }else{
+            dialogueManager.StartDoorDialogue(dialogue, portraitSprite, this);
         }
 
-        if(doorNumber == 0){ //open door
-            SceneManager.LoadScene(sceneToLoad);
-        }
+        
 
 
         Debug.Log("Interacted with " + gameObject.name);

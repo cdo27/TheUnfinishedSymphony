@@ -658,9 +658,9 @@ MonoBehaviour:
   hasInteracted: 0
   isInteracting: 0
   shouldLoadScene: 1
-  shouldDestroy: 0
+  shouldDestroy: 1
   sceneToLoad: Puzzle
-  portraitSprite: {fileID: 21300000, guid: 3b64c7820d9194143ba97976760c1670, type: 3}
+  portraitSprite: {fileID: 21300000, guid: bd75e12198528854ab3fbba900fb565d, type: 3}
   dialogue:
     npcName: Puzzle 1
     sentences:
@@ -679,9 +679,8 @@ MonoBehaviour:
   dialogueManager: {fileID: 0}
   uiManager: {fileID: 0}
   levelConfig: {fileID: 11400000, guid: fb22443c204969b49acc37f90d986f02, type: 2}
-  levelConfig: {fileID: 11400000, guid: fb22443c204969b49acc37f90d986f02, type: 2}
   isCompleted: 0
-  displayImage: 1
+  displayImage: 0
 --- !u!1 &277189985
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,6 +783,175 @@ Transform:
   - {fileID: 1770168683}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &293334984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 293334985}
+  - component: {fileID: 293334988}
+  - component: {fileID: 293334987}
+  - component: {fileID: 293334986}
+  m_Layer: 0
+  m_Name: Dummy1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &293334985
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293334984}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -12.9439, y: 9.0253, z: -0.0005473597}
+  m_LocalScale: {x: 0.5539323, y: 0.396198, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1367643319}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &293334986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293334984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eab819da619dd0b46baae9c00c2271fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasInteracted: 0
+  isInteracting: 0
+  shouldLoadScene: 0
+  shouldDestroy: 0
+  sceneToLoad: 
+  portraitSprite: {fileID: 21300000, guid: bd75e12198528854ab3fbba900fb565d, type: 3}
+  dialogue:
+    npcName: Puzzle 1
+    sentences:
+    - "These are the first half of the Second Movement. I need to find the rest.
+      Wait a minute... Something\u2019s on the back? What are these scribbles? Was
+      he mad?"
+    isPlayerSpeaking: 01
+  afterDialogue:
+    npcName: Puzzle 1
+    sentences:
+    - "These are the first half of the Second Movement. I need to find the rest.
+      Wait a minute... Something\u2019s on the back? What are these scribbles? Was
+      he mad?"
+    isPlayerSpeaking: 01
+  gameManager: {fileID: 0}
+  dialogueManager: {fileID: 0}
+  uiManager: {fileID: 0}
+  levelConfig: {fileID: 0}
+  isCompleted: 0
+  displayImage: 1
+--- !u!61 &293334987
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293334984}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!212 &293334988
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293334984}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &366373059
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,7 +1066,6 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   uiManager: {fileID: 0}
-  levelConfig: {fileID: 0}
 --- !u!61 &420223868
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1139,6 +1306,7 @@ GameObject:
   - component: {fileID: 456272580}
   - component: {fileID: 456272579}
   - component: {fileID: 456272578}
+  - component: {fileID: 456272582}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Untagged
@@ -1292,6 +1460,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &456272582
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456272576}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &510709046
 GameObject:
   m_ObjectHideFlags: 0
@@ -2135,7 +2324,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 49.8, y: -2.5}
-  m_SizeDelta: {x: 40, y: 10}
+  m_SizeDelta: {x: 75, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1080111244
 MonoBehaviour:
@@ -2157,7 +2346,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c52dc68ac9f75564891377872297516e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e30d141ca2e1547a1bb7f8682816f3e5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2498,6 +2687,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 175881001}
+  - {fileID: 293334985}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1387332094
@@ -3766,7 +3956,6 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   uiManager: {fileID: 0}
-  levelConfig: {fileID: 0}
   isCompleted: 0
   displayImage: 0
   songID: 2
@@ -3839,7 +4028,6 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   uiManager: {fileID: 0}
-  levelConfig: {fileID: 0}
 --- !u!61 &1770168685
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4229,20 +4417,26 @@ MonoBehaviour:
   TutorialAldric: {fileID: 0}
   TutorialThief: {fileID: 0}
   puzzle1: {fileID: 175881006}
+  dummypuzzle1: {fileID: 293334986}
   OriginalSerpentura: {fileID: 1718386362}
   DummySerpentura: {fileID: 1770168684}
   monologueWing1: {fileID: 0}
   puzzle2: {fileID: 0}
+  dummypuzzle2: {fileID: 0}
   OriginalSonatine: {fileID: 0}
   DummySonatine: {fileID: 0}
   monologueWing2: {fileID: 0}
   puzzle3: {fileID: 0}
+  dummypuzzle3: {fileID: 0}
+  cabinet: {fileID: 0}
+  playableCutscene3: {fileID: 0}
   OriginalDueterno: {fileID: 0}
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 0}
   BenedictNPC: {fileID: 0}
   AldricNPC: {fileID: 0}
   DummyFinal: {fileID: 0}
+  EndingTrigger: {fileID: 0}
 --- !u!4 &1828269165
 Transform:
   m_ObjectHideFlags: 0

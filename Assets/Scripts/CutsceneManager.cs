@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class CutsceneManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class CutsceneManager : MonoBehaviour
     //Wing 1
     [Header("Wing 1 Elements")]
     public PuzzleBox puzzle1;
+    public PuzzleBox dummypuzzle1;
     public CombatNPC OriginalSerpentura; //keep if not complete
     public NPC DummySerpentura; //after combat dialogue
 
@@ -22,6 +24,7 @@ public class CutsceneManager : MonoBehaviour
     //Wing 2
     [Header("Wing 2 Elements")]
     public PuzzleBox puzzle2;
+    public PuzzleBox dummypuzzle2;
     public CombatNPC OriginalSonatine; //keep if not complete
     public NPC DummySonatine; 
     public NPC monologueWing2;
@@ -29,6 +32,9 @@ public class CutsceneManager : MonoBehaviour
     //Wing 3
     [Header("Wing 3 Elements")]
     public PuzzleBox puzzle3;
+    public PuzzleBox dummypuzzle3;
+    public PuzzleBox cabinet;
+    public PlayableDirector playableCutscene3;
     public CombatNPC OriginalDueterno; //keep if not complete
     public NPC DummyDueterno;
     public NPC monologueWing3;
@@ -38,6 +44,8 @@ public class CutsceneManager : MonoBehaviour
     public NPC AldricNPC;
     public NPC DummyFinal;
 
+    //Endings
+    public NPC EndingTrigger;
 
     // Start is called before the first frame update
     void Start()
@@ -79,9 +87,9 @@ public class CutsceneManager : MonoBehaviour
     //--------------Wing 1----------------------
 
     public void afterPuzzle1(){
-        if(puzzle1 != null){
-            puzzle1.isCompleted = true; //set it to true so other dialogue plays when they interact afterwords
-            puzzle1.Interact();
+        if(dummypuzzle1 != null){
+            dummypuzzle1.isCompleted = true; //set it to true so other dialogue plays when they interact afterwords
+            dummypuzzle1.Interact();
             Debug.Log("Played after puzzle 1 cutscene");
         }else{
             Debug.Log("Puzzle 1 is null");
@@ -113,9 +121,9 @@ public class CutsceneManager : MonoBehaviour
 
     //--------------Wing 2----------------------
     public void afterPuzzle2(){
-        if(puzzle2 != null){
-            puzzle2.isCompleted = true; //set it to true so other dialogue plays when they interact afterwords
-            puzzle2.Interact();
+        if(dummypuzzle2 != null){
+            dummypuzzle2.isCompleted = true; //set it to true so other dialogue plays when they interact afterwords
+            dummypuzzle2.Interact();
             Debug.Log("Played after puzzle 2 cutscene");
         }else{
             Debug.Log("Puzzle 2 is null");
@@ -148,9 +156,10 @@ public class CutsceneManager : MonoBehaviour
     //--------------Wing 3----------------------
 
     public void afterPuzzle3(){
-        if(puzzle3 != null){
-            puzzle3.isCompleted = true; 
-            puzzle3.Interact();
+        if(dummypuzzle3 != null){
+            dummypuzzle3.isCompleted = true; 
+            dummypuzzle3.Interact();
+            PlayPuzzle3();
             Debug.Log("Played after puzzle 3 cutscene");
         }else{
             Debug.Log("Puzzle 3 is null");
@@ -168,6 +177,26 @@ public class CutsceneManager : MonoBehaviour
         }
 
     }
+    //play puzzle cutscene 
+    public void PlayPuzzle3()
+    {
+        if (playableCutscene3 != null)
+        {
+            playableCutscene3.gameObject.SetActive(true);
+            playableCutscene3.Play();
+            Debug.Log("Playing puzzle 3 cutscene");
+        }
+    }
+
+    public void PlayCabinet()
+    {
+        if (cabinet != null)
+        {
+            cabinet.Interact();
+            Debug.Log("Playing cabinet cutscene");
+        }
+    }
+
 
     //play Wing 3 monologue
     public void PlayWing3Monologue()
@@ -192,6 +221,16 @@ public class CutsceneManager : MonoBehaviour
 
     }
 
+    public void finalTrigger2(){
+        if(EndingTrigger != null){
+            EndingTrigger.Interact();
+            Debug.Log("Playing final cutscene 2");
+        }else{
+            Debug.Log("Final custcene 2 is null");
+        }
+
+    }
+
     public void finalCutscene2(){
         if(AldricNPC != null){
             AldricNPC.Interact();
@@ -201,4 +240,6 @@ public class CutsceneManager : MonoBehaviour
         }
 
     }
+
+
 }

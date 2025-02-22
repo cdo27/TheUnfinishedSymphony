@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     hasTriggeredAfterPuzzle1, hasTriggeredAfterCombat1, hasTriggeredWing1Monologue,
     hasTriggeredAfterCombat2, hasTriggeredAfterPuzzle2,hasTriggeredWing2Monologue,
     hasTriggeredAfterPuzzle3, hasTriggeredAfterCombat3, hasTriggeredWing3Monologue,
-    hasTriggeredBenedictScene = false;
+    hasTriggeredBenedictScene, hasTriggeredFinal = false;
 
     public PuzzleLevelConfig currentPuzzleLevelConfig; 
     
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     {
         ReassignCutsceneManager();
         audioManager = FindObjectOfType<AudioManager>();
-        SetGameState(GameState.Menu);
+        SetGameState(GameState.Game);
 
         // Start the intro music as soon as the game begins
         PlayIntroMusic();
@@ -134,6 +134,12 @@ public class GameManager : MonoBehaviour
             hasTriggeredBenedictScene = true;
             cutsceneManager.playBenedictScene();
             Debug.Log("Playing benedict scene");
+        }
+
+        //Finals
+        if(hasCompletedFinal && !hasTriggeredFinal){
+            hasTriggeredFinal = true;
+            cutsceneManager.finalTrigger2();
         }
     }
 

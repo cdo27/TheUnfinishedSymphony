@@ -2638,8 +2638,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 49.8, y: -2.5}
-  m_SizeDelta: {x: 40, y: 10}
+  m_AnchoredPosition: {x: 41.32838, y: -2.7}
+  m_SizeDelta: {x: 53.6081, y: 19.3389}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1080111244
 MonoBehaviour:
@@ -2661,7 +2661,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c52dc68ac9f75564891377872297516e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e30d141ca2e1547a1bb7f8682816f3e5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4275,12 +4275,15 @@ MonoBehaviour:
   monologueWing2: {fileID: 0}
   puzzle3: {fileID: 175881006}
   dummypuzzle3: {fileID: 926803252}
+  cabinet: {fileID: 0}
+  playableCutscene3: {fileID: 0}
   OriginalDueterno: {fileID: 1718386362}
   DummyDueterno: {fileID: 2031958479}
   monologueWing3: {fileID: 279713825}
   BenedictNPC: {fileID: 0}
   AldricNPC: {fileID: 0}
   DummyFinal: {fileID: 0}
+  EndingTrigger: {fileID: 0}
 --- !u!4 &1997999374
 Transform:
   m_ObjectHideFlags: 0

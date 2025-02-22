@@ -417,7 +417,7 @@ MonoBehaviour:
   dialogueManager: {fileID: 0}
   uiManager: {fileID: 0}
   levelConfig: {fileID: 11400000, guid: 796bf9ba6a87283439bd7b5826fe0b6b, type: 2}
-  puzzleMechanism: {fileID: 0}
+  levelConfig: {fileID: 11400000, guid: 796bf9ba6a87283439bd7b5826fe0b6b, type: 2}
   isCompleted: 0
   displayImage: 0
 --- !u!1 &248873582
@@ -3103,8 +3103,10 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   uiManager: {fileID: 0}
+  levelConfig: {fileID: 0}
   isCompleted: 0
   displayImage: 0
+  songID: 4
 --- !u!1 &1997999372
 GameObject:
   m_ObjectHideFlags: 0
@@ -3147,6 +3149,7 @@ MonoBehaviour:
   puzzle3: {fileID: 175881006}
   OriginalDueterno: {fileID: 1718386362}
   DummyDueterno: {fileID: 2031958479}
+  monologueWing3: {fileID: 0}
 --- !u!4 &1997999374
 Transform:
   m_ObjectHideFlags: 0
@@ -3229,8 +3232,10 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   uiManager: {fileID: 0}
+  levelConfig: {fileID: 0}
   isCompleted: 0
   displayImage: 0
+  songID: 0
 --- !u!61 &2031958480
 BoxCollider2D:
   m_ObjectHideFlags: 0

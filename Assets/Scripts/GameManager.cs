@@ -26,13 +26,15 @@ public class GameManager : MonoBehaviour
 
     public bool hasCompletedPuzzleTut, hasCompletedCombatTut,
     hasCompletedPuzzle1, hasCompletedPuzzle2, hasCompletedPuzzle3,
-    hasCompletedCombat1, hasCompletedCombat2, hasCompletedCombat3 = false;
+    hasCompletedCombat1, hasCompletedCombat2, hasCompletedCombat3, hasCompletedFinal = false;
 
     private bool hasTriggeredAfterPuzzleTutCutscene, hasTriggeredAfterCombatTutCutscene,
     hasTriggeredAfterPuzzle1, hasTriggeredAfterCombat1, hasTriggeredWing1Monologue,
     hasTriggeredAfterCombat2, hasTriggeredAfterPuzzle2,hasTriggeredWing2Monologue,
     hasTriggeredAfterPuzzle3, hasTriggeredAfterCombat3, hasTriggeredWing3Monologue = false;
+
     public PuzzleLevelConfig currentPuzzleLevelConfig; 
+    
     void Awake()
     {
         DontDestroyOnLoad(gameObject);

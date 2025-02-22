@@ -4117,7 +4117,7 @@ MonoBehaviour:
   levelConfig: {fileID: 0}
   isCompleted: 0
   displayImage: 0
-  songID: 0
+  songID: 3
 --- !u!1 &1762498558
 GameObject:
   m_ObjectHideFlags: 0

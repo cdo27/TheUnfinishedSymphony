@@ -38,11 +38,16 @@ public class CombatStateManager : MonoBehaviour
 
     void Start()
     {   
+        
+
         gameManager = FindObjectOfType<GameManager>();
 
-        //load proper song
-        currentSong.songID = gameManager.currentSong;
+        if (gameManager != null && gameManager.audioManager != null)
+        {
+            gameManager.audioManager.StopBackgroundMusic();
+        }
 
+        //load proper song
         if(gameManager.currentSong == 001){
             currentSong = new ThiefSong();
         }else if(gameManager.currentSong == 002){
@@ -54,7 +59,8 @@ public class CombatStateManager : MonoBehaviour
         }else if(gameManager.currentSong == 005){
             currentSong = new AldricSong();
         }
-        
+
+        currentSong.songID = gameManager.currentSong;
 
         if (currentSong.songID == 001)
         {
@@ -88,6 +94,19 @@ public class CombatStateManager : MonoBehaviour
         {
             VictoryScreen.SetActive(true);
             modeText.text = "YOU WIN";
+
+            if(currentSong.songID == 001){
+                gameManager.hasCompletedCombatTut = true;
+            }else if(currentSong.songID == 002){
+                gameManager.hasCompletedCombat1 = true;
+            }else if(currentSong.songID == 003){
+                gameManager.hasCompletedCombat2 = true;
+            }else if(currentSong.songID == 004){
+                gameManager.hasCompletedCombat3 = true;
+            }else if(currentSong.songID == 005){
+                gameManager.hasCompletedFinal = true;
+            }
+
         }
 
         if (gameState != 98 && gameState != 99 && beatManager.songStarted)

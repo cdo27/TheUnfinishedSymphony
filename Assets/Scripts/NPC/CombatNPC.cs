@@ -9,6 +9,7 @@ public class CombatNPC : NPC
 
     public bool isCompleted = false;
     public bool displayImage = false;
+    public int songID;
 
     private void Awake()
     {
@@ -25,6 +26,10 @@ public class CombatNPC : NPC
 
     public override void Interact() //trigger dialogue
     {   
+        //Update songid after interacting
+        gameManager.currentSong = songID;
+        Debug.Log(songID);
+
         isInteracting = true;
 
         Debug.Log("Playing dialogue");

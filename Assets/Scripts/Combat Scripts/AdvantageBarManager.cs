@@ -26,6 +26,7 @@ public class AdvantageBarManager : MonoBehaviour
     // Call this function to initialize the attack and defense notes
     public void InitializeBar(int attackNotes, int defenseNotes)
     {
+        advantage = 50f;
         totalAttackNotes = Mathf.Max(attackNotes, 1); // Avoid division by zero
         totalDefenseNotes = Mathf.Max(defenseNotes, 1);
 

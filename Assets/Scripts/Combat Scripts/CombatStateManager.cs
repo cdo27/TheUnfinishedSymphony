@@ -37,33 +37,24 @@ public class CombatStateManager : MonoBehaviour
     public TMP_Text modeText;
 
     void Start()
-    {   
-        
+    {
 
+        /*
         gameManager = FindObjectOfType<GameManager>();
 
         if (gameManager != null && gameManager.audioManager != null)
         {
             gameManager.audioManager.StopBackgroundMusic();
         }
+        */
 
-        //load proper song
-        if(gameManager.currentSong == 001){
-            currentSong = new ThiefSong();
-        }else if(gameManager.currentSong == 002){
-            currentSong = new Wing1Song();
-        }else if(gameManager.currentSong == 003){
-            currentSong = new Wing2Song();
-        }else if(gameManager.currentSong == 004){
-            currentSong = new Wing3Song();
-        }else if(gameManager.currentSong == 005){
-            currentSong = new AldricSong();
-        }
+        //set up the proper song
+        selectSong();
 
-        currentSong.songID = gameManager.currentSong;
-
+        //set up the sprites
         if (currentSong.songID == 001)
         {
+            StartScreen.SetActive(true);
             SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
             enemySpriteRenderer.sprite = thiefSprite;
         }else if (currentSong.songID == 002)
@@ -90,26 +81,54 @@ public class CombatStateManager : MonoBehaviour
 
     void Update()
     {
-        if(gameState == 98)
+        //handles victor condition
+        if (gameState == 98)
         {
-            VictoryScreen.SetActive(true);
+            beatManager.songManager.stopSong();
+            if (currentSong.songID != 000)
+            {
+                VictoryScreen.SetActive(true);
+
+                if (currentSong.songID == 001)
+                {
+                    gameManager.hasCompletedCombatTut = true;
+                }
+                else if (currentSong.songID == 002)
+                {
+                    gameManager.hasCompletedCombat1 = true;
+                }
+                else if (currentSong.songID == 003)
+                {
+                    gameManager.hasCompletedCombat2 = true;
+                }
+                else if (currentSong.songID == 004)
+                {
+                    gameManager.hasCompletedCombat3 = true;
+                }
+                else if (currentSong.songID == 005)
+                {
+                    gameManager.hasCompletedFinal = true;
+                }
+            }
+            else if (currentSong.songID == 000)
+            {
+                StartScreen.SetActive(true);
+                gameState = 0;
+            }
             modeText.text = "YOU WIN";
 
-            if(currentSong.songID == 001){
-                gameManager.hasCompletedCombatTut = true;
-            }else if(currentSong.songID == 002){
-                gameManager.hasCompletedCombat1 = true;
-            }else if(currentSong.songID == 003){
-                gameManager.hasCompletedCombat2 = true;
-            }else if(currentSong.songID == 004){
-                gameManager.hasCompletedCombat3 = true;
-            }else if(currentSong.songID == 005){
-                gameManager.hasCompletedFinal = true;
+        }//defeat
+        else if (gameState == 99)
+        {
+            beatManager.songManager.stopSong();
+            if (currentSong.songID == 000)
+            {
+                StartScreen.SetActive(true);
+                gameState = 0;
             }
-
         }
-
-        if (gameState != 98 && gameState != 99 && beatManager.songStarted)
+        //otherwise
+        else if (gameState != 98 && gameState != 99 && beatManager.songStarted)
         {
             double currentTime = AudioSettings.dspTime;
 
@@ -128,6 +147,38 @@ public class CombatStateManager : MonoBehaviour
             }
         }
         
+    }
+
+
+    //select the song based on gamamanager id
+    void selectSong()
+    {
+        /**
+        //load proper song
+        if (gameManager.currentSong == 001)
+        {
+            currentSong = new ThiefSong();
+        }
+        else if (gameManager.currentSong == 002)
+        {
+            currentSong = new Wing1Song();
+        }
+        else if (gameManager.currentSong == 003)
+        {
+            currentSong = new Wing2Song();
+        }
+        else if (gameManager.currentSong == 004)
+        {
+            currentSong = new Wing3Song();
+        }
+        else if (gameManager.currentSong == 005)
+        {
+            currentSong = new AldricSong();
+        }
+
+        currentSong.songID = gameManager.currentSong;
+        */
+        currentSong = new ThiefSong();
     }
 
     void CheckModeSwitch(double currentTime)
@@ -192,12 +243,21 @@ public class CombatStateManager : MonoBehaviour
         }
     }
 
-    public void OnStartButtonClick()
+    public void OnSkipTutorialClick()
     {
+        selectSong();
         beatManager.startSong();
         StartScreen.SetActive(false);
 
     }
+    public void OnStartTutorialClick()
+    {
+        currentSong = new TestSong();
+        beatManager.startSong();
+        StartScreen.SetActive(false);
+
+    }
+
     public void OnContinueButtonClick()
     {
         // Load the UnfinishedSymphony scene

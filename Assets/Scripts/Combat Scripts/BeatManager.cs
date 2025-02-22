@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class BeatManager : MonoBehaviour
 {
@@ -38,6 +39,16 @@ public class BeatManager : MonoBehaviour
     public GameObject nearMissMessage;
     public GameObject perfectBlockMessage;
     public GameObject nearMissBlockMessage;
+
+    //tutorial messages
+    public GameObject tutorialAMessage;
+    public GameObject tutorialBMessage;
+    public GameObject tutorialCMessage;
+    public GameObject tutorialDMessage;
+    public GameObject tutorialEMessage;
+    public GameObject tutorialFMessage;
+    public GameObject tutorialGMessage;
+    public GameObject tutorialHMessage;
 
     private void Start()
     {
@@ -175,6 +186,12 @@ public class BeatManager : MonoBehaviour
             if (AudioSettings.dspTime >= nextBeatTime) // Schedule the next beat only when the current DSP time is beyond the next beat
             {
                 ScheduleNextBeat();
+            }
+
+            //code for tutorial messages
+            if(combatStateManager.currentSong.songID == 000)
+            {
+                handleTutorialMessage();
             }
         }
 
@@ -332,6 +349,60 @@ public class BeatManager : MonoBehaviour
     {
         // Convert the beat time to DSP time relative to the song's start
         return dspTimeSongStart + (beatTime * crotchet) + combatStateManager.currentSong.offset;
+    }
+
+    //------------------------------for tutorial messages-----------------------------
+    public void handleTutorialMessage()
+    {
+        switch (currentBeat)
+        {
+            case 0:
+                tutorialAMessage.SetActive(true);
+                break;
+            case 12:
+                tutorialAMessage.SetActive(false);
+                tutorialBMessage.SetActive(true);
+                break;
+            case 24:
+                tutorialBMessage.SetActive(false);
+                tutorialCMessage.SetActive(true);
+                break;
+            case 36:
+                tutorialCMessage.SetActive(false);  
+                break;
+            case 40:
+                tutorialDMessage.SetActive(true);
+                break;
+            case 100:
+                tutorialDMessage.SetActive(false);
+                break;
+            case 106:
+                tutorialEMessage.SetActive(true);
+                break;
+            case 114:
+                tutorialEMessage.SetActive(false);
+                tutorialFMessage.SetActive(true);
+                break;
+            case 120:
+                tutorialGMessage.SetActive(true); //spawn warning
+                break;
+            case 128:
+            case 144:
+            case 160:
+                tutorialGMessage.SetActive(false);
+                tutorialHMessage.SetActive(true);//hit warning
+                break;
+            case 136:
+            case 152:
+                tutorialHMessage.SetActive(false);
+                tutorialGMessage.SetActive(true);//spawn warning
+                break;
+            case 170:
+                tutorialFMessage.SetActive(false);
+                tutorialHMessage.SetActive(false);
+                tutorialGMessage.SetActive(false);
+                break;
+        }
     }
 
     //-------------------------retrieve methods---------------------------------

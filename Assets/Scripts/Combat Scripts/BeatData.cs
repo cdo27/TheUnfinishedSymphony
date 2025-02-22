@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BeatData : MonoBehaviour
+public class BeatData
 {
     public float beatTime;
     public int noteType; // 0: red, 1: green, 2: purple

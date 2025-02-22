@@ -20,4 +20,10 @@ public class SongManager : MonoBehaviour
         audioSource.clip = thiefSong;
         audioSource.Play(); 
     }
+
+    //stop song
+    public void stopSong()
+    {
+        audioSource.Stop();
+    }
 }

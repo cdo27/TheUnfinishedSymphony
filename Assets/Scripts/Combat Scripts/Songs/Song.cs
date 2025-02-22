@@ -3,7 +3,7 @@ using UnityEngine;
 
 //the template class for all the songs
 
-public class Song : MonoBehaviour
+public class Song
 {
     public int songID;
   

@@ -1290,9 +1290,8 @@ MonoBehaviour:
   - {fileID: 871122820}
   - {fileID: 393114555}
   - {fileID: 1702038336}
-  - {fileID: 1702038336}
-  - {fileID: 1702038336}
-  - {fileID: 1702038336}
+  - {fileID: 872674534}
+  - {fileID: 227504721}
   noteImages:
   - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}

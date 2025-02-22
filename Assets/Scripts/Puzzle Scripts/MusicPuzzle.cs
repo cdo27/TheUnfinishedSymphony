@@ -95,28 +95,47 @@ public class PuzzleMechanism : MonoBehaviour
     }
 
     private void LoadLevelConfig()
+{
+    if (levelConfig == null)
     {
-        if (levelConfig == null)
-        {
-            Debug.LogError("Level configuration not set!");
-            return;
-        }
-
-        countdown = levelConfig.timeLimit;
-        playerSequence = new int[levelConfig.missingNotesCount];
-
-        foreach (var image in missingNoteImages)
-        {
-            image.gameObject.SetActive(false);
-        }
-
-        for (int i = 0; i < levelConfig.missingNotesCount; i++)
-        {
-            missingNoteImages[i].gameObject.SetActive(true);
-        }
-
-        audioSource.clip = levelConfig.musicSegment;
+        Debug.LogError("Level configuration not set!");
+        return;
     }
+
+    countdown = levelConfig.timeLimit;
+    playerSequence = new int[levelConfig.missingNotesCount];
+
+    // Disable all missing note images first
+    foreach (var image in missingNoteImages)
+    {
+        image.gameObject.SetActive(false);
+    }
+
+    // Enable images based on the missingNotesCount from levelConfig
+    for (int i = 0; i < levelConfig.missingNotesCount; i++)
+    {
+        missingNoteImages[i].gameObject.SetActive(true);
+    }
+
+    // Hide additional missing note images based on the missingNotesCount
+    if (levelConfig.missingNotesCount <= 4)
+    {
+        // Hide fifth and sixth images if present
+        if (missingNoteImages.Length > 4) missingNoteImages[4].gameObject.SetActive(false);
+        if (missingNoteImages.Length > 5) missingNoteImages[5].gameObject.SetActive(false);
+    }
+    else if (levelConfig.missingNotesCount == 5)
+    {
+        // Hide sixth image if present
+        if (missingNoteImages.Length > 5) missingNoteImages[5].gameObject.SetActive(false);
+    }
+    // If missingNotesCount is 6, all should be visible, no need to hide any
+
+    audioSource.clip = levelConfig.musicSegment;
+}
+
+
+
 
 
     private void SetupNoteButtons()

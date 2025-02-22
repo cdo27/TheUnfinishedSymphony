@@ -8592,6 +8592,7 @@ MonoBehaviour:
   BenedictNPC: {fileID: 0}
   AldricNPC: {fileID: 0}
   DummyFinal: {fileID: 0}
+  EndingTrigger: {fileID: 0}
 --- !u!4 &1651437098
 Transform:
   m_ObjectHideFlags: 0
@@ -9788,7 +9789,7 @@ MonoBehaviour:
     - Door is locked.
     isPlayerSpeaking: 00
   doorNumber: -1
-  sceneToLoad: Hallway
+  sceneToLoad: FinalCutscene
 --- !u!61 &2031828401
 BoxCollider2D:
   m_ObjectHideFlags: 0

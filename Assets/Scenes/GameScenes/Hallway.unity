@@ -122,6 +122,90 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &73286711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 73286712}
+  - component: {fileID: 73286713}
+  m_Layer: 0
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &73286712
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73286711}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.1159391, y: 0.96365637, z: 0}
+  m_LocalScale: {x: 37.73188, y: 37.73188, z: 237.76688}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1114046035}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &73286713
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73286711}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -1
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &141037561
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,7 +235,7 @@ Transform:
   m_GameObject: {fileID: 141037561}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.47, y: 0.6, z: -0.015234143}
+  m_LocalPosition: {x: 9.4, y: 0.38, z: -0.015234143}
   m_LocalScale: {x: 0.21816999, y: 0.22803767, z: 0.46989012}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -187,7 +271,6 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   uiManager: {fileID: 0}
-  levelConfig: {fileID: 0}
   repeatDialogue:
     npcName: Thief Spirit
     sentences:
@@ -1239,14 +1322,17 @@ MonoBehaviour:
   TutorialAldric: {fileID: 0}
   TutorialThief: {fileID: 0}
   puzzle1: {fileID: 0}
+  dummypuzzle1: {fileID: 0}
   OriginalSerpentura: {fileID: 0}
   DummySerpentura: {fileID: 0}
   monologueWing1: {fileID: 830702442}
   puzzle2: {fileID: 0}
+  dummypuzzle2: {fileID: 0}
   OriginalSonatine: {fileID: 0}
   DummySonatine: {fileID: 0}
   monologueWing2: {fileID: 1145195639}
   puzzle3: {fileID: 0}
+  dummypuzzle3: {fileID: 0}
   OriginalDueterno: {fileID: 0}
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 0}
@@ -1767,7 +1853,6 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   uiManager: {fileID: 0}
-  levelConfig: {fileID: 0}
 --- !u!1 &1032113603
 GameObject:
   m_ObjectHideFlags: 0
@@ -2160,10 +2245,11 @@ Transform:
   m_GameObject: {fileID: 1114046033}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.3894, y: 0.31999993, z: 0}
+  m_LocalPosition: {x: 14.94, y: 0.82, z: 0}
   m_LocalScale: {x: 3.12352, y: 3.12352, z: 0.49567997}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 73286712}
   - {fileID: 592919586}
   - {fileID: 2119259219}
   - {fileID: 1983485929}
@@ -2234,7 +2320,6 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   uiManager: {fileID: 0}
-  levelConfig: {fileID: 0}
 --- !u!4 &1145195640
 Transform:
   m_ObjectHideFlags: 0
@@ -2488,7 +2573,6 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   uiManager: {fileID: 0}
-  levelConfig: {fileID: 0}
 --- !u!212 &1317423904
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3230,7 +3314,7 @@ Transform:
   m_GameObject: {fileID: 1712038795}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.45, y: -4.38, z: 0}
+  m_LocalPosition: {x: 12.05, y: -3.84, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

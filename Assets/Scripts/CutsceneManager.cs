@@ -41,6 +41,8 @@ public class CutsceneManager : MonoBehaviour
     public NPC AldricNPC;
     public NPC DummyFinal;
 
+    //Endings
+    public NPC EndingTrigger;
 
     // Start is called before the first frame update
     void Start()
@@ -191,6 +193,16 @@ public class CutsceneManager : MonoBehaviour
             Debug.Log("Playing benedict scene");
         }else{
             Debug.Log("Benedict scene is null");
+        }
+
+    }
+
+    public void finalTrigger2(){
+        if(EndingTrigger != null){
+            EndingTrigger.Interact();
+            Debug.Log("Playing final cutscene 2");
+        }else{
+            Debug.Log("Final custcene 2 is null");
         }
 
     }

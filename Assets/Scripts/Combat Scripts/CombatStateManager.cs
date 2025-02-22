@@ -25,6 +25,7 @@ public class CombatStateManager : MonoBehaviour
     public GameObject StartButton;
     public GameObject VictoryScreen;
     public GameObject victoryContinueButton;
+    public GameObject DefeatScreen;
 
     public GameObject enemy;
     public Sprite thiefSprite;
@@ -81,7 +82,7 @@ public class CombatStateManager : MonoBehaviour
 
     void Update()
     {
-        //handles victor condition
+        //handles victory condition
         if (gameState == 98)
         {
             beatManager.songManager.stopSong();
@@ -124,6 +125,11 @@ public class CombatStateManager : MonoBehaviour
             if (currentSong.songID == 000)
             {
                 StartScreen.SetActive(true);
+                gameState = 0;
+            }
+            else
+            {
+                DefeatScreen.SetActive(true);
                 gameState = 0;
             }
         }
@@ -263,5 +269,12 @@ public class CombatStateManager : MonoBehaviour
         // Load the UnfinishedSymphony scene
         Debug.Log("hello");
         //sceneController.ExitCombatScene();
+    }
+
+    public void OnTryAgainClick()
+    {
+        selectSong();
+        beatManager.startSong();
+        DefeatScreen.SetActive(false);
     }
 }

@@ -868,7 +868,7 @@ MonoBehaviour:
   shouldLoadScene: 0
   shouldDestroy: 0
   sceneToLoad: 
-  portraitSprite: {fileID: 21300000, guid: 442eec544c4cac840aad9933a065e268, type: 3}
+  portraitSprite: {fileID: 21300000, guid: f9a52eca1ff7bd0499b66c6f29d19e15, type: 3}
   dialogue:
     npcName: ???
     sentences:

@@ -4098,7 +4098,7 @@ MonoBehaviour:
   shouldLoadScene: 1
   shouldDestroy: 1
   sceneToLoad: Combat
-  portraitSprite: {fileID: 21300000, guid: 442eec544c4cac840aad9933a065e268, type: 3}
+  portraitSprite: {fileID: 21300000, guid: 684a4e92c5fcac849bbc1bab46a93682, type: 3}
   dialogue:
     npcName: Vengeful Spirit Sonatine
     sentences:

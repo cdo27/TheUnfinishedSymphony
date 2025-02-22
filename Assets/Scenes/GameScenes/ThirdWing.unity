@@ -583,6 +583,76 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &279713824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 279713826}
+  - component: {fileID: 279713825}
+  m_Layer: 0
+  m_Name: Wing3Monolgue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &279713825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279713824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53a1b4d34573f964b9b7dcb5eb8d110f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasInteracted: 0
+  isInteracting: 0
+  shouldLoadScene: 0
+  shouldDestroy: 0
+  sceneToLoad: 
+  portraitSprite: {fileID: 21300000, guid: 7d06103386fa16d438a918531fa91b8d, type: 3}
+  dialogue:
+    npcName: NPC
+    sentences:
+    - "The scribbles on the sheet\u2026 the way that spirit raged at his name\u2026
+      Aldric wasn\u2019t just obsessed\u2014he was unraveling. But why? What was
+      driving him to madness?"
+    isPlayerSpeaking: 01
+  afterDialogue:
+    npcName: NPC
+    sentences:
+    - "Benedict and Aldric argued. Over control, over the music, over whose hands
+      would shape the final movement. And then\u2026 Aldric lost control\u2026 and
+      Benedict was gone."
+    - "Aldric never meant for it to happen. But that didn\u2019t matter. The music\u2014their
+      music\u2014was suddenly his alone."
+    isPlayerSpeaking: 0101
+  gameManager: {fileID: 0}
+  dialogueManager: {fileID: 0}
+  uiManager: {fileID: 0}
+  levelConfig: {fileID: 0}
+--- !u!4 &279713826
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279713824}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 10.48, y: 8.31, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 283736496}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &283736495
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,6 +684,7 @@ Transform:
   m_Children:
   - {fileID: 1718386358}
   - {fileID: 2031958478}
+  - {fileID: 279713826}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &366373059
@@ -1595,14 +1666,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasInteracted: 0
   isInteracting: 0
-  shouldLoadScene: 1
-  shouldDestroy: 1
-  sceneToLoad: Combat
+  shouldLoadScene: 0
+  shouldDestroy: 0
+  sceneToLoad: 
   portraitSprite: {fileID: 21300000, guid: eaa82fd2c8df87c43957949e6e0ba6a0, type: 3}
   dialogue:
     npcName: Mirror
     sentences:
-    - "Is that... Aldric? He\u2019s hiding some clothes and a baton? Seems suspicious."
+    - It's a reflection of... Is that Aldric?
+    - "He\u2019s hiding some clothes and a baton? Seems suspicious."
     isPlayerSpeaking: 01
   afterDialogue:
     npcName: Mirror
@@ -3324,7 +3396,8 @@ MonoBehaviour:
   puzzle3: {fileID: 175881006}
   OriginalDueterno: {fileID: 1718386362}
   DummyDueterno: {fileID: 2031958479}
-  monologueWing3: {fileID: 0}
+  monologueWing3: {fileID: 279713825}
+  BenedictNPC: {fileID: 0}
   AldricNPC: {fileID: 0}
   DummyFinal: {fileID: 0}
 --- !u!4 &1997999374

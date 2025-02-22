@@ -34,6 +34,7 @@ public class CutsceneManager : MonoBehaviour
     public NPC monologueWing3;
 
     [Header("Final Cutscene")]
+    public NPC BenedictNPC;
     public NPC AldricNPC;
     public NPC DummyFinal;
 
@@ -179,6 +180,17 @@ public class CutsceneManager : MonoBehaviour
     }
 
     //--------------Final----------------------
+
+    public void playBenedictScene(){
+        if(BenedictNPC != null){
+            BenedictNPC.gameObject.SetActive(true);
+            BenedictNPC.Interact();
+            Debug.Log("Playing benedict scene");
+        }else{
+            Debug.Log("Benedict scene is null");
+        }
+
+    }
 
     public void finalCutscene2(){
         if(AldricNPC != null){

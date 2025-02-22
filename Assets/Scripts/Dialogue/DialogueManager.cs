@@ -15,6 +15,7 @@ public class DialogueManager : MonoBehaviour
     public Sprite playerPortrait; //player portrait
     private Sprite npcPortrait;  //npc portrait
     private NPC currentNPC;
+    private Door currentDoor;
 
     public Animator animator;
 
@@ -99,6 +100,28 @@ public class DialogueManager : MonoBehaviour
         {
             currentNPC.CompleteInteraction();
         }
+    }
+
+
+    public void StartDoorDialogue(Dialogue dialogue, Sprite npcPortraitSprite, Door door){
+        Debug.Log("NPC Portrait Assigned: " + npcPortraitSprite.name);
+        currentDoor = door;
+        gameManager.SetGameState(GameManager.GameState.CutScene); 
+
+        animator.SetBool("isOpen", true);
+        nameText.text = dialogue.npcName;
+        npcName = dialogue.npcName;
+        npcPortrait = npcPortraitSprite;
+
+        sentences.Clear();
+        isPlayerSpeakingQueue.Clear();
+
+       for (int i = 0; i < dialogue.sentences.Length; i++)
+        {
+            sentences.Enqueue(dialogue.sentences[i]);
+            isPlayerSpeakingQueue.Enqueue(dialogue.isPlayerSpeaking[i]);
+        }
+        DisplayNextSentence();
     }
 
     //Cutscene Dialogue

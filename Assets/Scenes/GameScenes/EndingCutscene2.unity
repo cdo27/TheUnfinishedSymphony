@@ -227,7 +227,7 @@ Transform:
   m_GameObject: {fileID: 390049316}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.12, y: -3.19, z: -0.015234143}
+  m_LocalPosition: {x: -14.97, y: -3.59, z: -0.015234143}
   m_LocalScale: {x: 0.33780816, y: 0.353087, z: 0.72756445}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -358,7 +358,7 @@ PlayableDirector:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 390049316}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: e6b800e943469a447a35a50d08799457, type: 2}
   m_InitialState: 1
@@ -384,7 +384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasInteracted: 0
   isInteracting: 0
-  shouldLoadScene: 1
+  shouldLoadScene: 0
   shouldDestroy: 0
   sceneToLoad: Combat
   portraitSprite: {fileID: 21300000, guid: eaa82fd2c8df87c43957949e6e0ba6a0, type: 3}
@@ -396,7 +396,7 @@ MonoBehaviour:
       in the grand opera house.
     - However, his family, disgraced by the reveal, shunns Lucien.
     - Lucien took the moral path, to expose the truth and set all the wrongs right.
-    isPlayerSpeaking: 0000
+    isPlayerSpeaking: 00000000
   afterDialogue:
     npcName: Aldric
     sentences:
@@ -1060,7 +1060,7 @@ PlayableDirector:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1263162231}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 11d7deb5647ce2e40a9b616090d3e188, type: 2}
   m_InitialState: 1

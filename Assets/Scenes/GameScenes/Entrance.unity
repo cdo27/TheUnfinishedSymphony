@@ -637,7 +637,7 @@ MonoBehaviour:
     sentences:
     - Door is locked.
     isPlayerSpeaking: 00
-  doorNumber: 4
+  doorNumber: -1
   sceneToLoad: Hallway
 --- !u!61 &212614079
 BoxCollider2D:

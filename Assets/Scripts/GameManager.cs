@@ -31,7 +31,8 @@ public class GameManager : MonoBehaviour
     private bool hasTriggeredAfterPuzzleTutCutscene, hasTriggeredAfterCombatTutCutscene,
     hasTriggeredAfterPuzzle1, hasTriggeredAfterCombat1, hasTriggeredWing1Monologue,
     hasTriggeredAfterCombat2, hasTriggeredAfterPuzzle2,hasTriggeredWing2Monologue,
-    hasTriggeredAfterPuzzle3, hasTriggeredAfterCombat3 = false;
+    hasTriggeredAfterPuzzle3, hasTriggeredAfterCombat3, hasTriggeredWing3Monologue = false;
+    public PuzzleLevelConfig currentPuzzleLevelConfig; 
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
         ReassignCutsceneManager();
         audioManager = FindObjectOfType<AudioManager>();
         SetGameState(GameState.Menu);
+        
         // Start the intro music as soon as the game begins
         PlayIntroMusic();
     }
@@ -113,6 +115,14 @@ public class GameManager : MonoBehaviour
             hasTriggeredAfterCombat3 = true;
             cutsceneManager.afterCombat3();
         }
+
+        //check Hallway scene and Wing 3 monologue
+        if (SceneManager.GetActiveScene().name == "Hallway" &&
+            hasCompletedPuzzle3 && hasCompletedCombat3 && !hasTriggeredWing3Monologue)
+        {
+            hasTriggeredWing3Monologue = true;
+            cutsceneManager.PlayWing3Monologue();
+        }
     }
 
     public void SetGameState(GameState newState)
@@ -131,10 +141,28 @@ public class GameManager : MonoBehaviour
         SceneManager.UnloadSceneAsync(sceneToUnload);
     }
 
+    public void SetPuzzleLevelConfig(PuzzleLevelConfig config)
+    {
+        currentPuzzleLevelConfig = config;
+    }
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log($"Scene loaded: {scene.name}, mode: {mode}");
         ReassignCutsceneManager();
+
+        if (scene.name == "PuzzleScene") // Apply the level configuration in the puzzle scene
+        {
+            PuzzleMechanism puzzleMechanism = FindObjectOfType<PuzzleMechanism>();
+            if (puzzleMechanism != null && currentPuzzleLevelConfig != null)
+            {
+                puzzleMechanism.SetLevelConfig(currentPuzzleLevelConfig);
+            }
+            else
+            {
+                Debug.LogError("PuzzleMechanism or currentPuzzleLevelConfig is missing in PuzzleScene!");
+            }
+        }
     }
 
     void ReassignCutsceneManager()

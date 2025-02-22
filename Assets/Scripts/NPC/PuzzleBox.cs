@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PuzzleBox : NPC
 {
+    public PuzzleLevelConfig levelConfig; 
 
     public bool isCompleted = false;
     public bool displayImage = false;
@@ -18,45 +16,45 @@ public class PuzzleBox : NPC
 
         if (gameManager == null)
         {
-            Debug.Log("GameManager was not found.");
+            Debug.LogError("GameManager was not found.");
         }
     }
 
-
-    public override void Interact() //trigger dialogue
-    {   
+    public override void Interact()
+    {
         isInteracting = true;
-        
-        if(isCompleted)
-        {
-            Debug.Log("Playing after dialogue");
-            dialogueManager.StartDialogue(afterDialogue, portraitSprite, this);
 
-            if(displayImage){ //if there is something to display
+        if (isCompleted)
+        {
+            dialogueManager.StartDialogue(afterDialogue, portraitSprite, this);
+            if (displayImage)
                 uiManager.displayPuzzleImage();
+        }
+        else
+        {
+            dialogueManager.StartDialogue(dialogue, portraitSprite, this);
+
+            if (levelConfig != null)
+            {
+                gameManager.SetPuzzleLevelConfig(levelConfig); // Store the level in GameManager
+                Debug.Log($"Stored level config {levelConfig.name} in GameManager");
             }
         }
-        else{
-            Debug.Log("Playing dialogue");
-            dialogueManager.StartDialogue(dialogue, portraitSprite, this);
-        }
-
     }
 
     public override void CompleteInteraction()
     {
         isInteracting = false;
-        //hasInteracted = true;
 
         if (shouldLoadScene && !string.IsNullOrEmpty(sceneToLoad))
         {
             SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
-            gameManager.SetGameState(GameManager.GameState.Combat); //update gamestate to combat
+            gameManager.SetGameState(GameManager.GameState.Puzzle);
         }
 
-        if(displayImage) uiManager.hidePuzzleImage(); //hide if ther is a diplay image
-
-        if (shouldDestroy) Destroy(gameObject);
+        if (displayImage)
+            uiManager.hidePuzzleImage();
+        if (shouldDestroy)
+            Destroy(gameObject);
     }
-
 }

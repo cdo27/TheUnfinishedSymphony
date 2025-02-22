@@ -40,41 +40,45 @@ public class CombatStateManager : MonoBehaviour
     void Start()
     {
 
-        /*
         gameManager = FindObjectOfType<GameManager>();
 
         if (gameManager != null && gameManager.audioManager != null)
         {
             gameManager.audioManager.StopBackgroundMusic();
         }
-        */
 
         //set up the proper song
         selectSong();
-
+        StartScreen.SetActive(true);
         //set up the sprites
         if (currentSong.songID == 001)
         {
-            StartScreen.SetActive(true);
+            //StartScreen.SetActive(true);
             SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
             enemySpriteRenderer.sprite = thiefSprite;
         }else if (currentSong.songID == 002)
         {
             SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
             enemySpriteRenderer.sprite = redSpiritSprite;
-        }else if (currentSong.songID == 003)
+            //beatManager.readySong();
+        }
+        else if (currentSong.songID == 003)
         {
             SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
             enemySpriteRenderer.sprite = yellowSpiritSprite;
-        }else if (currentSong.songID == 004)
+            //beatManager.readySong();
+        }
+        else if (currentSong.songID == 004)
         {
             SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
             enemySpriteRenderer.sprite = blueSpiritSprite;
+            //beatManager.readySong();
         }
         else if (currentSong.songID == 005)
         {
             SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
             enemySpriteRenderer.sprite = aldricSprite;
+            //beatManager.readySong();
         }
 
         
@@ -159,7 +163,6 @@ public class CombatStateManager : MonoBehaviour
     //select the song based on gamamanager id
     void selectSong()
     {
-        /**
         //load proper song
         if (gameManager.currentSong == 001)
         {
@@ -183,8 +186,6 @@ public class CombatStateManager : MonoBehaviour
         }
 
         currentSong.songID = gameManager.currentSong;
-        */
-        currentSong = new ThiefSong();
     }
 
     void CheckModeSwitch(double currentTime)

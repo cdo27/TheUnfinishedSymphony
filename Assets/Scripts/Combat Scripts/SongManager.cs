@@ -7,6 +7,7 @@ public class SongManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip testSong;
     public AudioClip thiefSong;
+    public AudioClip wing1Song;
 
     //songs
     public void playTestSong()
@@ -19,6 +20,12 @@ public class SongManager : MonoBehaviour
     {
         audioSource.clip = thiefSong;
         audioSource.Play(); 
+    }
+
+    public void playWing1Song()
+    {
+        audioSource.clip = wing1Song;
+        audioSource.Play();
     }
 
     //stop song

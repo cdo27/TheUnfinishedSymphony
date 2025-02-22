@@ -34,9 +34,9 @@ public class PuzzleMechanism : MonoBehaviour
     void Start()
     {
         notePreviewCoroutines = new Coroutine[noteButtons.Length];
+        playButton.onClick.AddListener(PlayMusicSegment);
         exitButton.gameObject.SetActive(false); // Hide the exit button initially
         exitButton.onClick.AddListener(() => sceneController.ExitPuzzleScene());
-        playButton.onClick.AddListener(PlayMusicSegment);
         
         // Load level configuration
         LoadLevelConfig();

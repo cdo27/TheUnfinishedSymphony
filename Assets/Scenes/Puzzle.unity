@@ -1293,13 +1293,13 @@ MonoBehaviour:
   - {fileID: 872674534}
   - {fileID: 227504721}
   noteImages:
-  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 21300000, guid: ccd35ba864025104d85e96d526bf4b80, type: 3}
-  - {fileID: 21300000, guid: ccd35ba864025104d85e96d526bf4b80, type: 3}
-  - {fileID: 21300000, guid: ccd35ba864025104d85e96d526bf4b80, type: 3}
-  - {fileID: 21300000, guid: ccd35ba864025104d85e96d526bf4b80, type: 3}
+  - {fileID: 21300000, guid: 9df1903de670941cca1cc432d4b24b62, type: 3}
+  - {fileID: 21300000, guid: b2b5ff9cf0dfd4a7bb7a1462e74f011b, type: 3}
+  - {fileID: 21300000, guid: fac2f55e4856d424eb3ad98eb6472d2c, type: 3}
+  - {fileID: 21300000, guid: f852c93711c83476f8661db2241c001b, type: 3}
+  - {fileID: 21300000, guid: 0ea83d9ef52044959812b0c9f4d41c64, type: 3}
+  - {fileID: 21300000, guid: 14cd283d34d0040e5b6e166d4513dd30, type: 3}
+  - {fileID: 21300000, guid: 79ddbc99d59e845eb8977de2664d3021, type: 3}
   timerText: {fileID: 214737425}
   feedbackText: {fileID: 897605918}
   levelConfig: {fileID: 11400000, guid: 7bcd156daf954d147ac72cef54412d99, type: 2}

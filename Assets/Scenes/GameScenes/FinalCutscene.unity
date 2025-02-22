@@ -2990,8 +2990,8 @@ MonoBehaviour:
   OriginalDueterno: {fileID: 0}
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 0}
-  BenedictNPC: {fileID: 0}
-  AldricNPC: {fileID: 0}
+  BenedictNPC: {fileID: 996536804}
+  AldricNPC: {fileID: 390049323}
   DummyFinal: {fileID: 0}
 --- !u!4 &1705612032
 Transform:

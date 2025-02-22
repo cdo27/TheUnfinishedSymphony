@@ -1303,6 +1303,10 @@ MonoBehaviour:
   timerText: {fileID: 214737425}
   feedbackText: {fileID: 897605918}
   levelConfig: {fileID: 11400000, guid: 7bcd156daf954d147ac72cef54412d99, type: 2}
+  tutorialConfig: {fileID: 11400000, guid: 7bcd156daf954d147ac72cef54412d99, type: 2}
+  levelOneConfig: {fileID: 11400000, guid: fb22443c204969b49acc37f90d986f02, type: 2}
+  levelTwoConfig: {fileID: 11400000, guid: 85c6fa0bd11644644bebe502a8d2467a, type: 2}
+  levelThreeConfig: {fileID: 11400000, guid: 796bf9ba6a87283439bd7b5826fe0b6b, type: 2}
 --- !u!81 &599624489
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3885,7 +3889,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 8
   m_TargetDisplay: 0
 --- !u!224 &1935961566
 RectTransform:

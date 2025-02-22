@@ -17,6 +17,10 @@ public class PuzzleMechanism : MonoBehaviour
     public TMP_Text feedbackText;            // TextMeshProUGUI for displaying feedback
 
     public PuzzleLevelConfig levelConfig;    // Level-specific settings
+    public PuzzleLevelConfig tutorialConfig;
+    public PuzzleLevelConfig levelOneConfig;
+    public PuzzleLevelConfig levelTwoConfig;
+    public PuzzleLevelConfig levelThreeConfig;
     private GameManager gameManager;
 
     private float countdown;                 // Timer countdown
@@ -216,6 +220,28 @@ public class PuzzleMechanism : MonoBehaviour
         }
 
         feedbackText.text = "Congratulations! You've completed the puzzle.";
+        if (tutorialConfig == gameManager.currentPuzzleLevelConfig)
+        {
+            gameManager.hasCompletedPuzzleTut = true;
+            Debug.Log("Updated complete puzzle tut.");
+        }
+        else if (levelOneConfig == gameManager.currentPuzzleLevelConfig)
+        {
+            gameManager.hasCompletedPuzzle1 = true;
+            Debug.Log("Updated complete puzzle 1.");
+        }
+        else if (levelTwoConfig == gameManager.currentPuzzleLevelConfig)
+        {
+            gameManager.hasCompletedPuzzle2 = true;
+        }
+        else if (levelThreeConfig == gameManager.currentPuzzleLevelConfig)
+        {
+            gameManager.hasCompletedPuzzle3 = true;
+        }
+        else
+        {
+            Debug.Log("Unknown level configuration.");
+        }
         PauseTimer();
         ShowExitButton();
     }

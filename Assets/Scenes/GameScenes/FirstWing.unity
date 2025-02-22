@@ -4240,6 +4240,7 @@ MonoBehaviour:
   OriginalDueterno: {fileID: 0}
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 0}
+  BenedictNPC: {fileID: 0}
   AldricNPC: {fileID: 0}
   DummyFinal: {fileID: 0}
 --- !u!4 &1828269165
@@ -4432,8 +4433,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: a039ed340e171004ca6f84c089897e8e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 6380c043e0225a94e953c4bf7c5e1479, type: 3}
+  m_Color: {r: 0.73333335, g: 0.72156864, b: 0.79607844, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

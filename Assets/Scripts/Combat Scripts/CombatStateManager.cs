@@ -39,6 +39,7 @@ public class CombatStateManager : MonoBehaviour
     void Start()
     {   
         gameManager = FindObjectOfType<GameManager>();
+
         //load proper song
         currentSong.songID = gameManager.currentSong;
 

@@ -39,6 +39,24 @@ public class BeatManager : MonoBehaviour
     public GameObject perfectBlockMessage;
     public GameObject nearMissBlockMessage;
 
+    private void Start()
+    {
+        // Get AudioManager reference
+        audioManager = FindObjectOfType<AudioManager>();
+        if (audioManager == null)
+        {
+            Debug.LogError("AudioManager not found in the scene!");
+        }
+
+        // Get AudioManager reference
+        songManager = FindObjectOfType<SongManager>();
+        if (songManager == null)
+        {
+            Debug.LogError("AudioManager not found in the scene!");
+        }
+ 
+    }
+
     void Update()
     { 
         //-----------------------------------check for win or lose condition---------------------------------------

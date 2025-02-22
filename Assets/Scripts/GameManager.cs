@@ -31,7 +31,8 @@ public class GameManager : MonoBehaviour
     private bool hasTriggeredAfterPuzzleTutCutscene, hasTriggeredAfterCombatTutCutscene,
     hasTriggeredAfterPuzzle1, hasTriggeredAfterCombat1, hasTriggeredWing1Monologue,
     hasTriggeredAfterCombat2, hasTriggeredAfterPuzzle2,hasTriggeredWing2Monologue,
-    hasTriggeredAfterPuzzle3, hasTriggeredAfterCombat3, hasTriggeredWing3Monologue = false;
+    hasTriggeredAfterPuzzle3, hasTriggeredAfterCombat3, hasTriggeredWing3Monologue,
+    hasTriggeredBenedictScene = false;
 
     public PuzzleLevelConfig currentPuzzleLevelConfig; 
     
@@ -118,12 +119,21 @@ public class GameManager : MonoBehaviour
             cutsceneManager.afterCombat3();
         }
 
-        //check Hallway scene and Wing 3 monologue
-        if (SceneManager.GetActiveScene().name == "Hallway" &&
+        //check third wing scene and Wing 3 monologue
+        if (SceneManager.GetActiveScene().name == "ThirdWing" &&
             hasCompletedPuzzle3 && hasCompletedCombat3 && !hasTriggeredWing3Monologue)
         {
             hasTriggeredWing3Monologue = true;
             cutsceneManager.PlayWing3Monologue();
+        }
+
+        //BenedictScene
+        if (SceneManager.GetActiveScene().name == "Hallway" &&
+            hasCompletedPuzzle3 && hasCompletedCombat3 && !hasTriggeredBenedictScene)
+        {
+            hasTriggeredBenedictScene = true;
+            cutsceneManager.playBenedictScene();
+            Debug.Log("Playing benedict scene");
         }
     }
 

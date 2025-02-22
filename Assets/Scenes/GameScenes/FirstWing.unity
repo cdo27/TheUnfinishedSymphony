@@ -658,7 +658,7 @@ MonoBehaviour:
   hasInteracted: 0
   isInteracting: 0
   shouldLoadScene: 1
-  shouldDestroy: 1
+  shouldDestroy: 0
   sceneToLoad: Puzzle
   portraitSprite: {fileID: 21300000, guid: 3b64c7820d9194143ba97976760c1670, type: 3}
   dialogue:
@@ -868,7 +868,7 @@ MonoBehaviour:
   shouldLoadScene: 0
   shouldDestroy: 0
   sceneToLoad: 
-  portraitSprite: {fileID: 21300000, guid: 442eec544c4cac840aad9933a065e268, type: 3}
+  portraitSprite: {fileID: 21300000, guid: f9a52eca1ff7bd0499b66c6f29d19e15, type: 3}
   dialogue:
     npcName: ???
     sentences:
@@ -3050,6 +3050,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasInteracted: 0
   isInteracting: 0
+  gameManager: {fileID: 0}
+  dialogueManager: {fileID: 0}
+  portraitSprite: {fileID: 0}
+  dialogue:
+    npcName: 
+    sentences: []
+    isPlayerSpeaking: 
+  doorNumber: 0
   sceneToLoad: Hallway
 --- !u!1 &1468859724
 GameObject:
@@ -4232,6 +4240,8 @@ MonoBehaviour:
   OriginalDueterno: {fileID: 0}
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 0}
+  AldricNPC: {fileID: 0}
+  DummyFinal: {fileID: 0}
 --- !u!4 &1828269165
 Transform:
   m_ObjectHideFlags: 0

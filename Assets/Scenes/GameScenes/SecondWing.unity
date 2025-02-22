@@ -741,7 +741,7 @@ MonoBehaviour:
   hasInteracted: 0
   isInteracting: 0
   shouldLoadScene: 1
-  shouldDestroy: 1
+  shouldDestroy: 0
   sceneToLoad: Puzzle
   portraitSprite: {fileID: 21300000, guid: 3b64c7820d9194143ba97976760c1670, type: 3}
   dialogue:
@@ -3519,6 +3519,8 @@ MonoBehaviour:
   OriginalDueterno: {fileID: 0}
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 0}
+  AldricNPC: {fileID: 0}
+  DummyFinal: {fileID: 0}
 --- !u!4 &1519341601
 Transform:
   m_ObjectHideFlags: 0
@@ -3582,6 +3584,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasInteracted: 0
   isInteracting: 0
+  gameManager: {fileID: 0}
+  dialogueManager: {fileID: 0}
+  portraitSprite: {fileID: 0}
+  dialogue:
+    npcName: 
+    sentences: []
+    isPlayerSpeaking: 
+  doorNumber: 0
   sceneToLoad: Hallway
 --- !u!61 &1557113692
 BoxCollider2D:
@@ -4088,7 +4098,7 @@ MonoBehaviour:
   shouldLoadScene: 1
   shouldDestroy: 1
   sceneToLoad: Combat
-  portraitSprite: {fileID: 21300000, guid: 442eec544c4cac840aad9933a065e268, type: 3}
+  portraitSprite: {fileID: 21300000, guid: 684a4e92c5fcac849bbc1bab46a93682, type: 3}
   dialogue:
     npcName: Vengeful Spirit Sonatine
     sentences:

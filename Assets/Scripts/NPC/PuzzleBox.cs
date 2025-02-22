@@ -45,6 +45,8 @@ public class PuzzleBox : NPC
     public override void CompleteInteraction()
     {
         isInteracting = false;
+        //hasInteracted = true;
+
 
         if (shouldLoadScene && !string.IsNullOrEmpty(sceneToLoad))
         {

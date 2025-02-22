@@ -1690,6 +1690,13 @@ MonoBehaviour:
   hasInteracted: 0
   isInteracting: 0
   gameManager: {fileID: 0}
+  dialogueManager: {fileID: 0}
+  portraitSprite: {fileID: 21300000, guid: eaa82fd2c8df87c43957949e6e0ba6a0, type: 3}
+  dialogue:
+    npcName: 
+    sentences:
+    - Door is locked.
+    isPlayerSpeaking: 00
   doorNumber: 1
   sceneToLoad: HallwayCutscene
 --- !u!1 &306071240

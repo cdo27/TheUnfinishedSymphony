@@ -292,7 +292,7 @@ MonoBehaviour:
   shouldLoadScene: 0
   shouldDestroy: 0
   sceneToLoad: Combat
-  portraitSprite: {fileID: 21300000, guid: 442eec544c4cac840aad9933a065e268, type: 3}
+  portraitSprite: {fileID: 21300000, guid: f69bc87f0307e914aab8def401d026aa, type: 3}
   dialogue:
     npcName: Thief Spirit
     sentences:
@@ -381,7 +381,7 @@ MonoBehaviour:
   shouldLoadScene: 0
   shouldDestroy: 0
   sceneToLoad: 
-  portraitSprite: {fileID: 21300000, guid: 442eec544c4cac840aad9933a065e268, type: 3}
+  portraitSprite: {fileID: 21300000, guid: f69bc87f0307e914aab8def401d026aa, type: 3}
   dialogue:
     npcName: Thief Spirit
     sentences:
@@ -796,6 +796,7 @@ GameObject:
   - component: {fileID: 366373060}
   - component: {fileID: 366373061}
   - component: {fileID: 366373062}
+  - component: {fileID: 366373063}
   m_Layer: 0
   m_Name: ---Player---
   m_TagString: Untagged
@@ -860,6 +861,36 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &366373063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366373059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 4cbc3d7b47290cd4baf01e03689523a5, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 554738151}
+          m_TargetAssemblyTypeName: CutsceneManager, Assembly-CSharp
+          m_MethodName: beforeCombatTut
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &456272576
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,6 +1302,8 @@ MonoBehaviour:
   OriginalDueterno: {fileID: 0}
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 0}
+  AldricNPC: {fileID: 0}
+  DummyFinal: {fileID: 0}
 --- !u!320 &554738152
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -2283,6 +2316,12 @@ MonoBehaviour:
   hasInteracted: 0
   isInteracting: 0
   gameManager: {fileID: 0}
+  dialogueManager: {fileID: 0}
+  portraitSprite: {fileID: 0}
+  dialogue:
+    npcName: 
+    sentences: []
+    isPlayerSpeaking: 
   doorNumber: 0
   sceneToLoad: FirstWing
 --- !u!1 &1639356801
@@ -2431,6 +2470,13 @@ MonoBehaviour:
   hasInteracted: 0
   isInteracting: 0
   gameManager: {fileID: 0}
+  dialogueManager: {fileID: 0}
+  portraitSprite: {fileID: 21300000, guid: eaa82fd2c8df87c43957949e6e0ba6a0, type: 3}
+  dialogue:
+    npcName: 
+    sentences:
+    - The door seems to be locked.
+    isPlayerSpeaking: 00
   doorNumber: 2
   sceneToLoad: SecondWing
 --- !u!1 &1712038795
@@ -2724,6 +2770,13 @@ MonoBehaviour:
   hasInteracted: 0
   isInteracting: 0
   gameManager: {fileID: 0}
+  dialogueManager: {fileID: 0}
+  portraitSprite: {fileID: 21300000, guid: eaa82fd2c8df87c43957949e6e0ba6a0, type: 3}
+  dialogue:
+    npcName: 
+    sentences:
+    - The door seems to be locked.
+    isPlayerSpeaking: 00
   doorNumber: 3
   sceneToLoad: ThirdWing
 --- !u!1 &1958814384

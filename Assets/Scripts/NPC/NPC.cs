@@ -14,8 +14,6 @@ public class NPC : Interactable
     public GameManager gameManager;
     public DialogueManager dialogueManager;
     public UIManager uiManager;
-    public PuzzleLevelConfig levelConfig; // Optional level configuration for tutorials
-
     private PuzzleMechanism puzzleMechanism; // Reference to the puzzle mechanism
 
     private void Awake()
@@ -28,10 +26,6 @@ public class NPC : Interactable
         if (gameManager == null)
         {
             Debug.LogError("GameManager was not found.");
-        }
-        if (puzzleMechanism == null && levelConfig != null)
-        {
-            Debug.LogError("PuzzleMechanism was not found, but is required for the provided levelConfig.");
         }
     }
 
@@ -48,12 +42,6 @@ public class NPC : Interactable
         {
             Debug.Log("Playing after dialogue");
             dialogueManager.StartDialogue(afterDialogue, portraitSprite, this);
-
-            // Check and apply puzzle configuration if applicable
-            if (levelConfig != null && puzzleMechanism != null)
-            {
-                puzzleMechanism.SetLevelConfig(levelConfig);
-            }
         }
     }
 

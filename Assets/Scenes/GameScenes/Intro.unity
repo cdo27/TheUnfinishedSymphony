@@ -1931,7 +1931,6 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   uiManager: {fileID: 0}
-  levelConfig: {fileID: 0}
   fadeDuration: 1
   spriteRenderer: {fileID: 280304763}
 --- !u!1 &284047461
@@ -2549,7 +2548,6 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   uiManager: {fileID: 0}
-  levelConfig: {fileID: 0}
 --- !u!212 &390049319
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8577,6 +8575,7 @@ MonoBehaviour:
   TutorialAldric: {fileID: 280304764}
   TutorialThief: {fileID: 0}
   puzzle1: {fileID: 0}
+  dummypuzzle1: {fileID: 0}
   OriginalSerpentura: {fileID: 0}
   DummySerpentura: {fileID: 0}
   monologueWing1: {fileID: 0}

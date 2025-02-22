@@ -1,10 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PuzzleBox : NPC
+public class DummyPuzzle : NPC
 {
-    public new PuzzleLevelConfig levelConfig; 
-
     public bool isCompleted = false;
     public bool displayImage = false;
 
@@ -27,24 +25,19 @@ public class PuzzleBox : NPC
         if (isCompleted)
         {
             dialogueManager.StartDialogue(afterDialogue, portraitSprite, this);
-            if (displayImage) uiManager.displayPuzzleImage();
+            if (displayImage)
+                uiManager.displayPuzzleImage();
         }
         else
         {
             dialogueManager.StartDialogue(dialogue, portraitSprite, this);
-
-            if (levelConfig != null)
-            {
-                gameManager.SetPuzzleLevelConfig(levelConfig); // Store the level in GameManager
-                Debug.Log($"Stored level config {levelConfig.name} in GameManager");
-            }
         }
     }
 
     public override void CompleteInteraction()
     {
         isInteracting = false;
-        hasInteracted = true;
+        //hasInteracted = true;
 
 
         if (shouldLoadScene && !string.IsNullOrEmpty(sceneToLoad))

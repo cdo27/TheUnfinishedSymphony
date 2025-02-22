@@ -14,6 +14,7 @@ public class CutsceneManager : MonoBehaviour
     //Wing 1
     [Header("Wing 1 Elements")]
     public PuzzleBox puzzle1;
+    public PuzzleBox dummypuzzle1;
     public CombatNPC OriginalSerpentura; //keep if not complete
     public NPC DummySerpentura; //after combat dialogue
 
@@ -79,9 +80,9 @@ public class CutsceneManager : MonoBehaviour
     //--------------Wing 1----------------------
 
     public void afterPuzzle1(){
-        if(puzzle1 != null){
-            puzzle1.isCompleted = true; //set it to true so other dialogue plays when they interact afterwords
-            puzzle1.Interact();
+        if(dummypuzzle1 != null){
+            dummypuzzle1.isCompleted = true; //set it to true so other dialogue plays when they interact afterwords
+            dummypuzzle1.Interact();
             Debug.Log("Played after puzzle 1 cutscene");
         }else{
             Debug.Log("Puzzle 1 is null");

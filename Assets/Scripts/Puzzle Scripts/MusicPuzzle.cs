@@ -22,6 +22,8 @@ public class PuzzleMechanism : MonoBehaviour
     public PuzzleLevelConfig levelTwoConfig;
     public PuzzleLevelConfig levelThreeConfig;
     private GameManager gameManager;
+    public Image background1;
+    public Image background2;
 
     private float countdown;                 // Timer countdown
     private bool timerActive = true;         // Flag to control whether the timer should run
@@ -105,6 +107,10 @@ public class PuzzleMechanism : MonoBehaviour
         Debug.LogError("Level configuration not set!");
         return;
     }
+    // Set the visibility of background images based on the level
+    bool isTutorialLevel = levelConfig == tutorialConfig;
+    background1.gameObject.SetActive(isTutorialLevel);
+    background2.gameObject.SetActive(isTutorialLevel);
 
     countdown = levelConfig.timeLimit;
     playerSequence = new int[levelConfig.missingNotesCount];

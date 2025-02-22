@@ -28,8 +28,9 @@ public class CombatStateManager : MonoBehaviour
     public GameObject enemy;
     public Sprite thiefSprite;
     public Sprite redSpiritSprite;
-    public Sprite yelowSpiritSprite;
+    public Sprite yellowSpiritSprite;
     public Sprite blueSpiritSprite;
+    public Sprite aldricSprite;
 
     // Just for testing
     public TMP_Text modeText;
@@ -43,6 +44,23 @@ public class CombatStateManager : MonoBehaviour
         {
             SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
             enemySpriteRenderer.sprite = thiefSprite;
+        }else if (currentSong.songID == 002)
+        {
+            SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
+            enemySpriteRenderer.sprite = redSpiritSprite;
+        }else if (currentSong.songID == 003)
+        {
+            SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
+            enemySpriteRenderer.sprite = yellowSpiritSprite;
+        }else if (currentSong.songID == 004)
+        {
+            SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
+            enemySpriteRenderer.sprite = blueSpiritSprite;
+        }
+        else if (currentSong.songID == 005)
+        {
+            SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
+            enemySpriteRenderer.sprite = aldricSprite;
         }
     }
 

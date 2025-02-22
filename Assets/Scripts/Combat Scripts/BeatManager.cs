@@ -114,6 +114,8 @@ public class BeatManager : MonoBehaviour
 
                         // Play block sound if blocking an attack 
                         if (combatStateManager.gameState == 2) audioManager.playMusicBlockSound();
+                        // handle hit and destroy, depending on if it's an atatck note or defend note
+                        note.handleHit(combatStateManager.enemy.transform.position);
 
                         // If it's a perfect hit
                         if (hitResult == 2)
@@ -145,9 +147,6 @@ public class BeatManager : MonoBehaviour
                             }
 
                         }
-
-                        // Destroy the note after hitting it
-                        Destroy(note.gameObject);
 
                         // Break the loop to ensure only one note is hit per press
                         break;

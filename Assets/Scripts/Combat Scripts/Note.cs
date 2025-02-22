@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using System.Collections;
 
 public class Note : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class Note : MonoBehaviour
     public Sprite redNoteSprite;  
     public Sprite greenNoteSprite;
     public Sprite purpleNoteSprite;
+    public Sprite attackSprite;
 
     public int noteType;
     private int mode;
@@ -120,6 +122,36 @@ public class Note : MonoBehaviour
         {
             Destroy(gameObject); // Remove the note when it reaches this point
         }
+    }
+
+    //when note hit, the note will rush to the enemy before being destroyed if attack note.
+    public void handleHit(Vector3 enemyPosition)
+    {
+        if (mode == 2) // Defend note
+        {
+            Destroy(gameObject);
+        }
+        else if (mode == 1) // Attack note
+        {
+            spriteRenderer.sprite = attackSprite;
+            // Move the note instantly up by 3 units
+            transform.position = new Vector3(transform.position.x - 2, transform.position.y + 3, transform.position.z);
+
+            // Animate the note moving towards the enemy
+            StartCoroutine(MoveTowardsEnemy(enemyPosition));
+        }
+    }
+
+    private IEnumerator MoveTowardsEnemy(Vector3 enemyPosition)
+    {
+        float speed = 10f; // Adjust speed as needed
+        while (Vector3.Distance(transform.position, enemyPosition) > 0.1f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, enemyPosition, 20 * Time.deltaTime);
+            yield return null;
+        }
+
+        Destroy(gameObject); // Destroy after reaching the enemy
     }
 
     void defendNoteUpdate()

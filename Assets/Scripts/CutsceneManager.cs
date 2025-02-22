@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class CutsceneManager : MonoBehaviour
 {
@@ -32,6 +33,8 @@ public class CutsceneManager : MonoBehaviour
     [Header("Wing 3 Elements")]
     public PuzzleBox puzzle3;
     public PuzzleBox dummypuzzle3;
+    public PuzzleBox cabinet;
+    public PlayableDirector playableCutscene3;
     public CombatNPC OriginalDueterno; //keep if not complete
     public NPC DummyDueterno;
     public NPC monologueWing3;
@@ -156,6 +159,7 @@ public class CutsceneManager : MonoBehaviour
         if(dummypuzzle3 != null){
             dummypuzzle3.isCompleted = true; 
             dummypuzzle3.Interact();
+            PlayPuzzle3();
             Debug.Log("Played after puzzle 3 cutscene");
         }else{
             Debug.Log("Puzzle 3 is null");
@@ -173,6 +177,26 @@ public class CutsceneManager : MonoBehaviour
         }
 
     }
+    //play puzzle cutscene 
+    public void PlayPuzzle3()
+    {
+        if (playableCutscene3 != null)
+        {
+            playableCutscene3.gameObject.SetActive(true);
+            playableCutscene3.Play();
+            Debug.Log("Playing puzzle 3 cutscene");
+        }
+    }
+
+    public void PlayCabinet()
+    {
+        if (cabinet != null)
+        {
+            cabinet.Interact();
+            Debug.Log("Playing cabinet cutscene");
+        }
+    }
+
 
     //play Wing 3 monologue
     public void PlayWing3Monologue()

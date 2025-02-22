@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     {
         ReassignCutsceneManager();
         audioManager = FindObjectOfType<AudioManager>();
-        SetGameState(GameState.Menu);
+        SetGameState(GameState.Game);
 
         // Start the intro music as soon as the game begins
         PlayIntroMusic();

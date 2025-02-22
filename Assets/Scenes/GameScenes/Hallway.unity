@@ -1333,12 +1333,15 @@ MonoBehaviour:
   monologueWing2: {fileID: 1145195639}
   puzzle3: {fileID: 0}
   dummypuzzle3: {fileID: 0}
+  cabinet: {fileID: 0}
+  playableCutscene3: {fileID: 0}
   OriginalDueterno: {fileID: 0}
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 0}
   BenedictNPC: {fileID: 1317423903}
   AldricNPC: {fileID: 0}
   DummyFinal: {fileID: 0}
+  EndingTrigger: {fileID: 0}
 --- !u!1 &592919585
 GameObject:
   m_ObjectHideFlags: 0
@@ -2008,7 +2011,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1076736981
 RectTransform:
   m_ObjectHideFlags: 0

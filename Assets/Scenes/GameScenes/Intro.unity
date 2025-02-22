@@ -1699,8 +1699,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4287604414
-  m_fontColor: {r: 0.7433963, g: 0.65069765, b: 0.55965114, a: 1}
+    rgba: 4285108924
+  m_fontColor: {r: 0.735849, g: 0.5710141, b: 0.4130473, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3664,7 +3664,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.7207546, g: 0.57535255, b: 0.39029542, a: 0}
+    m_NormalColor: {r: 0.7924528, g: 0.5734692, b: 0.2953008, a: 0}
     m_HighlightedColor: {r: 0.8792453, g: 0.72662157, b: 0.5358419, a: 0}
     m_PressedColor: {r: 0.85660374, g: 0.6901317, b: 0.6901317, a: 0}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0}
@@ -3712,7 +3712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7049,10 +7049,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2052678954}
   - {fileID: 1740044925}
   - {fileID: 95747873}
   - {fileID: 148979182}
-  - {fileID: 2052678954}
   - {fileID: 1282407284}
   - {fileID: 1964801105}
   - {fileID: 1420405556}

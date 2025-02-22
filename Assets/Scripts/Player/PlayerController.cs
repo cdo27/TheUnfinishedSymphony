@@ -10,6 +10,7 @@ public class PlayerController: MonoBehaviour
     private const float playerSpeed = 13f;
     private Vector3 moveDir;
     private Rigidbody2D playerRigidbody2D;
+    private Animator animator;
 
     private GameManager gameManager;
     private PlayerManager playerManager;
@@ -22,6 +23,7 @@ public class PlayerController: MonoBehaviour
     void Start()
     {
         playerRigidbody2D = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         gameManager = FindObjectOfType<GameManager>();
         playerManager = FindObjectOfType<PlayerManager>();
 
@@ -58,6 +60,7 @@ public class PlayerController: MonoBehaviour
     //----------------Movement Code-----------------------------------------
     public void StopPlayerMovement(){
         canMove = false;
+        animator.SetBool("IsMoving", false);
     }
 
     public void StartPlayerMovement(){
@@ -81,6 +84,13 @@ public class PlayerController: MonoBehaviour
         }
 
         moveDir = new Vector3(moveX, moveY).normalized; //update move direction
+        
+        if (moveX != 0)
+        {
+            animator.SetFloat("MoveX", moveX);
+        }
+
+        animator.SetBool("isMoving", moveX != 0 || moveY != 0);
     }
 
     private void FixedUpdate(){ //updates player position with moveDir

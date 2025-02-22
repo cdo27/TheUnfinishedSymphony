@@ -6,16 +6,19 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     public AudioSource audioSource; 
+    public AudioSource bgmAudioSource; // Separate AudioSource for background music
     public AudioSource quillAudioSource; // Separate AudioSource for quill SFX
     public AudioClip beat;
     public AudioClip hitSoundA;
     public AudioClip enemyNotePop;
     public AudioClip musicBlock;
     public AudioClip endEnemyNoteSpawn;
-
+   
     //BGM & SFX
     public AudioClip introBGM;
     public AudioClip quillSFX; 
+    public AudioClip backgroundMusic; // Background music clip
+    private bool hasPlayedIntroBGM = false;
 
     public void playBeatSound(double playTime)
     {
@@ -51,13 +54,18 @@ public class AudioManager : MonoBehaviour
 
 
 //BACKGROUND MUSIC AND SFX
+    
     public void playIntroMusic() 
     {
-        if (audioSource != null && introBGM != null)
-        {
-            audioSource.clip = introBGM;
-            audioSource.loop = true;
-            audioSource.Play();
+        if (bgmAudioSource != null && introBGM != null && !hasPlayedIntroBGM)
+    {
+            bgmAudioSource.clip = introBGM;
+            bgmAudioSource.loop = false;
+            bgmAudioSource.Play();
+            hasPlayedIntroBGM = true;
+
+            // Start background music after introBGM finishes
+            StartCoroutine(WaitForIntroToEnd());
         }
         else
         {
@@ -67,9 +75,40 @@ public class AudioManager : MonoBehaviour
 
     public void StopIntroMusic()
     {
-        if (audioSource != null)
+        if (bgmAudioSource != null)
         {
-            audioSource.Stop();
+            bgmAudioSource.Stop();
+        }
+    }
+
+    private IEnumerator WaitForIntroToEnd()
+    {
+         while (bgmAudioSource.isPlaying) // Wait until introBGM finishes
+        {
+            yield return null;
+        }
+        PlayBackgroundMusic();
+    }
+
+    public void PlayBackgroundMusic()
+    {
+        if (bgmAudioSource != null && backgroundMusic != null)
+        {
+            if (!bgmAudioSource.isPlaying) // Prevents overlapping music
+            {
+                bgmAudioSource.clip = backgroundMusic;
+                bgmAudioSource.loop = true;
+                bgmAudioSource.volume = 0.1f;
+                bgmAudioSource.Play();
+            }
+        }
+    }
+
+    public void StopBackgroundMusic()
+    {
+        if (bgmAudioSource != null)
+        {
+            bgmAudioSource.Stop();
         }
     }
 

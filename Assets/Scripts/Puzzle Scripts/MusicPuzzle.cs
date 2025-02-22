@@ -42,6 +42,12 @@ public class PuzzleMechanism : MonoBehaviour
         feedbackText.text = "";
 
         sceneController = FindObjectOfType<SceneController>();
+
+        // Stop background music when entering the puzzle scene
+        if (gameManager != null && gameManager.audioManager != null)
+        {
+            gameManager.audioManager.StopBackgroundMusic();
+        }
     }
 
     void Update()

@@ -20,6 +20,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip backgroundMusic; // Background music clip
     private bool hasPlayedIntroBGM = false;
 
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     public void playBeatSound(double playTime)
     {
         audioSource.clip = beat;

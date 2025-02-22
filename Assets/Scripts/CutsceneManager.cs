@@ -30,7 +30,8 @@ public class CutsceneManager : MonoBehaviour
     [Header("Wing 3 Elements")]
     public PuzzleBox puzzle3;
     public CombatNPC OriginalDueterno; //keep if not complete
-    public NPC DummyDueterno; 
+    public NPC DummyDueterno;
+    public NPC monologueWing3;
 
 
     // Start is called before the first frame update
@@ -161,5 +162,15 @@ public class CutsceneManager : MonoBehaviour
             Debug.Log("Combat 3 is null");
         }
 
+    }
+
+    //play Wing 3 monologue
+    public void PlayWing3Monologue()
+    {
+        if (monologueWing3 != null)
+        {
+            monologueWing3.Interact();
+            Debug.Log("Played Wing 3 monologue");
+        }
     }
 }

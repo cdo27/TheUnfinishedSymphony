@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class PuzzleBox : NPC
 {
-    public PuzzleLevelConfig levelConfig; 
+    public new PuzzleLevelConfig levelConfig; 
 
     public bool isCompleted = false;
     public bool displayImage = false;

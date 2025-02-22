@@ -33,6 +33,7 @@ public class SceneController : MonoBehaviour
     {
         SceneManager.UnloadSceneAsync("Puzzle");
         gameManager.SetGameState(GameManager.GameState.Game); //back to Game state
+        gameManager.audioManager.PlayBackgroundMusic();
 
     }
 
@@ -40,6 +41,6 @@ public class SceneController : MonoBehaviour
     {
         SceneManager.UnloadSceneAsync("Combat");
         gameManager.SetGameState(GameManager.GameState.Game); //back to Game state
-
+        gameManager.audioManager.PlayBackgroundMusic();
     }
 }

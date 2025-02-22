@@ -33,6 +33,10 @@ public class CutsceneManager : MonoBehaviour
     public NPC DummyDueterno;
     public NPC monologueWing3;
 
+    [Header("Final Cutscene")]
+    public NPC AldricNPC;
+    public NPC DummyFinal;
+
 
     // Start is called before the first frame update
     void Start()
@@ -172,5 +176,17 @@ public class CutsceneManager : MonoBehaviour
             monologueWing3.Interact();
             Debug.Log("Played Wing 3 monologue");
         }
+    }
+
+    //--------------Final----------------------
+
+    public void finalCutscene2(){
+        if(AldricNPC != null){
+            AldricNPC.Interact();
+            Debug.Log("Playing final cutscene 2");
+        }else{
+            Debug.Log("Final custcene 2 is null");
+        }
+
     }
 }

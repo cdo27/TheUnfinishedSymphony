@@ -1005,6 +1005,8 @@ MonoBehaviour:
   OriginalDueterno: {fileID: 0}
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 1285630332}
+  AldricNPC: {fileID: 0}
+  DummyFinal: {fileID: 0}
 --- !u!1 &590642949
 GameObject:
   m_ObjectHideFlags: 0
@@ -2782,7 +2784,7 @@ MonoBehaviour:
     npcName: 
     sentences: []
     isPlayerSpeaking: 
-  doorNumber: 0
+  doorNumber: 4
   sceneToLoad: Entrance
 --- !u!61 &2029495258
 BoxCollider2D:

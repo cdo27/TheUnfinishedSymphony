@@ -49,6 +49,13 @@ public class Door : Interactable
                 dialogueManager.StartDoorDialogue(dialogue, portraitSprite, this);
             }
         }
+        else if(doorNumber == 4){ //open final cutscene door
+            if(gameManager.hasCompletedPuzzle3 && gameManager.hasCompletedCombat3){
+                SceneManager.LoadScene("FinalCutscene");
+            }else{
+                SceneManager.LoadScene(sceneToLoad);
+            }
+        }
 
         if(doorNumber == 0){ //open door
             SceneManager.LoadScene(sceneToLoad);

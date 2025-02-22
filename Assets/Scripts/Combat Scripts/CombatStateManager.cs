@@ -14,6 +14,7 @@ public class CombatStateManager : MonoBehaviour
     public double lastCheckedTime = -1.0; // Track last checked DSP time
 
     public SceneController sceneController;
+    public GameManager gameManager;
     public BeatManager beatManager;
     public GameObject attackBar;
 
@@ -36,9 +37,23 @@ public class CombatStateManager : MonoBehaviour
     public TMP_Text modeText;
 
     void Start()
-    {
+    {   
+        gameManager = FindObjectOfType<GameManager>();
         //load proper song
-        currentSong = new ThiefSong();
+        currentSong.songID = gameManager.currentSong;
+
+        if(gameManager.currentSong == 001){
+            currentSong = new ThiefSong();
+        }else if(gameManager.currentSong == 002){
+            currentSong = new Wing1Song();
+        }else if(gameManager.currentSong == 003){
+            currentSong = new Wing2Song();
+        }else if(gameManager.currentSong == 004){
+            currentSong = new Wing3Song();
+        }else if(gameManager.currentSong == 005){
+            currentSong = new AldricSong();
+        }
+        
 
         if (currentSong.songID == 001)
         {
@@ -62,6 +77,8 @@ public class CombatStateManager : MonoBehaviour
             SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
             enemySpriteRenderer.sprite = aldricSprite;
         }
+
+        
     }
 
     void Update()

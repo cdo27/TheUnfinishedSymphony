@@ -1689,6 +1689,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasInteracted: 0
   isInteracting: 0
+  gameManager: {fileID: 0}
+  doorNumber: 1
   sceneToLoad: HallwayCutscene
 --- !u!1 &306071240
 GameObject:
@@ -2355,6 +2357,7 @@ MonoBehaviour:
   hasCompletedCombat1: 0
   hasCompletedCombat2: 0
   hasCompletedCombat3: 0
+  hasCompletedFinal: 0
   currentPuzzleLevelConfig: {fileID: 0}
 --- !u!1 &482717011
 GameObject:

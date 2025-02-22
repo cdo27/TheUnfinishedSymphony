@@ -187,6 +187,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   uiManager: {fileID: 0}
+  levelConfig: {fileID: 0}
   repeatDialogue:
     npcName: Thief Spirit
     sentences:
@@ -1235,6 +1236,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   uiManager: {fileID: 0}
+  levelConfig: {fileID: 0}
 --- !u!1 &1032113603
 GameObject:
   m_ObjectHideFlags: 0
@@ -1633,6 +1635,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   uiManager: {fileID: 0}
+  levelConfig: {fileID: 0}
 --- !u!4 &1145195640
 Transform:
   m_ObjectHideFlags: 0
@@ -1717,6 +1720,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   uiManager: {fileID: 0}
+  levelConfig: {fileID: 0}
 --- !u!1 &1367643318
 GameObject:
   m_ObjectHideFlags: 0
@@ -2169,6 +2173,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasInteracted: 0
   isInteracting: 0
+  gameManager: {fileID: 0}
+  doorNumber: 0
   sceneToLoad: FirstWing
 --- !u!1 &1639356801
 GameObject:
@@ -2315,6 +2321,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasInteracted: 0
   isInteracting: 0
+  gameManager: {fileID: 0}
+  doorNumber: 2
   sceneToLoad: SecondWing
 --- !u!1 &1712038795
 GameObject:
@@ -2606,6 +2614,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasInteracted: 0
   isInteracting: 0
+  gameManager: {fileID: 0}
+  doorNumber: 3
   sceneToLoad: ThirdWing
 --- !u!1 &1958814384
 GameObject:
@@ -2745,6 +2755,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasInteracted: 0
   isInteracting: 0
+  gameManager: {fileID: 0}
+  doorNumber: 0
   sceneToLoad: Entrance
 --- !u!61 &2029495258
 BoxCollider2D:

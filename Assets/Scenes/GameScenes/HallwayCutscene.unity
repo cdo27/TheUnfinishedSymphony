@@ -326,6 +326,8 @@ MonoBehaviour:
     isPlayerSpeaking: 00010001000100
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
+  uiManager: {fileID: 0}
+  levelConfig: {fileID: 0}
 --- !u!1 &141037561
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,12 +395,13 @@ MonoBehaviour:
     isPlayerSpeaking: 
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
+  uiManager: {fileID: 0}
+  levelConfig: {fileID: 0}
   repeatDialogue:
     npcName: Thief Spirit
     sentences:
     - Back to buy some wares?
     isPlayerSpeaking: 00
-  uiManager: {fileID: 0}
 --- !u!61 &141037564
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1256,6 +1259,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TutorialAldric: {fileID: 0}
   TutorialThief: {fileID: 62219382}
+  puzzle1: {fileID: 0}
+  OriginalSerpentura: {fileID: 0}
+  DummySerpentura: {fileID: 0}
+  monologueWing1: {fileID: 0}
+  puzzle2: {fileID: 0}
+  OriginalSonatine: {fileID: 0}
+  DummySonatine: {fileID: 0}
+  monologueWing2: {fileID: 0}
+  puzzle3: {fileID: 0}
+  OriginalDueterno: {fileID: 0}
+  DummyDueterno: {fileID: 0}
+  monologueWing3: {fileID: 0}
 --- !u!320 &554738152
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -2267,6 +2282,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasInteracted: 0
   isInteracting: 0
+  gameManager: {fileID: 0}
+  doorNumber: 0
   sceneToLoad: FirstWing
 --- !u!1 &1639356801
 GameObject:
@@ -2413,6 +2430,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasInteracted: 0
   isInteracting: 0
+  gameManager: {fileID: 0}
+  doorNumber: 2
   sceneToLoad: SecondWing
 --- !u!1 &1712038795
 GameObject:
@@ -2704,6 +2723,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasInteracted: 0
   isInteracting: 0
+  gameManager: {fileID: 0}
+  doorNumber: 3
   sceneToLoad: ThirdWing
 --- !u!1 &1958814384
 GameObject:

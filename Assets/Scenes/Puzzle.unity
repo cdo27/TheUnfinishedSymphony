@@ -1303,7 +1303,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ccd35ba864025104d85e96d526bf4b80, type: 3}
   timerText: {fileID: 214737425}
   feedbackText: {fileID: 897605918}
-  levelConfig: {fileID: 0}
+  levelConfig: {fileID: 11400000, guid: 7bcd156daf954d147ac72cef54412d99, type: 2}
 --- !u!81 &599624489
 AudioListener:
   m_ObjectHideFlags: 0

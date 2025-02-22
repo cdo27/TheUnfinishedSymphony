@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     hasTriggeredAfterPuzzle1, hasTriggeredAfterCombat1, hasTriggeredWing1Monologue,
     hasTriggeredAfterCombat2, hasTriggeredAfterPuzzle2,hasTriggeredWing2Monologue,
     hasTriggeredAfterPuzzle3, hasTriggeredAfterCombat3 = false;
+    public PuzzleLevelConfig currentPuzzleLevelConfig; 
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -131,10 +132,28 @@ public class GameManager : MonoBehaviour
         SceneManager.UnloadSceneAsync(sceneToUnload);
     }
 
+    public void SetPuzzleLevelConfig(PuzzleLevelConfig config)
+    {
+        currentPuzzleLevelConfig = config;
+    }
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log($"Scene loaded: {scene.name}, mode: {mode}");
         ReassignCutsceneManager();
+
+        if (scene.name == "PuzzleScene") // Apply the level configuration in the puzzle scene
+        {
+            PuzzleMechanism puzzleMechanism = FindObjectOfType<PuzzleMechanism>();
+            if (puzzleMechanism != null && currentPuzzleLevelConfig != null)
+            {
+                puzzleMechanism.SetLevelConfig(currentPuzzleLevelConfig);
+            }
+            else
+            {
+                Debug.LogError("PuzzleMechanism or currentPuzzleLevelConfig is missing in PuzzleScene!");
+            }
+        }
     }
 
     void ReassignCutsceneManager()

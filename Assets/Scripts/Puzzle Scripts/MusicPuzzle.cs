@@ -17,6 +17,7 @@ public class PuzzleMechanism : MonoBehaviour
     public TMP_Text feedbackText;            // TextMeshProUGUI for displaying feedback
 
     public PuzzleLevelConfig levelConfig;    // Level-specific settings
+    private GameManager gameManager;
 
     private float countdown;                 // Timer countdown
     private bool timerActive = true;         // Flag to control whether the timer should run
@@ -58,39 +59,58 @@ public class PuzzleMechanism : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+
+        if (gameManager == null)
+        {
+            Debug.LogError("GameManager not found in PuzzleMechanism!");
+            return;
+        }
+
+        if (gameManager.currentPuzzleLevelConfig != null)
+        {
+            SetLevelConfig(gameManager.currentPuzzleLevelConfig);
+        }
+        else
+        {
+            Debug.LogError("No level config found in GameManager when loading puzzle.");
+        }
+    }
+
     public void SetLevelConfig(PuzzleLevelConfig config)
-{
-    levelConfig = config;
-    LoadLevelConfig();
-    ResetSequence();
-    UpdateTimerText(countdown);
-    feedbackText.text = "Start playing!";
-}
-
-private void LoadLevelConfig()
-{
-    if (levelConfig == null)
     {
-        Debug.LogError("Level configuration not set!");
-        return;
+        levelConfig = config;
+        LoadLevelConfig();
+        ResetSequence();
+        UpdateTimerText(countdown);
+        feedbackText.text = "Start playing!";
     }
 
-    countdown = levelConfig.timeLimit;
-    playerSequence = new int[levelConfig.missingNotesCount];
-
-    // Adjust UI for the number of missing notes
-    foreach (var image in missingNoteImages)
+    private void LoadLevelConfig()
     {
-        image.gameObject.SetActive(false); // Initially disable all
-    }
+        if (levelConfig == null)
+        {
+            Debug.LogError("Level configuration not set!");
+            return;
+        }
 
-    for (int i = 0; i < levelConfig.missingNotesCount; i++)
-    {
-        missingNoteImages[i].gameObject.SetActive(true);
-    }
+        countdown = levelConfig.timeLimit;
+        playerSequence = new int[levelConfig.missingNotesCount];
 
-    audioSource.clip = levelConfig.musicSegment;
-}
+        foreach (var image in missingNoteImages)
+        {
+            image.gameObject.SetActive(false);
+        }
+
+        for (int i = 0; i < levelConfig.missingNotesCount; i++)
+        {
+            missingNoteImages[i].gameObject.SetActive(true);
+        }
+
+        audioSource.clip = levelConfig.musicSegment;
+    }
 
 
     private void SetupNoteButtons()

@@ -37,7 +37,7 @@ public class CombatStateManager : MonoBehaviour
     void Start()
     {
         //load proper song
-        currentSong = new TestSong();
+        currentSong = new ThiefSong();
 
         if (currentSong.songID == 001)
         {
@@ -58,11 +58,13 @@ public class CombatStateManager : MonoBehaviour
         {
             double currentTime = AudioSettings.dspTime;
 
+            /*
             // Update the UI text for debugging
             if (modeText != null)
             {
                 modeText.text = "Mode: " + GetModeText();
             }
+            */
 
             if (currentTime > lastCheckedTime) // Ensure we only check once per frame
             {

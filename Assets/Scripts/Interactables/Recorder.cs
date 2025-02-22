@@ -1,48 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Recorder : Interactable
 {
+    public Sprite portraitSprite;
     public RecorderDialogue dialogue;
-    
-    private Sprite[] npcPortraits = new Sprite[3]; // Array for 3 NPC portraits
-    
-    private RecorderPlay recorderPlay;
-    private NPC npcComponent;
+    public RecorderDialogue afterDialogue;
+    public GameManager gameManager;
+    public RecorderManager recorderManager;
+    public UIManager uiManager;
 
-    void Start()
+    private void Awake()
     {
-        recorderPlay = FindObjectOfType<RecorderPlay>();
-        if (recorderPlay == null)
+        gameManager = FindObjectOfType<GameManager>();
+        recorderManager = FindObjectOfType<RecorderManager>();
+        uiManager = FindObjectOfType<UIManager>();
+   
+        if (gameManager == null)
         {
-            Debug.LogError("No RecorderPlay found in scene!");
+            Debug.LogError("GameManager was not found.");
         }
-        
-        npcComponent = GetComponent<NPC>();
     }
 
     public override void Interact()
-    {
-        base.Interact();
-        
-        if (!isInteracting && recorderPlay != null)
+    {   
+        isInteracting = true;
+
+        if (!hasInteracted)
         {
-            recorderPlay.StartDialogue(dialogue, npcPortraits, npcComponent);
-            isInteracting = true;
+            Debug.Log("Playing dialogue");
+            recorderManager.StartDialogue(dialogue, portraitSprite, this);
+        }
+        else
+        {
+            Debug.Log("Playing after dialogue");
+            recorderManager.StartDialogue(afterDialogue, portraitSprite, this);
         }
     }
 
-    private void OnValidate()
+    public virtual void CompleteInteraction()
     {
-        if (dialogue != null)
-        {
-            if (dialogue.sentences != null && 
-                (dialogue.isPlayerSpeaking.Length != dialogue.sentences.Length ||
-                 dialogue.isAldricSpeaking.Length != dialogue.sentences.Length))
-            {
-                Debug.LogWarning("Dialogue arrays length mismatch in " + gameObject.name);
-            }
-        }
+        isInteracting = false;
+        hasInteracted = true;
     }
 }
+

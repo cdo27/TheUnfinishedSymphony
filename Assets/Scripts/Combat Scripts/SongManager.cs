@@ -6,11 +6,18 @@ public class SongManager : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip testSong;
+    public AudioClip thiefSong;
 
     //songs
     public void playTestSong()
     {
         audioSource.clip = testSong;
-        audioSource.Play(); // Play the song continuously (not PlayOneShot)
+        audioSource.Play(); 
+    }
+
+    public void playThiefSong()
+    {
+        audioSource.clip = thiefSong;
+        audioSource.Play(); 
     }
 }

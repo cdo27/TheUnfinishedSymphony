@@ -194,15 +194,15 @@ public class BeatManager : MonoBehaviour
     //---------------------------playing beat sounds every whole beat-----------------------------
     void ScheduleNextBeat()
     {
-        //audioManager.playBeatSound(nextBeatTime);
-        //if (currentBeat == 8) currentBeat = 0;
-        currentBeat++;
-
-        //end of enemy notes spawning during defend, play this quick sound
-        if (currentBeat % 8 == 0 && combatStateManager.gameState == 2)
+        if(currentBeat < 5)
         {
-            audioManager.playEndEnemyNoteSpawnSound();
+            audioManager.playBeatSound(nextBeatTime);
         }
+        combatStateManager.modeText.text = currentBeat.ToString(); ;
+    //if (currentBeat == 8) currentBeat = 0;
+    currentBeat++;
+
+        
         Debug.Log(currentBeat);
 
         nextBeatTime += crotchet;
@@ -211,9 +211,10 @@ public class BeatManager : MonoBehaviour
     //------------------------------checking if notes need to be spawned, and spawn them-----------------------------
     int processingDefendList = 0; // Turn to 1 when processing a defend list
     int currentDefendListSize = 0;
+    float transitionBeatTime;
 
     void CheckAndSpawnNotes()
-    {
+    {   
         if (combatStateManager.currentSong.attackBeatsToHit.Count > 0 || combatStateManager.currentSong.defendBeatsToHit.Count > 0)
         {
             BeatData nextBeat;
@@ -246,30 +247,46 @@ public class BeatManager : MonoBehaviour
                         {
                             processingDefendList = 1;  // Mark as processing
                             currentDefendListSize = combatStateManager.currentSong.defendBeatsToHit[0].Count;  // Store list size
+
+                            //store the transitioning time (last beat on the list + 1 beat
+                            BeatData lastBeat = combatStateManager.currentSong.defendBeatsToHit[0][currentDefendListSize - 1];
+                            transitionBeatTime = lastBeat.beatTime - 7;
                         }
 
-                        nextBeat = combatStateManager.currentSong.defendBeatsToHit[0][0]; // Get the first beat for defend mode
-
-                        dspTimeForNoteSpawn = GetDspTimeForBeat(nextBeat.beatTime - 8);  // Calculate spawn time, 8 beats before the current beat
-
-                        if (AudioSettings.dspTime >= dspTimeForNoteSpawn && AudioSettings.dspTime < dspTimeForNoteSpawn + crotchet)
+                        // Check if the list is now empty
+                        if (combatStateManager.currentSong.defendBeatsToHit[0].Count == 0)
                         {
-                            int position = currentDefendListSize - combatStateManager.currentSong.defendBeatsToHit[0].Count + 1; // Get note position
-
-                            Note createdNote = noteSpawner.SpawnDefendNote(nextBeat, currentDefendListSize, position);
-                            audioManager.playEnemyNotePopSound();
-                            activeNotes.Add(createdNote);
-
-                            combatStateManager.currentSong.defendBeatsToHit[0].RemoveAt(0);
-
-                            // If the list is now empty, reset variables and remove it
-                            if (combatStateManager.currentSong.defendBeatsToHit[0].Count == 0)
+                            // Check if it's time to play the transition sound
+                            if (AudioSettings.dspTime >= GetDspTimeForBeat(transitionBeatTime) &&
+                                AudioSettings.dspTime < GetDspTimeForBeat(transitionBeatTime) + crotchet)
                             {
+                                Debug.Log("defend mode: transitioning");
+                                audioManager.playEndEnemyNoteSpawnSound();
+
                                 combatStateManager.currentSong.defendBeatsToHit.RemoveAt(0);
                                 processingDefendList = 0; // Reset processing flag
                                 currentDefendListSize = 0; // Reset list size
+                                transitionBeatTime = 0; // Reset transition time
+                            }
+
+                        }else
+                        {
+                            nextBeat = combatStateManager.currentSong.defendBeatsToHit[0][0]; // Get the first beat for defend mode
+
+                            dspTimeForNoteSpawn = GetDspTimeForBeat(nextBeat.beatTime - 8);  // Calculate spawn time, 8 beats before the current beat
+
+                            if (AudioSettings.dspTime >= dspTimeForNoteSpawn && AudioSettings.dspTime < dspTimeForNoteSpawn + crotchet)
+                            {
+                                int position = currentDefendListSize - combatStateManager.currentSong.defendBeatsToHit[0].Count + 1; // Get note position
+
+                                Note createdNote = noteSpawner.SpawnDefendNote(nextBeat, currentDefendListSize, position);
+                                audioManager.playEnemyNotePopSound();
+                                activeNotes.Add(createdNote);
+
+                                combatStateManager.currentSong.defendBeatsToHit[0].RemoveAt(0);
                             }
                         }
+   
                     }
                     break;
             }

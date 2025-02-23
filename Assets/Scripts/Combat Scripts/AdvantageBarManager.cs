@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AdvantageBarManager : MonoBehaviour
 {
+
+    public PlayerManager playerManager;
     public RectTransform leftBar; // Reference to the left bar's RectTransform
     public RectTransform rightBar; // Reference to the right bar's RectTransform
     public RectTransform energyClash; // Reference to the energy clashing image's RectTransform
@@ -26,7 +28,21 @@ public class AdvantageBarManager : MonoBehaviour
     // Call this function to initialize the attack and defense notes
     public void InitializeBar(int attackNotes, int defenseNotes)
     {
+        playerManager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
+
+        // Optionally, check if the playerManager was found
+        if (playerManager == null)
+        {
+            Debug.LogError("PlayerManager not found in the scene.");
+        }
+
         advantage = 50f;
+        // Apply potion effect if the player has it
+        if (playerManager.GetPurchasedItems().Contains(2)) // Assuming item ID 2 is the potion
+        {
+            advantage = 70f; // Increase advantage by 20 when the potion is used
+        }
+
         totalAttackNotes = Mathf.Max(attackNotes, 1); // Avoid division by zero
         totalDefenseNotes = Mathf.Max(defenseNotes, 1);
 
@@ -100,6 +116,12 @@ public class AdvantageBarManager : MonoBehaviour
             case "Miss":
                 moveAmount = defenseUnit * 1.5f; // Full penalty
                 break;
+        }
+
+        // Apply armor effect if the player has it
+        if (playerManager.GetPurchasedItems().Contains(1)) // Assuming item ID 1 is the armor
+        {
+            moveAmount *= 0.5f; // Halve the damage taken during the defense phase
         }
 
         advantage = Mathf.Clamp(advantage - moveAmount, 0f, 100f);

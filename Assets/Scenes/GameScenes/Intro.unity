@@ -890,7 +890,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &95747873
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8883,6 +8883,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TutorialAldric: {fileID: 280304764}
   TutorialThief: {fileID: 0}
+  DummyThief: {fileID: 0}
   puzzle1: {fileID: 0}
   dummypuzzle1: {fileID: 0}
   OriginalSerpentura: {fileID: 0}
@@ -9011,7 +9012,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1740044925
 Transform:
   m_ObjectHideFlags: 0
@@ -9528,6 +9529,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 453735106}
+  originalSceneName: 
+  combatSceneName: Combat
 --- !u!1 &1918526445
 GameObject:
   m_ObjectHideFlags: 0

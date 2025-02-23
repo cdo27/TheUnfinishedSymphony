@@ -34,6 +34,7 @@ public class PuzzleMechanism : MonoBehaviour
     private SceneController sceneController;
     public Sprite defaultMissingNoteSprite;
     public Button toggleBackgroundButton;
+    private int selectedMissingNoteIndex = -1;
 
     void Start()
     {
@@ -46,6 +47,7 @@ public class PuzzleMechanism : MonoBehaviour
         LoadLevelConfig();
 
         SetupNoteButtons();
+        SetupMissingNoteImages();
         UpdateTimerText(countdown);
         feedbackText.text = "";
 
@@ -94,6 +96,22 @@ public class PuzzleMechanism : MonoBehaviour
             Debug.LogError("No level config found in GameManager when loading puzzle.");
         }
     }
+    private void SetupMissingNoteImages()
+{
+    for (int i = 0; i < missingNoteImages.Length; i++)
+    {
+        int index = i;
+        missingNoteImages[i].GetComponent<Button>().onClick.AddListener(() => SelectMissingNoteImage(index));
+        missingNoteImages[i].gameObject.SetActive(i < levelConfig.missingNotesCount);
+    }
+}
+private void SelectMissingNoteImage(int index)
+{
+    selectedMissingNoteIndex = index; // Set the currently selected index
+    // Optionally, provide visual feedback for selection
+}
+
+
     private void ToggleBackgrounds()
     {
         bool isActive = background1.gameObject.activeSelf;
@@ -201,19 +219,33 @@ public class PuzzleMechanism : MonoBehaviour
     }
 
     private void HandleNotePress(int index)
+{
+    if (selectedMissingNoteIndex != -1) // A missing note image is selected
     {
-        if (attemptCount < levelConfig.missingNotesCount) 
+        if (index < noteImages.Length)
         {
-            playerSequence[attemptCount] = index;
-            UpdateMissingNoteDisplay(index, attemptCount);
-            attemptCount++;
-
-            if (attemptCount == levelConfig.missingNotesCount)
+            missingNoteImages[selectedMissingNoteIndex].sprite = noteImages[index];
+            playerSequence[selectedMissingNoteIndex] = index; // Store the selected note index
+            if (++attemptCount == levelConfig.missingNotesCount)
             {
-                CheckSequence();
+                CheckSequence(); // Check if the sequence is correct
             }
         }
+        selectedMissingNoteIndex = -1; // Reset selection after the missing note is filled
     }
+    else if (attemptCount < levelConfig.missingNotesCount) // Follow original sequence-based input
+    {
+        playerSequence[attemptCount] = index;
+        UpdateMissingNoteDisplay(index, attemptCount);
+        if (++attemptCount == levelConfig.missingNotesCount)
+        {
+            CheckSequence(); // Check if the sequence is correct
+        }
+    }
+}
+
+
+
 
     private void UpdateMissingNoteDisplay(int noteIndex, int missingIndex)
     {
@@ -224,18 +256,24 @@ public class PuzzleMechanism : MonoBehaviour
     }
 
     private void CheckSequence()
+{
+    bool isCorrect = true;
+    for (int i = 0; i < levelConfig.correctSequence.Length; i++)
     {
-        for (int i = 0; i < levelConfig.correctSequence.Length; i++)
+        if (playerSequence[i] != levelConfig.correctSequence[i])
         {
-            if (playerSequence[i] != levelConfig.correctSequence[i])
-            {
-                feedbackText.text = "Incorrect sequence, try again!";
-                ResetSequence();
-                return;
-            }
+            isCorrect = false;
+            break;
         }
+    }
 
-        feedbackText.text = "Victory! +1 missing part of symphony";
+    if (isCorrect)
+    {
+        feedbackText.text = "Finish the Puzzle!";
+        PauseTimer();   // Make sure the timer is paused
+        ShowExitButton(); // Make sure the exit button is shown
+
+        // Log completion based on level
         if (tutorialConfig == gameManager.currentPuzzleLevelConfig)
         {
             gameManager.hasCompletedPuzzleTut = true;
@@ -258,9 +296,14 @@ public class PuzzleMechanism : MonoBehaviour
         {
             Debug.Log("Unknown level configuration.");
         }
-        PauseTimer();
-        ShowExitButton();
     }
+    else
+    {
+        feedbackText.text = "Incorrect sequence, try again!";
+        ResetSequence();
+    }
+}
+
 
     private void TimerEnded()
     {
@@ -278,6 +321,7 @@ public class PuzzleMechanism : MonoBehaviour
     private void ResetSequence()
 {
     attemptCount = 0;
+    selectedMissingNoteIndex = -1; // Reset selection on sequence reset
 
     for (int i = 0; i < missingNoteImages.Length; i++)
     {
@@ -287,6 +331,7 @@ public class PuzzleMechanism : MonoBehaviour
         }
     }
 }
+
 
 
     private void DisableAllButtons()

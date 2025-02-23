@@ -2413,6 +2413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e04b2a4691e76314c82fa846cdea269a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerManager: {fileID: 0}
   leftBar: {fileID: 1544239455}
   rightBar: {fileID: 1353423750}
   energyClash: {fileID: 238183}
@@ -3878,7 +3879,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1659017278
 RectTransform:
   m_ObjectHideFlags: 0

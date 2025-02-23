@@ -40,14 +40,14 @@ public class CombatStateManager : MonoBehaviour
     void Start()
     {
 
-        /*
+        
         gameManager = FindObjectOfType<GameManager>();
 
         if (gameManager != null && gameManager.audioManager != null)
         {
             gameManager.audioManager.StopBackgroundMusic();
         }
-        */
+        
 
         //set up the proper song
         selectSong();
@@ -159,7 +159,7 @@ public class CombatStateManager : MonoBehaviour
     //select the song based on gamamanager id
     void selectSong()
     {
-        /**
+        
         //load proper song
         if (gameManager.currentSong == 001)
         {
@@ -183,8 +183,7 @@ public class CombatStateManager : MonoBehaviour
         }
 
         currentSong.songID = gameManager.currentSong;
-        */
-        currentSong = new ThiefSong();
+        
     }
 
     void CheckModeSwitch(double currentTime)

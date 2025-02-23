@@ -47,6 +47,7 @@ public class CombatStateManager : MonoBehaviour
         if (gameManager != null && gameManager.audioManager != null)
         {
             gameManager.audioManager.StopBackgroundMusic();
+            gameManager.SetGameState(GameManager.GameState.Combat);
         }
         
 

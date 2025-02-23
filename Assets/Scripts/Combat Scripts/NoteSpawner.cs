@@ -1,7 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NoteSpawner : MonoBehaviour
 {
+
+    public Scene combatScene;
+
     //template note object that will be cloned
     public GameObject notePrefab;
 
@@ -26,6 +30,8 @@ public class NoteSpawner : MonoBehaviour
 
     void Start()
     {
+        combatScene = SceneManager.GetSceneByName("Combat");
+
         //find beatmanager
         beatManager = FindObjectOfType<BeatManager>(); // Get reference to BeatManager
         if (beatManager == null)
@@ -61,7 +67,12 @@ public class NoteSpawner : MonoBehaviour
             //instantiate the note
             GameObject newNote = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
             Note note = newNote.GetComponent<Note>();
+            if (combatScene.IsValid())
+            {
+                SceneManager.MoveGameObjectToScene(note.gameObject, combatScene);
+            }
             note.Initialize(beat, 1, targetPosition, noteSpeed, beatManager);
+
             return note; 
     }
 
@@ -96,6 +107,10 @@ public class NoteSpawner : MonoBehaviour
         // Instantiate the note
         GameObject newNote = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
         Note note = newNote.GetComponent<Note>();
+        if (combatScene.IsValid())
+        {
+            SceneManager.MoveGameObjectToScene(note.gameObject, combatScene);
+        }
         note.Initialize(beat, 2, player.transform.position, 0, beatManager);
         return note;
     }

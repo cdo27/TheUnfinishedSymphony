@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour
 {
     public GameManager gameManager;
+    public string originalSceneName;
+    public string combatSceneName = "Combat";
 
     private void Awake()
     {
@@ -42,5 +44,16 @@ public class SceneController : MonoBehaviour
         SceneManager.UnloadSceneAsync("Combat");
         gameManager.SetGameState(GameManager.GameState.Game); //back to Game state
         gameManager.audioManager.PlayBackgroundMusic();
+    }
+
+    public void MoveObject(Note note)
+    {
+        Scene combatScene = SceneManager.GetSceneByName("Combat");
+        if (combatScene.isLoaded){
+            SceneManager.MoveGameObjectToScene(note.gameObject, combatScene);
+        }else{
+            Debug.Log("Move note failed");
+        }
+
     }
 }

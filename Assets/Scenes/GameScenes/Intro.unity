@@ -2742,7 +2742,7 @@ MonoBehaviour:
   currentState: 1
   audioManager: {fileID: 0}
   cutsceneManager: {fileID: 1651437097}
-  currentSong: 0
+  currentSong: 1
   hasCompletedPuzzleTut: 0
   hasCompletedCombatTut: 0
   hasCompletedPuzzle1: 0

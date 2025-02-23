@@ -228,10 +228,7 @@ public class BeatManager : MonoBehaviour
     //---------------------------playing beat sounds every whole beat-----------------------------
     void ScheduleNextBeat()
     {
-        if(currentBeat < 5)
-        {
-            audioManager.playBeatSound(nextBeatTime);
-        }
+            //audioManager.playBeatSound(nextBeatTime);
         combatStateManager.modeText.text = currentBeat.ToString(); ;
     //if (currentBeat == 8) currentBeat = 0;
     currentBeat++;

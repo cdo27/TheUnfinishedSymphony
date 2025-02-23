@@ -11,6 +11,7 @@ public class CutsceneManager : MonoBehaviour
     public NPC TutorialAldric; //after puzzle tutorial
 
     public NPC TutorialThief; //beginning of hallway cutscene
+    public NPC DummyThief;
 
     //Wing 1
     [Header("Wing 1 Elements")]
@@ -74,8 +75,8 @@ public class CutsceneManager : MonoBehaviour
     
     public void afterCombatTut()
     { 
-        if(TutorialThief != null){
-            TutorialThief.Interact();
+        if(DummyThief != null){
+            DummyThief.Interact();
             Debug.Log("Played after combat tutorial cutscene");
         }else{
             Debug.Log("TutorialThief is null");

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missingNotesCount: 5
   timeLimit: 60
-  correctSequence: 0000000000000000000000000000000000000000
-  musicSegment: {fileID: 8300000, guid: 4963e27de1c078e498fb57c5213e8602, type: 3}
+  correctSequence: 0500000002000000050000000100000005000000
+  musicSegment: {fileID: 8300000, guid: 53b5f695fa8ef91408db0299d18dc4dc, type: 3}

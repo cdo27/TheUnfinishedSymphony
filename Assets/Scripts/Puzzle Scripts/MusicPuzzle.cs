@@ -35,6 +35,7 @@ public class PuzzleMechanism : MonoBehaviour
     public Sprite defaultMissingNoteSprite;
     public Button toggleBackgroundButton;
     private int selectedMissingNoteIndex = -1;
+    private int selectedNoteButtonIndex = -1;
 
     void Start()
     {
@@ -111,7 +112,18 @@ public class PuzzleMechanism : MonoBehaviour
     {
         if (index >= 0 && index < noteClips.Length)
         {
+            // Play the corresponding note clip
             audioSource.PlayOneShot(noteClips[index]);
+
+            // Visual feedback for selection
+            if (selectedNoteButtonIndex != -1)  // Reset the previous selected button if any
+            {
+                newNoteButtons[selectedNoteButtonIndex].GetComponent<Image>().color = Color.white;
+            }
+
+            // Highlight the currently selected button
+            newNoteButtons[index].GetComponent<Image>().color = Color.grey;
+            selectedNoteButtonIndex = index;  // Update the currently selected button index
         }
     }
 

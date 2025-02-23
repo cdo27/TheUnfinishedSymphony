@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c478aee9215786459794bc55b14677e, type: 3}
   m_Name: tutorialConfig
   m_EditorClassIdentifier: 
-  missingNotesCount: 4
+  missingNotesCount: 3
   timeLimit: 90
-  correctSequence: 01000000050000000600000003000000
-  musicSegment: {fileID: 8300000, guid: 4963e27de1c078e498fb57c5213e8602, type: 3}
+  correctSequence: 010000000500000006000000
+  musicSegment: {fileID: 8300000, guid: 7e30f1acc7c29b140be32b42198e3f56, type: 3}

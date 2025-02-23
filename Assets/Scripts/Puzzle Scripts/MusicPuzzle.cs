@@ -171,8 +171,14 @@ public class PuzzleMechanism : MonoBehaviour
             missingNoteImages[i].gameObject.SetActive(true);
         }
 
-        if (levelConfig.missingNotesCount <= 4)
+        if (levelConfig.missingNotesCount <= 3)
         {
+            if (missingNoteImages.Length > 4) missingNoteImages[4].gameObject.SetActive(false);
+            if (missingNoteImages.Length > 5) missingNoteImages[5].gameObject.SetActive(false);
+            if (missingNoteImages.Length > 6) missingNoteImages[6].gameObject.SetActive(false);
+        }
+        else if (levelConfig.missingNotesCount == 4)
+        {   
             if (missingNoteImages.Length > 4) missingNoteImages[4].gameObject.SetActive(false);
             if (missingNoteImages.Length > 5) missingNoteImages[5].gameObject.SetActive(false);
         }

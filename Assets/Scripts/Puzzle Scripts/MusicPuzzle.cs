@@ -235,7 +235,7 @@ public class PuzzleMechanism : MonoBehaviour
             }
         }
 
-        feedbackText.text = "Congratulations! You've completed the puzzle.";
+        feedbackText.text = "Victory! +1 missing part of symphony";
         if (tutorialConfig == gameManager.currentPuzzleLevelConfig)
         {
             gameManager.hasCompletedPuzzleTut = true;
@@ -264,7 +264,7 @@ public class PuzzleMechanism : MonoBehaviour
 
     private void TimerEnded()
     {
-        feedbackText.text = "Time's up! Please try again.";
+        feedbackText.text = "Defeated! Failed to retrieve missing part";
         PauseTimer();
         ShowExitButton();
     }

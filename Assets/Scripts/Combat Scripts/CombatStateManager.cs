@@ -42,6 +42,7 @@ public class CombatStateManager : MonoBehaviour
 
         
         gameManager = FindObjectOfType<GameManager>();
+        sceneController = FindObjectOfType<SceneController>();
 
         if (gameManager != null && gameManager.audioManager != null)
         {
@@ -272,7 +273,6 @@ public class CombatStateManager : MonoBehaviour
     public void OnContinueButtonClick()
     {
         // Load the UnfinishedSymphony scene
-        Debug.Log("hello");
         //sceneController.ExitCombatScene();
     }
 

@@ -41,7 +41,8 @@ public class SceneController : MonoBehaviour
 
     public void ExitCombatScene()
     {
-        SceneManager.UnloadSceneAsync("Combat");
+        Scene combatScene = SceneManager.GetSceneByName("Combat");
+        SceneManager.UnloadSceneAsync(combatScene);
         gameManager.SetGameState(GameManager.GameState.Game); //back to Game state
         gameManager.audioManager.PlayBackgroundMusic();
     }

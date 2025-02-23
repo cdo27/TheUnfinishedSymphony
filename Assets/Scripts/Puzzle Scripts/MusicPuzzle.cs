@@ -32,6 +32,7 @@ public class PuzzleMechanism : MonoBehaviour
 
     private Coroutine[] notePreviewCoroutines;
     private SceneController sceneController;
+    public Sprite defaultMissingNoteSprite;
 
     void Start()
     {
@@ -266,13 +267,18 @@ public class PuzzleMechanism : MonoBehaviour
     }
 
     private void ResetSequence()
+{
+    attemptCount = 0;
+
+    for (int i = 0; i < missingNoteImages.Length; i++)
     {
-        attemptCount = 0;
-        foreach (var image in missingNoteImages)
+        if (missingNoteImages[i] != null)
         {
-            image.sprite = null;
+            missingNoteImages[i].sprite = defaultMissingNoteSprite;
         }
     }
+}
+
 
     private void DisableAllButtons()
     {

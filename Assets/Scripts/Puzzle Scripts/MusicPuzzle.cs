@@ -33,6 +33,7 @@ public class PuzzleMechanism : MonoBehaviour
     private Coroutine[] notePreviewCoroutines;
     private SceneController sceneController;
     public Sprite defaultMissingNoteSprite;
+    public Button toggleBackgroundButton;
 
     void Start()
     {
@@ -47,6 +48,8 @@ public class PuzzleMechanism : MonoBehaviour
         SetupNoteButtons();
         UpdateTimerText(countdown);
         feedbackText.text = "";
+
+        toggleBackgroundButton.onClick.AddListener(ToggleBackgrounds);
 
         sceneController = FindObjectOfType<SceneController>();
 
@@ -90,6 +93,12 @@ public class PuzzleMechanism : MonoBehaviour
         {
             Debug.LogError("No level config found in GameManager when loading puzzle.");
         }
+    }
+    private void ToggleBackgrounds()
+    {
+        bool isActive = background1.gameObject.activeSelf;
+        background1.gameObject.SetActive(!isActive);
+        background2.gameObject.SetActive(!isActive);
     }
 
     public void SetLevelConfig(PuzzleLevelConfig config)

@@ -1212,7 +1212,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 513fa153b38324a49b1b595b1ec6c81d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 865a9b1d0c98a42a6a3a982ae3ff8334, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2966,6 +2966,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TutorialAldric: {fileID: 0}
   TutorialThief: {fileID: 0}
+  DummyThief: {fileID: 0}
   puzzle1: {fileID: 0}
   dummypuzzle1: {fileID: 0}
   OriginalSerpentura: {fileID: 0}
@@ -2978,6 +2979,8 @@ MonoBehaviour:
   monologueWing2: {fileID: 0}
   puzzle3: {fileID: 0}
   dummypuzzle3: {fileID: 0}
+  cabinet: {fileID: 0}
+  playableCutscene3: {fileID: 0}
   OriginalDueterno: {fileID: 0}
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 0}
@@ -3045,6 +3048,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
+  originalSceneName: 
+  combatSceneName: Combat
 --- !u!1 &2092544289
 GameObject:
   m_ObjectHideFlags: 0

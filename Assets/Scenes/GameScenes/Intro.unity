@@ -877,7 +877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &95747873
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2334,7 +2334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &353481629
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2614,7 +2614,7 @@ MonoBehaviour:
       can leave, not me not you..."
     - "But how... how do I finish it on my own?\r"
     - The symphony is fragmented, scattered across these halls. Some movements were
-      stolen, others lost to time
+      stolen, others lost to time.
     - I don't know where to start, this place is huge.
     - 'In here, music transcends life and death, the past and the present. Lucien,
       you can hear the voices of those who once stood here and witness the stories
@@ -3387,7 +3387,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 583fe5c9b4a1ca745ac289591a7deaa9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8412b3ff2e2b74517bec353b4a72917c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7203,7 +7203,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1559f17441a22614e986b4baa10d7ccd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd767603d55474327bc4c577dbfd91b3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8563,7 +8563,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1740044925
 Transform:
   m_ObjectHideFlags: 0
@@ -9034,7 +9034,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1943327851
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9305,7 +9305,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1559f17441a22614e986b4baa10d7ccd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 787feb77ec1294b0ba9ef98dc015f772, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

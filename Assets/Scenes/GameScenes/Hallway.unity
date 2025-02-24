@@ -258,7 +258,7 @@ MonoBehaviour:
   shouldLoadScene: 0
   shouldDestroy: 0
   sceneToLoad: 
-  portraitSprite: {fileID: 21300000, guid: f69bc87f0307e914aab8def401d026aa, type: 3}
+  portraitSprite: {fileID: 21300000, guid: a4b3c28fc57856d4d8122b4e8c1190f7, type: 3}
   dialogue:
     npcName: Thief Spirit
     sentences:
@@ -362,7 +362,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: e59941e6a1464354da834213bf180703, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9ff848b42aa59f04dabf4b1c1141a881, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2047,7 +2047,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &1317423902
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2175,7 +2175,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8be46cc5a6c22f4499b9cc62144c6fa9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4313bd695b5915745ad55b1b9f24fc82, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -877,7 +877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &95747873
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2614,7 +2614,7 @@ MonoBehaviour:
       can leave, not me not you..."
     - "But how... how do I finish it on my own?\r"
     - The symphony is fragmented, scattered across these halls. Some movements were
-      stolen, others lost to time
+      stolen, others lost to time.
     - I don't know where to start, this place is huge.
     - 'In here, music transcends life and death, the past and the present. Lucien,
       you can hear the voices of those who once stood here and witness the stories
@@ -8563,7 +8563,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1740044925
 Transform:
   m_ObjectHideFlags: 0

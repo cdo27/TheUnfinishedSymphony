@@ -51,9 +51,11 @@ public class NPC : Interactable
         hasInteracted = true;
 
         if (shouldLoadScene && !string.IsNullOrEmpty(sceneToLoad))
-        {
+        {   
+            gameManager.SetGameState(GameManager.GameState.Combat); 
             SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
-            gameManager.SetGameState(GameManager.GameState.Combat); // Update game state to combat
+            // Update game state to combat
+
         }
 
         if (shouldDestroy) Destroy(gameObject);

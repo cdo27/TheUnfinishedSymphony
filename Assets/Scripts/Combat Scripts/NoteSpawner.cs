@@ -21,6 +21,9 @@ public class NoteSpawner : MonoBehaviour
     //the attack hit point (where you are supposed to hit the note)
     public GameObject hitPointObject;
 
+    //spawn poing
+    public GameObject spawnPointObject;
+
     //beatmanager
     private BeatManager beatManager;
 

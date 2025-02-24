@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public GameState currentState;
     public AudioManager audioManager;
     public CutsceneManager cutsceneManager;
+    public UIManager uiManager;
     public int currentSong;
 
     public bool hasCompletedPuzzleTut, hasCompletedCombatTut,
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
         if (hasCompletedPuzzleTut && !hasTriggeredAfterPuzzleTutCutscene){
             hasTriggeredAfterPuzzleTutCutscene = true;
             cutsceneManager.afterPuzzleTut();
+            uiManager.UpdateSymphonyProgress(1);
         }
 
         if (hasCompletedCombatTut && !hasTriggeredAfterCombatTutCutscene){
@@ -78,6 +80,10 @@ public class GameManager : MonoBehaviour
         if(hasCompletedCombat1 && !hasTriggeredAfterCombat1){
             hasTriggeredAfterCombat1 = true;
             cutsceneManager.afterCombat1();
+        }
+
+        if(hasTriggeredAfterCombat1 && hasTriggeredAfterPuzzle1){
+            uiManager.UpdateSymphonyProgress(2);
         }
 
         //check Hallway scene and Wing 1 monologue
@@ -100,6 +106,10 @@ public class GameManager : MonoBehaviour
             cutsceneManager.afterCombat2();
         }
 
+        if(hasTriggeredAfterCombat2 && hasTriggeredAfterPuzzle2){
+            uiManager.UpdateSymphonyProgress(3);
+        }
+
         //check Hallway scene and Wing 2 monologue
         if (SceneManager.GetActiveScene().name == "Hallway" &&
             hasCompletedPuzzle2 && hasCompletedCombat2 && !hasTriggeredWing2Monologue)
@@ -117,6 +127,10 @@ public class GameManager : MonoBehaviour
         if(hasCompletedCombat3 && !hasTriggeredAfterCombat3){
             hasTriggeredAfterCombat3 = true;
             cutsceneManager.afterCombat3();
+        }
+
+        if(hasTriggeredAfterCombat3 && hasTriggeredAfterPuzzle3){
+            uiManager.UpdateSymphonyProgress(4);
         }
 
         //check third wing scene and Wing 3 monologue

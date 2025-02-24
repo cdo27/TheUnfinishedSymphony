@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -26,6 +27,9 @@ public class UIManager : MonoBehaviour
     //Puzzle Image
     public GameObject puzzleImage;
 
+    //Symphony Progress Update
+    public TextMeshProUGUI symphonyProgress;
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -46,6 +50,7 @@ public class UIManager : MonoBehaviour
         }else{
             hideGameUI();
         }
+
     }
 
     public void HideInventoryUI()
@@ -186,6 +191,19 @@ public class UIManager : MonoBehaviour
         canvasGroup.alpha = 0f;
 
         uiElement.SetActive(false);
+    }
+
+    public void UpdateSymphonyProgress(int symphonyMeter){ //1 for tut, 2 for first wing etc.
+        if(symphonyMeter == 1){
+            symphonyProgress.text = "1/4";
+            Debug.Log("Updated progress to 1/4");
+        }else if(symphonyMeter == 2){
+            symphonyProgress.text = "2/4";
+        }else if(symphonyMeter == 3){
+            symphonyProgress.text = "3/4";
+        }else if(symphonyMeter == 4){
+            symphonyProgress.text = "4/4";
+        }
     }
     
 }

@@ -3880,7 +3880,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1659017278
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4142,7 +4142,7 @@ MonoBehaviour:
   victoryContinueButton: {fileID: 281524547}
   DefeatScreen: {fileID: 638253836}
   enemy: {fileID: 134057236}
-  thiefSprite: {fileID: 21300000, guid: e59941e6a1464354da834213bf180703, type: 3}
+  thiefSprite: {fileID: 21300000, guid: 9ff848b42aa59f04dabf4b1c1141a881, type: 3}
   redSpiritSprite: {fileID: 21300000, guid: 8b155024332313d4390e181acf128724, type: 3}
   yellowSpiritSprite: {fileID: 21300000, guid: 8f1c82359343b5e4db469f68872872b3, type: 3}
   blueSpiritSprite: {fileID: 21300000, guid: 7d378346ea22da84594a5e48a19f23fd, type: 3}

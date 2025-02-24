@@ -78,13 +78,15 @@ public class PlayerController: MonoBehaviour
         }
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)){
             moveX = -1f;
+            animator.SetFloat("FacingDirection", -1);
         }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)){
             moveX = +1f;
+            animator.SetFloat("FacingDirection", 1); 
         }
 
-        moveDir = new Vector3(moveX, moveY).normalized; //update move direction
-        
+        moveDir = new Vector3(moveX, moveY).normalized;
+
         if (moveX != 0)
         {
             animator.SetFloat("MoveX", moveX);

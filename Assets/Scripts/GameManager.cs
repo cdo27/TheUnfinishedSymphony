@@ -36,6 +36,10 @@ public class GameManager : MonoBehaviour
     hasTriggeredBenedictScene, hasTriggeredFinal = false;
 
     public PuzzleLevelConfig currentPuzzleLevelConfig; 
+    public PuzzleLevelConfig TutPuzzle;
+    public PuzzleLevelConfig PuzzleOne;
+    public PuzzleLevelConfig PuzzleTwo;
+    public PuzzleLevelConfig PuzzleThree;
     
     void Awake()
     {
@@ -236,6 +240,19 @@ public class GameManager : MonoBehaviour
         {
             Debug.LogError("AudioManager not found!");
         }
+    }
+
+    public bool CheckPuzzleComplete(PuzzleLevelConfig levelConfig){
+        if (levelConfig == PuzzleOne){
+            if(hasCompletedPuzzle1) return true;
+        }else if (levelConfig == PuzzleTwo){
+            if(hasCompletedPuzzle2) return true;
+        }else if (levelConfig == PuzzleThree){
+            if(hasCompletedPuzzle3) return true;
+        }else if (levelConfig == TutPuzzle){
+            if(hasCompletedPuzzleTut) return true;
+        }
+        return false;
     }
 
     

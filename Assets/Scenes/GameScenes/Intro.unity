@@ -2741,6 +2741,10 @@ MonoBehaviour:
   hasCompletedCombat3: 0
   hasCompletedFinal: 0
   currentPuzzleLevelConfig: {fileID: 11400000, guid: 7bcd156daf954d147ac72cef54412d99, type: 2}
+  TutPuzzle: {fileID: 11400000, guid: 7bcd156daf954d147ac72cef54412d99, type: 2}
+  PuzzleOne: {fileID: 11400000, guid: fb22443c204969b49acc37f90d986f02, type: 2}
+  PuzzleTwo: {fileID: 11400000, guid: 85c6fa0bd11644644bebe502a8d2467a, type: 2}
+  PuzzleThree: {fileID: 11400000, guid: 796bf9ba6a87283439bd7b5826fe0b6b, type: 2}
 --- !u!1 &482717011
 GameObject:
   m_ObjectHideFlags: 0

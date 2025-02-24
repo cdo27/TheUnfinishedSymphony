@@ -7,80 +7,117 @@ public class AldricSong : Song
     public AldricSong()
     {
         songID = 005;
-        BPM = 162;
-        offset = 1.1f;
-
+        BPM = 156;
+        offset = 0.6f;
 
         attackBeatsToHit = new List<BeatData>
         {
-            // First 16 beats: One note every 4 beats (0)
-            new BeatData(4f, 0), new BeatData(8f, 0), new BeatData(12f, 0), new BeatData(16f, 0),
-            new BeatData(20f, 0), new BeatData(24f, 0), new BeatData(28f, 0), new BeatData(32f, 0),
+            // New song attack beats
+            new BeatData(28f, 1), new BeatData(30f, 1), new BeatData(32f, 0),
+            new BeatData(35f, 2), new BeatData(36f, 2), new BeatData(38f, 1), new BeatData(39f, 1),
+            new BeatData(40f, 0), new BeatData(43f, 0), new BeatData(44f, 2), new BeatData(47f, 2),
+            new BeatData(48f, 1),
 
-            // Next 8 beats: One note every 2 beats (0)
-            new BeatData(34f, 0), new BeatData(36f, 0), new BeatData(38f, 0), new BeatData(40f, 0),
-            new BeatData(42f, 0), new BeatData(44f, 0), new BeatData(46f, 0), new BeatData(48f, 0),
+            new BeatData(51f, 0), new BeatData(51.5f, 0), new BeatData(52f, 0), new BeatData(54f, 1),
 
-            // Introduce variation: 00110101
-            new BeatData(50f, 0), new BeatData(52f, 0), // 00
-            new BeatData(54f, 1), new BeatData(56f, 1), // 11
-            new BeatData(58f, 0), new BeatData(60f, 1), // 10
-            new BeatData(62f, 0), new BeatData(64f, 1), // 01
+            new BeatData(144f, 0), new BeatData(145f, 0), new BeatData(145.5f, 0), new BeatData(146f, 1),
+            new BeatData(147f, 2), new BeatData(148f, 2), new BeatData(149f, 1), new BeatData(150f, 2),
+            new BeatData(151f, 0), new BeatData(152f, 0), new BeatData(152.5f, 1), new BeatData(153f, 2),
+            new BeatData(154f, 0), new BeatData(158f, 2), new BeatData(159f, 2),
+            new BeatData(160f, 1), new BeatData(161f, 2), new BeatData(161.5f, 2), new BeatData(162f, 1),
+            new BeatData(163f, 0), new BeatData(164f, 0), new BeatData(165f, 1), new BeatData(166f, 1),
+            new BeatData(167f, 1),
 
-            // Followed by 22120212
-            new BeatData(66f, 2), new BeatData(68f, 2), // 22
-            new BeatData(70f, 1), new BeatData(72f, 2), // 12
-            new BeatData(74f, 0), new BeatData(76f, 2), // 20
-            new BeatData(78f, 1), new BeatData(80f, 2), // 12
+            new BeatData(169f, 0), new BeatData(170f, 0), new BeatData(171f, 0), new BeatData(171.25f, 0),
+            new BeatData(172f, 0), new BeatData(172.25f, 0), 
 
-            new BeatData(82f, 0), new BeatData(83f, 0), new BeatData(84f, 0), new BeatData(85f, 0),
-            new BeatData(86f, 0), new BeatData(87f, 0), new BeatData(88f, 0),
+            // Repeat 0 and 0.25s from 172 to 181.25
+            new BeatData(173f, 0), new BeatData(173.25f, 0), new BeatData(174f, 0), new BeatData(174.25f, 1),
+            new BeatData(175f, 0), new BeatData(175.25f, 1), new BeatData(176f, 0), new BeatData(176.25f, 1),
+            new BeatData(177f, 0), new BeatData(177.25f, 2), new BeatData(178f, 0), new BeatData(178.25f, 2),
+            new BeatData(179f, 0), new BeatData(179.25f, 2), new BeatData(180f, 0), 
+            new BeatData(181f, 2), 
 
+            // 182 - 188 (every half beat)
+            new BeatData(182f, 0), new BeatData(183f, 0), new BeatData(184f, 1),
+            new BeatData(185f, 2), new BeatData(185.5f, 2), new BeatData(186f, 1), new BeatData(186.5f, 2),
+            new BeatData(187f, 2), new BeatData(188f, 2),
 
-            new BeatData(91f, 1), new BeatData(92f, 0), new BeatData(93f, 1),
-            new BeatData(94f, 0), new BeatData(95f, 2), new BeatData(96f, 1), new BeatData(101f, 0),
-            new BeatData(102f, 0), new BeatData(103f, 0), new BeatData(103.5f, 0), new BeatData(104f, 1), new BeatData(105f, 1),
-            new BeatData(106f, 1), new BeatData(107f, 1), new BeatData(107.5f, 1), new BeatData(108f, 2),
-            
-            //---------------------------------second phase--------------------------------------------
-           new BeatData(200.5f, 1), new BeatData(202.5f, 2), new BeatData(204.5f, 1), new BeatData(206.5f, 1), new BeatData(208.5f, 1), new BeatData(210.5f, 1), new BeatData(212.5f, 1), new BeatData(214.5f, 1),
+            new BeatData(190f, 0), new BeatData(191f, 0),
 
-            new BeatData(215.5f, 1), new BeatData(216.5f, 2), new BeatData(217.5f, 0), new BeatData(218.5f, 0), new BeatData(219.5f, 1), new BeatData(220.5f, 1), new BeatData(223f, 1), new BeatData(225.5f, 1),
-                    };
+             new BeatData(192f, 0), new BeatData(192.25f, 1), new BeatData(193f, 1), new BeatData(193.25f, 0),
+              new BeatData(194f, 0), new BeatData(194.25f, 2), new BeatData(195f, 2), new BeatData(195.25f, 0),
+              new BeatData(196f, 0), new BeatData(196.25f, 0),
+
+            new BeatData(236f, 0)
+        };
+
 
         // Defend mode beats (each phase has a list of BeatData objects)
         defendBeatsToHit = new List<List<BeatData>>
         {
             new List<BeatData>
             {
-                new BeatData(124.5f, 0), new BeatData(126.5f, 0), new BeatData(128.5f, 0), new BeatData(130.5f, 1) // Defend Phase 1
+                new BeatData(16f, 0), new BeatData(17f, 0), new BeatData(18f, 1), new BeatData(19f, 1),
+                new BeatData(20f, 2), new BeatData(21f, 1), new BeatData(22f, 0) // Defend Phase 1
+            },
+
+           //second set
+           new List<BeatData>
+            {
+                new BeatData(63.5f, 0), new BeatData(64.5f, 2), new BeatData(65.5f, 1), new BeatData(66.5f, 2),
+                new BeatData(67.5f, 0), new BeatData(68.5f, 1), new BeatData(69.5f, 2) // Defend Phase 2
             },
             new List<BeatData>
             {
-                new BeatData(140.5f, 1), new BeatData(142.5f, 2), new BeatData(144.5f, 1), new BeatData(146.5f, 1) // Defend Phase 2
+                new BeatData(79.5f, 0), new BeatData(80.5f, 1), new BeatData(81.5f, 1), new BeatData(82.5f, 0),
+                new BeatData(83.5f, 2), new BeatData(84.5f, 0), new BeatData(85.5f, 2) // Defend Phase 3
             },
             new List<BeatData>
             {
-                new BeatData(156.5f, 0), new BeatData(158.5f, 1), new BeatData(160.5f, 2), new BeatData(162.5f, 2) // Defend Phase 3
+                new BeatData(95.5f, 0), new BeatData(95.83f, 0), new BeatData(96.16f, 0), new BeatData(96.5f, 0),
+                new BeatData(98.5f, 1), new BeatData(99.5f, 2), new BeatData(100.5f, 1), new BeatData(101.5f, 2) // Defend Phase 4
             },
             new List<BeatData>
             {
-                new BeatData(172.5f, 2), new BeatData(174.5f, 0), new BeatData(176.5f, 1), new BeatData(178.5f, 0) // Defend Phase 4
+                new BeatData(111.5f, 0), new BeatData(112.5f, 1), new BeatData(113f, 1), new BeatData(113.5f, 1),
+                new BeatData(115.5f, 2), new BeatData(116.5f, 2), new BeatData(117.5f, 2) // Defend Phase 5
             },
             new List<BeatData>
             {
-                new BeatData(188.5f, 0), new BeatData(189.5f, 1), new BeatData(190.5f, 1), new BeatData(191.5f, 2), new BeatData(192.5f, 0), new BeatData(193.5f, 0), new BeatData(194.5f, 2) // Defend Phase 5
-            }
+                  new BeatData(127.5f, 0), new BeatData(128.5f, 1), new BeatData(129.25f, 2), new BeatData(129.5f, 2), new BeatData(129.75f, 2),
+            new BeatData(131.5f, 0), new BeatData(132.5f, 1), new BeatData(133.5f, 0) // Defend Phase 6
+            },
+
+            //third set
+            new List<BeatData>
+            {
+                new BeatData(207.5f, 0), new BeatData(208f, 0), new BeatData(208.5f, 0), new BeatData(209f, 0),
+                new BeatData(209.5f, 1), new BeatData(210f, 1), new BeatData(210.5f, 1), new BeatData(211f, 1),
+                new BeatData(211.5f, 0), new BeatData(212f, 0), new BeatData(212.5f, 0), new BeatData(213f, 0),
+                new BeatData(213.5f, 2), new BeatData(214f, 2), new BeatData(214.5f, 2), new BeatData(215f, 2)
+            },
+            new List<BeatData>
+            {
+                new BeatData(223.5f, 0),
+                new BeatData(224f, 0), new BeatData(224.5f, 1),
+                new BeatData(225f, 1), new BeatData(225.5f, 0),
+                new BeatData(226f, 0), new BeatData(226.5f, 2),
+                new BeatData(227f, 2), new BeatData(227.5f, 0),
+                new BeatData(228f, 0), new BeatData(228.5f, 1),
+                new BeatData(229f, 1), new BeatData(229.5f, 0),
+                new BeatData(230f, 0), new BeatData(230.5f, 2), new BeatData (231f, 2),
+            },
         };
-        songcompleteBeat = 230f;
+        songcompleteBeat = 242f;
 
 
-        attackModeBeats = new List<float> { 0f, 196f};
-        defendModeBeats = new List<float> { 109f };
+        attackModeBeats = new List<float> { 24f, 139f, 232f };
+        defendModeBeats = new List<float> { 5f, 55f, 197f };
     }
 
     public override void PlaySong(SongManager songManager)
     {
-        songManager.playThiefSong();
+        songManager.playAldricSong();
     }
 }

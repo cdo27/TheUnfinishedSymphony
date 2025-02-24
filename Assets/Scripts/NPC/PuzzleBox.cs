@@ -20,6 +20,12 @@ public class PuzzleBox : NPC
         }
     }
 
+    private void Update() //check if complete then destroy
+    {
+        bool complete = gameManager.CheckPuzzleComplete(levelConfig);
+        if(shouldDestroy && complete) Destroy(gameObject);
+    }
+
     public override void Interact()
     {
         isInteracting = true;
@@ -55,7 +61,7 @@ public class PuzzleBox : NPC
 
         if (displayImage)
             uiManager.hidePuzzleImage();
-        if (shouldDestroy)
-            Destroy(gameObject);
+        // if (shouldDestroy)
+        //     Destroy(gameObject);
     }
 }

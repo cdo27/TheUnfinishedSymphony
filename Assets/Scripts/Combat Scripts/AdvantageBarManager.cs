@@ -35,14 +35,13 @@ public class AdvantageBarManager : MonoBehaviour
         {
             Debug.LogError("PlayerManager not found in the scene.");
         }
-
         advantage = 50f;
+
         // Apply potion effect if the player has it
         if (playerManager.GetPurchasedItems().Contains(2)) // Assuming item ID 2 is the potion
         {
             advantage = 70f; // Increase advantage by 20 when the potion is used
         }
-
         totalAttackNotes = Mathf.Max(attackNotes, 1); // Avoid division by zero
         totalDefenseNotes = Mathf.Max(defenseNotes, 1);
 
@@ -123,7 +122,6 @@ public class AdvantageBarManager : MonoBehaviour
         {
             moveAmount *= 0.5f; // Halve the damage taken during the defense phase
         }
-
         advantage = Mathf.Clamp(advantage - moveAmount, 0f, 100f);
         UpdateUI();
     }

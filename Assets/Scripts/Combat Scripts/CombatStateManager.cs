@@ -69,13 +69,13 @@ public class CombatStateManager : MonoBehaviour
         else if (currentSong.songID == 003)
         {
             SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
-            enemySpriteRenderer.sprite = yellowSpiritSprite;
+            enemySpriteRenderer.sprite = blueSpiritSprite;
             //beatManager.readySong();
         }
         else if (currentSong.songID == 004)
         {
             SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
-            enemySpriteRenderer.sprite = blueSpiritSprite;
+            enemySpriteRenderer.sprite = yellowSpiritSprite;
             //beatManager.readySong();
         }
         else if (currentSong.songID == 005)
@@ -167,7 +167,6 @@ public class CombatStateManager : MonoBehaviour
     //select the song based on gamamanager id
     void selectSong()
     {
-        
         //load proper song
         if (gameManager.currentSong == 001)
         {
@@ -190,8 +189,7 @@ public class CombatStateManager : MonoBehaviour
             currentSong = new AldricSong();
         }
 
-        currentSong.songID = gameManager.currentSong;
-        
+        currentSong.songID = gameManager.currentSong;  
     }
 
     void CheckModeSwitch(double currentTime)

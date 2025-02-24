@@ -39,7 +39,7 @@ public class Wing1Song : Song
             
             // phase 2
              new BeatData(187f, 0), new BeatData(190f, 0), new BeatData(191f, 2), new BeatData(192f, 1), new BeatData(193f, 0), new BeatData(194f, 1), new BeatData(195f, 2), new BeatData(196f, 0),
-            new BeatData(199f, 1), new BeatData(199.5f, 1), new BeatData(200f, 1), new BeatData(202f, 0), new BeatData(203f, 2), new BeatData(203.5f, 2), 
+            new BeatData(199f, 1), new BeatData(199.5f, 1), new BeatData(200f, 1), new BeatData(202f, 0), new BeatData(203f, 2), new BeatData(203.5f, 2),
             new BeatData(204f, 2), new BeatData(205f, 0), new BeatData(206f, 0), new BeatData(207f, 0),  new BeatData(208f, 0), new BeatData(209f, 0), new BeatData(210f, 0),
             new BeatData(211f, 0), new BeatData(212f, 0), new BeatData(213f, 1), new BeatData(214f, 2),
         };
@@ -50,8 +50,8 @@ public class Wing1Song : Song
         {
             new List<BeatData>
             {
-                new BeatData(108f, 0), new BeatData(109f, 0), new BeatData(110f, 0), new BeatData(111f, 0),
-                new BeatData(112f, 0), new BeatData(113f, 0), new BeatData(114f, 0) // Defend Phase 1
+                new BeatData(108.5f, 0), new BeatData(109.5f, 0), new BeatData(110.5f, 0), new BeatData(111.5f, 0),
+                new BeatData(112.5f, 0), new BeatData(113.5f, 0), new BeatData(114.5f, 0) // Defend Phase 1
             },
           new List<BeatData>
             {
@@ -77,7 +77,7 @@ public class Wing1Song : Song
         songcompleteBeat = 215f;
 
 
-        attackModeBeats = new List<float> { 0f, 182f};
+        attackModeBeats = new List<float> { 0f, 182f };
         defendModeBeats = new List<float> { 98f };
     }
 

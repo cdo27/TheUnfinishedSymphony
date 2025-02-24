@@ -214,7 +214,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.8, y: 10.8}
+    oldSize: {x: 15.428572, y: 15.428572}
     newSize: {x: 6.4, y: 6.4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -264,7 +264,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: e59941e6a1464354da834213bf180703, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9ff848b42aa59f04dabf4b1c1141a881, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -292,7 +292,7 @@ MonoBehaviour:
   shouldLoadScene: 1
   shouldDestroy: 1
   sceneToLoad: Combat
-  portraitSprite: {fileID: 21300000, guid: f69bc87f0307e914aab8def401d026aa, type: 3}
+  portraitSprite: {fileID: 21300000, guid: a4b3c28fc57856d4d8122b4e8c1190f7, type: 3}
   dialogue:
     npcName: Thief Spirit
     sentences:
@@ -380,7 +380,7 @@ MonoBehaviour:
   shouldLoadScene: 0
   shouldDestroy: 0
   sceneToLoad: 
-  portraitSprite: {fileID: 21300000, guid: f69bc87f0307e914aab8def401d026aa, type: 3}
+  portraitSprite: {fileID: 21300000, guid: a4b3c28fc57856d4d8122b4e8c1190f7, type: 3}
   dialogue:
     npcName: Thief Spirit
     sentences:
@@ -436,7 +436,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.8, y: 10.8}
+    oldSize: {x: 15.428572, y: 15.428572}
     newSize: {x: 6.4, y: 6.4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -486,7 +486,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: e59941e6a1464354da834213bf180703, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9ff848b42aa59f04dabf4b1c1141a881, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1234,7 +1234,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 513fa153b38324a49b1b595b1ec6c81d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 81da8d150a39e46879d361788c4ce1e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1873,17 +1873,17 @@ MonoBehaviour:
   shouldLoadScene: 0
   shouldDestroy: 0
   sceneToLoad: Combat
-  portraitSprite: {fileID: 21300000, guid: f69bc87f0307e914aab8def401d026aa, type: 3}
+  portraitSprite: {fileID: 21300000, guid: a4b3c28fc57856d4d8122b4e8c1190f7, type: 3}
   dialogue:
     npcName: Thief Spirit
     sentences:
     - "Not bad! You\u2019ve got some fight in you."
     - Are we done now?
+    - "For now. But trust me, this won\u2019t be your last fight."
     - "So...You\u2019re a thief?"
     - "Tell you what\u2014I like you. You need supplies? Maybe wanna get better at
-      dealing with the spirits here? I know a few tricks.\r\n"
+      dealing with the spirits here? I know a few tricks."
     - "And let me guess\u2026 it comes at a price?"
-    - "You\u2026 were here. The night Aldric disappeared?"
     - "Well... I do run a little shop. Drop by anytime. Maybe I\u2019ll even cut
       you a deal\u2014since you haven\u2019t tried to exorcise me yet."
     isPlayerSpeaking: 00010001000100
@@ -1960,7 +1960,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.8, y: 10.8}
+    oldSize: {x: 15.428572, y: 15.428572}
     newSize: {x: 6.4, y: 6.4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2010,7 +2010,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: e59941e6a1464354da834213bf180703, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9ff848b42aa59f04dabf4b1c1141a881, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3669,6 +3669,53 @@ MonoBehaviour:
     isPlayerSpeaking: 00
   doorNumber: 2
   sceneToLoad: SecondWing
+--- !u!1 &1653221300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1653221302}
+  - component: {fileID: 1653221301}
+  m_Layer: 0
+  m_Name: SceneController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1653221301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653221300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d6fa58a107013c42af33688120bc3c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  originalSceneName: 
+  combatSceneName: Combat
+--- !u!4 &1653221302
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1653221300}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.7586637, y: -0.037559994, z: -8.356228}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1712038796 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4008950178902452277, guid: 0b116f08206a4544d9da8d60778662b7, type: 3}
@@ -4387,3 +4434,4 @@ SceneRoots:
   - {fileID: 283736496}
   - {fileID: 731750554}
   - {fileID: 554738150}
+  - {fileID: 1653221302}

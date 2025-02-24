@@ -2461,7 +2461,7 @@ GameObject:
   m_Component:
   - component: {fileID: 390049317}
   - component: {fileID: 390049319}
-  - component: {fileID: 390049318}
+  - component: {fileID: 390049321}
   - component: {fileID: 390049320}
   m_Layer: 0
   m_Name: AldricNPC
@@ -2485,56 +2485,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 572102803}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &390049318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 390049316}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53a1b4d34573f964b9b7dcb5eb8d110f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasInteracted: 0
-  isInteracting: 0
-  shouldLoadScene: 1
-  shouldDestroy: 1
-  sceneToLoad: Puzzle
-  portraitSprite: {fileID: 21300000, guid: d5db6e58b9d5d6e4c8ec0ad993531e41, type: 3}
-  dialogue:
-    npcName: Aldric
-    sentences:
-    - "Lucien\u2026 you came."
-    - A-Aldric? Is that you? What happened? What do you want from me?
-    - "The symphony\u2026 it demands completion, Lucien. It has waited too long,
-      trapped in silence, just as I have."
-    - "You expect me to finish it? I\u2014I\u2019m not you. I don\u2019t even know
-      where to start."
-    - "You must, Lucien. You are the only one who can. You carry my name\u2026 my
-      talent\u2026 and now, my fate. Nothing is set right until it is done, no one
-      can leave, not me not you..."
-    - "But how... how do I finish it on my own?\r"
-    - "\rThe symphony is fragmented, scattered across these halls. Some movements
-      were stolen, others lost to time. \r"
-    - I don't know where to start, this place is huge.
-    - "In here, music transcends life and death, the past and the present. Lucien,
-      you can hear the voices of those who once stood here and witness the stories
-      that once happened. \r.\r"
-    - But you must tread carefully. Not all voices wish to be remembered. Not all
-      shadows wish to remain in silence.
-    - "Are you coming with me...?\r\r\n"
-    - "I cannot...I am bound to this room. But here\u2026 the first movement. I have
-      held onto it, but it remains incomplete. Let me show you."
-    isPlayerSpeaking: 000100010001000100000100
-  afterDialogue:
-    npcName: 
-    sentences: []
-    isPlayerSpeaking: 
-  gameManager: {fileID: 0}
-  dialogueManager: {fileID: 0}
-  uiManager: {fileID: 0}
 --- !u!212 &390049319
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2632,6 +2582,60 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.8, y: 3.4}
   m_EdgeRadius: 0
+--- !u!114 &390049321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390049316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eab819da619dd0b46baae9c00c2271fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasInteracted: 0
+  isInteracting: 0
+  shouldLoadScene: 1
+  shouldDestroy: 1
+  sceneToLoad: Puzzle
+  portraitSprite: {fileID: 21300000, guid: d5db6e58b9d5d6e4c8ec0ad993531e41, type: 3}
+  dialogue:
+    npcName: Aldric
+    sentences:
+    - "Lucien\u2026 you came."
+    - A-Aldric? Is that you? What happened? What do you want from me?
+    - "The symphony\u2026 it demands completion, Lucien. It has waited too long,
+      trapped in silence, just as I have."
+    - "You expect me to finish it? I\u2014I\u2019m not you. I don\u2019t even know
+      where to start."
+    - "You must, Lucien. You are the only one who can. You carry my name\u2026 my
+      talent\u2026 and now, my fate. Nothing is set right until it is done, no one
+      can leave, not me not you..."
+    - "But how... how do I finish it on my own?\r"
+    - The symphony is fragmented, scattered across these halls. Some movements were
+      stolen, others lost to time
+    - I don't know where to start, this place is huge.
+    - 'In here, music transcends life and death, the past and the present. Lucien,
+      you can hear the voices of those who once stood here and witness the stories
+      that once happened. '
+    - But you must tread carefully. Not all voices wish to be remembered. Not all
+      shadows wish to remain in silence.
+    - "Are you coming with me...?\r\r\n"
+    - "I cannot...I am bound to this room. But here\u2026 the first movement. I have
+      held onto it, but it remains incomplete. Let me show you."
+    isPlayerSpeaking: 000100010001000100000100
+  afterDialogue:
+    npcName: Aldric
+    sentences:
+    - 
+    isPlayerSpeaking: 00
+  gameManager: {fileID: 0}
+  dialogueManager: {fileID: 0}
+  uiManager: {fileID: 0}
+  levelConfig: {fileID: 11400000, guid: 7bcd156daf954d147ac72cef54412d99, type: 2}
+  isCompleted: 0
+  displayImage: 0
 --- !u!1 &408850390
 GameObject:
   m_ObjectHideFlags: 0

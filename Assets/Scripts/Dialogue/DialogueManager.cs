@@ -4,16 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-
 public class DialogueManager : MonoBehaviour
 {
     private GameManager gameManager;
-    public PlayerController player; // ref to player
+    public PlayerController player;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
     public Image characterPortrait;
-    public Sprite playerPortrait; //player portrait
-    private Sprite npcPortrait;  //npc portrait
+    public Sprite playerPortrait;
+    private Sprite npcPortrait;
     private NPC currentNPC;
     private Door currentDoor;
 
@@ -22,26 +21,27 @@ public class DialogueManager : MonoBehaviour
     private Queue<string> sentences;
     private Queue<bool> isPlayerSpeakingQueue;
     private string npcName;
+    private bool isTyping = false;
+    private string currentSentence;
 
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
     }
-
     
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         player = FindObjectOfType<PlayerController>();
         sentences = new Queue<string>();
-        isPlayerSpeakingQueue = new Queue<bool>(); //check what sentences the player is speaking
-        
+        isPlayerSpeakingQueue = new Queue<bool>();
     }
 
-    public void StartDialogue(Dialogue dialogue, Sprite npcPortraitSprite, NPC npc){
+    public void StartDialogue(Dialogue dialogue, Sprite npcPortraitSprite, NPC npc)
+    {
         Debug.Log("NPC Portrait Assigned: " + npcPortraitSprite.name);
         currentNPC = npc;
-        gameManager.SetGameState(GameManager.GameState.CutScene); //prevent player from moving/interacting while dialogue is running
+        gameManager.SetGameState(GameManager.GameState.CutScene);
 
         animator.SetBool("isOpen", true);
         nameText.text = dialogue.npcName;
@@ -51,7 +51,7 @@ public class DialogueManager : MonoBehaviour
         sentences.Clear();
         isPlayerSpeakingQueue.Clear();
 
-       for (int i = 0; i < dialogue.sentences.Length; i++)
+        for (int i = 0; i < dialogue.sentences.Length; i++)
         {
             sentences.Enqueue(dialogue.sentences[i]);
             isPlayerSpeakingQueue.Enqueue(dialogue.isPlayerSpeaking[i]);
@@ -59,19 +59,28 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
     }
 
-    public void DisplayNextSentence(){
-        if (sentences.Count == 0){
+    public void DisplayNextSentence()
+    {
+        if (isTyping)
+        {
+            StopAllCoroutines();
+            dialogueText.text = currentSentence;
+            isTyping = false;
+            return;
+        }
+
+        if (sentences.Count == 0)
+        {
             EndDialogue();
             return;
         }
 
-        string sentence = sentences.Dequeue();
+        currentSentence = sentences.Dequeue();
         bool isPlayerSpeaking = isPlayerSpeakingQueue.Dequeue();
 
-        // Change character name and portrait dynamically
         if (isPlayerSpeaking)
         {
-            nameText.text = "Lucien"; // Player's name
+            nameText.text = "Lucien";
             characterPortrait.sprite = playerPortrait;
         }
         else
@@ -81,18 +90,23 @@ public class DialogueManager : MonoBehaviour
         }
 
         StopAllCoroutines();
-        StartCoroutine(TypeSentence (sentence));
+        StartCoroutine(TypeSentence(currentSentence));
     }
 
-    IEnumerator TypeSentence (string sentence){
+    IEnumerator TypeSentence(string sentence)
+    {
+        isTyping = true;
         dialogueText.text = "";
-        foreach(char letter in sentence.ToCharArray()){
+        foreach(char letter in sentence.ToCharArray())
+        {
             dialogueText.text += letter;
             yield return new WaitForSeconds(0.008f);
         }
+        isTyping = false;
     }
 
-    void EndDialogue(){
+    void EndDialogue()
+    {
         animator.SetBool("isOpen", false);
         gameManager.SetGameState(GameManager.GameState.Game);
 
@@ -102,11 +116,11 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-
-    public void StartDoorDialogue(Dialogue dialogue, Sprite npcPortraitSprite, Door door){
+    public void StartDoorDialogue(Dialogue dialogue, Sprite npcPortraitSprite, Door door)
+    {
         Debug.Log("NPC Portrait Assigned: " + npcPortraitSprite.name);
         currentDoor = door;
-        gameManager.SetGameState(GameManager.GameState.CutScene); 
+        gameManager.SetGameState(GameManager.GameState.CutScene);
 
         animator.SetBool("isOpen", true);
         nameText.text = dialogue.npcName;
@@ -116,16 +130,11 @@ public class DialogueManager : MonoBehaviour
         sentences.Clear();
         isPlayerSpeakingQueue.Clear();
 
-       for (int i = 0; i < dialogue.sentences.Length; i++)
+        for (int i = 0; i < dialogue.sentences.Length; i++)
         {
             sentences.Enqueue(dialogue.sentences[i]);
             isPlayerSpeakingQueue.Enqueue(dialogue.isPlayerSpeaking[i]);
         }
         DisplayNextSentence();
     }
-
-    //Cutscene Dialogue
-    
-
-
 }

@@ -1579,7 +1579,7 @@ GameObject:
   - component: {fileID: 996536804}
   - component: {fileID: 996536803}
   m_Layer: 0
-  m_Name: BenedictNPC
+  m_Name: CanLeave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

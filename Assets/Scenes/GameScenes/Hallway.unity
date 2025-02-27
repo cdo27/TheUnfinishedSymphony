@@ -1097,8 +1097,7 @@ MonoBehaviour:
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 0}
   BenedictNPC: {fileID: 1317423903}
-  AldricNPC: {fileID: 0}
-  DummyFinal: {fileID: 0}
+  Ending2: {fileID: 0}
   EndingTrigger: {fileID: 0}
 --- !u!1 &592919585
 GameObject:
@@ -2051,7 +2050,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &1317423902
 BoxCollider2D:
   m_ObjectHideFlags: 0

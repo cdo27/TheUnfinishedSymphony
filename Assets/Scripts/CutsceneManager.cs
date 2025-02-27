@@ -42,10 +42,10 @@ public class CutsceneManager : MonoBehaviour
 
     [Header("Final Cutscene")]
     public NPC BenedictNPC;
-    public NPC AldricNPC;
-    public NPC DummyFinal;
+    public NPC Ending2;
 
     //Endings
+    [Header("Endings")]
     public NPC EndingTrigger;
 
     // Start is called before the first frame update
@@ -211,7 +211,7 @@ public class CutsceneManager : MonoBehaviour
 
     //--------------Final----------------------
 
-    public void playBenedictScene(){
+    public void playBenedictScene(){ //hallway play benedict custcene after wing 3
         if(BenedictNPC != null){
             BenedictNPC.gameObject.SetActive(true);
             BenedictNPC.Interact();
@@ -222,7 +222,7 @@ public class CutsceneManager : MonoBehaviour
 
     }
 
-    public void finalTrigger2(){
+    public void finalTrigger2(){ //play ending cutscene 2
         if(EndingTrigger != null){
             EndingTrigger.Interact();
             Debug.Log("Playing final cutscene 2");
@@ -232,9 +232,9 @@ public class CutsceneManager : MonoBehaviour
 
     }
 
-    public void finalCutscene2(){
-        if(AldricNPC != null){
-            AldricNPC.Interact();
+    public void finalCutscene2(){ //diagloue trigger ending cutscene 2 
+        if(Ending2 != null){
+            Ending2.Interact();
             Debug.Log("Playing final cutscene 2");
         }else{
             Debug.Log("Final custcene 2 is null");

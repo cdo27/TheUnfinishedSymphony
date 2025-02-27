@@ -31,7 +31,6 @@ public class Door : Interactable
     {
         if(doorNumber == 1){ //open hallway door
             if(gameManager.hasCompletedPuzzleTut){
-                gameManager.SetGameState(GameManager.GameState.CutScene);
                 SceneManager.LoadScene(sceneToLoad);
             }else{
                 dialogueManager.StartDoorDialogue(dialogue, portraitSprite, this);
@@ -55,7 +54,21 @@ public class Door : Interactable
             }else{
                 SceneManager.LoadScene(sceneToLoad);
             }
-        }else if(doorNumber == 0){ //open door
+        }else if(doorNumber == 5){ //if thief cutscene done, load hallway insetad of hallwaycutscene
+            if(gameManager.hasCompletedCombatTut){
+                SceneManager.LoadScene("Hallway");
+            }else{
+                SceneManager.LoadScene(sceneToLoad);
+                gameManager.SetGameState(GameManager.GameState.CutScene);
+            }
+        }else if(doorNumber == 6){ //if all symphony then, lead into escape room
+            if(gameManager.hasCompletedPuzzle3 && gameManager.hasCompletedCombat3){
+                SceneManager.LoadScene("EscapeRoom");
+            }else{
+                dialogueManager.StartDoorDialogue(dialogue, portraitSprite, this);
+            }
+        }
+        else if(doorNumber == 0){ //open door
             SceneManager.LoadScene(sceneToLoad);
         }else{
             dialogueManager.StartDoorDialogue(dialogue, portraitSprite, this);

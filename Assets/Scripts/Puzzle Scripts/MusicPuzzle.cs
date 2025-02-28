@@ -36,6 +36,7 @@ public class PuzzleMechanism : MonoBehaviour
     public Button toggleBackgroundButton;
     private int selectedMissingNoteIndex = -1;
     private int selectedNoteButtonIndex = -1;
+    public Button resetButton;
 
     void Start()
     {
@@ -46,6 +47,7 @@ public class PuzzleMechanism : MonoBehaviour
         LoadLevelConfig();
         SetupNoteButtons();
         SetupNewNoteButtons();
+        resetButton.onClick.AddListener(ResetGame);
         SetupMissingNoteImages();
         UpdateTimerText(countdown);
         feedbackText.text = "";
@@ -91,6 +93,26 @@ public class PuzzleMechanism : MonoBehaviour
         else
         {
             Debug.LogError("No level config found in GameManager when loading puzzle.");
+        }
+    }
+    private void ResetGame()
+    {
+        playerSequence = new int[levelConfig.missingNotesCount];
+        attemptCount = 0;
+        selectedMissingNoteIndex = -1;
+
+        foreach (var image in missingNoteImages)
+        {
+            if (image != null)
+                image.sprite = defaultMissingNoteSprite;
+        }
+
+        feedbackText.text = "Puzzle reset. Try again!";
+
+        if (selectedNoteButtonIndex != -1)
+        {
+            newNoteButtons[selectedNoteButtonIndex].GetComponent<Image>().color = Color.white;
+            selectedNoteButtonIndex = -1;
         }
     }
     private void SetupNewNoteButtons()

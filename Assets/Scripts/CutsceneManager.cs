@@ -237,6 +237,7 @@ public class CutsceneManager : MonoBehaviour
     }
     public void finalCombatTrigger1(){ //combat with benedict
         if(CombatTrigger1 != null){
+            CombatTrigger1.gameObject.SetActive(true);
             CombatTrigger1.Interact();
             Debug.Log("Playing combat 1");
         }else{

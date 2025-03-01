@@ -2921,6 +2921,10 @@ MonoBehaviour:
   hasCompletedCombat2: 0
   hasCompletedCombat3: 0
   hasCompletedFinal: 0
+  hasMadeChoice: 0
+  Ending1: 0
+  Ending2: 0
+  Ending3: 0
   currentPuzzleLevelConfig: {fileID: 11400000, guid: 7bcd156daf954d147ac72cef54412d99, type: 2}
   TutPuzzle: {fileID: 11400000, guid: 7bcd156daf954d147ac72cef54412d99, type: 2}
   PuzzleOne: {fileID: 11400000, guid: fb22443c204969b49acc37f90d986f02, type: 2}
@@ -5790,8 +5794,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 19.5}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -36.352573, y: 19.5}
+  m_SizeDelta: {x: 232.7051, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1099654214
 MonoBehaviour:
@@ -8588,8 +8592,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -14.5}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -36.352573, y: -14.5}
+  m_SizeDelta: {x: 232.7051, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1573902214
 MonoBehaviour:
@@ -8900,7 +8904,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1645287259
 Transform:
   m_ObjectHideFlags: 0
@@ -9180,8 +9184,12 @@ MonoBehaviour:
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 0}
   BenedictNPC: {fileID: 0}
+  AldricNPC: {fileID: 0}
+  CombatTrigger1: {fileID: 0}
+  CombatTrigger2: {fileID: 0}
+  Ending1: {fileID: 0}
   Ending2: {fileID: 0}
-  EndingTrigger: {fileID: 0}
+  Ending3: {fileID: 0}
 --- !u!4 &1651437098
 Transform:
   m_ObjectHideFlags: 0

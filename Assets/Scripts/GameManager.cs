@@ -33,7 +33,9 @@ public class GameManager : MonoBehaviour
     hasTriggeredAfterPuzzle1, hasTriggeredAfterCombat1, hasTriggeredWing1Monologue,
     hasTriggeredAfterCombat2, hasTriggeredAfterPuzzle2,hasTriggeredWing2Monologue,
     hasTriggeredAfterPuzzle3, hasTriggeredAfterCombat3, hasTriggeredWing3Monologue,
-    hasTriggeredBenedictScene, hasTriggeredFinal = false;
+    hasTriggeredBenedictScene, hasTriggeredChoiceCombat, hasTriggeredFinal = false;
+
+    public bool hasMadeChoice, Ending1, Ending2, Ending3 = false; //which ending
 
     public PuzzleLevelConfig currentPuzzleLevelConfig; 
     public PuzzleLevelConfig TutPuzzle;
@@ -155,9 +157,28 @@ public class GameManager : MonoBehaviour
         }
 
         //Finals
-        if(hasCompletedFinal && !hasTriggeredFinal){
+        if(hasMadeChoice == true & !hasTriggeredChoiceCombat){ //after choice, final combat
+            hasTriggeredChoiceCombat = true;
+            if (Ending1){
+                cutsceneManager.finalCombatTrigger1();
+                Debug.Log("Play combat 1");
+            }else if (Ending2){
+                cutsceneManager.finalCombatTrigger2();
+                Debug.Log("Play combat 2");
+            }
+        }
+
+        if(hasCompletedFinal && !hasTriggeredFinal){ //after battle
             hasTriggeredFinal = true;
-            cutsceneManager.finalTrigger2();
+            if (Ending1){
+                cutsceneManager.finalCutscene1();
+                Debug.Log("Play ending 1");
+            }else if (Ending2){
+                cutsceneManager.finalCutscene2();
+                Debug.Log("Play ending 2");
+            }else if (Ending3){
+                Debug.Log("Play ending 3");
+            }
         }
     }
 

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ChoiceNPC : NPC
 {
+
     public ChoiceDialogue choiceDialogue;
     public override void Interact()
     {

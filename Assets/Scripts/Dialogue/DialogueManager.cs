@@ -148,10 +148,21 @@ public class DialogueManager : MonoBehaviour
 
     void SelectChoice(int choiceIndex)
     {
-        Debug.Log("Choice " + choiceIndex + " selected");
+        
         choicePanel.SetActive(false);
         isChoiceActive = false;
         choiceMade = true;
+
+        //update gamemanager which choice they made
+        if(choiceIndex == 0){
+            gameManager.Ending1 = true;
+            gameManager.hasMadeChoice = true;
+            Debug.Log("Choice 1 selected");
+        }else if(choiceIndex == 1){
+            gameManager.Ending2 = true;
+            gameManager.hasMadeChoice = true;
+            Debug.Log("Choice 2 selected");
+        }
 
         if (currentChoiceDialogue != null)
         {

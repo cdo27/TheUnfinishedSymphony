@@ -41,12 +41,17 @@ public class CutsceneManager : MonoBehaviour
     public NPC monologueWing3;
 
     [Header("Final Cutscene")]
-    public NPC BenedictNPC;
-    public NPC Ending2;
+    public NPC BenedictNPC; //played after wing 3
+    public NPC AldricNPC; //played in ending entrance
+    public NPC CombatTrigger1; //Benedict combat
+    public NPC CombatTrigger2; //Aldric combat
 
     //Endings
     [Header("Endings")]
-    public NPC EndingTrigger;
+    
+    public NPC Ending1;
+    public NPC Ending2;
+    public NPC Ending3;
 
     // Start is called before the first frame update
     void Start()
@@ -221,18 +226,47 @@ public class CutsceneManager : MonoBehaviour
         }
 
     }
-
-    public void finalTrigger2(){ //play ending cutscene 2
-        if(EndingTrigger != null){
-            EndingTrigger.Interact();
-            Debug.Log("Playing final cutscene 2");
+    public void playAldricScene(){
+        if(AldricNPC != null){
+            AldricNPC.Interact();
+            Debug.Log("Playing aldric final talk");
         }else{
-            Debug.Log("Final custcene 2 is null");
+            Debug.Log("aldric scene is null");
+        }
+
+    }
+    public void finalCombatTrigger1(){ //combat with benedict
+        if(CombatTrigger1 != null){
+            CombatTrigger1.Interact();
+            Debug.Log("Playing combat 1");
+        }else{
+            Debug.Log("combat 1 is null");
+        }
+
+    }
+    public void finalCombatTrigger2(){ //combat with aldric
+        if(CombatTrigger2 != null){
+            CombatTrigger2.Interact();
+            Debug.Log("Playing combat 2");
+        }else{
+            Debug.Log("combat 2 is null");
         }
 
     }
 
-    public void finalCutscene2(){ //diagloue trigger ending cutscene 2 
+    //Play Cutscenes
+    public void finalCutscene1(){ //ending cutscene 1
+        if(Ending1 != null){
+            Ending1.Interact();
+            Debug.Log("Playing final cutscene 1");
+        }else{
+            Debug.Log("Final custcene 1 is null");
+        }
+
+    }
+
+
+    public void finalCutscene2(){ //ending cutscene 2 
         if(Ending2 != null){
             Ending2.Interact();
             Debug.Log("Playing final cutscene 2");

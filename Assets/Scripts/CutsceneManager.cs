@@ -45,6 +45,7 @@ public class CutsceneManager : MonoBehaviour
     public NPC AldricNPC; //played in ending entrance
     public NPC CombatTrigger1; //Benedict combat
     public NPC CombatTrigger2; //Aldric combat
+    public NPC CombatTrigger3; 
 
     //Endings
     [Header("Endings")]
@@ -255,6 +256,17 @@ public class CutsceneManager : MonoBehaviour
 
     }
 
+    public void finalCombatTrigger3(){ //combat
+        if(CombatTrigger3 != null){
+            CombatTrigger3.gameObject.SetActive(true);
+            CombatTrigger3.Interact();
+            Debug.Log("Playing combat 3");
+        }else{
+            Debug.Log("combat 3 is null");
+        }
+
+    }
+
     //Play Cutscenes
     public void finalCutscene1(){ //ending cutscene 1
         if(Ending1 != null){
@@ -273,6 +285,16 @@ public class CutsceneManager : MonoBehaviour
             Debug.Log("Playing final cutscene 2");
         }else{
             Debug.Log("Final custcene 2 is null");
+        }
+
+    }
+
+    public void finalCutscene3(){ //ending cutscene 3 
+        if(Ending3 != null){
+            Ending3.Interact();
+            Debug.Log("Playing final cutscene 3");
+        }else{
+            Debug.Log("Final custcene 3 is null");
         }
 
     }

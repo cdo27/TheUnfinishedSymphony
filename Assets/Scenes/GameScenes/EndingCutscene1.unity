@@ -1279,16 +1279,15 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1682723153
-Transform:
+--- !u!224 &1682723153
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1682723152}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.02, y: 2.51, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1296,6 +1295,11 @@ Transform:
   - {fileID: 1234906676}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -15.02, y: 2.51}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1705612028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1400,6 +1404,7 @@ MonoBehaviour:
   AldricNPC: {fileID: 0}
   CombatTrigger1: {fileID: 0}
   CombatTrigger2: {fileID: 0}
+  CombatTrigger3: {fileID: 0}
   Ending1: {fileID: 390049323}
   Ending2: {fileID: 0}
   Ending3: {fileID: 0}
@@ -1470,8 +1475,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1263162232}
-  - {fileID: 1682723153}
   - {fileID: 572102803}
   - {fileID: 1514393191}
   - {fileID: 1889439883}
   - {fileID: 1705612032}
+  - {fileID: 1682723153}

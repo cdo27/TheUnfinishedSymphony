@@ -176,7 +176,8 @@ public class GameManager : MonoBehaviour
             }else if (Ending2){
                 cutsceneManager.finalCutscene2();
                 Debug.Log("Play ending 2");
-            }else if (Ending3){
+            }else{
+                cutsceneManager.finalCutscene3();
                 Debug.Log("Play ending 3");
             }
         }

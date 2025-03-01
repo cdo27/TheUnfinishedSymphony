@@ -389,14 +389,10 @@ MonoBehaviour:
   sceneToLoad: Combat
   portraitSprite: {fileID: 21300000, guid: eaa82fd2c8df87c43957949e6e0ba6a0, type: 3}
   dialogue:
-    npcName: 'Ending 2: Moral Path'
+    npcName: 'Ending 3: Coward Path'
     sentences:
-    - After defeating Aldric, Lucien escapes the grand opera house.
-    - Lucien exposes the truth of Aldric and Beendict's death and what had occured
-      in the grand opera house.
-    - However, his family, disgraced by the reveal, shuns Lucien.
-    - Lucien took the moral path, to expose the truth and set all the wrongs right.
-    isPlayerSpeaking: 00000000
+    - After escaping the opera house, Lucien returns to home.
+    isPlayerSpeaking: 00
   afterDialogue:
     npcName: Aldric
     sentences:
@@ -605,8 +601,8 @@ Transform:
   m_GameObject: {fileID: 690494514}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.3107, y: -2.1135, z: 0}
-  m_LocalScale: {x: 0.9419689, y: 0.9419689, z: 11.101698}
+  m_LocalPosition: {x: 13.3355, y: -2.1592, z: 0}
+  m_LocalScale: {x: 0.20142291, y: 0.20142291, z: 2.373896}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1682723153}
@@ -652,7 +648,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 7
-  m_Sprite: {fileID: 21300000, guid: af21be7d7abb2cb4c937443375c22954, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6d5b247a173deef4ca72124d0babc980, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1295,7 +1291,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -15.02, y: 2.38}
+  m_AnchoredPosition: {x: -15.02, y: 2.97}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1705612028
@@ -1337,7 +1333,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1705612031}
           m_TargetAssemblyTypeName: CutsceneManager, Assembly-CSharp
-          m_MethodName: finalCutscene2
+          m_MethodName: finalCutscene3
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1404,8 +1400,8 @@ MonoBehaviour:
   CombatTrigger2: {fileID: 0}
   CombatTrigger3: {fileID: 0}
   Ending1: {fileID: 0}
-  Ending2: {fileID: 390049323}
-  Ending3: {fileID: 0}
+  Ending2: {fileID: 0}
+  Ending3: {fileID: 390049323}
 --- !u!4 &1705612032
 Transform:
   m_ObjectHideFlags: 0

@@ -167,6 +167,7 @@ public class CombatStateManager : MonoBehaviour
     //select the song based on gamamanager id
     void selectSong()
     {
+
         //load proper song
         if (gameManager.currentSong == 001)
         {
@@ -190,6 +191,8 @@ public class CombatStateManager : MonoBehaviour
         }
 
         currentSong.songID = gameManager.currentSong;  
+
+        //currentSong = new Wing1Song();
     }
 
     void CheckModeSwitch(double currentTime)

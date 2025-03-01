@@ -21,7 +21,16 @@ public class NoteSpawner : MonoBehaviour
     //the attack hit point (where you are supposed to hit the note)
     public GameObject hitPointObject;
 
-    //spawn poing
+    //the defend hit point (where you are supposed to hit the note)
+    public GameObject defendPointObject;
+
+    //point where attack notes get automatically destroyed when players miss
+    public GameObject attackDestroyObject;
+
+    //point where defend notes get automatically destroyed when players miss
+    public GameObject defendDestroyObject;
+
+    //spawn point
     public GameObject spawnPointObject;
 
     //beatmanager
@@ -50,7 +59,7 @@ public class NoteSpawner : MonoBehaviour
         float timeToHitPoint = attackBeatsToHitPoint * crotchet;
 
         // Calculate distance from spawn to hit point
-        float spawnX = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x + 1;
+        float spawnX = spawnPointObject.transform.position.x;
         float hitPointX = hitPointObject.transform.position.x;
         float distanceToHitPoint = spawnX - hitPointX;
 
@@ -64,17 +73,19 @@ public class NoteSpawner : MonoBehaviour
             //set the spawn point, x equal some arbitary spawn point (adjust), y is just the y value of the attack bar object
             Vector2 folderPosition = folderObject.transform.position;
             Vector2 targetPosition = hitPointObject.transform.position;
+            Vector2 destroyPosition = attackDestroyObject.transform.position;
             float spawnX = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0)).x + 1;
-            Vector2 spawnPosition = new Vector2(spawnX, targetPosition.y);
+            //Vector2 spawnPosition = new Vector2(spawnX, targetPosition.y);
+            Vector2 spawnPosition = spawnPointObject.transform.position;
 
-            //instantiate the note
-            GameObject newNote = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
+        //instantiate the note
+        GameObject newNote = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
             Note note = newNote.GetComponent<Note>();
             if (combatScene.IsValid())
             {
                 SceneManager.MoveGameObjectToScene(note.gameObject, combatScene);
             }
-            note.Initialize(beat, 1, targetPosition, noteSpeed, beatManager);
+            note.Initialize(beat, 1, targetPosition, destroyPosition, noteSpeed, beatManager);
 
             return note; 
     }
@@ -106,6 +117,7 @@ public class NoteSpawner : MonoBehaviour
         float yPosition = characterPosition.y + Mathf.Sin(angle) * radius;
 
         Vector2 spawnPosition = new Vector2(xPosition, yPosition);
+        Vector2 destroyPosition = defendDestroyObject.transform.position;
 
         // Instantiate the note
         GameObject newNote = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
@@ -114,7 +126,7 @@ public class NoteSpawner : MonoBehaviour
         {
             SceneManager.MoveGameObjectToScene(note.gameObject, combatScene);
         }
-        note.Initialize(beat, 2, player.transform.position, 0, beatManager);
+        note.Initialize(beat, 2, defendPointObject.transform.position, destroyPosition, 0, beatManager);
         return note;
     }
 }

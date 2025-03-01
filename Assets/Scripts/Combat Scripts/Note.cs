@@ -14,6 +14,8 @@ public class Note : MonoBehaviour
     private int mode;
 
     private Vector2 targetPosition;
+    private Vector2 destroyPosition;
+    private bool hasReachedTarget = false;
     private float speed;
 
     private BeatManager beatManager;
@@ -28,11 +30,12 @@ public class Note : MonoBehaviour
     private bool isCharging = false; // Whether the note is charging towards the player
 
     // Initialize method
-    public void Initialize(BeatData beat, int mode, Vector2 targetPosition, float speed, BeatManager beatManager)
+    public void Initialize(BeatData beat, int mode, Vector2 targetPosition, Vector2 destroyPosition, float speed, BeatManager beatManager)
     {
         this.noteType = beat.noteType;
         this.mode = mode;
         this.targetPosition = targetPosition;
+        this.destroyPosition = destroyPosition;
         this.speed = speed; // The speed at which the note will move
         this.beatManager = beatManager; // Reference to the BeatManager for DSP timing
 
@@ -83,20 +86,14 @@ public class Note : MonoBehaviour
         if (timeDifference <= hitTolerance)
         {
             if (timeDifference <= perfectHitThreshold) // Define a smaller threshold for perfect hits
-            {
-                spriteRenderer.color = Color.green; // Perfect hit zone
+            {        
                 return 2;
             }
             else
-            {
-                spriteRenderer.color = Color.red; // In range but slightly off
+            {    
                 return 1;
             }
-        }
-        else
-        {
-            spriteRenderer.color = Color.white; // Out of range
-        }
+        }    
         return 0;
     }
 
@@ -118,9 +115,9 @@ public class Note : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, new Vector3(targetPosition.x-3, transform.position.y, transform.position.z), speed * Time.deltaTime);
 
         // Check if the note has passed the target position by checking its x position
-        if (transform.position.x <= targetPosition.x - 2) // Adjust end point as needed
+        if (transform.position.x <= destroyPosition.x) 
         {
-            Destroy(gameObject); // Remove the note when it reaches this point
+            Destroy(gameObject);
         }
     }
 
@@ -156,23 +153,52 @@ public class Note : MonoBehaviour
 
     void defendNoteUpdate()
     {
-        // Check if the current DSP time is close to the target hit time
         double currentDspTime = AudioSettings.dspTime;
 
-        // If current DSP time is within tolerance range of the target hit time, start charging
-        if (Mathf.Abs((float)(currentDspTime - targetHitTime)) <= hitTolerance && !isCharging)
+        // Determine when to start charging (currently set to 0.2s before the hit time)
+        double chargeStartTime = targetHitTime - 0.2;
+
+        if (currentDspTime >= chargeStartTime && !isCharging)
         {
             isCharging = true; // Start charging
+
+            float timeToTarget = (float)(targetHitTime - currentDspTime);
+            if (timeToTarget > 0)
+            {
+                speed = Vector3.Distance(transform.position, targetPosition) / timeToTarget;
+            }
+            else
+            {
+                speed = 60f; // Fallback speed
+            }
         }
 
-        // If we are in charging mode, move the note instantly towards the target position
-        if (isCharging)
+        // Move the note towards the target position first
+        if (isCharging && !hasReachedTarget)
         {
-            // Move the note instantly towards the target position (with high speed)
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(targetPosition.x, targetPosition.y, transform.position.z), 60 * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(
+                transform.position,
+                new Vector3(targetPosition.x, targetPosition.y, transform.position.z),
+                speed * Time.deltaTime
+            );
 
-            // Optionally, destroy the note when it reaches the target position
+            // Check if it has reached the target position
             if (transform.position == new Vector3(targetPosition.x, targetPosition.y, transform.position.z))
+            {
+                hasReachedTarget = true; // Mark as reached
+            }
+        }
+        // After reaching target position, move towards destroy position
+        else if (hasReachedTarget)
+        {
+            transform.position = Vector3.MoveTowards(
+                transform.position,
+                new Vector3(destroyPosition.x, destroyPosition.y, transform.position.z),
+                speed * Time.deltaTime
+            );
+
+            // Destroy the note at the destroy position
+            if (transform.position == new Vector3(destroyPosition.x, destroyPosition.y, transform.position.z))
             {
                 advantageBarManager.HandleDefense("Miss");
                 Destroy(gameObject);

@@ -42,6 +42,13 @@ public class CutsceneManager : MonoBehaviour
 
     [Header("Final Cutscene")]
     public NPC BenedictNPC; //played after wing 3
+
+    //EscapeHallwayScenes
+    public NPC ThiefNPC; //played after wing 3 in escapehallway
+    public GameObject FirstMovement;
+    public GameObject SecondMovement;
+
+    //Final Room
     public NPC AldricNPC; //played in ending entrance
     public NPC CombatTrigger1; //Benedict combat
     public NPC CombatTrigger2; //Aldric combat
@@ -63,6 +70,11 @@ public class CutsceneManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(ThiefNPC != null){
+            if(ThiefNPC.hasInteracted == true){
+                playSecondMovement();
+            }
+        }
         
     }
 
@@ -227,6 +239,28 @@ public class CutsceneManager : MonoBehaviour
         }
 
     }
+
+    public void playThiefScene(){
+        if(ThiefNPC != null){
+            ThiefNPC.Interact();
+            Debug.Log("Playing escape thief scene");
+        }else{
+            Debug.Log("escape thief scene is null");
+        }
+
+    }
+    public void playSecondMovement(){
+        if(SecondMovement != null){
+            FirstMovement.gameObject.SetActive(false);
+            SecondMovement.gameObject.SetActive(true);
+            Debug.Log("Playing second movement");
+        }else{
+            Debug.Log("second movement is null");
+        }
+
+    }
+
+
     public void playAldricScene(){
         if(AldricNPC != null){
             AldricNPC.Interact();

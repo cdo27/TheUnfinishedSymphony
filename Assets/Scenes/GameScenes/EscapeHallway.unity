@@ -205,8 +205,12 @@ MonoBehaviour:
   monologueWing3: {fileID: 0}
   BenedictNPC: {fileID: 0}
   AldricNPC: {fileID: 0}
-  DummyFinal: {fileID: 0}
-  EndingTrigger: {fileID: 0}
+  CombatTrigger1: {fileID: 0}
+  CombatTrigger2: {fileID: 0}
+  CombatTrigger3: {fileID: 0}
+  Ending1: {fileID: 0}
+  Ending2: {fileID: 0}
+  Ending3: {fileID: 0}
 --- !u!4 &298819526
 Transform:
   m_ObjectHideFlags: 0
@@ -2360,6 +2364,10 @@ PrefabInstance:
     - target: {fileID: 335057910235702138, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -21.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 436582619141835833, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
+      propertyPath: m_FlipX
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 436582619141835833, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
       propertyPath: m_Sprite

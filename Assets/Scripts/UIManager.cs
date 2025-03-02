@@ -204,6 +204,7 @@ public class UIManager : MonoBehaviour
         }else if(symphonyMeter == 4){
             symphonyProgress.text = "4/4";
         }
+        FindObjectOfType<AudioManager>().PlaySheetCollectSound();
     }
     
 }

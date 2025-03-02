@@ -14,6 +14,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip musicBlock;
     public AudioClip endEnemyNoteSpawn;
     public AudioClip coinCollectSound;
+    public AudioClip sheetCollectSound;
+    public AudioClip walkingSound;
    
     //BGM & SFX
     public AudioClip introBGM;
@@ -136,10 +138,33 @@ public class AudioManager : MonoBehaviour
             quillAudioSource.Stop();
         }
     }
-    //Coin
+    // Coin & Sheet
     public void PlayCoinCollectSound()
     {
         audioSource.PlayOneShot(coinCollectSound);
     }
+    public void PlaySheetCollectSound()
+{
+    audioSource.PlayOneShot(sheetCollectSound);
+}
+    //walk
+    public void PlayWalkingSound()
+{
+    if (!audioSource.isPlaying) // Check if the walking sound is not already playing
+    {
+        audioSource.loop = true; // Set loop to true
+        audioSource.clip = walkingSound;
+        audioSource.Play();
+    }
+}
+
+public void StopWalkingSound()
+{
+    if (audioSource.isPlaying && audioSource.clip == walkingSound) // Ensure the correct sound is stopped
+    {
+        audioSource.Stop();
+    }
+}
+
     
 }

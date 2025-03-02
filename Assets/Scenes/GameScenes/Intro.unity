@@ -4770,6 +4770,8 @@ MonoBehaviour:
   musicBlock: {fileID: 8300000, guid: 5e8d94a6cb7c59544a083a9cd380a7bb, type: 3}
   endEnemyNoteSpawn: {fileID: 8300000, guid: 37e8d210d16be6e4ba419e9d05003e66, type: 3}
   coinCollectSound: {fileID: 8300000, guid: e5a6898cddc41ac4a8a3666e777d93d2, type: 3}
+  sheetCollectSound: {fileID: 8300000, guid: bc59c08414bd7174b82de86b3afc787f, type: 3}
+  walkingSound: {fileID: 8300000, guid: 6b41c39341f5927478f4976978f26a69, type: 3}
   introBGM: {fileID: 8300000, guid: 9d310fcbd839f4f11a93c374d4579d1d, type: 3}
   quillSFX: {fileID: 8300000, guid: b8f6c77b6ee96455e8e476fe5b4ed18d, type: 3}
   backgroundMusic: {fileID: 8300000, guid: 2a2fe4948bfb345f789fb28933e75075, type: 3}
@@ -9185,6 +9187,9 @@ MonoBehaviour:
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 0}
   BenedictNPC: {fileID: 0}
+  ThiefNPC: {fileID: 0}
+  FirstMovement: {fileID: 0}
+  SecondMovement: {fileID: 0}
   AldricNPC: {fileID: 0}
   CombatTrigger1: {fileID: 0}
   CombatTrigger2: {fileID: 0}

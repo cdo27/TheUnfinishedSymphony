@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip musicBlock;
     public AudioClip endEnemyNoteSpawn;
     public AudioClip coinCollectSound;
+    public AudioClip sheetCollectSound;
    
     //BGM & SFX
     public AudioClip introBGM;
@@ -136,10 +137,14 @@ public class AudioManager : MonoBehaviour
             quillAudioSource.Stop();
         }
     }
-    //Coin
+    // Coin & Sheet
     public void PlayCoinCollectSound()
     {
         audioSource.PlayOneShot(coinCollectSound);
     }
+    public void PlaySheetCollectSound()
+{
+    audioSource.PlayOneShot(sheetCollectSound);
+}
     
 }

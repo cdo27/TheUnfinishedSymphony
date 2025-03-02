@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip enemyNotePop;
     public AudioClip musicBlock;
     public AudioClip endEnemyNoteSpawn;
+    public AudioClip coinCollectSound;
    
     //BGM & SFX
     public AudioClip introBGM;
@@ -55,6 +56,7 @@ public class AudioManager : MonoBehaviour
         audioSource.PlayOneShot(endEnemyNoteSpawn);
         Debug.Log("enemy note stop spawning!");
     }
+
 
 
 
@@ -133,6 +135,11 @@ public class AudioManager : MonoBehaviour
         {
             quillAudioSource.Stop();
         }
+    }
+    //Coin
+    public void PlayCoinCollectSound()
+    {
+        audioSource.PlayOneShot(coinCollectSound);
     }
     
 }

@@ -14,6 +14,7 @@ public class PlayerController: MonoBehaviour
 
     private GameManager gameManager;
     private PlayerManager playerManager;
+    private AudioManager audioManager;
 
     public float interactRange = 1f;
     public KeyCode interactKey = KeyCode.F; //F to interact
@@ -110,10 +111,12 @@ public class PlayerController: MonoBehaviour
     }
 
     void CollectCoin(GameObject coin)
-    {
-        playerManager.UpdateCoinCount(1);
-        Destroy(coin);
-    }
+{
+    playerManager.UpdateCoinCount(1); // Update the coin count
+    FindObjectOfType<AudioManager>().PlayCoinCollectSound();
+    Destroy(coin); // Destroy the coin object
+}
+
 
     //----------------Interact Code-----------------------------------------
 

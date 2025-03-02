@@ -1628,6 +1628,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 05c2926528fc0a5409fd77a138ad14aa, type: 3}
   - {fileID: 8300000, guid: 218acbc6686ca734aa28c804880419ff, type: 3}
   - {fileID: 8300000, guid: 6e9ca99aad100aa46b78e92a675fc2a2, type: 3}
+  clickSound: {fileID: 8300000, guid: 40b7a89d51a461348a05c1d4dee29248, type: 3}
   playButton: {fileID: 1241318164}
   noteButtons:
   - {fileID: 1384159008}
@@ -2433,7 +2434,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 10, y: 175}
-  m_SizeDelta: {x: 600, y: 50}
+  m_SizeDelta: {x: 800, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &897605918
 MonoBehaviour:

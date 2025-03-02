@@ -394,8 +394,10 @@ MonoBehaviour:
     - After defeating Aldric, Lucien escapes the grand opera house.
     - Lucien exposes the truth of Aldric and Beendict's death and what had occured
       in the grand opera house.
-    - However, his family, disgraced by the reveal, shuns Lucien.
-    - Lucien took the moral path, to expose the truth and set all the wrongs right.
+    - "Lucien is disgraced by his family and Aldric\u2019s circle for revealing the
+      truth, and his music career takes a hit."
+    - However, Benedict granted him partnership over the rewritten requiem, allowing
+      him to perform it, through which he becomes famous.
     isPlayerSpeaking: 00000000
   afterDialogue:
     npcName: Aldric
@@ -1399,6 +1401,14 @@ MonoBehaviour:
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 0}
   BenedictNPC: {fileID: 0}
+  ThiefNPC: {fileID: 0}
+  FirstMovement: {fileID: 0}
+  SecondMovement: {fileID: 0}
+  SceneTrigger: {fileID: 0}
+  BenedictEscapeNPC: {fileID: 0}
+  AldricEscapeNPC: {fileID: 0}
+  hasTriggeredAldricEscapeDialogue: 0
+  hasTriggeredCombat3Dialogue: 0
   AldricNPC: {fileID: 0}
   CombatTrigger1: {fileID: 0}
   CombatTrigger2: {fileID: 0}

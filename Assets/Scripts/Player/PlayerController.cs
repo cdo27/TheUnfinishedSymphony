@@ -27,6 +27,7 @@ public class PlayerController: MonoBehaviour
         animator = GetComponent<Animator>();
         gameManager = FindObjectOfType<GameManager>();
         playerManager = FindObjectOfType<PlayerManager>();
+        audioManager = FindObjectOfType<AudioManager>(); 
 
          if (interactionText != null)
         {
@@ -68,33 +69,38 @@ public class PlayerController: MonoBehaviour
         canMove = true;
     }
     private void HandleMovement(){
-        float moveX = 0f;
-        float moveY = 0f;
+    float moveX = 0f;
+    float moveY = 0f;
 
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)){
-            moveY = +1f;
-        }
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)){
-            moveY = -1f;
-        }
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)){
-            moveX = -1f;
-            animator.SetFloat("FacingDirection", -1);
-        }
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)){
-            moveX = +1f;
-            animator.SetFloat("FacingDirection", 1); 
-        }
-
-        moveDir = new Vector3(moveX, moveY).normalized;
-
-        if (moveX != 0)
-        {
-            animator.SetFloat("MoveX", moveX);
-        }
-
-        animator.SetBool("isMoving", moveX != 0 || moveY != 0);
+    if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)){
+        moveY = +1f;
     }
+    if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)){
+        moveY = -1f;
+    }
+    if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)){
+        moveX = -1f;
+        animator.SetFloat("FacingDirection", -1);
+    }
+    if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)){
+        moveX = +1f;
+        animator.SetFloat("FacingDirection", 1); 
+    }
+
+    moveDir = new Vector3(moveX, moveY).normalized;
+
+    if (moveX != 0 || moveY != 0) // Player is moving
+    {
+        animator.SetBool("isMoving", true);
+        audioManager.PlayWalkingSound(); // Play walking sound
+    }
+    else // Player is not moving
+    {
+        animator.SetBool("isMoving", false);
+        audioManager.StopWalkingSound(); // Stop walking sound
+    }
+}
+
 
     private void FixedUpdate(){ //updates player position with moveDir
         playerRigidbody2D.MovePosition(transform.position + moveDir * playerSpeed * Time.deltaTime);

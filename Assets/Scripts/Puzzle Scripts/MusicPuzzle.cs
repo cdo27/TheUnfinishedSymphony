@@ -7,6 +7,7 @@ public class PuzzleMechanism : MonoBehaviour
 {
     public AudioSource audioSource;          // Main AudioSource for playing the music and notes
     public AudioClip[] noteClips;            // Audio clips for each note
+    public AudioClip clickSound;   
     public Button playButton;                // Button to start the music segment
     public Button[] noteButtons;             // Buttons for playing individual notes
     public Button[] newNoteButtons;          // New buttons for playing additional notes
@@ -59,6 +60,8 @@ public class PuzzleMechanism : MonoBehaviour
         {
             gameManager.audioManager.StopBackgroundMusic();
         }
+
+        SetupButtonSounds();
     }
 
     void Update()
@@ -94,6 +97,27 @@ public class PuzzleMechanism : MonoBehaviour
         {
             Debug.LogError("No level config found in GameManager when loading puzzle.");
         }
+    }
+     // Method to set up click sounds
+    private void SetupButtonSounds()
+    {
+        // Apply the click sound to all buttons except those meant for playing music or notes
+        foreach (var button in new Button[] { exitButton, resetButton, toggleBackgroundButton }) // Add more buttons as needed
+        {
+            button.onClick.AddListener(PlayClickSound);
+        }
+
+        // Optionally, apply to newNoteButtons if they are not playing notes directly
+        foreach (var button in newNoteButtons)
+        {
+            button.onClick.AddListener(PlayClickSound);
+        }
+    }
+
+    // Method to play the click sound
+    private void PlayClickSound()
+    {
+        audioSource.PlayOneShot(clickSound);
     }
     private void ResetGame()
     {
@@ -154,8 +178,12 @@ public class PuzzleMechanism : MonoBehaviour
         for (int i = 0; i < missingNoteImages.Length; i++)
         {
             int index = i;
+            Button imageButton = missingNoteImages[i].GetComponent<Button>();
             missingNoteImages[i].GetComponent<Button>().onClick.AddListener(() => SelectMissingNoteImage(index));
             missingNoteImages[i].gameObject.SetActive(i < levelConfig.missingNotesCount);
+            imageButton.onClick.AddListener(PlayClickSound);
+            
+            
         }
     }
 
@@ -230,34 +258,53 @@ public class PuzzleMechanism : MonoBehaviour
         {
             int index = i;
             noteButtons[index].onClick.AddListener(() => HandleNotePress(index));
+            noteButtons[index].onClick.AddListener(PlayClickSound);
         }
     }
 
     private void HandleNotePress(int index)
+{
+    if (selectedMissingNoteIndex != -1)
     {
-        if (selectedMissingNoteIndex != -1)
+        if (index < noteImages.Length)
         {
-            if (index < noteImages.Length)
+            // Only increment attempt count if the image was previously unset or the default sprite
+            if (playerSequence[selectedMissingNoteIndex] == -1 || missingNoteImages[selectedMissingNoteIndex].sprite == defaultMissingNoteSprite)
             {
-                missingNoteImages[selectedMissingNoteIndex].sprite = noteImages[index];
-                playerSequence[selectedMissingNoteIndex] = index;
-                if (++attemptCount == levelConfig.missingNotesCount)
+                attemptCount++;
+            }
+
+            missingNoteImages[selectedMissingNoteIndex].sprite = noteImages[index];
+            playerSequence[selectedMissingNoteIndex] = index;
+            selectedMissingNoteIndex = -1;
+
+            // After setting, check if all inputs are made to decide if CheckSequence should be called
+            if (attemptCount == levelConfig.missingNotesCount)
+            {
+                if (IsAllInputsMade())
                 {
                     CheckSequence();
                 }
             }
-            selectedMissingNoteIndex = -1;
-        }
-        else if (attemptCount < levelConfig.missingNotesCount)
-        {
-            playerSequence[attemptCount] = index;
-            UpdateMissingNoteDisplay(index, attemptCount);
-            if (++attemptCount == levelConfig.missingNotesCount)
-            {
-                CheckSequence();
-            }
         }
     }
+}
+
+
+// Helper method to verify if all inputs are correctly made
+private bool IsAllInputsMade()
+{
+    for (int i = 0; i < levelConfig.missingNotesCount; i++)
+    {
+        // Assuming default or initial value in playerSequence is -1 or another invalid value
+        if (playerSequence[i] == -1)  // Check if all elements have been correctly assigned a valid index
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
 
     private void UpdateMissingNoteDisplay(int noteIndex, int missingIndex)
     {

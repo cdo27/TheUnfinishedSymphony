@@ -108,6 +108,13 @@ public class PlayerController: MonoBehaviour
             Debug.Log("Collected Coin!");
             CollectCoin(collider.gameObject);
         }
+        else if (collider.CompareTag("UpdateArea")) //scene trigger
+        {
+            if (gameManager != null)
+            {
+                gameManager.PlayerPassedArea();
+            }
+        }
     }
 
     void CollectCoin(GameObject coin)

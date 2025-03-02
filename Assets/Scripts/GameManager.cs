@@ -277,6 +277,11 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
+    public void PlayerPassedArea()
+    {
+        Debug.Log("Triggering scene");
+        cutsceneManager.playEscapeRoomScene();
+    }
     
 
 

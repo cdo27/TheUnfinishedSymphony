@@ -40,13 +40,21 @@ public class CutsceneManager : MonoBehaviour
     public NPC DummyDueterno;
     public NPC monologueWing3;
 
-    [Header("Final Cutscene")]
+    [Header("Final Cutscenes")]
     public NPC BenedictNPC; //played after wing 3
+
 
     //EscapeHallwayScenes
     public NPC ThiefNPC; //played after wing 3 in escapehallway
     public GameObject FirstMovement;
     public GameObject SecondMovement;
+
+    //Escape Room Scenes
+    public GameObject SceneTrigger;
+    public NPC BenedictEscapeNPC;
+    public NPC AldricEscapeNPC;
+
+    public bool hasTriggeredAldricEscapeDialogue, hasTriggeredCombat3Dialogue;
 
     //Final Room
     public NPC AldricNPC; //played in ending entrance
@@ -73,6 +81,20 @@ public class CutsceneManager : MonoBehaviour
         if(ThiefNPC != null){
             if(ThiefNPC.hasInteracted == true){
                 playSecondMovement();
+            }
+        }
+
+        if(BenedictEscapeNPC!=null && !hasTriggeredAldricEscapeDialogue){
+            if(BenedictEscapeNPC.hasInteracted == true){
+                hasTriggeredAldricEscapeDialogue =true;
+                playAldicEscapeDialogue();
+            }
+        }
+
+        if(AldricEscapeNPC!=null && !hasTriggeredCombat3Dialogue){
+            if(AldricEscapeNPC.hasInteracted == true){
+                hasTriggeredCombat3Dialogue = true;
+                finalCombatTrigger3();
             }
         }
         
@@ -260,6 +282,23 @@ public class CutsceneManager : MonoBehaviour
 
     }
 
+    //EscapeRoom
+    public void playEscapeRoomScene(){
+        if(BenedictEscapeNPC != null){
+            BenedictEscapeNPC.gameObject.SetActive(true);
+            BenedictEscapeNPC.Interact();
+        }
+    }
+
+    public void playAldicEscapeDialogue(){
+        if(AldricEscapeNPC != null){
+            AldricEscapeNPC.gameObject.SetActive(true);
+            AldricEscapeNPC.Interact();
+        }
+    }
+
+
+    //FinalRoom
 
     public void playAldricScene(){
         if(AldricNPC != null){

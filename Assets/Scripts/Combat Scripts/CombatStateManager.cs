@@ -82,8 +82,17 @@ public class CombatStateManager : MonoBehaviour
         
     }
 
+    public void instantWin()
+    {
+        gameState = 98;
+    }
+
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P)) // Checks if "P" key is pressed
+        {
+            instantWin();
+        }
         //handles victory condition
         if (gameState == 98)
         {

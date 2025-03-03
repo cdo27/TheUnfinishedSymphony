@@ -78,7 +78,7 @@ public class PlayerController: MonoBehaviour
     if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)){
         moveY = -1f;
     }
-    if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)){
+    if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)){    
         moveX = -1f;
         animator.SetFloat("FacingDirection", -1);
     }
@@ -88,7 +88,7 @@ public class PlayerController: MonoBehaviour
     }
 
     moveDir = new Vector3(moveX, moveY).normalized;
-
+        Debug.Log(moveX + " " + moveY);
     if (moveX != 0 || moveY != 0) // Player is moving
     {
         animator.SetBool("isMoving", true);

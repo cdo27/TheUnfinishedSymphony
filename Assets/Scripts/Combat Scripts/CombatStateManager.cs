@@ -124,6 +124,7 @@ public class CombatStateManager : MonoBehaviour
             }
             else if (currentSong.songID == 000)
             {
+                beatManager.hideAllTutorialMessage();
                 StartScreen.SetActive(true);
                 gameState = 0;
             }
@@ -148,14 +149,6 @@ public class CombatStateManager : MonoBehaviour
         else if (gameState != 98 && gameState != 99 && beatManager.songStarted)
         {
             double currentTime = AudioSettings.dspTime;
-
-            /*
-            // Update the UI text for debugging
-            if (modeText != null)
-            {
-                modeText.text = "Mode: " + GetModeText();
-            }
-            */
 
             if (currentTime > lastCheckedTime) // Ensure we only check once per frame
             {
@@ -280,19 +273,6 @@ public class CombatStateManager : MonoBehaviour
         yield return new WaitForSeconds(0.9f);
         attackModeBanner.SetActive(false);
         defendModeBanner.SetActive(false);
-    }
-
-    string GetModeText()
-    {
-        switch (gameState)
-        {
-            case 1:
-                return "Attack Mode";
-            case 2:
-                return "Defend Mode";
-            default:
-                return "Waiting...";
-        }
     }
 
     public void OnSkipTutorialClick()

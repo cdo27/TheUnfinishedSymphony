@@ -455,6 +455,17 @@ public class BeatManager : MonoBehaviour
 
         }
     }
+    public void hideAllTutorialMessage()
+    {
+        tutorialAMessage.SetActive(false);
+        tutorialBMessage.SetActive(false);
+        tutorialCMessage.SetActive(false);
+        tutorialDMessage.SetActive(false);
+        tutorialEMessage.SetActive(false);
+        tutorialFMessage.SetActive(false);
+        tutorialGMessage.SetActive(false);
+        tutorialHMessage.SetActive(false);
+    }
 
     //-------------------------retrieve methods---------------------------------
     public float getCrotchet()

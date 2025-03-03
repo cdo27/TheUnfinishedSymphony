@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource audioSource; 
     public AudioSource bgmAudioSource; // Separate AudioSource for background music
     public AudioSource quillAudioSource; // Separate AudioSource for quill SFX
+    public AudioSource combatAudioSource; // Separate AudioSource for combat
     public AudioClip beat;
     public AudioClip hitSoundA;
     public AudioClip enemyNotePop;
@@ -33,45 +34,41 @@ public class AudioManager : MonoBehaviour
 
     public void playBeatSound(double playTime)
     {
-        audioSource.clip = beat;
-        audioSource.PlayScheduled(playTime);
+        combatAudioSource.clip = beat;
+        combatAudioSource.PlayScheduled(playTime);
     }
 
     public void playHitSoundA()
     {
-        audioSource.clip = hitSoundA;
-        audioSource.PlayOneShot(hitSoundA);
+        combatAudioSource.PlayOneShot(hitSoundA);
     }
 
     public void playEnemyNotePopSound()
     {
-        audioSource.clip = enemyNotePop;
-        audioSource.PlayOneShot(enemyNotePop);
+        combatAudioSource.PlayOneShot(enemyNotePop);
     }
 
     public void playMusicBlockSound()
     {
-        //audioSource.clip = musicBlock;
-        audioSource.PlayOneShot(musicBlock);
+        combatAudioSource.PlayOneShot(musicBlock);
     }
 
     public void playPlayerDamagedSound()
     {
-        audioSource.PlayOneShot(playerDamaged);
+        combatAudioSource.PlayOneShot(playerDamaged);
     }
 
     public void playEndEnemyNoteSpawnSound()
     {
-        //audioSource.clip = endEnemyNoteSpawn;
-        audioSource.PlayOneShot(endEnemyNoteSpawn);
+        combatAudioSource.PlayOneShot(endEnemyNoteSpawn);
         Debug.Log("enemy note stop spawning!");
     }
 
 
 
 
-//BACKGROUND MUSIC AND SFX
-    
+    //BACKGROUND MUSIC AND SFX
+
     public void playIntroMusic() 
     {
         if (bgmAudioSource != null && introBGM != null && !hasPlayedIntroBGM)

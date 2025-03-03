@@ -185,7 +185,7 @@ public class GameManager : MonoBehaviour
         }
 
         if (currentState == GameState.Combat || currentState == GameState.Puzzle)
-        {
+        {   
             audioManager?.StopDialogueSFX();
             audioManager?.StopWalkingSound();
         }

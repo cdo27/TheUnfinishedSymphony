@@ -51,26 +51,47 @@ public class ThiefSong : Song
         // Defend mode beats (each phase has a list of BeatData objects)
         defendBeatsToHit = new List<List<BeatData>>
         {
-            new List<BeatData>
-            {
-                new BeatData(124.5f, 0), new BeatData(126.5f, 0), new BeatData(128.5f, 0), new BeatData(130.5f, 1) // Defend Phase 1
-            },
-            new List<BeatData>
-            {
-                new BeatData(140.5f, 1), new BeatData(142.5f, 2), new BeatData(144.5f, 1), new BeatData(146.5f, 1) // Defend Phase 2
-            },
-            new List<BeatData>
-            {
-                new BeatData(156.5f, 0), new BeatData(158.5f, 1), new BeatData(160.5f, 2), new BeatData(162.5f, 2) // Defend Phase 3
-            },
-            new List<BeatData>
-            {
-                new BeatData(172.5f, 2), new BeatData(174.5f, 0), new BeatData(176.5f, 1), new BeatData(178.5f, 0) // Defend Phase 4
-            },
-            new List<BeatData>
-            {
-                new BeatData(188.5f, 0), new BeatData(189.5f, 1), new BeatData(190.5f, 1), new BeatData(191.5f, 2), new BeatData(192.5f, 0), new BeatData(193.5f, 0), new BeatData(194.5f, 2) // Defend Phase 5
-            }
+           new List<BeatData>
+        {
+            new BeatData(120.5f, 0), new BeatData(122.5f, 0) // Defend Phase 1
+        },
+        new List<BeatData>
+        {
+            new BeatData(128.5f, 1), new BeatData(130.5f, 2) // Defend Phase 2
+        },
+        new List<BeatData>
+        {
+            new BeatData(136.5f, 0), new BeatData(138.5f, 1) // Defend Phase 3
+        },
+        new List<BeatData>
+        {
+            new BeatData(144.5f, 2), new BeatData(146.5f, 0) // Defend Phase 4
+        },
+        new List<BeatData>
+        {
+            new BeatData(152.5f, 0), new BeatData(153.5f, 0), new BeatData(154.5f, 0) // Defend Phase 5
+        },
+        new List<BeatData>
+        {
+            new BeatData(160.5f, 0), new BeatData(161.5f, 1), new BeatData(162.5f, 1) // Defend Phase 6
+        },
+        new List<BeatData>
+        {
+            new BeatData(168.5f, 1), new BeatData(169.5f, 2), new BeatData(170.5f, 0) // Defend Phase 7
+        },
+        new List<BeatData>
+        {
+            new BeatData(176.5f, 0), new BeatData(177.5f, 1), new BeatData(178f, 1), new BeatData(178.5f, 1) // Defend Phase 8
+        },
+         new List<BeatData>
+        {
+            new BeatData(184.5f, 2), new BeatData(185f, 2), new BeatData(185.5f, 1), new BeatData(186.5f, 0) // Defend Phase 8
+        },
+          new List<BeatData>
+        {
+            new BeatData(192.5f, 0), new BeatData(193f, 0), new BeatData(193.5f, 1), new BeatData(194f, 1), new BeatData(194.5f, 2) // Defend Phase 8
+        }
+
         };
         songcompleteBeat = 230f;
 

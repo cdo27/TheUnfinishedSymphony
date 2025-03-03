@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -90,43 +91,46 @@ public class NoteSpawner : MonoBehaviour
             return note; 
     }
 
-    public Note SpawnDefendNote(BeatData beat, int listSize, int position)
+    public Note SpawnDefendNote(BeatData beat, int position, List<BeatData> beatList, float startTime, float endTime)
     {
-        // Reference the character's position
         Vector2 characterPosition = enemy.transform.position;
 
-        // Define arc parameters
-        float radius = 3f; // Distance from the character
-        float arcStartAngle = Mathf.PI / 3; // Start of the arc (60 degrees)
-        float arcEndAngle = -Mathf.PI / 3; // End of the arc (-60 degrees)
+        // Arc parameters
+        float radiusX = 1f;
+        float radiusY = 2.5f;
+        float arcStartAngle = Mathf.PI / 2.2f;  // Start of arc (~81 degrees)
+        float arcEndAngle = -Mathf.PI / 2.2f;   // End of arc (~-81 degrees)
 
-        // Ensure valid listSize to prevent division by zero
-        if (listSize <= 1)
-        {
-            listSize = 1; // Avoid division errors, just put one note in the center
-        }
+        // Shift the arc to the right by adjusting the start position on the x-axis
+        float arcOffsetX = 1.0f; // Adjust this value to move the arc to the right
 
-        // Calculate the angle step for each note
-        float angleStep = (arcStartAngle - arcEndAngle) / (listSize - 1);
+        // Normalize the beatTime relative to startTime and endTime
+        float normalizedBeatTime = Mathf.InverseLerp(startTime, endTime, beat.beatTime);
 
-        // Calculate the note's angle based on its position in the list
-        float angle = arcStartAngle - (position - 1) * angleStep; // Subtract instead of add
+        // Interpolate the angle based on the normalized beatTime
+        float finalAngle = Mathf.Lerp(arcStartAngle, arcEndAngle, normalizedBeatTime);
 
-        // Compute note's X and Y position along the arc
-        float xPosition = characterPosition.x + Mathf.Cos(angle) * radius;
-        float yPosition = characterPosition.y + Mathf.Sin(angle) * radius;
+        // Compute the note's position based on this angle
+        float xPosition = characterPosition.x + Mathf.Cos(finalAngle) * radiusX + arcOffsetX;
+        float yPosition = characterPosition.y + Mathf.Sin(finalAngle) * radiusY;
 
+        // Create the spawn position
         Vector2 spawnPosition = new Vector2(xPosition, yPosition);
         Vector2 destroyPosition = defendDestroyObject.transform.position;
 
         // Instantiate the note
         GameObject newNote = Instantiate(notePrefab, spawnPosition, Quaternion.identity);
         Note note = newNote.GetComponent<Note>();
+
+        // Move the note to the combat scene if valid
         if (combatScene.IsValid())
         {
             SceneManager.MoveGameObjectToScene(note.gameObject, combatScene);
         }
+
+        // Initialize the note with the correct parameters
         note.Initialize(beat, 2, defendPointObject.transform.position, destroyPosition, 0, beatManager);
+
         return note;
     }
 }

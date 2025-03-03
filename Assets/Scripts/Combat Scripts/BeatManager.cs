@@ -29,6 +29,8 @@ public class BeatManager : MonoBehaviour
     //current list of active notes
     private List<Note> activeNotes = new List<Note>();
 
+    //not hit area lighted up object
+    public GameObject highLightedHitArea;
     //magic shield object
     public GameObject redShield;
     public GameObject greenShield;
@@ -140,6 +142,8 @@ public class BeatManager : MonoBehaviour
                     if (!noteHit && (hitResult == 2 || hitResult == 1))
                     {
                         noteHit = true; // Mark that we've hit a note
+                        highLightedHitArea.SetActive(true);
+                        Invoke("HideHighlightedHitArea", 0.05f);
 
                         // Play block sound if blocking an attack 
                         if (combatStateManager.gameState == 2) audioManager.playMusicBlockSound();
@@ -228,7 +232,9 @@ public class BeatManager : MonoBehaviour
     //---------------------------playing beat sounds every whole beat-----------------------------
     void ScheduleNextBeat()
     {
-            //audioManager.playBeatSound(nextBeatTime);
+        //audioManager.playBeatSound(nextBeatTime);
+        //make characters bounce
+        combatStateManager.ApplyBounce();
         combatStateManager.modeText.text = currentBeat.ToString(); ;
     //if (currentBeat == 8) currentBeat = 0;
     currentBeat++;
@@ -242,6 +248,7 @@ public class BeatManager : MonoBehaviour
     //------------------------------checking if notes need to be spawned, and spawn them-----------------------------
     int processingDefendList = 0; // Turn to 1 when processing a defend list
     int currentDefendListSize = 0;
+    List<BeatData> currentListCopy;
     float transitionBeatTime;
 
     void CheckAndSpawnNotes()
@@ -277,11 +284,12 @@ public class BeatManager : MonoBehaviour
                         if (processingDefendList == 0)
                         {
                             processingDefendList = 1;  // Mark as processing
-                            currentDefendListSize = combatStateManager.currentSong.defendBeatsToHit[0].Count;  // Store list size
 
+                            currentDefendListSize = combatStateManager.currentSong.defendBeatsToHit[0].Count;  // Store list size
+                            currentListCopy = new List<BeatData>(combatStateManager.currentSong.defendBeatsToHit[0]);
                             //store the transitioning time (last beat on the list + 1 beat
                             BeatData lastBeat = combatStateManager.currentSong.defendBeatsToHit[0][currentDefendListSize - 1];
-                            transitionBeatTime = lastBeat.beatTime - 7;
+                            transitionBeatTime = lastBeat.beatTime - 3;
                         }
 
                         // Check if the list is now empty
@@ -304,13 +312,13 @@ public class BeatManager : MonoBehaviour
                         {
                             nextBeat = combatStateManager.currentSong.defendBeatsToHit[0][0]; // Get the first beat for defend mode
 
-                            dspTimeForNoteSpawn = GetDspTimeForBeat(nextBeat.beatTime - 8);  // Calculate spawn time, 8 beats before the current beat
+                            dspTimeForNoteSpawn = GetDspTimeForBeat(nextBeat.beatTime - 4);  // Calculate spawn time, 8 beats before the current beat
 
                             if (AudioSettings.dspTime >= dspTimeForNoteSpawn && AudioSettings.dspTime < dspTimeForNoteSpawn + crotchet)
                             {
                                 int position = currentDefendListSize - combatStateManager.currentSong.defendBeatsToHit[0].Count + 1; // Get note position
 
-                                Note createdNote = noteSpawner.SpawnDefendNote(nextBeat, currentDefendListSize, position);
+                                Note createdNote = noteSpawner.SpawnDefendNote(nextBeat, position, currentListCopy, transitionBeatTime, transitionBeatTime + 4);
                                 audioManager.playEnemyNotePopSound();
                                 activeNotes.Add(createdNote);
 
@@ -370,35 +378,64 @@ public class BeatManager : MonoBehaviour
             case 40:
                 tutorialDMessage.SetActive(true);
                 break;
-            case 100:
+            case 84:
                 tutorialDMessage.SetActive(false);
                 break;
-            case 106:
+            case 87:
                 tutorialEMessage.SetActive(true);
                 break;
-            case 114:
+            case 92:
                 tutorialEMessage.SetActive(false);
                 tutorialFMessage.SetActive(true);
                 break;
+            case 100:
+                tutorialFMessage.SetActive(false);
+                break;
+            case 104:
+                tutorialGMessage.SetActive(true);
+                break;
+            case 108:
+                tutorialGMessage.SetActive(false);
+                tutorialHMessage.SetActive(true);
+                break;
+            case 112:
+                tutorialGMessage.SetActive(true);
+                tutorialHMessage.SetActive(false);
+                break;
+            case 116:
+                tutorialGMessage.SetActive(false);
+                tutorialHMessage.SetActive(true);
+                break;
             case 120:
-                tutorialGMessage.SetActive(true); //spawn warning
+                tutorialGMessage.SetActive(true);
+                tutorialHMessage.SetActive(false);
+                break;
+            case 124:
+                tutorialGMessage.SetActive(false);
+                tutorialHMessage.SetActive(true);
                 break;
             case 128:
-            case 144:
-            case 160:
+                tutorialGMessage.SetActive(true);
+                tutorialHMessage.SetActive(false);
+                break;
+            case 132:
                 tutorialGMessage.SetActive(false);
-                tutorialHMessage.SetActive(true);//hit warning
+                tutorialHMessage.SetActive(true);
                 break;
             case 136:
-            case 152:
+                tutorialGMessage.SetActive(true);
                 tutorialHMessage.SetActive(false);
-                tutorialGMessage.SetActive(true);//spawn warning
                 break;
-            case 170:
-                tutorialFMessage.SetActive(false);
-                tutorialHMessage.SetActive(false);
+            case 140:
                 tutorialGMessage.SetActive(false);
+                tutorialHMessage.SetActive(true);
                 break;
+            case 144:
+                tutorialHMessage.SetActive(false);
+                break;
+
+
+
         }
     }
 
@@ -435,7 +472,12 @@ public class BeatManager : MonoBehaviour
         greenShield.SetActive(false);
         purpleShield.SetActive(false);
     }
-   
+
+    void HideHighlightedHitArea()
+    {
+        highLightedHitArea.SetActive(false);
+    }
+
     void HidePerfectHitMessage()
     {
         perfectHitMessage.SetActive(false);

@@ -8,7 +8,7 @@ public class AldricSong : Song
     {
         songID = 005;
         BPM = 156;
-        offset = 0.6f;
+        offset = 0.5f;
 
         attackBeatsToHit = new List<BeatData>
         {
@@ -58,55 +58,107 @@ public class AldricSong : Song
         {
             new List<BeatData>
             {
-                new BeatData(16f, 0), new BeatData(17f, 0), new BeatData(18f, 1), new BeatData(19f, 1),
-                new BeatData(20f, 2), new BeatData(21f, 1), new BeatData(22f, 0) // Defend Phase 1
+                new BeatData(12f, 0), new BeatData(12.33f, 0), new BeatData(12.66f, 0), new BeatData(13.5f, 1), new BeatData(13.83f, 1) // Defend Phase 1
+            },
+            new List<BeatData>
+            {
+                new BeatData(20f, 1), new BeatData(20.33f, 2), new BeatData(20.66f, 1),  new BeatData(21.5f, 2), new BeatData(21.83f, 1),  // Defend Phase 1
             },
 
            //second set
-           new List<BeatData>
-            {
-                new BeatData(63.5f, 0), new BeatData(64.5f, 2), new BeatData(65.5f, 1), new BeatData(66.5f, 2),
-                new BeatData(67.5f, 0), new BeatData(68.5f, 1), new BeatData(69.5f, 2) // Defend Phase 2
+           new List<BeatData> {
+                new BeatData(60f, 0), new BeatData(60.33f, 1),
+                new BeatData(61f, 0), new BeatData(61.33f, 1),
+                new BeatData(62f, 2), new BeatData(62.33f, 2), new BeatData(62.66f, 2),  // Defend Phase 2 
             },
-            new List<BeatData>
-            {
-                new BeatData(79.5f, 0), new BeatData(80.5f, 1), new BeatData(81.5f, 1), new BeatData(82.5f, 0),
-                new BeatData(83.5f, 2), new BeatData(84.5f, 0), new BeatData(85.5f, 2) // Defend Phase 3
+
+            new List<BeatData> {
+                new BeatData(68f, 1), new BeatData(68.33f, 1),  new BeatData(68.66f, 2),
+                new BeatData(69f, 2),
+                new BeatData(70f, 1)  // Defend Phase 3 
             },
-            new List<BeatData>
-            {
-                new BeatData(95.5f, 0), new BeatData(95.83f, 0), new BeatData(96.16f, 0), new BeatData(96.5f, 0),
-                new BeatData(98.5f, 1), new BeatData(99.5f, 2), new BeatData(100.5f, 1), new BeatData(101.5f, 2) // Defend Phase 4
+
+            new List<BeatData> {
+                new BeatData(76f, 0), new BeatData(76.33f, 0),
+                new BeatData(77f, 2), new BeatData(77.33f, 2),
+                new BeatData(78f, 1),  new BeatData(78.33f, 1)  // Defend Phase 4 
             },
-            new List<BeatData>
-            {
-                new BeatData(111.5f, 0), new BeatData(112.5f, 1), new BeatData(113f, 1), new BeatData(113.5f, 1),
-                new BeatData(115.5f, 2), new BeatData(116.5f, 2), new BeatData(117.5f, 2) // Defend Phase 5
+
+            new List<BeatData> {
+                new BeatData(84f, 0), new BeatData(84.5f, 1),
+                new BeatData(85f, 1), new BeatData(85.5f, 0),
+                new BeatData(86f, 2), new BeatData(86.5f, 2)  // Defend Phase 5 
             },
-            new List<BeatData>
-            {
-                  new BeatData(127.5f, 0), new BeatData(128.5f, 1), new BeatData(129.25f, 2), new BeatData(129.5f, 2), new BeatData(129.75f, 2),
-            new BeatData(131.5f, 0), new BeatData(132.5f, 1), new BeatData(133.5f, 0) // Defend Phase 6
+
+            new List<BeatData> {
+                new BeatData(92f, 0), new BeatData(92.25f, 0), new BeatData(92.5f, 0), new BeatData(92.75f, 0),
+                new BeatData(94f, 1)  // Defend Phase 6 
+            },
+
+            new List<BeatData> {
+                new BeatData(100f, 0),
+                new BeatData(101f, 1), new BeatData(101.25f, 1), new BeatData(101.5f, 1), new BeatData(101.75f, 1),
+                new BeatData(102f, 1)  // Defend Phase 7 
+            },
+
+            new List<BeatData> {
+                new BeatData(108f, 0),
+                new BeatData(109f, 2),
+                new BeatData(110f, 1), new BeatData(110.33f, 1), new BeatData(110.66f, 1)  // Defend Phase 8 
+            },
+
+            new List<BeatData> {
+                new BeatData(116f, 2),  new BeatData(116.33f, 2),
+                new BeatData(117f, 1),  new BeatData(117.33f, 1),
+                new BeatData(118f, 0),  new BeatData(118.33f, 0),  new BeatData(118.66f, 1),  // Defend Phase 9 
+            },
+
+            new List<BeatData> {
+                new BeatData(124f, 0), new BeatData(124.33f, 0), new BeatData(124.66f, 0),
+                new BeatData(126f, 1), new BeatData(126.33f, 1), new BeatData(126.66f, 1),  // Defend Phase 10 
+            },
+
+            new List<BeatData> {
+                new BeatData(132f, 0),
+                new BeatData(133f, 1), new BeatData(133.25f, 1), new BeatData(133.5f, 1),  new BeatData(133.75f, 1),
+                new BeatData(134f, 1) // Defend Phase 11
             },
 
             //third set
-            new List<BeatData>
-            {
-                new BeatData(207.5f, 0), new BeatData(208f, 0), new BeatData(208.5f, 0), new BeatData(209f, 0),
-                new BeatData(209.5f, 1), new BeatData(210f, 1), new BeatData(210.5f, 1), new BeatData(211f, 1),
-                new BeatData(211.5f, 0), new BeatData(212f, 0), new BeatData(212.5f, 0), new BeatData(213f, 0),
-                new BeatData(213.5f, 2), new BeatData(214f, 2), new BeatData(214.5f, 2), new BeatData(215f, 2)
+            new List<BeatData> {
+                new BeatData(204f, 0),
+                new BeatData(204.5f, 0),
+                new BeatData(205f, 1),
+                new BeatData(205.5f, 0),
+                new BeatData(206f, 1),
+                new BeatData(206.5f, 0)  // Defend Phase 12
             },
-            new List<BeatData>
-            {
-                new BeatData(223.5f, 0),
-                new BeatData(224f, 0), new BeatData(224.5f, 1),
-                new BeatData(225f, 1), new BeatData(225.5f, 0),
-                new BeatData(226f, 0), new BeatData(226.5f, 2),
-                new BeatData(227f, 2), new BeatData(227.5f, 0),
-                new BeatData(228f, 0), new BeatData(228.5f, 1),
-                new BeatData(229f, 1), new BeatData(229.5f, 0),
-                new BeatData(230f, 0), new BeatData(230.5f, 2), new BeatData (231f, 2),
+
+            new List<BeatData> {
+                new BeatData(212f, 0),
+                new BeatData(212.5f, 1),
+                new BeatData(213f, 0),
+                new BeatData(213.5f, 1),
+                new BeatData(214f, 2),
+                new BeatData(214.5f, 2)  // Defend Phase 13
+            },
+
+            new List<BeatData> {
+                new BeatData(220f, 0),
+                new BeatData(220.5f, 0),
+                new BeatData(221f, 0),
+                new BeatData(221.5f, 0),
+                new BeatData(222f, 0),
+                new BeatData(222.5f, 0)  // Defend Phase 14
+            },
+
+            new List<BeatData> {
+                new BeatData(228f, 0),
+                new BeatData(228.5f, 2),
+                new BeatData(229f, 2),
+               
+                new BeatData(230f, 0),
+                new BeatData(230.5f, 1)  // Defend Phase 15
             },
         };
         songcompleteBeat = 242f;

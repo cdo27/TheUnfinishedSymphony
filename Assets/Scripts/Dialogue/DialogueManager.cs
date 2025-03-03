@@ -7,6 +7,8 @@ using TMPro;
 public class DialogueManager : MonoBehaviour
 {
     private GameManager gameManager;
+    private AudioManager audioManager;
+
     public PlayerController player;
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
@@ -40,6 +42,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+        audioManager = FindObjectOfType<AudioManager>();
         player = FindObjectOfType<PlayerController>();
         sentences = new Queue<string>();
         isPlayerSpeakingQueue = new Queue<bool>();
@@ -119,12 +122,14 @@ public class DialogueManager : MonoBehaviour
     {
         isTyping = true;
         dialogueText.text = "";
+        audioManager?.PlayDialogueSFX();
         foreach(char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(0.008f);
         }
         isTyping = false;
+        audioManager?.StopDialogueSFX();
     }
 
     void DisplayChoices()

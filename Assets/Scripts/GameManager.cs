@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
     public PuzzleLevelConfig PuzzleOne;
     public PuzzleLevelConfig PuzzleTwo;
     public PuzzleLevelConfig PuzzleThree;
+
+    
     
     void Awake()
     {
@@ -190,10 +192,17 @@ public class GameManager : MonoBehaviour
     }
 
     //Scenes
+    // Define Wing Scenes
+    private HashSet<string> scenesWithSFX = new HashSet<string>
+    {
+        "FirstWing", "SecondWing", "ThirdWing", // Example: Wing scenes
+        "Hallway", "HallwayCutscene"               // Add more if needed
+    };
 
     public void LoadGameScene(string sceneToLoad)
     {
         SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
+        
     }
 
     public void UnloadScene(string sceneToUnload){
@@ -209,6 +218,12 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"Scene loaded: {scene.name}, mode: {mode}");
         ReassignCutsceneManager();
+
+        //  Play Scene Transition Sound ONLY for specific scenes
+        if (audioManager != null && scenesWithSFX.Contains(scene.name))
+        {
+            audioManager.PlayWingSFX();
+        }
 
         if (scene.name == "PuzzleScene") // Apply the level configuration in the puzzle scene
         {

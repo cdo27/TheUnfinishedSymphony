@@ -16,6 +16,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip coinCollectSound;
     public AudioClip sheetCollectSound;
     public AudioClip walkingSound;
+    public AudioClip wingEnterSFX;
+    public AudioClip dialogueSFX;
    
     //BGM & SFX
     public AudioClip introBGM;
@@ -138,33 +140,62 @@ public class AudioManager : MonoBehaviour
             quillAudioSource.Stop();
         }
     }
+
     // Coin & Sheet
     public void PlayCoinCollectSound()
     {
         audioSource.PlayOneShot(coinCollectSound);
     }
+
     public void PlaySheetCollectSound()
-{
-    audioSource.PlayOneShot(sheetCollectSound);
-}
+    {
+        audioSource.PlayOneShot(sheetCollectSound);
+    }
     //walk
     public void PlayWalkingSound()
-{
-    if (!audioSource.isPlaying) // Check if the walking sound is not already playing
     {
-        audioSource.loop = true; // Set loop to true
-        audioSource.clip = walkingSound;
-        audioSource.Play();
+        if (!audioSource.isPlaying) // Check if the walking sound is not already playing
+        {
+            audioSource.loop = true; // Set loop to true
+            audioSource.clip = walkingSound;
+            audioSource.Play();
+        }
     }
-}
 
-public void StopWalkingSound()
-{
-    if (audioSource.isPlaying && audioSource.clip == walkingSound) // Ensure the correct sound is stopped
+    public void StopWalkingSound()
     {
-        audioSource.Stop();
+        if (audioSource.isPlaying && audioSource.clip == walkingSound) // Ensure the correct sound is stopped
+        {
+            audioSource.Stop();
+        }
     }
-}
 
-    
+    public void PlayWingSFX()
+    {
+        if (audioSource != null && wingEnterSFX != null)
+        {
+            audioSource.PlayOneShot(wingEnterSFX);
+        }
+    }
+
+    public void PlayDialogueSFX()
+    {
+        if (audioSource != null && dialogueSFX != null)
+        {
+            audioSource.clip = dialogueSFX;
+            audioSource.loop = true; // Keep looping while typing
+            audioSource.Play();
+        }
+    }
+
+    public void StopDialogueSFX()
+    {
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.loop = false;
+            audioSource.Stop();
+        }
+    }
+
+
 }

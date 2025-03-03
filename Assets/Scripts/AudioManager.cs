@@ -152,7 +152,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySheetCollectSound()
     {
-        audioSource.PlayOneShot(sheetCollectSound);
+        //audioSource.PlayOneShot(sheetCollectSound);
     }
     //walk
     public void PlayWalkingSound()

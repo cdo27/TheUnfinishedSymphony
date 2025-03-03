@@ -23,7 +23,7 @@ public class Wing1Song : Song
 
             new BeatData(49.5f, 0),  new BeatData(50f, 0),  new BeatData(50.5f, 0),
 
-            new BeatData(52f, 0), new BeatData(53f, 1),  new BeatData(53.5f, 1),  new BeatData(54f, 1), new BeatData(56f, 0),
+            new BeatData(52.5f, 0), new BeatData(53.5f, 1),  new BeatData(54f, 1),  new BeatData(54.5f, 1), new BeatData(56f, 0),
 
             new BeatData(57.5f, 2),  new BeatData(58f, 2),  new BeatData(58.5f, 2), new BeatData(61f, 0), new BeatData(63f, 0),
 
@@ -33,7 +33,7 @@ public class Wing1Song : Song
 
              new BeatData(82.5f, 0),  new BeatData(83f, 0),  new BeatData(83.5f, 0),
 
-            new BeatData(85f, 0),  new BeatData(86.5f, 1),  new BeatData(87f, 1),  new BeatData(87.5f, 1), new BeatData(90f, 0),  new BeatData(92f, 0),  new BeatData(94f, 0),  new BeatData(96f, 0),
+            new BeatData(86f, 0),  new BeatData(87f, 1),  new BeatData(87.5f, 1),  new BeatData(88f, 1), new BeatData(90f, 0),  new BeatData(92f, 0),  new BeatData(94f, 0),
             
             
             
@@ -48,37 +48,57 @@ public class Wing1Song : Song
         // Defend mode beats (each phase has a list of BeatData objects)
         defendBeatsToHit = new List<List<BeatData>>
         {
-            new List<BeatData>
+           new List<BeatData>
             {
-                new BeatData(108.5f, 0), new BeatData(109.5f, 0), new BeatData(110.5f, 0), new BeatData(111.5f, 0),
-                new BeatData(112.5f, 0), new BeatData(113.5f, 0), new BeatData(114.5f, 0) // Defend Phase 1
-            },
-          new List<BeatData>
-            {
-                new BeatData(125f, 1), new BeatData(126f, 1), new BeatData(127f, 1), new BeatData(128f, 1),
-                new BeatData(129f, 1), new BeatData(130f, 1), new BeatData(131f, 1) // Defend Phase 2
+                new BeatData(104.5f, 1), new BeatData(105.5f, 0),  new BeatData(106f, 0), new BeatData(106.5f, 0) // Defend Phase 1
             },
             new List<BeatData>
             {
-                new BeatData(141.5f, 0), new BeatData(142.5f, 0), new BeatData(143.5f, 0), new BeatData(144.5f, 0),
-                new BeatData(145.5f, 2), new BeatData(146.5f, 2), new BeatData(147.5f, 2) // Defend Phase 3
+                new BeatData(112.5f, 0), new BeatData(113f, 0),  new BeatData(113.5f, 2), new BeatData(114f, 2), new BeatData(114.5f, 2) // Defend Phase 2
             },
             new List<BeatData>
             {
-                new BeatData(158f, 1), new BeatData(159f, 1), new BeatData(160f, 0), new BeatData(161f, 0),
-                new BeatData(162f, 2), new BeatData(163f, 2), new BeatData(164f, 2) // Defend Phase 4
+                new BeatData(121f, 1), new BeatData(123f, 2) // Defend Phase 3
             },
-        new List<BeatData>
-        {
-            new BeatData(174.5f, 0), new BeatData(175.5f, 1), new BeatData(176.5f, 2), new BeatData(177.5f, 1),
-            new BeatData(178.5f, 2), new BeatData(179.5f, 2), new BeatData(180.5f, 2) // Defend Phase 5
-        },
+            new List<BeatData>
+            {
+                new BeatData(129f, 1), new BeatData(130f, 0), new BeatData(130.5f, 0), new BeatData(131f, 0) // Defend Phase 4
+            },
+            new List<BeatData>
+            {
+                new BeatData(137.5f, 1),     // Beat 1
+                new BeatData(138.5f, 1),     // Beat 2
+                new BeatData(139.5f, 2),     // Combo Start
+                new BeatData(139.83f, 2),    // Combo Hit 2 (sub-beat)
+                new BeatData(140.16f, 2)     // Combo Hit 3 (sub-beat)
+                // Note: Beat 140.5 is reserved for the turn switch
+            },
+            new List<BeatData>
+            {
+                new BeatData(146f, 0), new BeatData(147.5f, 1), new BeatData(148f, 2), new BeatData(148.5f, 1) // Defend Phase 6
+            },
+            new List<BeatData>
+            {
+                new BeatData(154f, 0), new BeatData(155f, 1), new BeatData(156f, 2) // Defend Phase 7
+            },
+            new List<BeatData>
+            {
+                new BeatData(162.5f, 0), new BeatData(163.5f, 1), new BeatData(164f, 1), new BeatData(164.5f, 0) // Defend Phase 8
+            },
+            new List<BeatData>
+            {
+                new BeatData(171f, 0), new BeatData(171.5f, 0),  new BeatData(173f, 2), new BeatData(173.5f, 2) // Defend Phase 9
+            },
+            new List<BeatData>
+            {
+                new BeatData(179f, 0),  new BeatData(179.5f, 0), new BeatData(180f, 1),  new BeatData(180.5f, 1), new BeatData(181f, 2), new BeatData(181.5f, 2)  // Defend Phase 10
+            }
         };
         songcompleteBeat = 215f;
 
 
         attackModeBeats = new List<float> { 0f, 182f };
-        defendModeBeats = new List<float> { 98f };
+        defendModeBeats = new List<float> { 96f };
     }
 
     public override void PlaySong(SongManager songManager)

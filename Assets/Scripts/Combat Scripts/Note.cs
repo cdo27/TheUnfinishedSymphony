@@ -16,6 +16,7 @@ public class Note : MonoBehaviour
     private Vector2 targetPosition;
     private Vector2 destroyPosition;
     private bool hasReachedTarget = false;
+    private bool duringDestroyAnimation = false;
     private float speed;
 
     private BeatManager beatManager;
@@ -126,7 +127,8 @@ public class Note : MonoBehaviour
     {
         if (mode == 2) // Defend note
         {
-            Destroy(gameObject);
+            duringDestroyAnimation = true;
+            StartCoroutine(defendDestroyAnimation());
         }
         else if (mode == 1) // Attack note
         {
@@ -137,6 +139,33 @@ public class Note : MonoBehaviour
             // Animate the note moving towards the enemy
             StartCoroutine(MoveTowardsEnemy(enemyPosition));
         }
+    }
+
+    private IEnumerator defendDestroyAnimation()
+    {
+        float duration = 0.1f; // Duration of the effect
+        float elapsedTime = 0f;
+        Vector3 originalScale = transform.localScale;
+        Vector3 targetScale = originalScale * 3f; // Expand size by 1.5x
+
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        Color originalColor = sr.color;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / duration;
+
+            // Fade out
+            sr.color = new Color(originalColor.r, originalColor.g, originalColor.b, Mathf.Lerp(1f, 0f, t));
+
+            // Expand size
+            transform.localScale = Vector3.Lerp(originalScale, targetScale, t);
+
+            yield return null;
+        }
+
+        Destroy(gameObject); // Remove the note after animation
     }
 
     private IEnumerator MoveTowardsEnemy(Vector3 enemyPosition)
@@ -157,53 +186,53 @@ public class Note : MonoBehaviour
 
         // Determine when to start charging (currently set to 0.2s before the hit time)
         double chargeStartTime = targetHitTime - 0.2;
-
-        if (currentDspTime >= chargeStartTime && !isCharging)
+        if(duringDestroyAnimation == false)
         {
-            isCharging = true; // Start charging
+            if (currentDspTime >= chargeStartTime && !isCharging)
+            {
+                isCharging = true; // Start charging
 
-            float timeToTarget = (float)(targetHitTime - currentDspTime);
-            if (timeToTarget > 0)
-            {
-                speed = Vector3.Distance(transform.position, targetPosition) / timeToTarget;
+                float timeToTarget = (float)(targetHitTime - currentDspTime);
+                if (timeToTarget > 0)
+                {
+                    speed = Vector3.Distance(transform.position, targetPosition) / timeToTarget;
+                }
             }
-            else
+
+            // Move the note towards the target position first
+            if (isCharging && !hasReachedTarget)
             {
-                speed = 60f; // Fallback speed
+                transform.position = Vector3.MoveTowards(
+                    transform.position,
+                    new Vector3(targetPosition.x, targetPosition.y, transform.position.z),
+                    speed * Time.deltaTime
+                );
+
+                // Check if it has reached the target position
+                if (transform.position == new Vector3(targetPosition.x, targetPosition.y, transform.position.z))
+                {
+                    hasReachedTarget = true; // Mark as reached
+                }
+            }
+            // After reaching target position, move towards destroy position
+            else if (isCharging && hasReachedTarget)
+            {
+                transform.position = Vector3.MoveTowards(
+                    transform.position,
+                    new Vector3(destroyPosition.x, destroyPosition.y, transform.position.z),
+                    speed * Time.deltaTime
+                );
+
+                // Destroy the note at the destroy position
+                if (transform.position == new Vector3(destroyPosition.x, destroyPosition.y, transform.position.z))
+                {
+                    advantageBarManager.HandleDefense("Miss");
+                    audioManager.playPlayerDamagedSound();
+                    Destroy(gameObject);
+                }
             }
         }
-
-        // Move the note towards the target position first
-        if (isCharging && !hasReachedTarget)
-        {
-            transform.position = Vector3.MoveTowards(
-                transform.position,
-                new Vector3(targetPosition.x, targetPosition.y, transform.position.z),
-                speed * Time.deltaTime
-            );
-
-            // Check if it has reached the target position
-            if (transform.position == new Vector3(targetPosition.x, targetPosition.y, transform.position.z))
-            {
-                hasReachedTarget = true; // Mark as reached
-            }
-        }
-        // After reaching target position, move towards destroy position
-        else if (hasReachedTarget)
-        {
-            transform.position = Vector3.MoveTowards(
-                transform.position,
-                new Vector3(destroyPosition.x, destroyPosition.y, transform.position.z),
-                speed * Time.deltaTime
-            );
-
-            // Destroy the note at the destroy position
-            if (transform.position == new Vector3(destroyPosition.x, destroyPosition.y, transform.position.z))
-            {
-                advantageBarManager.HandleDefense("Miss");
-                Destroy(gameObject);
-            }
-        }
+        
     }
 }
 

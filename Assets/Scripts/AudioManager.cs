@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip hitSoundA;
     public AudioClip enemyNotePop;
     public AudioClip musicBlock;
+    public AudioClip playerDamaged;
     public AudioClip endEnemyNoteSpawn;
     public AudioClip coinCollectSound;
     public AudioClip sheetCollectSound;
@@ -50,13 +51,18 @@ public class AudioManager : MonoBehaviour
 
     public void playMusicBlockSound()
     {
-        audioSource.clip = musicBlock;
+        //audioSource.clip = musicBlock;
         audioSource.PlayOneShot(musicBlock);
+    }
+
+    public void playPlayerDamagedSound()
+    {
+        audioSource.PlayOneShot(playerDamaged);
     }
 
     public void playEndEnemyNoteSpawnSound()
     {
-        audioSource.clip = endEnemyNoteSpawn;
+        //audioSource.clip = endEnemyNoteSpawn;
         audioSource.PlayOneShot(endEnemyNoteSpawn);
         Debug.Log("enemy note stop spawning!");
     }

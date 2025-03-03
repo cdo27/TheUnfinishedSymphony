@@ -4779,7 +4779,7 @@ MonoBehaviour:
   sheetCollectSound: {fileID: 8300000, guid: bc59c08414bd7174b82de86b3afc787f, type: 3}
   walkingSound: {fileID: 8300000, guid: 6b41c39341f5927478f4976978f26a69, type: 3}
   wingEnterSFX: {fileID: 8300000, guid: 008b150293bd049b8822bffab7f1792b, type: 3}
-  dialogueSFX: {fileID: 8300000, guid: a5b8acde9e4244d929b6ac8d59b9c6b5, type: 3}
+  dialogueSFX: {fileID: 8300000, guid: 8415edb06d0f54c6480964172035f9be, type: 3}
   introBGM: {fileID: 8300000, guid: 9d310fcbd839f4f11a93c374d4579d1d, type: 3}
   quillSFX: {fileID: 8300000, guid: b8f6c77b6ee96455e8e476fe5b4ed18d, type: 3}
   backgroundMusic: {fileID: 8300000, guid: 2a2fe4948bfb345f789fb28933e75075, type: 3}

@@ -1097,6 +1097,14 @@ MonoBehaviour:
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 0}
   BenedictNPC: {fileID: 1317423903}
+  ThiefNPC: {fileID: 0}
+  FirstMovement: {fileID: 0}
+  SecondMovement: {fileID: 0}
+  SceneTrigger: {fileID: 0}
+  BenedictEscapeNPC: {fileID: 0}
+  AldricEscapeNPC: {fileID: 0}
+  hasTriggeredAldricEscapeDialogue: 0
+  hasTriggeredCombat3Dialogue: 0
   AldricNPC: {fileID: 0}
   CombatTrigger1: {fileID: 0}
   CombatTrigger2: {fileID: 0}
@@ -1155,6 +1163,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   portraitSprite: {fileID: 21300000, guid: eaa82fd2c8df87c43957949e6e0ba6a0, type: 3}
+  lockedSprite: {fileID: 0}
   dialogue:
     npcName: 
     sentences:
@@ -1746,6 +1755,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1114046035}
   - component: {fileID: 1114046034}
+  - component: {fileID: 1114046036}
   m_Layer: 0
   m_Name: HallwayMap
   m_TagString: Untagged
@@ -1837,6 +1847,21 @@ Transform:
   - {fileID: 1538075187}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1114046036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114046033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d736a4a80da14415689122b9ca31b6f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FirstDoorUnlocked: {fileID: 0}
+  SecondDoorUnlocked: {fileID: 0}
+  ThirdDoorUnlocked: {fileID: 0}
 --- !u!1 &1145195638
 GameObject:
   m_ObjectHideFlags: 0
@@ -2622,6 +2647,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   portraitSprite: {fileID: 0}
+  lockedSprite: {fileID: 0}
   dialogue:
     npcName: 
     sentences: []
@@ -3171,6 +3197,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   portraitSprite: {fileID: 0}
+  lockedSprite: {fileID: 0}
   dialogue:
     npcName: 
     sentences: []
@@ -3455,6 +3482,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   portraitSprite: {fileID: 21300000, guid: eaa82fd2c8df87c43957949e6e0ba6a0, type: 3}
+  lockedSprite: {fileID: 0}
   dialogue:
     npcName: 
     sentences:

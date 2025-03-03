@@ -8,6 +8,7 @@ public class Door : Interactable
     public GameManager gameManager; //message saying its locked
     public DialogueManager dialogueManager;
     public Sprite portraitSprite;
+    public Sprite lockedSprite;
     public Dialogue dialogue;
     public int doorNumber;
     

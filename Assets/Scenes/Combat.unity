@@ -4613,6 +4613,7 @@ MonoBehaviour:
   yellowSpiritSprite: {fileID: 21300000, guid: 8f1c82359343b5e4db469f68872872b3, type: 3}
   blueSpiritSprite: {fileID: 21300000, guid: 7d378346ea22da84594a5e48a19f23fd, type: 3}
   aldricSprite: {fileID: 21300000, guid: 864a6168db9f08f43bb8d76261ee3e33, type: 3}
+  thiefAnimator: {fileID: 0}
   modeText: {fileID: 1659017279}
 --- !u!4 &1825297036
 Transform:

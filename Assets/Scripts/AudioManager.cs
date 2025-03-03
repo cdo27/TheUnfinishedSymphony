@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip musicBlock;
     public AudioClip playerDamaged;
     public AudioClip endEnemyNoteSpawn;
+    public AudioClip changeTurn;
     public AudioClip coinCollectSound;
     public AudioClip sheetCollectSound;
     public AudioClip walkingSound;
@@ -62,6 +63,11 @@ public class AudioManager : MonoBehaviour
     {
         combatAudioSource.PlayOneShot(endEnemyNoteSpawn);
         Debug.Log("enemy note stop spawning!");
+    }
+
+    public void playChangeTurnSound()
+    {
+        combatAudioSource.PlayOneShot(changeTurn);
     }
 
 

@@ -14,7 +14,7 @@ public class Wing1Song : Song
 
         attackBeatsToHit = new List<BeatData>
         {
-            new BeatData(5f, 0), new BeatData(9f, 0), new BeatData(13f, 0), new BeatData(17f, 0),
+            new BeatData(9f, 0), new BeatData(13f, 0), new BeatData(17f, 0),
             new BeatData(21f, 0), new BeatData(25f, 0), new BeatData(29.5f, 2), new BeatData(30.5f, 2), new BeatData(31.5f, 2),
 
             new BeatData(32f, 2), new BeatData(32.5f, 2), new BeatData(33f, 0), new BeatData(33.5f, 0), new BeatData(35.5f, 1), new BeatData(36f, 1), new BeatData(37.5f, 0), new BeatData(38f, 0),
@@ -67,10 +67,9 @@ public class Wing1Song : Song
             new List<BeatData>
             {
                 new BeatData(137.5f, 1),     // Beat 1
-                new BeatData(138.5f, 1),     // Beat 2
-                new BeatData(139.5f, 2),     // Combo Start
-                new BeatData(139.83f, 2),    // Combo Hit 2 (sub-beat)
-                new BeatData(140.16f, 2)     // Combo Hit 3 (sub-beat)
+                new BeatData(139f, 2),     // Combo Start
+                new BeatData(139.5f, 2),    // Combo Hit 2 (sub-beat)
+                new BeatData(140f, 2)     // Combo Hit 3 (sub-beat)
                 // Note: Beat 140.5 is reserved for the turn switch
             },
             new List<BeatData>
@@ -97,7 +96,7 @@ public class Wing1Song : Song
         songcompleteBeat = 215f;
 
 
-        attackModeBeats = new List<float> { 0f, 182f };
+        attackModeBeats = new List<float> { 5f, 182f };
         defendModeBeats = new List<float> { 96f };
     }
 

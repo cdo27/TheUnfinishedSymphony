@@ -8,7 +8,9 @@ public class Note : MonoBehaviour
     public Sprite redNoteSprite;  
     public Sprite greenNoteSprite;
     public Sprite purpleNoteSprite;
-    public Sprite attackSprite;
+    public Sprite redAttackSprite;
+    public Sprite greenAttackSprite;
+    public Sprite purpleAttackSprite;
 
     public int noteType;
     private int mode;
@@ -132,7 +134,19 @@ public class Note : MonoBehaviour
         }
         else if (mode == 1) // Attack note
         {
-            spriteRenderer.sprite = attackSprite;
+            switch (noteType)
+            {
+                case 0:
+                    spriteRenderer.sprite = redAttackSprite;
+                    break;
+                case 1:
+                    spriteRenderer.sprite = greenAttackSprite;
+                    break;
+                case 2:
+                    spriteRenderer.sprite = purpleAttackSprite;
+                    break;
+            }
+            
             // Move the note instantly up by 3 units
             transform.position = new Vector3(transform.position.x - 2, transform.position.y + 3, transform.position.z);
 
@@ -171,9 +185,22 @@ public class Note : MonoBehaviour
     private IEnumerator MoveTowardsEnemy(Vector3 enemyPosition)
     {
         float speed = 10f; // Adjust speed as needed
-        while (Vector3.Distance(transform.position, enemyPosition) > 0.1f)
+        float timeLimit = 1.2f; // Time limit for the failsafe
+        float startTime = Time.time; // Record the start time
+
+        while (Vector3.Distance(transform.position, new Vector3(enemyPosition.x, enemyPosition.y, transform.position.z)) > 0.1f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, enemyPosition, 20 * Time.deltaTime);
+            // Move towards the target position
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(enemyPosition.x, enemyPosition.y, transform.position.z), 20 * Time.deltaTime);
+
+            // Check if time limit is exceeded
+            if (Time.time - startTime > timeLimit)
+            {
+                Debug.Log("Failsafe activated: Destroying object");
+                Destroy(gameObject); // Destroy the object after the time limit
+                yield break; // Exit the coroutine early
+            }
+
             yield return null;
         }
 

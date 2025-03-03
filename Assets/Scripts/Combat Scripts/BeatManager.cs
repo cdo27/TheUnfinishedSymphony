@@ -158,7 +158,7 @@ public class BeatManager : MonoBehaviour
                         }
 
                         // handle hit and destroy, depending on if it's an atatck note or defend note
-                        note.handleHit(combatStateManager.enemy.transform.position);
+                        note.handleHit(combatStateManager.enemyHitPoint.transform.position);
 
                         // If it's a perfect hit
                         if (hitResult == 2)
@@ -546,14 +546,23 @@ public class BeatManager : MonoBehaviour
     public void playHurtAnimation()
     {
         lucienAnimator.SetBool("isHurt", true);
-        StartCoroutine(ResetHurtAnimation());
+
+        // Get the player's SpriteRenderer and store the original color
+        SpriteRenderer spriteRenderer = combatStateManager.player.GetComponent<SpriteRenderer>();
+
+        // Change color to red
+        spriteRenderer.color = Color.red;
+
+        StartCoroutine(ResetHurtAnimation(spriteRenderer));
     }
-    private IEnumerator ResetHurtAnimation()
+
+    private IEnumerator ResetHurtAnimation(SpriteRenderer spriteRenderer)
     {
-        // Wait until the attack animation is playing and it's completed
+        // Wait until the hurt animation is completed
         yield return new WaitForSeconds(lucienAnimator.GetCurrentAnimatorStateInfo(0).length);
 
-        // Set isAttack to false after the animation is done
+        // Restore original color and reset animation flag
+        spriteRenderer.color = Color.white;
         lucienAnimator.SetBool("isHurt", false);
     }
 

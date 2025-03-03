@@ -13,7 +13,7 @@ public class Wing3Song : Song
 
         attackBeatsToHit = new List<BeatData>();
 
-        for (float i = 4f; i <= 30f; i++)
+        for (float i = 8f; i <= 30f; i++)
         {
             attackBeatsToHit.Add(new BeatData(i, 0));
         }

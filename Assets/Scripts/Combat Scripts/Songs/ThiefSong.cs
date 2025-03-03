@@ -13,7 +13,7 @@ public class ThiefSong : Song
         attackBeatsToHit = new List<BeatData>
         {
             // First 16 beats: One note every 4 beats (0)
-            new BeatData(4f, 0), new BeatData(8f, 0), new BeatData(12f, 0), new BeatData(16f, 0),
+            new BeatData(8f, 0), new BeatData(12f, 0), new BeatData(16f, 0),
             new BeatData(20f, 0), new BeatData(24f, 0), new BeatData(28f, 0), new BeatData(32f, 0),
 
             // Next 8 beats: One note every 2 beats (0)
@@ -95,7 +95,7 @@ public class ThiefSong : Song
         songcompleteBeat = 230f;
 
 
-        attackModeBeats = new List<float> { 0f, 196f};
+        attackModeBeats = new List<float> { 4f, 196f};
         defendModeBeats = new List<float> { 109f };
     }
 

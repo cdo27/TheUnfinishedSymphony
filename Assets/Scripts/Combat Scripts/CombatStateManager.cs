@@ -29,6 +29,8 @@ public class CombatStateManager : MonoBehaviour
 
     public GameObject player;
     public GameObject enemy;
+    //the enemy hit point 
+    public GameObject enemyHitPoint;
 
     public Sprite thiefSprite;
     public Sprite redSpiritSprite;
@@ -43,7 +45,6 @@ public class CombatStateManager : MonoBehaviour
 
     void Start()
     {
-
         gameManager = FindObjectOfType<GameManager>();
         sceneController = FindObjectOfType<SceneController>();
 
@@ -52,7 +53,6 @@ public class CombatStateManager : MonoBehaviour
             gameManager.audioManager.StopBackgroundMusic();
             gameManager.SetGameState(GameManager.GameState.Combat);
         }
-
         //set up the proper song
         selectSong();
         StartScreen.SetActive(true);
@@ -163,7 +163,6 @@ public class CombatStateManager : MonoBehaviour
     //select the song based on gamamanager id
     void selectSong()
     {
-
         //load proper song
         if (gameManager.currentSong == 001)
         {
@@ -187,8 +186,7 @@ public class CombatStateManager : MonoBehaviour
         }
 
         currentSong.songID = gameManager.currentSong;  
-
-       //currentSong = new Wing2Song();
+       //currentSong = new AldricSong();
     }
 
     void CheckModeSwitch(double currentTime)
@@ -200,6 +198,7 @@ public class CombatStateManager : MonoBehaviour
             if (currentTime >= attackModeTime)
             {
                 gameState = 1; // Attack mode
+                beatManager.audioManager.playChangeTurnSound();
                 StartCoroutine(ShowTurnBannerWithDelay(0));
                 attackBar.SetActive(true);
                 Debug.Log("Switched to Attack Mode!");
@@ -214,6 +213,7 @@ public class CombatStateManager : MonoBehaviour
             if (currentTime >= defendModeTime)
             {
                 gameState = 2; // Defend mode
+                beatManager.audioManager.playChangeTurnSound();
                 StartCoroutine(ShowTurnBannerWithDelay(1));
                 attackBar.SetActive(false);
                 Debug.Log("Switched to Defend Mode!");

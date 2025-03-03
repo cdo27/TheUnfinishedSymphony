@@ -207,6 +207,7 @@ public class DialogueManager : MonoBehaviour
         choicePanel.SetActive(false);
         isChoiceActive = false;
         gameManager.SetGameState(GameManager.GameState.Game);
+        audioManager?.StopDialogueSFX();
 
         if (currentNPC != null)
         {

@@ -183,6 +183,11 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Play ending 3");
             }
         }
+
+        if (currentState == GameState.Combat || currentState == GameState.Puzzle)
+        {
+            audioManager?.StopDialogueSFX();
+        }
     }
 
     public void SetGameState(GameState newState)

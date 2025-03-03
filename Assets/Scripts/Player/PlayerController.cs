@@ -10,7 +10,7 @@ public class PlayerController: MonoBehaviour
     private const float playerSpeed = 13f;
     private Vector3 moveDir;
     private Rigidbody2D playerRigidbody2D;
-    private Animator animator;
+    public Animator animator;
 
     private GameManager gameManager;
     private PlayerManager playerManager;
@@ -86,6 +86,7 @@ public class PlayerController: MonoBehaviour
         moveX = +1f;
         animator.SetFloat("FacingDirection", 1); 
     }
+    Debug.Log(moveX);
 
     moveDir = new Vector3(moveX, moveY).normalized;
 
@@ -99,6 +100,8 @@ public class PlayerController: MonoBehaviour
         animator.SetBool("isMoving", false);
         audioManager.StopWalkingSound(); // Stop walking sound
     }
+
+    Debug.Log($"moveX: {moveX}, FacingDirection: {animator.GetFloat("FacingDirection")}");
 }
 
 

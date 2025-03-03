@@ -14,6 +14,9 @@ public class BeatManager : MonoBehaviour
     public AdvantageBarManager advantageBarManager;
     public NoteSpawner noteSpawner;
 
+    //animator
+    public Animator lucienAnimator;
+
     //variables carrying current attribute of songs
     public bool songStarted = false;
     private float songBPM; //bpm, carry over from currentSong
@@ -158,6 +161,9 @@ public class BeatManager : MonoBehaviour
                                 perfectHitMessage.SetActive(true);
                                 advantageBarManager.HandleAttack("Perfect");
                                 Invoke("HidePerfectHitMessage", 0.2f); // Hides after 0.2 seconds
+                                //play attack animation
+                                lucienAnimator.SetBool("isAttacking", true);
+                                StartCoroutine(ResetAttackAnimation());
                             } else if (combatStateManager.gameState == 2)
                             {
                                 perfectBlockMessage.SetActive(true); 
@@ -172,7 +178,11 @@ public class BeatManager : MonoBehaviour
                                 nearMissMessage.SetActive(true);
                                 advantageBarManager.HandleAttack("NearMiss");
                                 Invoke("HideNearMissMessage", 0.2f); // Hides after 0.2 seconds
-                            }else if (combatStateManager.gameState == 2)
+                                //play attack animation
+                                lucienAnimator.SetBool("isAttacking", true);
+                                StartCoroutine(ResetAttackAnimation());
+                            }
+                            else if (combatStateManager.gameState == 2)
                             {
                                 nearMissBlockMessage.SetActive(true);
                                 advantageBarManager.HandleDefense("Partial");
@@ -494,6 +504,16 @@ public class BeatManager : MonoBehaviour
     void HideNearMissBlockMessage()
     {
         nearMissBlockMessage.SetActive(false);
+    }
+
+    ////////////////////////////////////////////////ANIMATION RELATED ////////////////////////////////////////////////////
+    private IEnumerator ResetAttackAnimation()
+    {
+        // Wait until the attack animation is playing and it's completed
+        yield return new WaitForSeconds(lucienAnimator.GetCurrentAnimatorStateInfo(0).length);
+
+        // Set isAttack to false after the animation is done
+        lucienAnimator.SetBool("isAttacking", false);
     }
 
 }

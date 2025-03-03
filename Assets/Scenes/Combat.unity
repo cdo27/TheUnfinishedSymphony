@@ -1517,6 +1517,7 @@ MonoBehaviour:
   combatStateManager: {fileID: 1825297035}
   advantageBarManager: {fileID: 826387559}
   noteSpawner: {fileID: 1321420712}
+  lucienAnimator: {fileID: 1580711130}
   songStarted: 0
   dspTimeSongStart: 0
   dspTimeOffset: 0
@@ -3903,6 +3904,7 @@ GameObject:
   - component: {fileID: 1580711127}
   - component: {fileID: 1580711128}
   - component: {fileID: 1580711129}
+  - component: {fileID: 1580711130}
   m_Layer: 0
   m_Name: Lucien
   m_TagString: Untagged
@@ -3919,7 +3921,7 @@ Transform:
   m_GameObject: {fileID: 1580711126}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.14, y: -1.08, z: 0.05039216}
+  m_LocalPosition: {x: -4.14, y: -0.36, z: 0.05039216}
   m_LocalScale: {x: 0.32, y: 0.32, z: 0.32}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4022,6 +4024,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 18.283794, y: 24.49}
   m_EdgeRadius: 0
+--- !u!95 &1580711130
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1580711126}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c41046f59546fbc4a84238761c594bc0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1613040472
 GameObject:
   m_ObjectHideFlags: 0

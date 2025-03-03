@@ -29,11 +29,14 @@ public class CombatStateManager : MonoBehaviour
 
     public GameObject player;
     public GameObject enemy;
+
     public Sprite thiefSprite;
     public Sprite redSpiritSprite;
     public Sprite yellowSpiritSprite;
     public Sprite blueSpiritSprite;
     public Sprite aldricSprite;
+
+    public Animator thiefAnimator;
 
     // Just for testing
     public TMP_Text modeText;
@@ -53,35 +56,27 @@ public class CombatStateManager : MonoBehaviour
         //set up the proper song
         selectSong();
         StartScreen.SetActive(true);
-        //set up the sprites
+        //set up the sprites and animators for enemies
+        //Animator enemyAnimator = enemy.GetComponent<Animator>();
+        SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
         if (currentSong.songID == 001)
         {
-            //StartScreen.SetActive(true);
-            SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
             enemySpriteRenderer.sprite = thiefSprite;
         }else if (currentSong.songID == 002)
         {
-            SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
             enemySpriteRenderer.sprite = redSpiritSprite;
-            //beatManager.readySong();
         }
         else if (currentSong.songID == 003)
         {
-            SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
             enemySpriteRenderer.sprite = blueSpiritSprite;
-            //beatManager.readySong();
         }
         else if (currentSong.songID == 004)
         {
-            SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
             enemySpriteRenderer.sprite = yellowSpiritSprite;
-            //beatManager.readySong();
         }
         else if (currentSong.songID == 005)
         {
-            SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
             enemySpriteRenderer.sprite = aldricSprite;
-            //beatManager.readySong();
         }
 
         

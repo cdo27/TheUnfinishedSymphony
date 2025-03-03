@@ -10,7 +10,6 @@ public class ThiefSong : Song
         BPM = 162;
         offset = 1.1f;
 
-
         attackBeatsToHit = new List<BeatData>
         {
             // First 16 beats: One note every 4 beats (0)

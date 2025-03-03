@@ -1140,7 +1140,7 @@ Transform:
   m_GameObject: {fileID: 592919585}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.7554, y: -0.0833, z: 0}
+  m_LocalPosition: {x: 3.89, y: -0.0833, z: 0}
   m_LocalScale: {x: 0.19268556, y: 1.7746977, z: 0.5116137}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1859,6 +1859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d736a4a80da14415689122b9ca31b6f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HallwayDoorUnlocked: {fileID: 0}
   FirstDoorUnlocked: {fileID: 21300000, guid: 53f5b49468707184082e80925c9d99c0, type: 3}
   SecondDoorUnlocked: {fileID: 21300000, guid: ccba1e2b9e64a454eb9752703688f480, type: 3}
   ThirdDoorUnlocked: {fileID: 21300000, guid: ef5b18169a1fb224c9c8c3dbc1e2eaa4, type: 3}
@@ -3174,7 +3175,7 @@ Transform:
   m_GameObject: {fileID: 1983485928}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.7156, y: 2.29, z: 0}
+  m_LocalPosition: {x: -0.7156, y: 2.35, z: 0}
   m_LocalScale: {x: 1.442332, y: 0.1109711, z: 0.5116137}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3459,7 +3460,7 @@ Transform:
   m_GameObject: {fileID: 2119259218}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.7116, y: -2.3717, z: 0}
+  m_LocalPosition: {x: -0.7116, y: -2.43, z: 0}
   m_LocalScale: {x: 1.4587189, y: 0.097542964, z: 0.5116137}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -10,7 +10,7 @@ public class AdvantageBarManager : MonoBehaviour
     public RectTransform rightBar; // Reference to the right bar's RectTransform
     public RectTransform energyClash; // Reference to the energy clashing image's RectTransform
     private float advantage = 50f; // Starts in the middle (0 to 100)
-    private float barWidth = 930f; // Total width of the advantage bar
+    private float barWidth; // Total width of the advantage bar
 
     private int totalAttackNotes = 1; // Default to prevent divide by zero
     private int totalDefenseNotes = 1;
@@ -48,6 +48,14 @@ public class AdvantageBarManager : MonoBehaviour
         // Set scaling factors so that hitting every note perfectly would fully shift the bar
         attackUnit = 50f / totalAttackNotes;  // 50 means shifting from center to one extreme
         defenseUnit = 50f / totalDefenseNotes;
+
+        
+        // Fixed padding value of 20 pixels on each side
+        float padding = 20f;
+
+        // Calculate the usable width for the bar (subtract padding from both sides)
+        barWidth = leftBar.rect.width + rightBar.rect.width;
+
 
         UpdateUI();
         StartDecay(); // Start decay when the bar is initialized
@@ -152,17 +160,20 @@ public class AdvantageBarManager : MonoBehaviour
     // Update the UI to reflect the current advantage value
     private void UpdateUI()
     {
-        // Calculate left and right bar sizes based on the advantage
-        float leftBarSize = (advantage / 100) * barWidth;
-        float rightBarSize = ((100 - advantage) / 100) * barWidth;
+        // Ensure barWidth is always updated dynamically
+        barWidth = leftBar.rect.width + rightBar.rect.width;
 
-        // Update the width of the bars
+        // Calculate left and right bar sizes based on the advantage
+        float leftBarSize = (advantage / 100f) * barWidth;
+        float rightBarSize = barWidth - leftBarSize; // Ensure it always adds up to barWidth
+
+        // Apply the new sizes
         leftBar.sizeDelta = new Vector2(leftBarSize, leftBar.sizeDelta.y);
         rightBar.sizeDelta = new Vector2(rightBarSize, rightBar.sizeDelta.y);
 
-        // Update the position of the energy clashing image
-        float energyPosition = (advantage / 100) * barWidth - (barWidth / 2); // Centering it
+        // Ensure Energy Clash is centered correctly
+        float energyPosition = leftBarSize - (barWidth / 2); // Centered properly
         energyClash.anchoredPosition = new Vector2(energyPosition, energyClash.anchoredPosition.y);
     }
- 
+
 }

@@ -391,14 +391,11 @@ MonoBehaviour:
   dialogue:
     npcName: 'Ending 1: Selfish Path'
     sentences:
-    - After defeating the fury of Benedict's spirit, Lucien is guided out of the
-      haunted opera hosue by Aldric.
-    - With the completed symphony in hand, Lucien is recognzied as Aldric's true
-      heir.
-    - His career skyrockets along with his prestige.
+    - "After defeating Benedict\u2019s spirit, Lucien is guided out by Aldric."
+    - "He is recognized as Aldric\u2019s true heir and his music career skyrockets."
     - "Lucien\u2019s music has an eerie, otherworldly influence as he remains haunted
       by what happened at the opera house."
-    isPlayerSpeaking: 00000000
+    isPlayerSpeaking: 000000
   afterDialogue:
     npcName: Aldric
     sentences:
@@ -1401,6 +1398,14 @@ MonoBehaviour:
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 0}
   BenedictNPC: {fileID: 0}
+  ThiefNPC: {fileID: 0}
+  FirstMovement: {fileID: 0}
+  SecondMovement: {fileID: 0}
+  SceneTrigger: {fileID: 0}
+  BenedictEscapeNPC: {fileID: 0}
+  AldricEscapeNPC: {fileID: 0}
+  hasTriggeredAldricEscapeDialogue: 0
+  hasTriggeredCombat3Dialogue: 0
   AldricNPC: {fileID: 0}
   CombatTrigger1: {fileID: 0}
   CombatTrigger2: {fileID: 0}

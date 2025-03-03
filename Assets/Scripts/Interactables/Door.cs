@@ -67,6 +67,12 @@ public class Door : Interactable
             }else{
                 dialogueManager.StartDoorDialogue(dialogue, portraitSprite, this);
             }
+        }else if(doorNumber == 7){ //if all symphony, escape hallway thief cutscene
+            if(gameManager.hasCompletedPuzzle3 && gameManager.hasCompletedCombat3){
+                SceneManager.LoadScene("EscapeHallwayCutscene");
+            }else{
+                SceneManager.LoadScene(sceneToLoad);
+            }
         }
         else if(doorNumber == 0){ //open door
             SceneManager.LoadScene(sceneToLoad);

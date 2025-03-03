@@ -391,8 +391,11 @@ MonoBehaviour:
   dialogue:
     npcName: 'Ending 3: Coward Path'
     sentences:
-    - After escaping the opera house, Lucien returns to home.
-    isPlayerSpeaking: 00
+    - Aldric and Benedict both remain consumed by the symphony, stuck in a cycle
+      of obsession.
+    - The opera house awaits the next victim. Lucien continues his music career as
+      a struggling music conductor, having full freedom and independence on his work.
+    isPlayerSpeaking: 0000
   afterDialogue:
     npcName: Aldric
     sentences:
@@ -601,7 +604,7 @@ Transform:
   m_GameObject: {fileID: 690494514}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.3355, y: -2.1592, z: 0}
+  m_LocalPosition: {x: 13.3107, y: -2.1135, z: 0}
   m_LocalScale: {x: 0.20142291, y: 0.20142291, z: 2.373896}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -933,7 +936,7 @@ Transform:
   m_GameObject: {fileID: 1234906675}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.6298, y: -3.0199, z: 0}
+  m_LocalPosition: {x: 13.3107, y: -2.1135, z: 0}
   m_LocalScale: {x: 27.441376, y: 19.311432, z: 117.85628}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1395,6 +1398,14 @@ MonoBehaviour:
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 0}
   BenedictNPC: {fileID: 0}
+  ThiefNPC: {fileID: 0}
+  FirstMovement: {fileID: 0}
+  SecondMovement: {fileID: 0}
+  SceneTrigger: {fileID: 0}
+  BenedictEscapeNPC: {fileID: 0}
+  AldricEscapeNPC: {fileID: 0}
+  hasTriggeredAldricEscapeDialogue: 0
+  hasTriggeredCombat3Dialogue: 0
   AldricNPC: {fileID: 0}
   CombatTrigger1: {fileID: 0}
   CombatTrigger2: {fileID: 0}

@@ -1097,8 +1097,13 @@ MonoBehaviour:
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 0}
   BenedictNPC: {fileID: 1317423903}
+  AldricNPC: {fileID: 0}
+  CombatTrigger1: {fileID: 0}
+  CombatTrigger2: {fileID: 0}
+  CombatTrigger3: {fileID: 0}
+  Ending1: {fileID: 0}
   Ending2: {fileID: 0}
-  EndingTrigger: {fileID: 0}
+  Ending3: {fileID: 0}
 --- !u!1 &592919585
 GameObject:
   m_ObjectHideFlags: 0
@@ -2621,7 +2626,7 @@ MonoBehaviour:
     npcName: 
     sentences: []
     isPlayerSpeaking: 
-  doorNumber: 0
+  doorNumber: 7
   sceneToLoad: EscapeHallway
 --- !u!61 &1656645811
 BoxCollider2D:

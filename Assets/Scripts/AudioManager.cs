@@ -152,6 +152,12 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySheetCollectSound()
     {
+        if (audioSource != null && sheetCollectSound != null)
+        {
+            audioSource.Stop(); // Stop any previous sounds to prevent overlapping
+            audioSource.PlayOneShot(sheetCollectSound);
+            Debug.Log("Sheet collection sound played!");
+        }
         //audioSource.PlayOneShot(sheetCollectSound);
     }
     //walk

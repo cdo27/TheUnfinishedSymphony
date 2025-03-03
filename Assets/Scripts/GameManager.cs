@@ -69,11 +69,13 @@ public class GameManager : MonoBehaviour
     {
         if (hasCompletedPuzzleTut && !hasTriggeredAfterPuzzleTutCutscene){
             hasTriggeredAfterPuzzleTutCutscene = true;
+            audioManager.PlaySheetCollectSound();
             cutsceneManager.afterPuzzleTut();
             uiManager.UpdateSymphonyProgress(1);
         }
 
         if (hasCompletedCombatTut && !hasTriggeredAfterCombatTutCutscene){
+            audioManager.PlaySheetCollectSound();
             hasTriggeredAfterCombatTutCutscene = true;
             cutsceneManager.afterCombatTut();
         }
@@ -82,11 +84,13 @@ public class GameManager : MonoBehaviour
         
         if(hasCompletedPuzzle1 && !hasTriggeredAfterPuzzle1){
             hasTriggeredAfterPuzzle1 = true;
+            audioManager.PlaySheetCollectSound();
             cutsceneManager.afterPuzzle1();
         }
 
         if(hasCompletedCombat1 && !hasTriggeredAfterCombat1){
             hasTriggeredAfterCombat1 = true;
+            audioManager.PlaySheetCollectSound();
             cutsceneManager.afterCombat1();
         }
 
@@ -106,11 +110,13 @@ public class GameManager : MonoBehaviour
 
         if(hasCompletedPuzzle2 && !hasTriggeredAfterPuzzle2){
             hasTriggeredAfterPuzzle2 = true;
+            audioManager.PlaySheetCollectSound();
             cutsceneManager.afterPuzzle2();
         }
 
         if(hasCompletedCombat2 && !hasTriggeredAfterCombat2){
             hasTriggeredAfterCombat2 = true;
+            audioManager.PlaySheetCollectSound();
             cutsceneManager.afterCombat2();
         }
 
@@ -129,11 +135,13 @@ public class GameManager : MonoBehaviour
         //--------------Wing 3--------------------------------------------
         if(hasCompletedPuzzle3 && !hasTriggeredAfterPuzzle3){
             hasTriggeredAfterPuzzle3 = true;
+            audioManager.PlaySheetCollectSound();
             cutsceneManager.afterPuzzle3();
         }
 
         if(hasCompletedCombat3 && !hasTriggeredAfterCombat3){
             hasTriggeredAfterCombat3 = true;
+            audioManager.PlaySheetCollectSound();
             cutsceneManager.afterCombat3();
         }
 

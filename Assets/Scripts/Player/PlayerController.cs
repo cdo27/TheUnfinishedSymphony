@@ -86,6 +86,7 @@ public class PlayerController: MonoBehaviour
         moveX = +1f;
         animator.SetFloat("FacingDirection", 1); 
     }
+    Debug.Log(moveX);
 
     moveDir = new Vector3(moveX, moveY).normalized;
         Debug.Log(moveX + " " + moveY);
@@ -99,6 +100,8 @@ public class PlayerController: MonoBehaviour
         animator.SetBool("isMoving", false);
         audioManager.StopWalkingSound(); // Stop walking sound
     }
+
+    Debug.Log($"moveX: {moveX}, FacingDirection: {animator.GetFloat("FacingDirection")}");
 }
 
 

@@ -189,7 +189,8 @@ public class AudioManager : MonoBehaviour
         if (audioSource != null && dialogueSFX != null)
         {
             audioSource.clip = dialogueSFX;
-            
+            audioSource.loop = true; // Keep looping while typing
+            audioSource.time = 0f; // Restart from the beginning
             audioSource.Play();
         }
     }

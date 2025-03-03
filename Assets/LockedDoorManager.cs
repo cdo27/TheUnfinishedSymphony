@@ -4,18 +4,35 @@ using UnityEngine;
 
 public class LockedDoorManager : MonoBehaviour
 {
+    private GameManager gameManager;
+
+    //Hallway Maps
     public Sprite FirstDoorUnlocked;
     public Sprite SecondDoorUnlocked;
     public Sprite ThirdDoorUnlocked;
-    // Start is called before the first frame update
+    private SpriteRenderer spriteRenderer;
+
     void Start()
     {
-        
+        gameManager = FindObjectOfType<GameManager>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (gameManager != null)
+        {
+            spriteRenderer.sprite = FirstDoorUnlocked;
+
+            if (gameManager.hasCompletedPuzzle1 && gameManager.hasCompletedCombat1)
+            {
+                spriteRenderer.sprite = SecondDoorUnlocked;
+            }
+            
+            if (gameManager.hasCompletedPuzzle2 && gameManager.hasCompletedCombat2)
+            {
+                spriteRenderer.sprite = ThirdDoorUnlocked;
+            }
+        }
     }
 }

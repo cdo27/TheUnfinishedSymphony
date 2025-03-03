@@ -877,7 +877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &95747873
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2083,7 +2083,7 @@ Transform:
   m_GameObject: {fileID: 284047461}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.9465, y: 0.2627, z: 0}
+  m_LocalPosition: {x: 3.58, y: 0.2627, z: 0}
   m_LocalScale: {x: 0.2841314, y: 1.4230931, z: 0.5116137}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6335,6 +6335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1182191145}
   - component: {fileID: 1182191144}
+  - component: {fileID: 1182191146}
   m_Layer: 0
   m_Name: EntranceMap
   m_TagString: Untagged
@@ -6383,7 +6384,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 944873cb5602c4c4b84e620b89081796, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 094b17c1118810b4c98f61e90fb07ec5, type: 3}
   m_Color: {r: 0.7334393, g: 0.7196084, b: 0.79622644, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6424,6 +6425,22 @@ Transform:
   - {fileID: 2031828399}
   m_Father: {fileID: 946634704}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1182191146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182191143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d736a4a80da14415689122b9ca31b6f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HallwayDoorUnlocked: {fileID: 21300000, guid: 47d6e241ea5a0444d919b0e3dd99497b, type: 3}
+  FirstDoorUnlocked: {fileID: 0}
+  SecondDoorUnlocked: {fileID: 0}
+  ThirdDoorUnlocked: {fileID: 0}
 --- !u!1 &1204558757
 GameObject:
   m_ObjectHideFlags: 0
@@ -9319,7 +9336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1740044925
 Transform:
   m_ObjectHideFlags: 0
@@ -10237,7 +10254,7 @@ Transform:
   m_GameObject: {fileID: 2031828398}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.8025, y: 0.268, z: 0}
+  m_LocalPosition: {x: -5.43, y: 0.35, z: 0}
   m_LocalScale: {x: 0.1556756, y: 1.5991284, z: 0.51162124}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10951,7 +10968,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7999804287017886458, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.47
+      value: -12.1
       objectReference: {fileID: 0}
     - target: {fileID: 7999804287017886458, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
       propertyPath: m_LocalPosition.y

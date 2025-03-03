@@ -104,6 +104,9 @@ public class BeatManager : MonoBehaviour
                 if (combatStateManager.gameState == 1) audioManager.playHitSoundA();
                 if (combatStateManager.gameState == 2)
                 {
+                    //play defend animation
+                    lucienAnimator.SetBool("isDefending", true);
+                    StartCoroutine(ResetDefendAnimation());
                     // generate appropriate shields
                     if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
                     {
@@ -148,8 +151,12 @@ public class BeatManager : MonoBehaviour
                         highLightedHitArea.SetActive(true);
                         Invoke("HideHighlightedHitArea", 0.05f);
 
-                        // Play block sound if blocking an attack 
-                        if (combatStateManager.gameState == 2) audioManager.playMusicBlockSound();
+                        // Play block sound if blocking an attack
+                        if (combatStateManager.gameState == 2)
+                        {
+                            audioManager.playMusicBlockSound();            
+                        }
+
                         // handle hit and destroy, depending on if it's an atatck note or defend note
                         note.handleHit(combatStateManager.enemy.transform.position);
 
@@ -167,7 +174,7 @@ public class BeatManager : MonoBehaviour
                             } else if (combatStateManager.gameState == 2)
                             {
                                 perfectBlockMessage.SetActive(true); 
-                                Invoke("HidePerfectBlockMessage", 0.2f); // Hides after 0.2 seconds
+                                Invoke("HidePerfectBlockMessage", 0.2f); // Hides after 0.2 seconds    
                             }
                         }
                         // If it's a slight miss
@@ -514,6 +521,29 @@ public class BeatManager : MonoBehaviour
 
         // Set isAttack to false after the animation is done
         lucienAnimator.SetBool("isAttacking", false);
+    }
+
+    private IEnumerator ResetDefendAnimation()
+    {
+        // Wait until the attack animation is playing and it's completed
+        yield return new WaitForSeconds(lucienAnimator.GetCurrentAnimatorStateInfo(0).length);
+
+        // Set isAttack to false after the animation is done
+        lucienAnimator.SetBool("isDefending", false);
+    }
+
+    public void playHurtAnimation()
+    {
+        lucienAnimator.SetBool("isHurt", true);
+        StartCoroutine(ResetHurtAnimation());
+    }
+    private IEnumerator ResetHurtAnimation()
+    {
+        // Wait until the attack animation is playing and it's completed
+        yield return new WaitForSeconds(lucienAnimator.GetCurrentAnimatorStateInfo(0).length);
+
+        // Set isAttack to false after the animation is done
+        lucienAnimator.SetBool("isHurt", false);
     }
 
 }

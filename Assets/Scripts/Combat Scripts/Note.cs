@@ -228,6 +228,9 @@ public class Note : MonoBehaviour
                 {
                     advantageBarManager.HandleDefense("Miss");
                     audioManager.playPlayerDamagedSound();
+
+                    //play hurt animation
+                    beatManager.playHurtAnimation();
                     Destroy(gameObject);
                 }
             }

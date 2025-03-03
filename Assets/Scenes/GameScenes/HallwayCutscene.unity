@@ -1355,9 +1355,21 @@ MonoBehaviour:
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 0}
   BenedictNPC: {fileID: 0}
+  ThiefNPC: {fileID: 0}
+  FirstMovement: {fileID: 0}
+  SecondMovement: {fileID: 0}
+  SceneTrigger: {fileID: 0}
+  BenedictEscapeNPC: {fileID: 0}
+  AldricEscapeNPC: {fileID: 0}
+  hasTriggeredAldricEscapeDialogue: 0
+  hasTriggeredCombat3Dialogue: 0
   AldricNPC: {fileID: 0}
-  DummyFinal: {fileID: 0}
-  EndingTrigger: {fileID: 0}
+  CombatTrigger1: {fileID: 0}
+  CombatTrigger2: {fileID: 0}
+  CombatTrigger3: {fileID: 0}
+  Ending1: {fileID: 0}
+  Ending2: {fileID: 0}
+  Ending3: {fileID: 0}
 --- !u!320 &554738152
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -1880,13 +1892,12 @@ MonoBehaviour:
     - "Not bad! You\u2019ve got some fight in you."
     - Are we done now?
     - "For now. But trust me, this won\u2019t be your last fight."
-    - "So...You\u2019re a thief?"
     - "Tell you what\u2014I like you. You need supplies? Maybe wanna get better at
       dealing with the spirits here? I know a few tricks."
     - "And let me guess\u2026 it comes at a price?"
     - "Well... I do run a little shop. Drop by anytime. Maybe I\u2019ll even cut
       you a deal\u2014since you haven\u2019t tried to exorcise me yet."
-    isPlayerSpeaking: 00010001000100
+    isPlayerSpeaking: 000100000100
   afterDialogue:
     npcName: Thief Spirit
     sentences:

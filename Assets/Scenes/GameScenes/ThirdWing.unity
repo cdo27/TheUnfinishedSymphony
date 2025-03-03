@@ -681,10 +681,12 @@ MonoBehaviour:
   dialogue:
     npcName: NPC
     sentences:
-    - "The scribbles on the sheet\u2026 the way that spirit raged at his name\u2026
-      Aldric wasn\u2019t just obsessed\u2014he was unraveling. But why? What was
-      driving him to madness?"
-    isPlayerSpeaking: 01
+    - "Benedict and Aldric argued. Over control, over the music, over whose hands
+      would shape the final movement. And then\u2026 Aldric lost control\u2026 and
+      Benedict was gone."
+    - "Aldric never meant for it to happen. But that didn\u2019t matter. The music,
+      their musis...was suddenly his alone."
+    isPlayerSpeaking: 0101
   afterDialogue:
     npcName: NPC
     sentences:
@@ -3555,9 +3557,21 @@ MonoBehaviour:
   DummyDueterno: {fileID: 2031958479}
   monologueWing3: {fileID: 279713825}
   BenedictNPC: {fileID: 0}
+  ThiefNPC: {fileID: 0}
+  FirstMovement: {fileID: 0}
+  SecondMovement: {fileID: 0}
+  SceneTrigger: {fileID: 0}
+  BenedictEscapeNPC: {fileID: 0}
+  AldricEscapeNPC: {fileID: 0}
+  hasTriggeredAldricEscapeDialogue: 0
+  hasTriggeredCombat3Dialogue: 0
   AldricNPC: {fileID: 0}
-  DummyFinal: {fileID: 0}
-  EndingTrigger: {fileID: 0}
+  CombatTrigger1: {fileID: 0}
+  CombatTrigger2: {fileID: 0}
+  CombatTrigger3: {fileID: 0}
+  Ending1: {fileID: 0}
+  Ending2: {fileID: 0}
+  Ending3: {fileID: 0}
 --- !u!4 &1997999374
 Transform:
   m_ObjectHideFlags: 0

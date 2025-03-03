@@ -189,7 +189,7 @@ public class AudioManager : MonoBehaviour
         if (audioSource != null && dialogueSFX != null)
         {
             audioSource.clip = dialogueSFX;
-            audioSource.loop = true; // Keep looping while typing
+            
             audioSource.Play();
         }
     }
@@ -198,7 +198,7 @@ public class AudioManager : MonoBehaviour
     {
         if (audioSource != null && audioSource.isPlaying)
         {
-            audioSource.loop = false;
+            
             audioSource.Stop();
         }
     }

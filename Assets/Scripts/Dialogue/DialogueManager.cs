@@ -213,6 +213,7 @@ public class DialogueManager : MonoBehaviour
             currentNPC.CompleteInteraction();
         }
         Debug.Log("Dialogue ended");
+        audioManager?.StopDialogueSFX();
     }
 
     public void StartDoorDialogue(Dialogue dialogue, Sprite npcPortraitSprite, Door door)

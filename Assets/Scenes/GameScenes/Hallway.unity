@@ -1901,9 +1901,9 @@ MonoBehaviour:
   dialogue:
     npcName: NPC
     sentences:
-    - "The scribbles on the sheet\u2026 the way that spirit raged at his name\u2026
-      Aldric wasn\u2019t just obsessed\u2014he was unraveling. But why? What was
-      driving him to madness?"
+    - "The initials on the sheet\u2026 what that spirit said\u2026 the argument in
+      the study\u2026 This symphony wasn\u2019t just Aldric\u2019s. It was Benedict\u2019s
+      too. But something went wrong. What really happened between them?"
     isPlayerSpeaking: 01
   afterDialogue:
     npcName: NPC

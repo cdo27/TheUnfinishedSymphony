@@ -10,7 +10,7 @@ public class PlayerController: MonoBehaviour
     private const float playerSpeed = 13f;
     private Vector3 moveDir;
     private Rigidbody2D playerRigidbody2D;
-    private Animator animator;
+    public Animator animator;
 
     private GameManager gameManager;
     private PlayerManager playerManager;

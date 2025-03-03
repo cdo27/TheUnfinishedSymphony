@@ -40,7 +40,7 @@ public class CombatStateManager : MonoBehaviour
 
     void Start()
     {
-
+        /*
         gameManager = FindObjectOfType<GameManager>();
         sceneController = FindObjectOfType<SceneController>();
 
@@ -49,7 +49,7 @@ public class CombatStateManager : MonoBehaviour
             gameManager.audioManager.StopBackgroundMusic();
             gameManager.SetGameState(GameManager.GameState.Combat);
         }
-
+        */
         //set up the proper song
         selectSong();
         StartScreen.SetActive(true);
@@ -166,6 +166,7 @@ public class CombatStateManager : MonoBehaviour
     //select the song based on gamamanager id
     void selectSong()
     {
+        /*
         //load proper song
         if (gameManager.currentSong == 001)
         {
@@ -189,7 +190,8 @@ public class CombatStateManager : MonoBehaviour
         }
 
         currentSong.songID = gameManager.currentSong;  
-        //currentSong = new AldricSong();
+        */
+        currentSong = new Wing2Song();
     }
 
     void CheckModeSwitch(double currentTime)

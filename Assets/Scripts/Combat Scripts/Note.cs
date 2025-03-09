@@ -257,7 +257,7 @@ public class Note : MonoBehaviour
                     audioManager.playPlayerDamagedSound();
 
                     //play hurt animation
-                    beatManager.playHurtAnimation();
+                    beatManager.combatStateManager.combatAnimationManager.LucienPlayHurtAnimation();
                     Destroy(gameObject);
                 }
             }
@@ -265,25 +265,3 @@ public class Note : MonoBehaviour
         
     }
 }
-
-/** FOR TESTING
-       double currentDspTime = AudioSettings.dspTime;
-       float timeDifference = Mathf.Abs((float)(currentDspTime - targetHitTime));
-       if (timeDifference <= hitTolerance)
-       {
-           if (timeDifference <= perfectHitThreshold) // Define a smaller threshold for perfect hits
-           {
-               spriteRenderer.color = Color.green; // Perfect hit zone
-            
-           }
-           else
-           {
-               spriteRenderer.color = Color.red; // In range but slightly off
-          
-           }
-       }
-       else
-       {
-           spriteRenderer.color = Color.white; // Out of range
-       }
-       */

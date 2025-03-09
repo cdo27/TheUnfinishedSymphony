@@ -16,6 +16,11 @@ public class CombatStateManager : MonoBehaviour
     public SceneController sceneController;
     public GameManager gameManager;
     public BeatManager beatManager;
+    public AdvantageBarManager advantageBarManager;
+    public CombatAnimationManager combatAnimationManager;
+    public SongManager songManager;
+    public AudioManager audioManager;
+
     public GameObject attackBar;
 
     public GameObject attackModeBanner;
@@ -38,8 +43,6 @@ public class CombatStateManager : MonoBehaviour
     public Sprite blueSpiritSprite;
     public Sprite aldricSprite;
 
-    public Animator thiefAnimator;
-
     // Just for testing
     public TMP_Text modeText;
 
@@ -55,6 +58,21 @@ public class CombatStateManager : MonoBehaviour
             gameManager.SetGameState(GameManager.GameState.Combat);
         }
         */
+        // Get AudioManager reference
+        audioManager = FindObjectOfType<AudioManager>();
+        if (audioManager == null)
+        {
+            Debug.LogError("AudioManager not found in the scene!");
+        }
+
+        // Get AudioManager reference
+        songManager = FindObjectOfType<SongManager>();
+        if (songManager == null)
+        {
+            Debug.LogError("AudioManager not found in the scene!");
+        }
+
+
         //set up the proper song
         selectSong();
         StartScreen.SetActive(true);
@@ -63,6 +81,7 @@ public class CombatStateManager : MonoBehaviour
         SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
         if (currentSong.songID == 001)
         {
+            combatAnimationManager.setEnemyAnimator(1);
             enemySpriteRenderer.sprite = thiefSprite;
         }else if (currentSong.songID == 002)
         {
@@ -98,7 +117,7 @@ public class CombatStateManager : MonoBehaviour
         //handles victory condition
         if (gameState == 98)
         {
-            beatManager.songManager.stopSong();
+            songManager.stopSong();
             if (currentSong.songID != 000)
             {
                 VictoryScreen.SetActive(true);
@@ -135,7 +154,7 @@ public class CombatStateManager : MonoBehaviour
         }//defeat
         else if (gameState == 99)
         {
-            beatManager.songManager.stopSong();
+            songManager.stopSong();
             if (currentSong.songID == 000)
             {
                 StartScreen.SetActive(true);
@@ -202,7 +221,7 @@ public class CombatStateManager : MonoBehaviour
             if (currentTime >= attackModeTime)
             {
                 gameState = 1; // Attack mode
-                beatManager.audioManager.playChangeTurnSound();
+                audioManager.playChangeTurnSound();
                 StartCoroutine(ShowTurnBannerWithDelay(0));
                 attackBar.SetActive(true);
                 Debug.Log("Switched to Attack Mode!");
@@ -217,48 +236,13 @@ public class CombatStateManager : MonoBehaviour
             if (currentTime >= defendModeTime)
             {
                 gameState = 2; // Defend mode
-                beatManager.audioManager.playChangeTurnSound();
+                audioManager.playChangeTurnSound();
                 StartCoroutine(ShowTurnBannerWithDelay(1));
                 attackBar.SetActive(false);
                 Debug.Log("Switched to Defend Mode!");
                 currentSong.defendModeBeats.RemoveAt(0); // Remove processed beat
             }
         }
-    }
-
-    //character bouncing animation
-    public void ApplyBounce()
-    {
-        // Start squish and pop animations for player and enemy
-        StartCoroutine(BounceCoroutine(player));
-        StartCoroutine(BounceCoroutine(enemy));
-    }
-
-    // Coroutine to animate the squish and pop effect
-    private IEnumerator BounceCoroutine(GameObject avatar)
-    {
-        // Store the original scale and position of the avatar
-        Vector3 originalScale = avatar.transform.localScale;
-        Vector3 originalPosition = avatar.transform.position;
-
-        float squishAmount = 0.97f;  // How much to squish (less than 1)
-        float bounceDuration = 0.1f; // How long the squish/pop lasts
-
-        // Adjust the scale to squish the top of the avatar
-        avatar.transform.localScale = new Vector3(originalScale.x, originalScale.y * squishAmount, originalScale.z);
-
-        // Move the avatar down to keep the bottom anchored
-        avatar.transform.position = new Vector3(originalPosition.x, originalPosition.y - (originalScale.y - originalScale.y * squishAmount) / 2, originalPosition.z);
-
-        // Wait for a short time to maintain the squish
-        yield return new WaitForSeconds(bounceDuration / 2);
-
-        // Restore the scale and position back to the original
-        avatar.transform.localScale = originalScale;
-        avatar.transform.position = originalPosition;
-
-        // Wait until the bounce duration is complete
-        yield return new WaitForSeconds(bounceDuration / 2);
     }
 
     private IEnumerator ShowTurnBannerWithDelay(int turn)

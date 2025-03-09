@@ -9,6 +9,7 @@ public class SongManager : MonoBehaviour
     public AudioClip thiefSong;
     public AudioClip wing1Song;
     public AudioClip wing2Song;
+    public AudioClip wing3Song;
     public AudioClip aldricSong;
 
     //songs
@@ -33,6 +34,12 @@ public class SongManager : MonoBehaviour
     public void playWing2Song()
     {
         audioSource.clip = wing2Song;
+        audioSource.Play();
+    }
+
+    public void playWing3Song()
+    {
+        audioSource.clip = wing3Song;
         audioSource.Play();
     }
 

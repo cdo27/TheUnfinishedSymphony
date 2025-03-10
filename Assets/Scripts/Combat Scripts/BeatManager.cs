@@ -372,6 +372,10 @@ public class BeatManager : MonoBehaviour
 
                                 Note createdNote = noteSpawner.SpawnDefendNote(nextBeat, position, currentListCopy, transitionBeatTime, transitionBeatTime + 4);
                                 combatStateManager.audioManager.playEnemyNotePopSound();
+
+                                // Move note further back in Z-space (negative values bring it forward)
+                                createdNote.transform.localPosition += new Vector3(0, 0, position * 0.01f);
+
                                 activeNotes.Add(createdNote);
 
                                 combatStateManager.currentSong.defendBeatsToHit[0].RemoveAt(0);

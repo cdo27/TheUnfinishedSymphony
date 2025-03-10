@@ -207,6 +207,11 @@ MonoBehaviour:
   ThiefNPC: {fileID: 703381079}
   FirstMovement: {fileID: 1291077851}
   SecondMovement: {fileID: 1984673702}
+  SceneTrigger: {fileID: 0}
+  BenedictEscapeNPC: {fileID: 0}
+  AldricEscapeNPC: {fileID: 0}
+  hasTriggeredAldricEscapeDialogue: 0
+  hasTriggeredCombat3Dialogue: 0
   AldricNPC: {fileID: 0}
   CombatTrigger1: {fileID: 0}
   CombatTrigger2: {fileID: 0}
@@ -670,6 +675,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   portraitSprite: {fileID: 21300000, guid: eaa82fd2c8df87c43957949e6e0ba6a0, type: 3}
+  lockedSprite: {fileID: 0}
   dialogue:
     npcName: 
     sentences:
@@ -1098,7 +1104,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 15.428572, y: 15.428572}
-    newSize: {x: 6.4, y: 6.4}
+    newSize: {x: 15.428572, y: 15.428572}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -1147,12 +1153,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 9ff848b42aa59f04dabf4b1c1141a881, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1e75f7ad0e9f4874eb40181095ecf28d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.4, y: 6.4}
+  m_Size: {x: 15.428572, y: 15.428572}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2228,6 +2234,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   portraitSprite: {fileID: 0}
+  lockedSprite: {fileID: 0}
   dialogue:
     npcName: 
     sentences: []
@@ -2582,6 +2589,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   portraitSprite: {fileID: 0}
+  lockedSprite: {fileID: 0}
   dialogue:
     npcName: 
     sentences: []

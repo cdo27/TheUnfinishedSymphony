@@ -109,6 +109,10 @@ public class CutsceneManager : MonoBehaviour
     
     public void beforeCombatTut()
     { //play before player thief combat
+        if(TutorialThief == null)
+        {
+            Debug.Log("thief is null!");
+        }
         if(TutorialThief != null)
         TutorialThief.Interact();
     }

@@ -85,18 +85,22 @@ public class CombatStateManager : MonoBehaviour
             enemySpriteRenderer.sprite = thiefSprite;
         }else if (currentSong.songID == 002)
         {
+            combatAnimationManager.setEnemyAnimator(2);
             enemySpriteRenderer.sprite = redSpiritSprite;
         }
         else if (currentSong.songID == 003)
         {
+            combatAnimationManager.setEnemyAnimator(3);
             enemySpriteRenderer.sprite = blueSpiritSprite;
         }
         else if (currentSong.songID == 004)
         {
+            combatAnimationManager.setEnemyAnimator(4);
             enemySpriteRenderer.sprite = yellowSpiritSprite;
         }
         else if (currentSong.songID == 005)
         {
+            combatAnimationManager.setEnemyAnimator(5);
             enemySpriteRenderer.sprite = aldricSprite;
         }
 
@@ -209,7 +213,7 @@ public class CombatStateManager : MonoBehaviour
 
         currentSong.songID = gameManager.currentSong;  
         */
-       currentSong = new AldricSong();
+       currentSong = new ThiefSong();
     }
 
     void CheckModeSwitch(double currentTime)

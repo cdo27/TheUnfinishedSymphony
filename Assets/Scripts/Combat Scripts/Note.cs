@@ -25,8 +25,9 @@ public class Note : MonoBehaviour
     private AudioManager audioManager;
     private AdvantageBarManager advantageBarManager;
 
-    float hitTolerance = 0.1f; // Total time window to register a hit
-    float perfectHitThreshold = 0.05f; // Smaller window for a perfect hit
+    float failThreshold = 0.1f;
+    float hitTolerance = 0.08f; // Total time window to register a hit
+    float perfectHitThreshold = 0.04f; // Smaller window for a perfect hit
     private double targetHitTime;
 
     // Variables for Defend Mode
@@ -96,7 +97,10 @@ public class Note : MonoBehaviour
             {    
                 return 1;
             }
-        }    
+        } else if(timeDifference <= failThreshold && timeDifference > hitTolerance)
+        {
+            return 3;
+        }
         return 0;
     }
 
@@ -155,6 +159,12 @@ public class Note : MonoBehaviour
         }
     }
 
+    //for when the player hit too early or too late
+    public void handleFailedHit()
+    {
+        Destroy(gameObject);
+    }
+
     private IEnumerator defendDestroyAnimation()
     {
         float duration = 0.1f; // Duration of the effect
@@ -203,7 +213,7 @@ public class Note : MonoBehaviour
 
             yield return null;
         }
-
+        beatManager.combatStateManager.combatAnimationManager.EnemyPlayHurtAnimation();
         Destroy(gameObject); // Destroy after reaching the enemy
     }
 
@@ -211,8 +221,8 @@ public class Note : MonoBehaviour
     {
         double currentDspTime = AudioSettings.dspTime;
 
-        // Determine when to start charging (currently set to 0.2s before the hit time)
-        double chargeStartTime = targetHitTime - 0.2;
+        // Determine when to start charging (currently set to 0.25s before the hit time)
+        double chargeStartTime = targetHitTime - 0.25;
         if(duringDestroyAnimation == false)
         {
             if (currentDspTime >= chargeStartTime && !isCharging)

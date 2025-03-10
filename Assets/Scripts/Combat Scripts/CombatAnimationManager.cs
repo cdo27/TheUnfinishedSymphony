@@ -11,14 +11,30 @@ public class CombatAnimationManager : MonoBehaviour
     public Animator enemyAnimator;
 
     //animator options for each enemy
-    public Animator thiefAnimator;
+    public RuntimeAnimatorController thiefAnimator;
+    public RuntimeAnimatorController redSpiritAnimator;
+    public RuntimeAnimatorController blueSpiritAnimator;
+    public RuntimeAnimatorController yellowSpiritAnimator;
+    public RuntimeAnimatorController aldricBossAnimator;
 
     public void setEnemyAnimator(int number)
     {
         switch(number)
         {
             case 1:
-                enemyAnimator = thiefAnimator;
+                enemyAnimator.runtimeAnimatorController = thiefAnimator;
+                break;
+            case 2:
+                enemyAnimator.runtimeAnimatorController = redSpiritAnimator;
+                break;
+            case 3:
+                enemyAnimator.runtimeAnimatorController = blueSpiritAnimator;
+                break;
+            case 4:
+                enemyAnimator.runtimeAnimatorController = yellowSpiritAnimator;
+                break;
+            case 5:
+                enemyAnimator.runtimeAnimatorController = aldricBossAnimator;
                 break;
         }
     }
@@ -111,5 +127,47 @@ public class CombatAnimationManager : MonoBehaviour
         // Restore original color and reset animation flag
         spriteRenderer.color = Color.white;
         lucienAnimator.SetBool("isHurt", false);
+    }
+
+    //--------------------------------------------------ENEMY-------------------------------------------------------------
+    public void EnemyPlayAttackAnimation()
+    {
+        enemyAnimator.SetBool("isAttacking", true);
+    }
+
+    public void EnemyStopAttackAnimation()
+    {
+      
+        enemyAnimator.SetBool("isAttacking", false);
+    }
+
+    public void EnemyPlayHurtAnimation()
+    {
+        enemyAnimator.SetBool("isHurt", true);
+
+        // Get the enemy's Transform
+        Transform enemyTransform = combatStateManager.enemy.transform;
+
+        // Start shaking effect
+        StartCoroutine(EnemyShake(enemyTransform, 0.1f, 0.1f, 5));
+    }
+
+    private IEnumerator EnemyShake(Transform enemyTransform, float shakeAmount, float shakeDuration, int shakeFrames)
+    {
+        Vector3 originalPosition = enemyTransform.position;
+
+        for (int i = 0; i < shakeFrames; i++)
+        {
+            // Randomly offset the position
+            float offsetX = Random.Range(-shakeAmount, shakeAmount);
+            float offsetY = Random.Range(-shakeAmount, shakeAmount);
+            enemyTransform.position = originalPosition + new Vector3(offsetX, offsetY, 0);
+
+            yield return new WaitForSeconds(shakeDuration / shakeFrames); // Control speed of shake
+        }
+
+        // Restore original position and reset animation flag
+        enemyTransform.position = originalPosition;
+        enemyAnimator.SetBool("isHurt", false);
     }
 }

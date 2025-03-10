@@ -37,7 +37,7 @@ public class AdvantageBarManager : MonoBehaviour
             Debug.LogError("PlayerManager not found in the scene.");
         }
         */
-        advantage = 50f;
+        advantage = 40f;
 
         /*
         // Apply potion effect if the player has it
@@ -50,8 +50,8 @@ public class AdvantageBarManager : MonoBehaviour
         totalDefenseNotes = Mathf.Max(defenseNotes, 1);
 
         // Set scaling factors so that hitting every note perfectly would fully shift the bar
-        attackUnit = 50f / totalAttackNotes;  // 50 means shifting from center to one extreme
-        defenseUnit = 50f / totalDefenseNotes;
+        attackUnit = 60f / totalAttackNotes;  // 50 means shifting from center to one extreme
+        defenseUnit = 40f / totalDefenseNotes;
 
         
         // Fixed padding value of 20 pixels on each side
@@ -178,7 +178,7 @@ public class AdvantageBarManager : MonoBehaviour
         rightBar.sizeDelta = new Vector2(rightBarSize, rightBar.sizeDelta.y);
 
         // Ensure Energy Clash is centered correctly
-        float energyPosition = leftBarSize - (barWidth / 2); // Centered properly
+        float energyPosition = leftBarSize - (barWidth / 2) + (energyClash.rect.width); // Adjusted for clash point width
         energyClash.anchoredPosition = new Vector2(energyPosition, energyClash.anchoredPosition.y);
     }
 

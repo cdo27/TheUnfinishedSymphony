@@ -222,6 +222,10 @@ public class PuzzleMechanism : MonoBehaviour
 
         countdown = levelConfig.timeLimit;
         playerSequence = new int[levelConfig.missingNotesCount];
+        for (int i = 0; i < levelConfig.missingNotesCount; i++)
+    {
+        playerSequence[i] = -1;
+    }
 
         foreach (var image in missingNoteImages)
         {
@@ -251,6 +255,31 @@ public class PuzzleMechanism : MonoBehaviour
 
         audioSource.clip = levelConfig.musicSegment;
     }
+    public void HandleDropNote(int noteIndex, int missingIndex)
+{
+    if (noteIndex < 0 || noteIndex >= noteImages.Length)
+        return;
+
+    // Only increment attemptCount if this missing note was not previously filled.
+    if (playerSequence[missingIndex] == -1 || missingNoteImages[missingIndex].sprite == defaultMissingNoteSprite)
+    {
+        attemptCount++;
+    }
+
+    // Set the missing note image sprite and record the note in the player's sequence.
+    missingNoteImages[missingIndex].sprite = noteImages[noteIndex];
+    playerSequence[missingIndex] = noteIndex;
+
+    // If all missing notes have been filled, check the sequence.
+    if (attemptCount == levelConfig.missingNotesCount)
+    {
+        if (IsAllInputsMade())
+        {
+            CheckSequence();
+        }
+    }
+}
+
 
     private void SetupNoteButtons()
     {

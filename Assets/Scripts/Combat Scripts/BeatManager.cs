@@ -6,16 +6,9 @@ using Unity.VisualScripting;
 
 public class BeatManager : MonoBehaviour
 {
-    //---------------------------initiate all the necessary objects and components------------------------------------
-    //managers
-    public SongManager songManager;
-    public AudioManager audioManager;
-    public CombatStateManager combatStateManager;
-    public AdvantageBarManager advantageBarManager;
+    //---------------------------initiate all the necessary objects and components------------------------------------ 
+    public CombatStateManager combatStateManager;  
     public NoteSpawner noteSpawner;
-
-    //animator
-    public Animator lucienAnimator;
 
     //variables carrying current attribute of songs
     public bool songStarted = false;
@@ -42,6 +35,8 @@ public class BeatManager : MonoBehaviour
     //note hit messages
     public GameObject perfectHitMessage;
     public GameObject nearMissMessage;
+    public GameObject failedHitMessage;
+    public GameObject wrongKeyMessage;
     public GameObject perfectBlockMessage;
     public GameObject nearMissBlockMessage;
 
@@ -57,20 +52,35 @@ public class BeatManager : MonoBehaviour
 
     private void Start()
     {
-        // Get AudioManager reference
-        audioManager = FindObjectOfType<AudioManager>();
-        if (audioManager == null)
-        {
-            Debug.LogError("AudioManager not found in the scene!");
-        }
+        
+    }
 
-        // Get AudioManager reference
-        songManager = FindObjectOfType<SongManager>();
-        if (songManager == null)
+    //game initialization. Set up the song before playing
+    public void startSong()
+    {
+        songStarted = true;
+        songBPM = combatStateManager.currentSong.BPM; //carry over BPM
+        currentBeat = 0;
+
+        crotchet = 60.0f / songBPM; // calculate uration of a single beat
+        noteSpawner.setNoteSpeed(); // update note speed based on BPM
+
+        //calculate number of attack/defend notes for advantage bar scaling
+        // Get total number of attack notes
+        int totalAttackNotes = combatStateManager.currentSong.attackBeatsToHit.Count;
+
+        // Get total number of defense notes
+        int totalDefenseNotes = 0;
+        foreach (var phase in combatStateManager.currentSong.defendBeatsToHit)
         {
-            Debug.LogError("AudioManager not found in the scene!");
+            totalDefenseNotes += phase.Count;
         }
- 
+        combatStateManager.advantageBarManager.InitializeBar(totalAttackNotes, totalDefenseNotes);
+
+        combatStateManager.currentSong.PlaySong(combatStateManager.songManager); //play the song
+        dspTimeSongStart = AudioSettings.dspTime; // save reference time for future calculations
+
+        nextBeatTime = dspTimeSongStart + combatStateManager.currentSong.offset; //next beat sound time
     }
 
     void Update()
@@ -78,11 +88,11 @@ public class BeatManager : MonoBehaviour
         //-----------------------------------check for win or lose condition---------------------------------------
         if(songStarted && AudioSettings.dspTime >=  GetDspTimeForBeat(combatStateManager.currentSong.songcompleteBeat))
         {
-            if(advantageBarManager.CheckVictoryCondition() == true)
+            if(combatStateManager.advantageBarManager.CheckVictoryCondition() == true)
             {
                 combatStateManager.gameState = 98; 
             }
-            else if (advantageBarManager.CheckVictoryCondition() == false)
+            else if (combatStateManager.advantageBarManager.CheckVictoryCondition() == false)
             {
                 combatStateManager.gameState = 99;
             }
@@ -101,12 +111,12 @@ public class BeatManager : MonoBehaviour
                 Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
             {
                 // Set up default behavior when the player presses the key during attack and defend mode
-                if (combatStateManager.gameState == 1) audioManager.playHitSoundA();
+                if (combatStateManager.gameState == 1) combatStateManager.audioManager.playHitSoundA();
                 if (combatStateManager.gameState == 2)
                 {
                     //play defend animation
-                    lucienAnimator.SetBool("isDefending", true);
-                    StartCoroutine(ResetDefendAnimation());
+                    combatStateManager.combatAnimationManager.LucienPlayDefendAnimation();
+
                     // generate appropriate shields
                     if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
                     {
@@ -124,83 +134,14 @@ public class BeatManager : MonoBehaviour
 
                 bool noteHit = false; // Flag to track if we've already hit a note.
 
-                // Loop through all active notes and check if one can be hit
-                for (int i = activeNotes.Count - 1; i >= 0; i--)
+                // Loop through all active notes(inside handle functions) and check if one can be hit
+                if (combatStateManager.gameState == 1)
                 {
-                    Note note = activeNotes[i];
-
-                    // Determine if the player pressed the correct key for this note type
-                    bool correctKeyPressed = false;
-
-                    if ((note.noteType == 0 && (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))) ||  // Red notes
-                        (note.noteType == 1 && (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))) ||  // Green notes
-                        (note.noteType == 2 && (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))))   // Purple notes
-                    {
-                        correctKeyPressed = true;
-                    }
-
-                    if (!correctKeyPressed) continue; // Skip this note if the wrong key was pressed
-
-                    // Call checkIfHit() for each note to determine if it's hit
-                    int hitResult = note.checkIfHit();
-
-                    // Check if the hit result is either perfect (2) or slightly missed (1), and hit only one note at a time
-                    if (!noteHit && (hitResult == 2 || hitResult == 1))
-                    {
-                        noteHit = true; // Mark that we've hit a note
-                        highLightedHitArea.SetActive(true);
-                        Invoke("HideHighlightedHitArea", 0.05f);
-
-                        // Play block sound if blocking an attack
-                        if (combatStateManager.gameState == 2)
-                        {
-                            audioManager.playMusicBlockSound();            
-                        }
-
-                        // handle hit and destroy, depending on if it's an atatck note or defend note
-                        note.handleHit(combatStateManager.enemyHitPoint.transform.position);
-
-                        // If it's a perfect hit
-                        if (hitResult == 2)
-                        {
-                            if (combatStateManager.gameState == 1)
-                            {
-                                perfectHitMessage.SetActive(true);
-                                advantageBarManager.HandleAttack("Perfect");
-                                Invoke("HidePerfectHitMessage", 0.2f); // Hides after 0.2 seconds
-                                //play attack animation
-                                lucienAnimator.SetBool("isAttacking", true);
-                                StartCoroutine(ResetAttackAnimation());
-                            } else if (combatStateManager.gameState == 2)
-                            {
-                                perfectBlockMessage.SetActive(true); 
-                                Invoke("HidePerfectBlockMessage", 0.2f); // Hides after 0.2 seconds    
-                            }
-                        }
-                        // If it's a slight miss
-                        else if (hitResult == 1)
-                        {
-                            if (combatStateManager.gameState == 1)
-                            {
-                                nearMissMessage.SetActive(true);
-                                advantageBarManager.HandleAttack("NearMiss");
-                                Invoke("HideNearMissMessage", 0.2f); // Hides after 0.2 seconds
-                                //play attack animation
-                                lucienAnimator.SetBool("isAttacking", true);
-                                StartCoroutine(ResetAttackAnimation());
-                            }
-                            else if (combatStateManager.gameState == 2)
-                            {
-                                nearMissBlockMessage.SetActive(true);
-                                advantageBarManager.HandleDefense("Partial");
-                                Invoke("HideNearMissBlockMessage", 0.2f); // Hides after 0.2 seconds
-                            }
-
-                        }
-
-                        // Break the loop to ensure only one note is hit per press
-                        break;
-                    }
+                    HandleAttackNotes(noteHit);
+                }
+                else if (combatStateManager.gameState == 2)
+                {
+                    HandleDefendNotes(noteHit);
                 }
             }
 
@@ -218,43 +159,126 @@ public class BeatManager : MonoBehaviour
 
     }
 
-    //game initialization. Set up the song before playing
-    public void startSong()
+    //handle hits for attack and defend phase
+    void HandleAttackNotes(bool noteHit)
     {
-        songStarted = true; 
-        songBPM = combatStateManager.currentSong.BPM; //carry over BPM
-        currentBeat = 0;
-
-        crotchet = 60.0f / songBPM; // calculate uration of a single beat
-        noteSpawner.setNoteSpeed(); // update note speed based on BPM
-
-        //calculate number of attack/defend notes for advantage bar scaling
-        // Get total number of attack notes
-        int totalAttackNotes = combatStateManager.currentSong.attackBeatsToHit.Count;
-
-        // Get total number of defense notes
-        int totalDefenseNotes = 0;
-        foreach (var phase in combatStateManager.currentSong.defendBeatsToHit)
+        for (int i = activeNotes.Count - 1; i >= 0; i--)
         {
-            totalDefenseNotes += phase.Count;
+            Note note = activeNotes[i];
+
+            bool correctKeyPressed = (note.noteType == 0 && (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))) ||
+                                     (note.noteType == 1 && (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))) ||
+                                     (note.noteType == 2 && (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)));
+
+
+            int hitResult = note.checkIfHit();
+
+            if (!correctKeyPressed && hitResult == 0 && hitResult == 3)
+            {
+                continue;
+            }
+
+            if (correctKeyPressed)
+            {
+                
+                if (!noteHit && (hitResult == 2 || hitResult == 1))
+                {
+                    noteHit = true;
+                    highLightedHitArea.SetActive(true);
+                    Invoke("HideHighlightedHitArea", 0.05f);
+
+                    note.handleHit(combatStateManager.enemyHitPoint.transform.position);
+
+                    if (hitResult == 2)
+                    {
+                        perfectHitMessage.SetActive(true);
+                        combatStateManager.advantageBarManager.HandleAttack("Perfect");
+                        Invoke("HidePerfectHitMessage", 0.15f);
+                        combatStateManager.combatAnimationManager.LucienPlayAttackAnimation();
+                    }
+                    else if (hitResult == 1)
+                    {
+                        nearMissMessage.SetActive(true);
+                        combatStateManager.advantageBarManager.HandleAttack("NearMiss");
+                        Invoke("HideNearMissMessage", 0.15f);
+                        combatStateManager.combatAnimationManager.LucienPlayAttackAnimation();
+                    }
+                    break;
+                }else if (!noteHit && hitResult == 3)
+                {
+                    noteHit = true;
+                    note.handleFailedHit();
+
+                    failedHitMessage.SetActive(true);
+                    Invoke("HideFailedHitMessage", 0.15f);
+                    break;
+                }
+            }
+
+            if (!noteHit &&  !correctKeyPressed && (hitResult == 1 || hitResult == 2))
+            {
+                noteHit = true;
+                // Player pressed the wrong key at the right time
+                wrongKeyMessage.SetActive(true);
+                Invoke("HideWrongKeyMessage", 0.15f);
+                note.handleFailedHit();
+                break;
+            }
+
         }
-        advantageBarManager.InitializeBar(totalAttackNotes, totalDefenseNotes);
-
-        combatStateManager.currentSong.PlaySong(songManager); //play the song
-        dspTimeSongStart = AudioSettings.dspTime; // save reference time for future calculations
-
-        nextBeatTime = dspTimeSongStart + combatStateManager.currentSong.offset; //next beat sound time
     }
+
+    void HandleDefendNotes(bool noteHit)
+    {
+        for (int i = activeNotes.Count - 1; i >= 0; i--)
+        {
+            Note note = activeNotes[i];
+
+            bool correctKeyPressed = (note.noteType == 0 && (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))) ||
+                                     (note.noteType == 1 && (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))) ||
+                                     (note.noteType == 2 && (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)));
+
+            if (!correctKeyPressed) continue;
+
+            int hitResult = note.checkIfHit();
+
+            if (!noteHit && (hitResult == 2 || hitResult == 1))
+            {
+                noteHit = true;
+                highLightedHitArea.SetActive(true);
+                Invoke("HideHighlightedHitArea", 0.05f);
+
+                combatStateManager.audioManager.playMusicBlockSound();
+
+                note.handleHit(combatStateManager.enemyHitPoint.transform.position);
+
+                if (hitResult == 2)
+                {
+                    perfectBlockMessage.SetActive(true);
+                    Invoke("HidePerfectBlockMessage", 0.15f);
+                }
+                else if (hitResult == 1)
+                {
+                    nearMissBlockMessage.SetActive(true);
+                    combatStateManager.advantageBarManager.HandleDefense("Partial");
+                    Invoke("HideNearMissBlockMessage", 0.15f);
+                }
+                break;
+            }
+        }
+    }
+
 
     //---------------------------playing beat sounds every whole beat-----------------------------
     void ScheduleNextBeat()
     {
         //audioManager.playBeatSound(nextBeatTime);
+
         //make characters bounce
-        combatStateManager.ApplyBounce();
+        combatStateManager.combatAnimationManager.ApplyBounce();
         combatStateManager.modeText.text = currentBeat.ToString(); ;
-    //if (currentBeat == 8) currentBeat = 0;
-    currentBeat++;
+
+        currentBeat++;
 
         
         Debug.Log(currentBeat);
@@ -265,6 +289,7 @@ public class BeatManager : MonoBehaviour
     //------------------------------checking if notes need to be spawned, and spawn them-----------------------------
     int processingDefendList = 0; // Turn to 1 when processing a defend list
     int currentDefendListSize = 0;
+    bool enemySwitchToAttack = false;
     List<BeatData> currentListCopy;
     float transitionBeatTime;
 
@@ -299,7 +324,7 @@ public class BeatManager : MonoBehaviour
                     {
                         // If we are not already processing a list, store its size
                         if (processingDefendList == 0)
-                        {
+                        {    
                             processingDefendList = 1;  // Mark as processing
 
                             currentDefendListSize = combatStateManager.currentSong.defendBeatsToHit[0].Count;  // Store list size
@@ -317,8 +342,12 @@ public class BeatManager : MonoBehaviour
                                 AudioSettings.dspTime < GetDspTimeForBeat(transitionBeatTime) + crotchet)
                             {
                                 Debug.Log("defend mode: transitioning");
-                                audioManager.playEndEnemyNoteSpawnSound();
+                                combatStateManager.audioManager.playEndEnemyNoteSpawnSound();
 
+                                //and stop animation
+                                combatStateManager.combatAnimationManager.EnemyStopAttackAnimation();
+                                enemySwitchToAttack = false;
+                                //other resets
                                 combatStateManager.currentSong.defendBeatsToHit.RemoveAt(0);
                                 processingDefendList = 0; // Reset processing flag
                                 currentDefendListSize = 0; // Reset list size
@@ -327,16 +356,22 @@ public class BeatManager : MonoBehaviour
 
                         }else
                         {
+                           
                             nextBeat = combatStateManager.currentSong.defendBeatsToHit[0][0]; // Get the first beat for defend mode
 
-                            dspTimeForNoteSpawn = GetDspTimeForBeat(nextBeat.beatTime - 4);  // Calculate spawn time, 8 beats before the current beat
+                            dspTimeForNoteSpawn = GetDspTimeForBeat(nextBeat.beatTime - 4);  // Calculate spawn time, 4 beats before the current beat
 
                             if (AudioSettings.dspTime >= dspTimeForNoteSpawn && AudioSettings.dspTime < dspTimeForNoteSpawn + crotchet)
                             {
+                                if (enemySwitchToAttack != true)
+                                {
+                                    enemySwitchToAttack = true;
+                                    combatStateManager.combatAnimationManager.EnemyPlayAttackAnimation();
+                                }
                                 int position = currentDefendListSize - combatStateManager.currentSong.defendBeatsToHit[0].Count + 1; // Get note position
 
                                 Note createdNote = noteSpawner.SpawnDefendNote(nextBeat, position, currentListCopy, transitionBeatTime, transitionBeatTime + 4);
-                                audioManager.playEnemyNotePopSound();
+                                combatStateManager.audioManager.playEnemyNotePopSound();
                                 activeNotes.Add(createdNote);
 
                                 combatStateManager.currentSong.defendBeatsToHit[0].RemoveAt(0);
@@ -473,13 +508,8 @@ public class BeatManager : MonoBehaviour
         return crotchet;
     }
 
-    public int getCurrentBeat()
-    {
-        return currentBeat;
-    }
-
-    //UI active control
-
+    
+    //-------------------------------------------UI active control----------------------------------------------
     void ActivateShield(GameObject shield)
     {
         // Deactivate all shields
@@ -514,6 +544,15 @@ public class BeatManager : MonoBehaviour
     {
         nearMissMessage.SetActive(false);
     }
+    void HideFailedHitMessage()
+    {
+        failedHitMessage.SetActive(false);
+    }
+
+    void HideWrongKeyMessage()
+    {
+        wrongKeyMessage.SetActive(false);
+    }
 
     void HidePerfectBlockMessage()
     {
@@ -524,46 +563,4 @@ public class BeatManager : MonoBehaviour
         nearMissBlockMessage.SetActive(false);
     }
 
-    ////////////////////////////////////////////////ANIMATION RELATED ////////////////////////////////////////////////////
-    private IEnumerator ResetAttackAnimation()
-    {
-        // Wait until the attack animation is playing and it's completed
-        yield return new WaitForSeconds(lucienAnimator.GetCurrentAnimatorStateInfo(0).length);
-
-        // Set isAttack to false after the animation is done
-        lucienAnimator.SetBool("isAttacking", false);
-    }
-
-    private IEnumerator ResetDefendAnimation()
-    {
-        // Wait until the attack animation is playing and it's completed
-        yield return new WaitForSeconds(lucienAnimator.GetCurrentAnimatorStateInfo(0).length);
-
-        // Set isAttack to false after the animation is done
-        lucienAnimator.SetBool("isDefending", false);
-    }
-
-    public void playHurtAnimation()
-    {
-        lucienAnimator.SetBool("isHurt", true);
-
-        // Get the player's SpriteRenderer and store the original color
-        SpriteRenderer spriteRenderer = combatStateManager.player.GetComponent<SpriteRenderer>();
-
-        // Change color to red
-        spriteRenderer.color = Color.red;
-
-        StartCoroutine(ResetHurtAnimation(spriteRenderer));
-    }
-
-    private IEnumerator ResetHurtAnimation(SpriteRenderer spriteRenderer)
-    {
-        // Wait until the hurt animation is completed
-        yield return new WaitForSeconds(lucienAnimator.GetCurrentAnimatorStateInfo(0).length);
-
-        // Restore original color and reset animation flag
-        spriteRenderer.color = Color.white;
-        lucienAnimator.SetBool("isHurt", false);
-    }
-
-}
+  }

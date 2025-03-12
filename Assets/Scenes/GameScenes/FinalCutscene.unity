@@ -1450,8 +1450,8 @@ GameObject:
   m_Component:
   - component: {fileID: 996536802}
   - component: {fileID: 996536805}
-  - component: {fileID: 996536804}
   - component: {fileID: 996536803}
+  - component: {fileID: 996536806}
   m_Layer: 0
   m_Name: EndingCutscene2Trigger
   m_TagString: Untagged
@@ -1519,38 +1519,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.8, y: 3.4}
   m_EdgeRadius: 0
---- !u!114 &996536804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 996536801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53a1b4d34573f964b9b7dcb5eb8d110f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasInteracted: 0
-  isInteracting: 0
-  shouldLoadScene: 1
-  shouldDestroy: 0
-  sceneToLoad: EndingCutscene2
-  portraitSprite: {fileID: 21300000, guid: 7d06103386fa16d438a918531fa91b8d, type: 3}
-  dialogue:
-    npcName: Lucien
-    sentences:
-    - I can leave now...
-    isPlayerSpeaking: 01
-  afterDialogue:
-    npcName: Benedict
-    sentences:
-    - Exit this door, if you so wish. I've said my piece, it's time for you to make
-      your decision.
-    isPlayerSpeaking: 0001
-  gameManager: {fileID: 0}
-  dialogueManager: {fileID: 0}
-  uiManager: {fileID: 0}
 --- !u!212 &996536805
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1603,6 +1571,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &996536806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996536801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e8d3d9a24a30514eb13bc8ea23424bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasInteracted: 0
+  isInteracting: 0
+  shouldLoadScene: 1
+  shouldDestroy: 0
+  sceneToLoad: EndingCutscene2
+  portraitSprite: {fileID: 21300000, guid: 7d06103386fa16d438a918531fa91b8d, type: 3}
+  dialogue:
+    npcName: Lucien
+    sentences:
+    - I can leave now...
+    isPlayerSpeaking: 00
+  afterDialogue:
+    npcName: 
+    sentences: []
+    isPlayerSpeaking: 
+  gameManager: {fileID: 0}
+  dialogueManager: {fileID: 0}
+  uiManager: {fileID: 0}
+  fadeDuration: 1
+  spriteRenderer: {fileID: 0}
 --- !u!1 &1102173966
 GameObject:
   m_ObjectHideFlags: 0
@@ -2674,8 +2674,8 @@ MonoBehaviour:
   CombatTrigger1: {fileID: 1932242364}
   CombatTrigger2: {fileID: 262328739}
   CombatTrigger3: {fileID: 0}
-  EndingTrigger1: {fileID: 1713882674}
-  EndingTrigger2: {fileID: 996536804}
+  EndingTrigger1: {fileID: 1713882676}
+  EndingTrigger2: {fileID: 996536806}
   EndingTrigger3: {fileID: 0}
   Ending1: {fileID: 0}
   Ending2: {fileID: 0}
@@ -2705,8 +2705,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1713882672}
   - component: {fileID: 1713882675}
-  - component: {fileID: 1713882674}
   - component: {fileID: 1713882673}
+  - component: {fileID: 1713882676}
   m_Layer: 0
   m_Name: EndingCutscene1Trigger
   m_TagString: Untagged
@@ -2774,38 +2774,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.8, y: 3.4}
   m_EdgeRadius: 0
---- !u!114 &1713882674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1713882671}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53a1b4d34573f964b9b7dcb5eb8d110f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasInteracted: 0
-  isInteracting: 0
-  shouldLoadScene: 1
-  shouldDestroy: 0
-  sceneToLoad: EndingCutscene1
-  portraitSprite: {fileID: 21300000, guid: 7d06103386fa16d438a918531fa91b8d, type: 3}
-  dialogue:
-    npcName: Benedict
-    sentences:
-    - I can leave now...
-    isPlayerSpeaking: 01
-  afterDialogue:
-    npcName: Benedict
-    sentences:
-    - Exit this door, if you so wish. I've said my piece, it's time for you to make
-      your decision.
-    isPlayerSpeaking: 0001
-  gameManager: {fileID: 0}
-  dialogueManager: {fileID: 0}
-  uiManager: {fileID: 0}
 --- !u!212 &1713882675
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2858,6 +2826,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1713882676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713882671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e8d3d9a24a30514eb13bc8ea23424bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasInteracted: 0
+  isInteracting: 0
+  shouldLoadScene: 1
+  shouldDestroy: 0
+  sceneToLoad: EndingCutscene1
+  portraitSprite: {fileID: 21300000, guid: 7d06103386fa16d438a918531fa91b8d, type: 3}
+  dialogue:
+    npcName: Lucien
+    sentences:
+    - I can leave now...
+    isPlayerSpeaking: 01
+  afterDialogue:
+    npcName: 
+    sentences: []
+    isPlayerSpeaking: 
+  gameManager: {fileID: 0}
+  dialogueManager: {fileID: 0}
+  uiManager: {fileID: 0}
+  fadeDuration: 1
+  spriteRenderer: {fileID: 0}
 --- !u!1 &1889439882
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,6 +33,12 @@ public class DisappearingNPC : NPC
         isInteracting = false;
         hasInteracted = true;
 
+        if (shouldLoadScene && !string.IsNullOrEmpty(sceneToLoad))
+        {
+            gameManager.SetGameState(GameManager.GameState.CutScene);
+            SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
+        }
+
         StartCoroutine(FadeAndDestroy());
         
     }

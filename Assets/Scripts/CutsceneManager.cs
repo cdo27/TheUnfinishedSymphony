@@ -405,9 +405,9 @@ public class CutsceneManager : MonoBehaviour
     public void finalCutsceneNarration1(){ //ending cutscene 1
         if(Ending1 != null){
             Ending1.Interact();
-            Debug.Log("Playing final cutscene 1");
+            Debug.Log("Playing final narration 1");
         }else{
-            Debug.Log("Final custcene 1 is null");
+            Debug.Log("Final narration 1 is null");
         }
 
     }
@@ -416,9 +416,9 @@ public class CutsceneManager : MonoBehaviour
     public void finalCutsceneNarration2(){ //ending cutscene 2 
         if(Ending2 != null){
             Ending2.Interact();
-            Debug.Log("Playing final cutscene 2");
+            Debug.Log("Playing final narration 2");
         }else{
-            Debug.Log("Final custcene 2 is null");
+            Debug.Log("Final narration 2 is null");
         }
 
     }
@@ -426,9 +426,9 @@ public class CutsceneManager : MonoBehaviour
     public void finalCutsceneNarration3(){ //ending cutscene 3 
         if(Ending3 != null){
             Ending3.Interact();
-            Debug.Log("Playing final cutscene 3");
+            Debug.Log("Playing final narration 3");
         }else{
-            Debug.Log("Final custcene 3 is null");
+            Debug.Log("Final narration 3 is null");
         }
 
     }

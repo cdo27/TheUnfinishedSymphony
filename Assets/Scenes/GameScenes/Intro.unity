@@ -877,7 +877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &95747873
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9357,6 +9357,9 @@ MonoBehaviour:
   CombatTrigger1: {fileID: 0}
   CombatTrigger2: {fileID: 0}
   CombatTrigger3: {fileID: 0}
+  EndingTrigger1: {fileID: 0}
+  EndingTrigger2: {fileID: 0}
+  EndingTrigger3: {fileID: 0}
   Ending1: {fileID: 0}
   Ending2: {fileID: 0}
   Ending3: {fileID: 0}
@@ -9467,7 +9470,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1740044925
 Transform:
   m_ObjectHideFlags: 0

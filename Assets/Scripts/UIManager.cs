@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -48,6 +49,20 @@ public class UIManager : MonoBehaviour
         if(gameManager.currentState == GameManager.GameState.Game){
             showGameUI();
         }else{
+            hideGameUI();
+        }
+
+        //if Combat scene is loaded
+        Scene combatScene = SceneManager.GetSceneByName("Combat");
+        bool isCombatSceneLoaded = combatScene.IsValid() && combatScene.isLoaded;
+
+        //gameUI if in Game state AND Combat scene is not loaded
+        if (gameManager.currentState == GameManager.GameState.Game && !isCombatSceneLoaded)
+        {
+            showGameUI();
+        }
+        else
+        {
             hideGameUI();
         }
 

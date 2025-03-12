@@ -1109,6 +1109,9 @@ MonoBehaviour:
   CombatTrigger1: {fileID: 0}
   CombatTrigger2: {fileID: 0}
   CombatTrigger3: {fileID: 0}
+  EndingTrigger1: {fileID: 0}
+  EndingTrigger2: {fileID: 0}
+  EndingTrigger3: {fileID: 0}
   Ending1: {fileID: 0}
   Ending2: {fileID: 0}
   Ending3: {fileID: 0}
@@ -3460,8 +3463,8 @@ Transform:
   m_GameObject: {fileID: 2119259218}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.7116, y: -2.43, z: 0}
-  m_LocalScale: {x: 1.4587189, y: 0.097542964, z: 0.5116137}
+  m_LocalPosition: {x: -0.7116, y: -2.2654, z: 0}
+  m_LocalScale: {x: 1.4587189, y: 0.42681876, z: 0.5116137}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1114046035}

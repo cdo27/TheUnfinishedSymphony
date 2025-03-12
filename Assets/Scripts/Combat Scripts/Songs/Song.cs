@@ -1,11 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 //the template class for all the songs
 
 public class Song
 {
     public int songID;
+    public String songName;
+    public String enemyName;
+    public int songLength;
   
     public List<float> attackModeBeats; //list of beats where game switch to attack mode
     public List<float> defendModeBeats; //list of beats where game switch to defend mode

@@ -9,6 +9,9 @@ public class ThiefSong : Song
         songID = 001;
         BPM = 131;
         offset = 0.11f;
+        enemyName = "Thief Spirit";
+        songName = "The Marriage of Figaro, K. 492: Overture";
+        songLength = 123;
 
         attackBeatsToHit = new List<BeatData>
         {

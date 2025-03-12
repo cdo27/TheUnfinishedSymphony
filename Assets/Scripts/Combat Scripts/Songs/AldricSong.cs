@@ -9,6 +9,10 @@ public class AldricSong : Song
         songID = 005;
         BPM = 156;
         offset = 0.5f;
+        enemyName = "Aldric";
+        songName = "Mario & Luigi: Bowser's Inside Story: The Grand Finale Arrangement";
+        songLength = 93;
+
 
         attackBeatsToHit = new List<BeatData>
         {

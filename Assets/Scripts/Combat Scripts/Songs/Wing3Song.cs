@@ -9,6 +9,9 @@ public class Wing3Song : Song
         songID = 004;
         BPM = 166;
         offset = 0f;
+        enemyName = "Dueterno";
+        songName = "Ga1ahad and Scientific Witchery";
+        songLength = 126;
 
 
         attackBeatsToHit = new List<BeatData>

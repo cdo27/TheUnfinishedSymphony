@@ -28,6 +28,11 @@ public class CombatStateManager : MonoBehaviour
 
     public GameObject StartScreen;
     public GameObject StartButton;
+    public TMP_Text enemyNameText;
+    public TMP_Text songNameText;
+    public TMP_Text BPMText;
+    public TMP_Text songLengthText;
+
     public GameObject VictoryScreen;
     public GameObject victoryContinueButton;
     public GameObject DefeatScreen;
@@ -101,6 +106,10 @@ public class CombatStateManager : MonoBehaviour
             combatAnimationManager.setEnemyAnimator(5);
             enemySpriteRenderer.sprite = aldricSprite;
         }
+        songNameText.text = currentSong.songName;
+        enemyNameText.text = currentSong.enemyName;
+        songLengthText.text = currentSong.songLength.ToString() + " seconds";
+        BPMText.text = currentSong.BPM.ToString();
 
         
     }

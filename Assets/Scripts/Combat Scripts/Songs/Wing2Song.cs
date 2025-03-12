@@ -9,6 +9,9 @@ public class Wing2Song : Song
         songID = 003;
         BPM = 162;
         offset = 0.46f;
+        enemyName = "Sonatine";
+        songName = "Beethoven Virus";
+        songLength = 80;
 
 
         attackBeatsToHit = new List<BeatData>

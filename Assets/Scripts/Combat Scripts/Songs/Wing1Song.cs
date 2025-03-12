@@ -10,6 +10,9 @@ public class Wing1Song : Song
         songID = 002;
         BPM = 162;
         offset = 1.1f;
+        enemyName = "Serpentura";
+        songName = "The Flight of the Bumble Bee";
+        songLength = 85;
 
         attackBeatsToHit = new List<BeatData>
         {

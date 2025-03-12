@@ -737,6 +737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
+  animator: {fileID: 0}
   interactRange: 1
   interactKey: 102
   interactionText: {fileID: 1439296901}
@@ -1336,7 +1337,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1705612031}
           m_TargetAssemblyTypeName: CutsceneManager, Assembly-CSharp
-          m_MethodName: finalCutscene1
+          m_MethodName: finalCutsceneNarration1
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1410,6 +1411,9 @@ MonoBehaviour:
   CombatTrigger1: {fileID: 0}
   CombatTrigger2: {fileID: 0}
   CombatTrigger3: {fileID: 0}
+  EndingTrigger1: {fileID: 0}
+  EndingTrigger2: {fileID: 0}
+  EndingTrigger3: {fileID: 0}
   Ending1: {fileID: 390049323}
   Ending2: {fileID: 0}
   Ending3: {fileID: 0}

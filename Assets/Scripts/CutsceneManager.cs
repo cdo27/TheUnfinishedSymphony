@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class CutsceneManager : MonoBehaviour
 {
@@ -62,6 +63,13 @@ public class CutsceneManager : MonoBehaviour
     public NPC CombatTrigger2; //Aldric combat
     public NPC CombatTrigger3; 
 
+    //Ending Triggers
+    [Header("Ending Triggers")]
+    
+    public NPC EndingTrigger1;
+    public NPC EndingTrigger2;
+    public NPC EndingTrigger3;
+
     //Endings
     [Header("Endings")]
     
@@ -96,6 +104,23 @@ public class CutsceneManager : MonoBehaviour
                 hasTriggeredCombat3Dialogue = true;
                 finalCombatTrigger3();
             }
+        }
+
+        //Check endings and load intro scene
+        if (Ending1 != null && Ending1.hasInteracted)
+        {
+            Debug.Log("Ending 1 has finished, loading Intro scene.");
+            SceneManager.LoadScene("Intro");
+        }
+        else if (Ending2 != null && Ending2.hasInteracted)
+        {
+            Debug.Log("Ending 2 has finished, loading Intro scene.");
+            SceneManager.LoadScene("Intro");
+        }
+        else if (Ending3 != null && Ending3.hasInteracted)
+        {
+            Debug.Log("Ending 3 has been finished, loading Intro scene.");
+            SceneManager.LoadScene("Intro");
         }
         
     }
@@ -346,6 +371,38 @@ public class CutsceneManager : MonoBehaviour
 
     //Play Cutscenes
     public void finalCutscene1(){ //ending cutscene 1
+        if(EndingTrigger1 != null){
+            EndingTrigger1.Interact();
+            Debug.Log("Playing final cutscene 1");
+        }else{
+            Debug.Log("Final custcene 1 is null");
+        }
+
+    }
+
+
+    public void finalCutscene2(){ //ending cutscene 2 
+        if(EndingTrigger2 != null){
+            EndingTrigger2.Interact();
+            Debug.Log("Playing final cutscene 2");
+        }else{
+            Debug.Log("Final custcene 2 is null");
+        }
+
+    }
+
+    public void finalCutscene3(){ //ending cutscene 3 
+        if(EndingTrigger3 != null){
+            EndingTrigger3.Interact();
+            Debug.Log("Playing final cutscene 3");
+        }else{
+            Debug.Log("Final custcene 3 is null");
+        }
+
+    }
+
+    //Play Cutscene Narration
+    public void finalCutsceneNarration1(){ //ending cutscene 1
         if(Ending1 != null){
             Ending1.Interact();
             Debug.Log("Playing final cutscene 1");
@@ -356,7 +413,7 @@ public class CutsceneManager : MonoBehaviour
     }
 
 
-    public void finalCutscene2(){ //ending cutscene 2 
+    public void finalCutsceneNarration2(){ //ending cutscene 2 
         if(Ending2 != null){
             Ending2.Interact();
             Debug.Log("Playing final cutscene 2");
@@ -366,7 +423,7 @@ public class CutsceneManager : MonoBehaviour
 
     }
 
-    public void finalCutscene3(){ //ending cutscene 3 
+    public void finalCutsceneNarration3(){ //ending cutscene 3 
         if(Ending3 != null){
             Ending3.Interact();
             Debug.Log("Playing final cutscene 3");

@@ -1235,7 +1235,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 81da8d150a39e46879d361788c4ce1e2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 92a5604be29ce70459c375ae74ca2e61, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1368,6 +1368,9 @@ MonoBehaviour:
   CombatTrigger1: {fileID: 0}
   CombatTrigger2: {fileID: 0}
   CombatTrigger3: {fileID: 0}
+  EndingTrigger1: {fileID: 0}
+  EndingTrigger2: {fileID: 0}
+  EndingTrigger3: {fileID: 0}
   Ending1: {fileID: 0}
   Ending2: {fileID: 0}
   Ending3: {fileID: 0}

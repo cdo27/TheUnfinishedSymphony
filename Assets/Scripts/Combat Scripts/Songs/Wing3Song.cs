@@ -81,7 +81,7 @@ public class Wing3Song : Song
             new BeatData(258f, 0), new BeatData(259f, 0), new BeatData(260f, 2), new BeatData(260.5f, 2), new BeatData(261f, 1), new BeatData(261.5f, 1),
              new BeatData(262f, 0), new BeatData(263f, 0),
             new BeatData(264.5f, 2), new BeatData(265f, 2), new BeatData(265.5f, 1), new BeatData(266f, 1),
-            new BeatData(266f, 1), new BeatData(268f, 1), new BeatData(268.5f, 1), new BeatData(269f, 2), new BeatData(269.5f, 2),
+            new BeatData(268f, 1), new BeatData(268.5f, 1), new BeatData(269f, 2), new BeatData(269.5f, 2),
             new BeatData(270f, 1), new BeatData(271.5f, 1), new BeatData(272f, 1), new BeatData(272.5f, 2), new BeatData(273f, 2),
             new BeatData(274f, 0), new BeatData(275f, 0),new BeatData(276f, 0),
 

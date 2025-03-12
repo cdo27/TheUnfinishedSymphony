@@ -487,6 +487,22 @@ public class BeatManager : MonoBehaviour
                 tutorialHMessage.SetActive(true);
                 break;
             case 144:
+                tutorialGMessage.SetActive(true);
+                tutorialHMessage.SetActive(false);
+                break;
+            case 148:
+                tutorialGMessage.SetActive(false);
+                tutorialHMessage.SetActive(true);
+                break;
+            case 152:
+                tutorialGMessage.SetActive(true);
+                tutorialHMessage.SetActive(false);
+                break;
+            case 156:
+                tutorialGMessage.SetActive(false);
+                tutorialHMessage.SetActive(true);
+                break;
+            case 160:
                 tutorialHMessage.SetActive(false);
                 break;
 

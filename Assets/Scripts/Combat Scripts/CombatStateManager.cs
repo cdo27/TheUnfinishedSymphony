@@ -53,6 +53,7 @@ public class CombatStateManager : MonoBehaviour
 
     void Start()
     {
+        /*
         gameManager = FindObjectOfType<GameManager>();
         sceneController = FindObjectOfType<SceneController>();
 
@@ -61,6 +62,7 @@ public class CombatStateManager : MonoBehaviour
             gameManager.audioManager.StopBackgroundMusic();
             gameManager.SetGameState(GameManager.GameState.Combat);
         }
+        */
         // Get AudioManager reference
         audioManager = FindObjectOfType<AudioManager>();
         if (audioManager == null)
@@ -195,6 +197,7 @@ public class CombatStateManager : MonoBehaviour
     //select the song based on gamamanager id
     void selectSong()
     {
+        /*
         //load proper song
         if (gameManager.currentSong == 001)
         {
@@ -218,8 +221,8 @@ public class CombatStateManager : MonoBehaviour
         }
 
         currentSong.songID = gameManager.currentSong;  
-
-       //currentSong = new ThiefSong();
+        */
+       currentSong = new Wing3Song();
     }
 
     void CheckModeSwitch(double currentTime)

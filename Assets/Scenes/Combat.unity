@@ -3176,6 +3176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e04b2a4691e76314c82fa846cdea269a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combatStateManager: {fileID: 1825297035}
   playerManager: {fileID: 0}
   leftBar: {fileID: 1544239455}
   rightBar: {fileID: 1353423750}

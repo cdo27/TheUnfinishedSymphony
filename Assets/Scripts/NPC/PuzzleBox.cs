@@ -18,6 +18,20 @@ public class PuzzleBox : NPC
         {
             Debug.LogError("GameManager was not found.");
         }
+        else
+        {
+            if (levelConfig != null)
+            {
+                if (gameManager.CheckPuzzleComplete(levelConfig))
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    //Debug.Log($"Puzzle {levelConfig.name} is not yet completed.");
+                }
+            }
+        }
     }
 
     private void Update() //check if complete then destroy

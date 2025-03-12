@@ -21,6 +21,13 @@ public class CombatNPC : NPC
         {
             Debug.Log("GameManager was not found.");
         }
+        else
+        {
+            if (gameManager.CheckCombatComplete(songID))
+            {
+                Destroy(gameObject); //destroy  if completed
+            }
+        }
     }
 
 

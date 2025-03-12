@@ -306,11 +306,27 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
+    public bool CheckCombatComplete(int songID)
+    {
+        switch (songID)
+        {
+            case 2:
+                return hasCompletedCombat1;
+            case 3:
+                return hasCompletedCombat2;
+            case 4:
+                return hasCompletedCombat3;
+            default:
+                return false;
+        }
+    }
+
     public void PlayerPassedArea()
     {
         Debug.Log("Triggering scene");
         cutsceneManager.playEscapeRoomScene();
     }
+
     
 
 

@@ -28,7 +28,6 @@ public class AdvantageBarManager : MonoBehaviour
     // Call this function to initialize the attack and defense notes
     public void InitializeBar(int attackNotes, int defenseNotes)
     {
-        /*
         playerManager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
 
         // Optionally, check if the playerManager was found
@@ -36,15 +35,13 @@ public class AdvantageBarManager : MonoBehaviour
         {
             Debug.LogError("PlayerManager not found in the scene.");
         }
-        */
 
-        /*
         // Apply potion effect if the player has it
         if (playerManager.GetPurchasedItems().Contains(2)) // Assuming item ID 2 is the potion
         {
             advantage = 70f; // Increase advantage by 20 when the potion is used
         }
-        */
+
         totalAttackNotes = Mathf.Max(attackNotes, 1);
         totalDefenseNotes = Mathf.Max(defenseNotes, 1);
 
@@ -129,13 +126,11 @@ public class AdvantageBarManager : MonoBehaviour
                 moveAmount = defenseUnit; // Full penalty
                 break;
         }
-        /*
         // Apply armor effect if the player has it
         if (playerManager.GetPurchasedItems().Contains(1)) // Assuming item ID 1 is the armor
         {
             moveAmount *= 0.5f; // Halve the damage taken during the defense phase
         }
-        */
 
         advantage = Mathf.Clamp(advantage - moveAmount, 0f, 100f);
         UpdateUI();

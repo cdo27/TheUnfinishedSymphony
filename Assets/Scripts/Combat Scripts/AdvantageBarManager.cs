@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class AdvantageBarManager : MonoBehaviour
 {
-
+    public CombatStateManager combatStateManager;
     public PlayerManager playerManager;
     public RectTransform leftBar; // Reference to the left bar's RectTransform
     public RectTransform rightBar; // Reference to the right bar's RectTransform
     public RectTransform energyClash; // Reference to the energy clashing image's RectTransform
-    private float advantage = 50f; // Starts in the middle (0 to 100)
+    private float advantage = 40f; // Starts in the middle (0 to 100)
     private float barWidth; // Total width of the advantage bar
 
-    private int totalAttackNotes = 1; // Default to prevent divide by zero
+    private int totalAttackNotes = 1; // Prevent divide by zero
     private int totalDefenseNotes = 1;
 
-    private float attackUnit; // How much each attack note moves the bar
-    private float defenseUnit; // How much each defense note moves the bar
+    private float attackUnit; // Scaled attack movement
+    private float defenseUnit; // Scaled defense penalty
 
-    private float decayRate = 0.1f; // Rate at which the enemy meter decays per second
-    private float minimumAdvantage = 20f; // Minimum advantage before the decay stops
-    private float winThreshold = 51f; // Advantage required to win (over half)
+    private float decayRate; // Dynamic decay rate
+    private float minimumAdvantage = 20f; // Stops decay below this threshold
+    private float winThreshold = 51f; // Winning threshold
 
     private Coroutine decayCoroutine; // Reference to the decay coroutine
     private bool decayStarted = false; // Track if decay has been initiated
@@ -28,6 +28,7 @@ public class AdvantageBarManager : MonoBehaviour
     // Call this function to initialize the attack and defense notes
     public void InitializeBar(int attackNotes, int defenseNotes)
     {
+        /*
         playerManager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
 
         // Optionally, check if the playerManager was found
@@ -35,23 +36,27 @@ public class AdvantageBarManager : MonoBehaviour
         {
             Debug.LogError("PlayerManager not found in the scene.");
         }
-        advantage = 40f;
+        */
 
+        /*
         // Apply potion effect if the player has it
         if (playerManager.GetPurchasedItems().Contains(2)) // Assuming item ID 2 is the potion
         {
             advantage = 70f; // Increase advantage by 20 when the potion is used
         }
-        totalAttackNotes = Mathf.Max(attackNotes, 1); // Avoid division by zero
+        */
+        totalAttackNotes = Mathf.Max(attackNotes, 1);
         totalDefenseNotes = Mathf.Max(defenseNotes, 1);
 
-        // Set scaling factors so that hitting every note perfectly would fully shift the bar
-        attackUnit = 60f / totalAttackNotes;  // 50 means shifting from center to one extreme
-        defenseUnit = 40f / totalDefenseNotes;
+        // Ensure 90% perfect hits overcome decay and reach 100
+        float maxPushRight = 60f; // Moves from center (50) to full right (100)
+        attackUnit = maxPushRight / (0.9f * totalAttackNotes);
 
-        
-        // Fixed padding value of 20 pixels on each side
-        float padding = 20f;
+        // Ensure 90% perfect blocks negate enemy pushes
+        defenseUnit = maxPushRight / (0.9f * totalDefenseNotes);
+
+        // Set decay rate so it applies constant pressure
+        decayRate = maxPushRight / (combatStateManager.currentSong.songLength * 10f); // Decays 10% of full bar per second
 
         // Calculate the usable width for the bar (subtract padding from both sides)
         barWidth = leftBar.rect.width + rightBar.rect.width;
@@ -64,26 +69,25 @@ public class AdvantageBarManager : MonoBehaviour
     // Start decay manually when the game logic determines it's time
     private void StartDecay()
     {
-        if (!decayStarted) // Prevent multiple coroutines from running
+        if (!decayStarted)
         {
             decayStarted = true;
             decayCoroutine = StartCoroutine(DecayAdvantage());
         }
     }
 
-    // Coroutine to decay enemy advantage over time
+    // Apply decay over time
     private IEnumerator DecayAdvantage()
     {
         while (true)
         {
-            // Decay the enemy advantage if it's above the minimum threshold
             if (advantage > minimumAdvantage)
             {
-                advantage -= decayRate; // Apply decay
-                advantage = Mathf.Clamp(advantage, 0f, 100f); // Ensure it's within bounds
+                advantage -= decayRate;
+                advantage = Mathf.Clamp(advantage, 0f, 100f);
                 UpdateUI();
             }
-            yield return new WaitForSeconds(1f); // Adjust this value to change decay frequency
+            yield return new WaitForSeconds(1f);
         }
     }
 
@@ -91,16 +95,17 @@ public class AdvantageBarManager : MonoBehaviour
     public void HandleAttack(string hitType)
     {
         float moveAmount = 0f;
+
         switch (hitType)
         {
             case "Perfect":
-                moveAmount = attackUnit * 1.5f; // Perfect hits push further
+                moveAmount = attackUnit;
                 break;
             case "NearMiss":
-                moveAmount = attackUnit * 0.75f; // Slight push
+                moveAmount = attackUnit * 0.5f;
                 break;
             case "Miss":
-                moveAmount = 0f; // No impact
+                moveAmount = 0f;
                 break;
         }
 
@@ -108,31 +113,32 @@ public class AdvantageBarManager : MonoBehaviour
         UpdateUI();
     }
 
-    // Call this function to handle defense actions
     public void HandleDefense(string hitType)
     {
         float moveAmount = 0f;
+
         switch (hitType)
         {
             case "PerfectGuard":
-                moveAmount = 0f; // No penalty for perfect block
+                moveAmount = 0f; // No penalty
                 break;
             case "WeakBlock":
                 moveAmount = defenseUnit * 0.5f; // Partial penalty
                 break;
             case "Miss":
-                moveAmount = defenseUnit * 1.5f; // Full penalty
+                moveAmount = defenseUnit; // Full penalty
                 break;
         }
+        /*
         // Apply armor effect if the player has it
         if (playerManager.GetPurchasedItems().Contains(1)) // Assuming item ID 1 is the armor
         {
             moveAmount *= 0.5f; // Halve the damage taken during the defense phase
         }
+        */
+
         advantage = Mathf.Clamp(advantage - moveAmount, 0f, 100f);
-
         UpdateUI();
-
     }
 
     // Check if the player has won the game

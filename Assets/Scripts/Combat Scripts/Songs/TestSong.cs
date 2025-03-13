@@ -9,6 +9,7 @@ public class TestSong : Song
         songID = 000;
         BPM = 90;
         offset = 0.1f;
+        songLength = 110;
 
         cutsceneModeBeats = new List<float> { 0f, 12f };
         attackModeBeats = new List<float> {36f };
@@ -35,19 +36,27 @@ public class TestSong : Song
             },
              new List<BeatData>
             {
-                new BeatData(124f, 1), new BeatData(125f, 1), new BeatData(126f, 2) // Defend Phase 1
+                new BeatData(124f, 1), new BeatData(125f, 1), new BeatData(126f, 1) // Defend Phase 1
             },
              new List<BeatData>
             {
-                new BeatData(132f, 0), new BeatData(133f, 1), new BeatData(133.5f, 1), new BeatData(134f, 1) // Defend Phase 1
+                new BeatData(132f, 1), new BeatData(133f, 1),  new BeatData(134f, 1) // Defend Phase 1
             },
               new List<BeatData>
             {
                 new BeatData(140f, 1), new BeatData(141f, 2), new BeatData(141.5f, 2), new BeatData(142f, 2) // Defend Phase 1
             },
+               new List<BeatData>
+            {
+                new BeatData(148f, 1), new BeatData(149f, 2), new BeatData(149.5f, 2), new BeatData(150f, 2) // Defend Phase 1
+            },
+                new List<BeatData>
+            {
+                new BeatData(156f, 0), new BeatData(157f, 2), new BeatData(157.5f, 2), new BeatData(158f, 2) // Defend Phase 1
+            },
         };
 
-        songcompleteBeat = 144f;
+        songcompleteBeat = 164f;
     }
 
     public override void PlaySong(SongManager songManager)

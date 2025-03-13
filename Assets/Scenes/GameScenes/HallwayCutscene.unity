@@ -1024,6 +1024,8 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: -114104146869349573, guid: 73e9140d4e8c85d48b013cf15216c49a, type: 2}
     value: {fileID: 366373062}
+  - key: {fileID: 5657751720742760990, guid: 73e9140d4e8c85d48b013cf15216c49a, type: 2}
+    value: {fileID: 456272582}
   m_ExposedReferences:
     m_References: []
 --- !u!95 &366373062
@@ -1128,7 +1130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  animator: {fileID: 0}
+  animator: {fileID: 456272582}
   interactRange: 1
   interactKey: 102
   interactionText: {fileID: 1076736980}
@@ -1235,7 +1237,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 92a5604be29ce70459c375ae74ca2e61, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7723808c1c53d3b408995048bee4b97b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1256,7 +1258,7 @@ Animator:
   m_GameObject: {fileID: 456272576}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a1b1e394c9b484247b8f246ea3ad65cf, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

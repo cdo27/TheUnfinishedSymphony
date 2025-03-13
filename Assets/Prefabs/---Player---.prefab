@@ -240,6 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
+  animator: {fileID: 3270807966193417136}
   interactRange: 1
   interactKey: 102
   interactionText: {fileID: 8710256327727980378}
@@ -253,7 +254,7 @@ Animator:
   m_GameObject: {fileID: 3749956571951378002}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6cfe532639592448cab402c32575645d, type: 2}
+  m_Controller: {fileID: 9100000, guid: a1b1e394c9b484247b8f246ea3ad65cf, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

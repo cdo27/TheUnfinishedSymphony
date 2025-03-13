@@ -2913,6 +2913,7 @@ MonoBehaviour:
   cutsceneManager: {fileID: 1651437097}
   uiManager: {fileID: 1060242955}
   currentSong: 1
+  lastScene: 
   hasCompletedPuzzleTut: 0
   hasCompletedCombatTut: 0
   hasCompletedPuzzle1: 0
@@ -11092,6 +11093,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 436582619141835833, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 92a5604be29ce70459c375ae74ca2e61, type: 3}
     - target: {fileID: 3270807966193417136, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
       propertyPath: m_Controller
       value: 

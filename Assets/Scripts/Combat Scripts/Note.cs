@@ -12,7 +12,7 @@ public class Note : MonoBehaviour
     public Sprite greenAttackSprite;
     public Sprite purpleAttackSprite;
 
-    public int noteType;
+    public BeatData beat;
     private int mode;
 
     private Vector2 targetPosition;
@@ -36,7 +36,7 @@ public class Note : MonoBehaviour
     // Initialize method
     public void Initialize(BeatData beat, int mode, Vector2 targetPosition, Vector2 destroyPosition, float speed, BeatManager beatManager)
     {
-        this.noteType = beat.noteType;
+        this.beat = beat;
         this.mode = mode;
         this.targetPosition = targetPosition;
         this.destroyPosition = destroyPosition;
@@ -45,7 +45,7 @@ public class Note : MonoBehaviour
 
         spriteRenderer = GetComponent<SpriteRenderer>(); // Get reference to the sprite renderer
         //assign proper sprite according to noteType
-        switch (noteType)
+        switch (beat.noteType)
         {
             case 0:
                 spriteRenderer.sprite = redNoteSprite;
@@ -57,7 +57,7 @@ public class Note : MonoBehaviour
                 spriteRenderer.sprite = purpleNoteSprite;
                 break;
             default:
-                Debug.LogWarning("Invalid note type: " + noteType);
+                Debug.LogWarning("Invalid note type: " + beat.noteType);
                 break;
         }
 
@@ -138,7 +138,7 @@ public class Note : MonoBehaviour
         }
         else if (mode == 1) // Attack note
         {
-            switch (noteType)
+            switch (beat.noteType)
             {
                 case 0:
                     spriteRenderer.sprite = redAttackSprite;
@@ -194,27 +194,39 @@ public class Note : MonoBehaviour
 
     private IEnumerator MoveTowardsEnemy(Vector3 enemyPosition)
     {
-        float speed = 10f; // Adjust speed as needed
-        float timeLimit = 1.2f; // Time limit for the failsafe
-        float startTime = Time.time; // Record the start time
+        // Get the precise DSP time for the next beat
+        double targetDspTime = beatManager.GetDspTimeForBeat(beat.beatTime + 1f);
+        double startDspTime = AudioSettings.dspTime; // Current high-precision audio time
+        double travelTime = targetDspTime - startDspTime; // Time available for movement
 
-        while (Vector3.Distance(transform.position, new Vector3(enemyPosition.x, enemyPosition.y, transform.position.z)) > 0.1f)
+        if (travelTime <= 0)
         {
-            // Move towards the target position
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(enemyPosition.x, enemyPosition.y, transform.position.z), 20 * Time.deltaTime);
+            Debug.LogWarning("Note is late! Playing immediately.");
+            travelTime = 0.1; // Prevent divide-by-zero or negative values
+        }
 
-            // Check if time limit is exceeded
-            if (Time.time - startTime > timeLimit)
-            {
-                Debug.Log("Failsafe activated: Destroying object");
-                Destroy(gameObject); // Destroy the object after the time limit
-                yield break; // Exit the coroutine early
-            }
+        Vector3 startPos = transform.position;
+        Vector3 targetPos = new Vector3(enemyPosition.x, enemyPosition.y, transform.position.z);
 
+        float elapsedTime = 0f;
+        float travelTimeFloat = (float)travelTime; // Convert to float for Lerp calculations
+
+        while (elapsedTime < travelTimeFloat)
+        {
+            float t = elapsedTime / travelTimeFloat; // Normalize elapsed time (0 to 1)
+            transform.position = Vector3.Lerp(startPos, targetPos, t);
+
+            elapsedTime += Time.deltaTime;
             yield return null;
         }
+
+        // Ensure exact final position
+        transform.position = targetPos;
+
+        // Trigger enemy hurt animation exactly on beat
         beatManager.combatStateManager.combatAnimationManager.EnemyPlayHurtAnimation();
-        Destroy(gameObject); // Destroy after reaching the enemy
+
+        Destroy(gameObject); // Destroy the note after impact
     }
 
     void defendNoteUpdate()

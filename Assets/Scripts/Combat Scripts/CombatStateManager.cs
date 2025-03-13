@@ -10,7 +10,7 @@ public class CombatStateManager : MonoBehaviour
     //current song that will be played, when loading combat this should be loaded based on which level
     public Song currentSong;
 
-    public int gameState = 0; // 0 = not started, 1 = attack mode, 2 = defend mode, 98 = victory, 99 = defeat
+    public int gameState = 0; // 0 = not started, 1 = attack mode, 2 = defend mode, 98 = victory, 99 = defeat, 198 = victory screen, 199 = defeat screen
     public double lastCheckedTime = -1.0; // Track last checked DSP time
 
     public SceneController sceneController;
@@ -119,6 +119,10 @@ public class CombatStateManager : MonoBehaviour
     {
         gameState = 98;
     }
+    public void instantLose()
+    {
+        gameState = 99;
+    }
 
     void Update()
     {
@@ -126,60 +130,46 @@ public class CombatStateManager : MonoBehaviour
         {
             instantWin();
         }
+        if (Input.GetKeyDown(KeyCode.O)) // Checks if "P" key is pressed
+        {
+            instantLose();
+        }
         //handles victory condition
         if (gameState == 98)
         {
-            songManager.stopSong();
+            //songManager.stopSong();
             if (currentSong.songID != 000)
             {
+                gameState = 198;
+                songManager.playVictorySong();
                 VictoryScreen.SetActive(true);
 
-                if (currentSong.songID == 001)
-                {
-                    gameManager.hasCompletedCombatTut = true;
-                }
-                else if (currentSong.songID == 002)
-                {
-                    gameManager.hasCompletedCombat1 = true;
-                }
-                else if (currentSong.songID == 003)
-                {
-                    gameManager.hasCompletedCombat2 = true;
-                }
-                else if (currentSong.songID == 004)
-                {
-                    gameManager.hasCompletedCombat3 = true;
-                }
-                else if (currentSong.songID == 005)
-                {
-                    gameManager.hasCompletedFinal = true;
-                }
             }
             else if (currentSong.songID == 000)
             {
                 beatManager.hideAllTutorialMessage();
                 StartScreen.SetActive(true);
                 gameState = 0;
-            }
+            }  
             modeText.text = "YOU WIN";
 
         }//defeat
         else if (gameState == 99)
         {
-            songManager.stopSong();
             if (currentSong.songID == 000)
-            {
+            {  
                 StartScreen.SetActive(true);
                 gameState = 0;
             }
             else
             {
+                gameState = 199;
+                songManager.playDefeatSong();
                 DefeatScreen.SetActive(true);
-                gameState = 0;
             }
         }
         //otherwise
-        else if (gameState != 98 && gameState != 99 && beatManager.songStarted)
+        else if (gameState != 98 && gameState != 99 && gameState != 198 && gameState != 199 && beatManager.songStarted)
         {
             double currentTime = AudioSettings.dspTime;
 
@@ -290,12 +280,33 @@ public class CombatStateManager : MonoBehaviour
 
     public void OnContinueButtonClick()
     {
-        // Load the UnfinishedSymphony scene
-        //sceneController.ExitCombatScene();
+        songManager.stopSong();
+        if (currentSong.songID == 001)
+        {
+            gameManager.hasCompletedCombatTut = true;
+        }
+        else if (currentSong.songID == 002)
+        {
+            gameManager.hasCompletedCombat1 = true;
+        }
+        else if (currentSong.songID == 003)
+        {
+            gameManager.hasCompletedCombat2 = true;
+        }
+        else if (currentSong.songID == 004)
+        {
+            gameManager.hasCompletedCombat3 = true;
+        }
+        else if (currentSong.songID == 005)
+        {
+            gameManager.hasCompletedFinal = true;
+        }
     }
 
     public void OnTryAgainClick()
     {
+        songManager.stopSong();
+        gameState = 0;
         selectSong();
         beatManager.startSong();
         DefeatScreen.SetActive(false);

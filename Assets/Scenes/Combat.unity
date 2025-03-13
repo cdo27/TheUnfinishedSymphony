@@ -866,6 +866,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1825297035}
+        m_TargetAssemblyTypeName: CombatStateManager, Assembly-CSharp
+        m_MethodName: OnContinueButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1841231743}
         m_TargetAssemblyTypeName: SceneController, Assembly-CSharp
         m_MethodName: ExitCombatScene
@@ -1453,7 +1465,7 @@ GameObject:
   - component: {fileID: 491088755}
   - component: {fileID: 491088754}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Popup Screen Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1895,6 +1907,8 @@ MonoBehaviour:
   wing2Song: {fileID: 8300000, guid: 2c70ef18d3c0e1c4f99c328fcd53986e, type: 3}
   wing3Song: {fileID: 8300000, guid: 2bd04abe58484b24e8c820d856bfa06e, type: 3}
   aldricSong: {fileID: 8300000, guid: 781ee57b50633bf4c94e0908506bff6e, type: 3}
+  victorySong: {fileID: 8300000, guid: 7604d7df9b69fb44f800bae8b723a76c, type: 3}
+  defeatSong: {fileID: 8300000, guid: fac6a32fbf0b85b418b480dc30ab4896, type: 3}
 --- !u!4 &587459921
 Transform:
   m_ObjectHideFlags: 0

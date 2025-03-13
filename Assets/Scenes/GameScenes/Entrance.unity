@@ -340,6 +340,62 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &146722550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 146722552}
+  - component: {fileID: 146722551}
+  m_Layer: 0
+  m_Name: SpawnLocationManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &146722551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146722550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e45b47fa2d913947a1358069c97f166, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  playerObject: {fileID: 0}
+  leftSpawn: {fileID: 0}
+  rightSpawn: {fileID: 0}
+  playerObjectHallway: {fileID: 0}
+  hallwaySpawn: {fileID: 0}
+  room1Spawn: {fileID: 0}
+  room2Spawn: {fileID: 0}
+  room3Spawn: {fileID: 0}
+  playerObjectEntrance: {fileID: 1929174995}
+  leftHallwaySpawn: {fileID: 1913927141}
+  upRoomSpawn: {fileID: 581295693}
+--- !u!4 &146722552
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146722550}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.768257, y: 1.3640622, z: -8.447004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &153868437
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,6 +1389,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &581295693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 581295694}
+  m_Layer: 0
+  m_Name: SpawnUp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &581295694
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581295693}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.26, y: 13.13, z: 0.053009875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &704317779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1390,7 +1477,7 @@ MonoBehaviour:
     sentences:
     - Door is locked.
     isPlayerSpeaking: 00
-  doorNumber: 0
+  doorNumber: 1
   sceneToLoad: EscapeHallway
 --- !u!61 &704317782
 BoxCollider2D:
@@ -2435,6 +2522,37 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   originalSceneName: 
   combatSceneName: Combat
+--- !u!1 &1913927141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1913927142}
+  m_Layer: 0
+  m_Name: SpawnLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1913927142
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913927141}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.14, y: 0.35, z: 0.053009875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1929174994
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2443,13 +2561,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 436582619141835833, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cc3eb262c988d794784bc98f43740480, type: 3}
     - target: {fileID: 7999804287017886458, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.36
+      value: 7.32
       objectReference: {fileID: 0}
     - target: {fileID: 7999804287017886458, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.45
+      value: 0.63
       objectReference: {fileID: 0}
     - target: {fileID: 7999804287017886458, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2492,6 +2614,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
+--- !u!1 &1929174995 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9137140702899087228, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
+  m_PrefabInstance: {fileID: 1929174994}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2009655285
 GameObject:
   m_ObjectHideFlags: 0
@@ -2762,3 +2889,6 @@ SceneRoots:
   - {fileID: 1514393191}
   - {fileID: 1889439883}
   - {fileID: 987828298}
+  - {fileID: 146722552}
+  - {fileID: 1913927142}
+  - {fileID: 581295694}

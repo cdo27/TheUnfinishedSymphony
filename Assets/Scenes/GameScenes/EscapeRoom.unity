@@ -766,7 +766,7 @@ MonoBehaviour:
     npcName: 
     sentences: []
     isPlayerSpeaking: 
-  doorNumber: 0
+  doorNumber: 14
   sceneToLoad: EscapeHallway
 --- !u!61 &530286578
 BoxCollider2D:

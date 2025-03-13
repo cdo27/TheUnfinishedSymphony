@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public CutsceneManager cutsceneManager;
     public UIManager uiManager;
     public int currentSong;
+    public string lastScene; //record scene
 
     public bool hasCompletedPuzzleTut, hasCompletedCombatTut,
     hasCompletedPuzzle1, hasCompletedPuzzle2, hasCompletedPuzzle3,

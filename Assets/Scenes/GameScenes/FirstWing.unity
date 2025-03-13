@@ -2542,11 +2542,12 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   portraitSprite: {fileID: 0}
+  lockedSprite: {fileID: 0}
   dialogue:
     npcName: 
     sentences: []
     isPlayerSpeaking: 
-  doorNumber: 0
+  doorNumber: 10
   sceneToLoad: Hallway
 --- !u!1001 &1464739332
 PrefabInstance:
@@ -2556,6 +2557,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 436582619141835833, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e06ab537a7c4449468d15cea60e6914f, type: 3}
     - target: {fileID: 7999804287017886458, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.29
@@ -3651,9 +3656,24 @@ MonoBehaviour:
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 0}
   BenedictNPC: {fileID: 0}
+  ThiefNPC: {fileID: 0}
+  FirstMovement: {fileID: 0}
+  SecondMovement: {fileID: 0}
+  SceneTrigger: {fileID: 0}
+  BenedictEscapeNPC: {fileID: 0}
+  AldricEscapeNPC: {fileID: 0}
+  hasTriggeredAldricEscapeDialogue: 0
+  hasTriggeredCombat3Dialogue: 0
   AldricNPC: {fileID: 0}
-  DummyFinal: {fileID: 0}
-  EndingTrigger: {fileID: 0}
+  CombatTrigger1: {fileID: 0}
+  CombatTrigger2: {fileID: 0}
+  CombatTrigger3: {fileID: 0}
+  EndingTrigger1: {fileID: 0}
+  EndingTrigger2: {fileID: 0}
+  EndingTrigger3: {fileID: 0}
+  Ending1: {fileID: 0}
+  Ending2: {fileID: 0}
+  Ending3: {fileID: 0}
 --- !u!4 &1828269165
 Transform:
   m_ObjectHideFlags: 0

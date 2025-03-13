@@ -3157,9 +3157,24 @@ MonoBehaviour:
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 0}
   BenedictNPC: {fileID: 0}
+  ThiefNPC: {fileID: 0}
+  FirstMovement: {fileID: 0}
+  SecondMovement: {fileID: 0}
+  SceneTrigger: {fileID: 0}
+  BenedictEscapeNPC: {fileID: 0}
+  AldricEscapeNPC: {fileID: 0}
+  hasTriggeredAldricEscapeDialogue: 0
+  hasTriggeredCombat3Dialogue: 0
   AldricNPC: {fileID: 0}
-  DummyFinal: {fileID: 0}
-  EndingTrigger: {fileID: 0}
+  CombatTrigger1: {fileID: 0}
+  CombatTrigger2: {fileID: 0}
+  CombatTrigger3: {fileID: 0}
+  EndingTrigger1: {fileID: 0}
+  EndingTrigger2: {fileID: 0}
+  EndingTrigger3: {fileID: 0}
+  Ending1: {fileID: 0}
+  Ending2: {fileID: 0}
+  Ending3: {fileID: 0}
 --- !u!4 &1519341601
 Transform:
   m_ObjectHideFlags: 0
@@ -3226,11 +3241,12 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   portraitSprite: {fileID: 0}
+  lockedSprite: {fileID: 0}
   dialogue:
     npcName: 
     sentences: []
     isPlayerSpeaking: 
-  doorNumber: 0
+  doorNumber: 11
   sceneToLoad: Hallway
 --- !u!61 &1557113692
 BoxCollider2D:

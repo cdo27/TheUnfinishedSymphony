@@ -11,6 +11,9 @@ public class Note : MonoBehaviour
     public Sprite redAttackSprite;
     public Sprite greenAttackSprite;
     public Sprite purpleAttackSprite;
+    public Sprite redExplosionSprite;
+    public Sprite greenExplosionSprite;
+    public Sprite purpleExplosionSprite;
 
     public BeatData beat;
     private int mode;
@@ -135,7 +138,7 @@ public class Note : MonoBehaviour
         if (mode == 2) // Defend note
         {
             duringDestroyAnimation = true;
-            StartCoroutine(defendDestroyAnimation());
+            StartCoroutine(defendDestroyAnimation(1));
         }
         else if (mode == 1) // Attack note
         {
@@ -166,12 +169,32 @@ public class Note : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private IEnumerator defendDestroyAnimation()
+    //for when player press wrong key, note explodes
+    public void defendNoteExplode()
     {
-        float duration = 0.1f; // Duration of the effect
+        switch (beat.noteType)
+        {
+            case 0:
+                spriteRenderer.sprite = redExplosionSprite;
+                break;
+            case 1:
+                spriteRenderer.sprite = greenExplosionSprite;
+                break;
+            case 2:
+                spriteRenderer.sprite = purpleExplosionSprite;
+                break;
+        }
+        duringDestroyAnimation = true;
+        StartCoroutine(defendDestroyAnimation(2));
+    }
+
+    private IEnumerator defendDestroyAnimation(int status)
+    {
+        //status: 1 = success hit, 2 = wrong key
+        float duration = 0.12f; // Duration of the effect
         float elapsedTime = 0f;
         Vector3 originalScale = transform.localScale;
-        Vector3 targetScale = originalScale * 3f; // Expand size by 1.5x
+        Vector3 targetScale = originalScale * 2f;
 
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         Color originalColor = sr.color;
@@ -189,7 +212,10 @@ public class Note : MonoBehaviour
 
             yield return null;
         }
-
+        if(status == 2)
+        {
+            beatManager.combatStateManager.combatAnimationManager.LucienPlayHurtAnimation();
+        }
         Destroy(gameObject); // Remove the note after animation
     }
 

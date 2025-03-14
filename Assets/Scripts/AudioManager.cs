@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip enemyNotePop;
     public AudioClip musicBlock;
     public AudioClip playerDamaged;
+    public AudioClip explosion;
     public AudioClip endEnemyNoteSpawn;
     public AudioClip changeTurn;
     public AudioClip coinCollectSound;
@@ -57,6 +58,11 @@ public class AudioManager : MonoBehaviour
     public void playPlayerDamagedSound()
     {
         combatAudioSource.PlayOneShot(playerDamaged);
+    }
+
+    public void playExplosionSound()
+    {
+        combatAudioSource.PlayOneShot(explosion);
     }
 
     public void playEndEnemyNoteSpawnSound()

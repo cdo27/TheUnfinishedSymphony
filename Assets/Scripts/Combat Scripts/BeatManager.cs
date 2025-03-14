@@ -43,6 +43,7 @@ public class BeatManager : MonoBehaviour
     public GameObject wrongKeyMessage;
     public GameObject perfectBlockMessage;
     public GameObject nearMissBlockMessage;
+    public GameObject defendWrongKeyMessage;
 
     //tutorial messages
     public GameObject tutorialAMessage;
@@ -261,33 +262,54 @@ public class BeatManager : MonoBehaviour
                                      (note.beat.noteType == 1 && (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))) ||
                                      (note.beat.noteType == 2 && (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)));
 
-            if (!correctKeyPressed) continue;
-
             int hitResult = note.checkIfHit();
 
-            if (!noteHit && (hitResult == 2 || hitResult == 1))
+
+
+            //nothing happens
+            if (!correctKeyPressed && hitResult == 0 && hitResult == 3)
             {
+                continue;
+            }
+
+            if (correctKeyPressed)
+            {
+                //correct hit with correct key
+                if (!noteHit && (hitResult == 2 || hitResult == 1))
+                {
+                    noteHit = true;
+                    highLightedHitArea.SetActive(true);
+                    Invoke("HideHighlightedHitArea", 0.05f);
+
+                    combatStateManager.audioManager.playMusicBlockSound();
+                    note.handleHit(combatStateManager.enemyHitPoint.transform.position);
+
+                    if (hitResult == 2)
+                    {
+                        defendResults[0]++; // Perfect block
+                        perfectBlockMessage.SetActive(true);
+                        Invoke("HidePerfectBlockMessage", 0.15f);
+                    }
+                    else if (hitResult == 1)
+                    {
+                        defendResults[1]++; // Near miss block
+                        nearMissBlockMessage.SetActive(true);
+                        combatStateManager.advantageBarManager.HandleDefense("Partial");
+                        Invoke("HideNearMissBlockMessage", 0.15f);
+                    }
+                    break;
+                }
+            }
+            //if wrong key pressed
+            if (!noteHit && !correctKeyPressed && (hitResult == 1 || hitResult == 2))
+            {
+                defendResults[2]++;
                 noteHit = true;
-                highLightedHitArea.SetActive(true);
-                Invoke("HideHighlightedHitArea", 0.05f);
-
-                combatStateManager.audioManager.playMusicBlockSound();
-
-                note.handleHit(combatStateManager.enemyHitPoint.transform.position);
-
-                if (hitResult == 2)
-                {
-                    defendResults[0]++;
-                    perfectBlockMessage.SetActive(true);
-                    Invoke("HidePerfectBlockMessage", 0.15f);
-                }
-                else if (hitResult == 1)
-                {
-                    defendResults[1]++;
-                    nearMissBlockMessage.SetActive(true);
-                    combatStateManager.advantageBarManager.HandleDefense("Partial");
-                    Invoke("HideNearMissBlockMessage", 0.15f);
-                }
+                defendWrongKeyMessage.SetActive(true);
+                Invoke("HideDefendWrongKeyMessage", 0.15f);
+                combatStateManager.advantageBarManager.HandleDefense("Miss");
+                combatStateManager.audioManager.playExplosionSound();
+                note.defendNoteExplode();
                 break;
             }
         }
@@ -606,6 +628,10 @@ public class BeatManager : MonoBehaviour
     void HideNearMissBlockMessage()
     {
         nearMissBlockMessage.SetActive(false);
+    }
+    void HideDefendWrongKeyMessage()
+    {
+        defendWrongKeyMessage.SetActive(false);
     }
 
   }

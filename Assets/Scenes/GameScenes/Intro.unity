@@ -4905,6 +4905,7 @@ MonoBehaviour:
   enemyNotePop: {fileID: 8300000, guid: d6cf4ff042e24dd4889a8622f1e15083, type: 3}
   musicBlock: {fileID: 8300000, guid: 5e8d94a6cb7c59544a083a9cd380a7bb, type: 3}
   playerDamaged: {fileID: 8300000, guid: eece0b407f1a12342b1543195eda19af, type: 3}
+  explosion: {fileID: 8300000, guid: 03c361c23bf588441a8c0e60dc8f2291, type: 3}
   endEnemyNoteSpawn: {fileID: 8300000, guid: 37e8d210d16be6e4ba419e9d05003e66, type: 3}
   changeTurn: {fileID: 8300000, guid: c7342b35e920f5242b9113808462f6b4, type: 3}
   coinCollectSound: {fileID: 8300000, guid: e5a6898cddc41ac4a8a3666e777d93d2, type: 3}

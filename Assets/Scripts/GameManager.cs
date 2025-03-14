@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         //Check for Inventory key presses or Exit 
         if (currentState == GameState.Game)
         {
-            if (Input.GetKeyDown(KeyCode.P))
+            if (Input.GetKeyDown(KeyCode.R))
             {
                 Debug.Log("Inventory opened");
                 uiManager.ShowInventoryUI();

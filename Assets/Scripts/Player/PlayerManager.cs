@@ -21,9 +21,16 @@ public class PlayerManager : MonoBehaviour
 
     public void UpdateCoinCount(int amount)
     {
+        if (ownedItems.Contains(6))
+        {
+            amount *= 2;
+        }
+
         coinCount += amount;
+
         UpdateCoinUI();
     }
+
 
     private void UpdateCoinUI()
     {

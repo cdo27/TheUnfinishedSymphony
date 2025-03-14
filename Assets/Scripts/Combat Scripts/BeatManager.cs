@@ -88,11 +88,11 @@ public class BeatManager : MonoBehaviour
         //-----------------------------------check for win or lose condition---------------------------------------
         if(songStarted && AudioSettings.dspTime >=  GetDspTimeForBeat(combatStateManager.currentSong.songcompleteBeat))
         {
-            if(combatStateManager.advantageBarManager.CheckVictoryCondition() == true)
+            if(combatStateManager.gameState != 198 && combatStateManager.advantageBarManager.CheckVictoryCondition() == true)
             {
                 combatStateManager.gameState = 98; 
             }
-            else if (combatStateManager.advantageBarManager.CheckVictoryCondition() == false)
+            else if (combatStateManager.gameState != 199 &&  combatStateManager.advantageBarManager.CheckVictoryCondition() == false)
             {
                 combatStateManager.gameState = 99;
             }
@@ -166,9 +166,9 @@ public class BeatManager : MonoBehaviour
         {
             Note note = activeNotes[i];
 
-            bool correctKeyPressed = (note.noteType == 0 && (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))) ||
-                                     (note.noteType == 1 && (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))) ||
-                                     (note.noteType == 2 && (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)));
+            bool correctKeyPressed = (note.beat.noteType == 0 && (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))) ||
+                                     (note.beat.noteType == 1 && (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))) ||
+                                     (note.beat.noteType == 2 && (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)));
 
 
             int hitResult = note.checkIfHit();
@@ -234,9 +234,9 @@ public class BeatManager : MonoBehaviour
         {
             Note note = activeNotes[i];
 
-            bool correctKeyPressed = (note.noteType == 0 && (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))) ||
-                                     (note.noteType == 1 && (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))) ||
-                                     (note.noteType == 2 && (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)));
+            bool correctKeyPressed = (note.beat.noteType == 0 && (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))) ||
+                                     (note.beat.noteType == 1 && (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))) ||
+                                     (note.beat.noteType == 2 && (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)));
 
             if (!correctKeyPressed) continue;
 

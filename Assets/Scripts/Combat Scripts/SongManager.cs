@@ -11,6 +11,8 @@ public class SongManager : MonoBehaviour
     public AudioClip wing2Song;
     public AudioClip wing3Song;
     public AudioClip aldricSong;
+    public AudioClip victorySong;
+    public AudioClip defeatSong;
 
     //songs
     public void playTestSong()
@@ -49,9 +51,24 @@ public class SongManager : MonoBehaviour
         audioSource.Play();
     }
 
+    public void playVictorySong()
+    {
+        audioSource.Stop();
+        audioSource.clip = victorySong;
+        audioSource.Play();
+    }
+
+    public void playDefeatSong()
+    {
+        audioSource.Stop();
+        audioSource.clip = defeatSong;
+        audioSource.Play();
+    }
+
     //stop song
     public void stopSong()
     {
         audioSource.Stop();
+        audioSource.clip = null;
     }
 }

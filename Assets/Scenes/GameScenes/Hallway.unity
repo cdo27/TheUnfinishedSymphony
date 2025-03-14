@@ -680,11 +680,9 @@ GameObject:
   m_Component:
   - component: {fileID: 216634194}
   - component: {fileID: 216634198}
-  - component: {fileID: 216634197}
-  - component: {fileID: 216634196}
-  - component: {fileID: 216634195}
+  - component: {fileID: 216634199}
   m_Layer: 0
-  m_Name: npc icon
+  m_Name: shop icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -699,113 +697,12 @@ Transform:
   m_GameObject: {fileID: 216634193}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.78, y: 4.47, z: 0}
+  m_LocalPosition: {x: 2.14, y: 4.97, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 141037562}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &216634195
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216634193}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!114 &216634196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216634193}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc87cf90e11df854e899e8103e29de91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasInteracted: 0
-  isInteracting: 0
-  shouldLoadScene: 0
-  shouldDestroy: 0
-  sceneToLoad: 
-  portraitSprite: {fileID: 21300000, guid: a4b3c28fc57856d4d8122b4e8c1190f7, type: 3}
-  dialogue:
-    npcName: Thief Spirit
-    sentences:
-    - Here to buy some wares?
-    isPlayerSpeaking: 00
-  afterDialogue:
-    npcName: 
-    sentences: []
-    isPlayerSpeaking: 
-  gameManager: {fileID: 0}
-  dialogueManager: {fileID: 0}
-  uiManager: {fileID: 0}
-  repeatDialogue:
-    npcName: Thief Spirit
-    sentences:
-    - Back to buy some wares?
-    isPlayerSpeaking: 00
---- !u!61 &216634197
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216634193}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.835, y: 3.91}
-    newSize: {x: 15.428572, y: 15.428572}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.8, y: 3.4}
-  m_EdgeRadius: 0
 --- !u!212 &216634198
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -847,17 +744,32 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: f960e923a57e54c41805e6e317f37716, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 958f6a52905d734449efbc561e6ed64a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 15.428572, y: 15.428572}
+  m_Size: {x: 9.29, y: 13.05}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &216634199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216634193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb5f6574c449e1445a2fd9875f80ec00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 1
+  floatSpeed: 1
+  floatAmount: 0.2
 --- !u!1 &277189985
 GameObject:
   m_ObjectHideFlags: 0
@@ -3210,11 +3122,15 @@ MonoBehaviour:
   playerObject: {fileID: 0}
   leftSpawn: {fileID: 0}
   rightSpawn: {fileID: 0}
+  trapSpawn: {fileID: 0}
   playerObjectHallway: {fileID: 1010591949}
   hallwaySpawn: {fileID: 2128814519}
   room1Spawn: {fileID: 340464235}
   room2Spawn: {fileID: 1571527779}
   room3Spawn: {fileID: 1714090156}
+  playerObjectEntrance: {fileID: 0}
+  leftHallwaySpawn: {fileID: 0}
+  upRoomSpawn: {fileID: 0}
 --- !u!4 &1726487102
 Transform:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class AdvantageBarManager : MonoBehaviour
     public RectTransform leftBar; // Reference to the left bar's RectTransform
     public RectTransform rightBar; // Reference to the right bar's RectTransform
     public RectTransform energyClash; // Reference to the energy clashing image's RectTransform
-    private float advantage = 40f; // Starts in the middle (0 to 100)
+    private float advantage = 30f; // Starts in the middle (0 to 100)
     private float barWidth; // Total width of the advantage bar
 
     private int totalAttackNotes = 1; // Prevent divide by zero
@@ -19,7 +19,7 @@ public class AdvantageBarManager : MonoBehaviour
     private float defenseUnit; // Scaled defense penalty
 
     private float decayRate; // Dynamic decay rate
-    private float minimumAdvantage = 20f; // Stops decay below this threshold
+    private float minimumAdvantage = 30f; // Stops decay below this threshold
     private float winThreshold = 51f; // Winning threshold
 
     private Coroutine decayCoroutine; // Reference to the decay coroutine
@@ -46,7 +46,7 @@ public class AdvantageBarManager : MonoBehaviour
         totalDefenseNotes = Mathf.Max(defenseNotes, 1);
 
         // Ensure 90% perfect hits overcome decay and reach 100
-        float maxPushRight = 60f; // Moves from center (50) to full right (100)
+        float maxPushRight = 70f; // Moves from center (50) to full right (100)
         attackUnit = maxPushRight / (0.9f * totalAttackNotes);
 
         // Ensure 90% perfect blocks negate enemy pushes

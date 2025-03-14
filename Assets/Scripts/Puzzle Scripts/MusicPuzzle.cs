@@ -8,6 +8,7 @@ public class PuzzleMechanism : MonoBehaviour
     public AudioSource audioSource;          // Main AudioSource for playing the music and notes
     public AudioClip[] noteClips;            // Audio clips for each note
     public AudioClip clickSound;   
+    public AudioClip dropSound; 
     public Button playButton;                // Button to start the music segment
     public Button[] noteButtons;             // Buttons for playing individual notes
     public Button[] newNoteButtons;          // New buttons for playing additional notes
@@ -256,29 +257,35 @@ public class PuzzleMechanism : MonoBehaviour
         audioSource.clip = levelConfig.musicSegment;
     }
     public void HandleDropNote(int noteIndex, int missingIndex)
-{
-    if (noteIndex < 0 || noteIndex >= noteImages.Length)
-        return;
-
-    // Only increment attemptCount if this missing note was not previously filled.
-    if (playerSequence[missingIndex] == -1 || missingNoteImages[missingIndex].sprite == defaultMissingNoteSprite)
     {
-        attemptCount++;
-    }
+        if (noteIndex < 0 || noteIndex >= noteImages.Length)
+            return;
 
-    // Set the missing note image sprite and record the note in the player's sequence.
-    missingNoteImages[missingIndex].sprite = noteImages[noteIndex];
-    playerSequence[missingIndex] = noteIndex;
-
-    // If all missing notes have been filled, check the sequence.
-    if (attemptCount == levelConfig.missingNotesCount)
-    {
-        if (IsAllInputsMade())
+        // Only increment attemptCount if this missing note was not previously filled.
+        if (playerSequence[missingIndex] == -1 || missingNoteImages[missingIndex].sprite == defaultMissingNoteSprite)
         {
-            CheckSequence();
+            attemptCount++;
+        }
+
+        // Set the missing note image sprite and record the note in the player's sequence.
+        missingNoteImages[missingIndex].sprite = noteImages[noteIndex];
+        playerSequence[missingIndex] = noteIndex;
+        
+        // <-- Play the drop sound effect when a note is successfully placed.
+        if (dropSound != null)
+        {
+            audioSource.PlayOneShot(dropSound);
+        }
+
+        // If all missing notes have been filled, check the sequence.
+        if (attemptCount == levelConfig.missingNotesCount)
+        {
+            if (IsAllInputsMade())
+            {
+                CheckSequence();
+            }
         }
     }
-}
 
 
     private void SetupNoteButtons()

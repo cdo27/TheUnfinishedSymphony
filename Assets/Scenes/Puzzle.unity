@@ -1673,6 +1673,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 218acbc6686ca734aa28c804880419ff, type: 3}
   - {fileID: 8300000, guid: 6e9ca99aad100aa46b78e92a675fc2a2, type: 3}
   clickSound: {fileID: 8300000, guid: 40b7a89d51a461348a05c1d4dee29248, type: 3}
+  dropSound: {fileID: 8300000, guid: 0d99bf13e892cb946a00ea2652ff77e9, type: 3}
   playButton: {fileID: 1241318164}
   noteButtons:
   - {fileID: 1384159008}

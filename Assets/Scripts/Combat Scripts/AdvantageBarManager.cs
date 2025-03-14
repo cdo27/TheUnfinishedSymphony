@@ -39,7 +39,7 @@ public class AdvantageBarManager : MonoBehaviour
         // Apply potion effect if the player has it
         if (playerManager.GetPurchasedItems().Contains(2)) // Assuming item ID 2 is the potion
         {
-            advantage = 70f; // Increase advantage by 20 when the potion is used
+            advantage = 50f; // Increase advantage by 20 when the potion is used
         }
 
         totalAttackNotes = Mathf.Max(attackNotes, 1);
@@ -47,13 +47,11 @@ public class AdvantageBarManager : MonoBehaviour
 
         // Ensure 90% perfect hits overcome decay and reach 100
         float maxPushRight = 70f; // Moves from center (50) to full right (100)
-        attackUnit = maxPushRight / (0.9f * totalAttackNotes);
-
-        // Ensure 90% perfect blocks negate enemy pushes
-        defenseUnit = maxPushRight / (0.9f * totalDefenseNotes);
+        attackUnit = maxPushRight / (0.6f * totalAttackNotes); // Adjusted for 60% success
+        defenseUnit = (maxPushRight / 1.4f) / (0.6f * totalDefenseNotes);
 
         // Set decay rate so it applies constant pressure
-        decayRate = maxPushRight / (combatStateManager.currentSong.songLength * 10f); // Decays 10% of full bar per second
+        decayRate = maxPushRight / (combatStateManager.currentSong.songLength * 12.5f);
 
         // Calculate the usable width for the bar (subtract padding from both sides)
         barWidth = leftBar.rect.width + rightBar.rect.width;
@@ -99,7 +97,7 @@ public class AdvantageBarManager : MonoBehaviour
                 moveAmount = attackUnit;
                 break;
             case "NearMiss":
-                moveAmount = attackUnit * 0.5f;
+                moveAmount = attackUnit * 0.75f;
                 break;
             case "Miss":
                 moveAmount = 0f;
@@ -120,7 +118,7 @@ public class AdvantageBarManager : MonoBehaviour
                 moveAmount = 0f; // No penalty
                 break;
             case "WeakBlock":
-                moveAmount = defenseUnit * 0.5f; // Partial penalty
+                moveAmount = defenseUnit * 0.25f; // Partial penalty
                 break;
             case "Miss":
                 moveAmount = defenseUnit; // Full penalty

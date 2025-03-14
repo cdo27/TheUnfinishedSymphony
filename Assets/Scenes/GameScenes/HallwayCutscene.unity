@@ -386,7 +386,7 @@ MonoBehaviour:
     sentences:
     - Here to buy some wares?
     - What is it?
-    - Some goodies to make things better... See for yourself.
+    - Some stuff I scavaged here and there... See for yourself.
     isPlayerSpeaking: 000100
   afterDialogue:
     npcName: 
@@ -398,7 +398,7 @@ MonoBehaviour:
   repeatDialogue:
     npcName: Thief Spirit
     sentences:
-    - Back to buy some wares?
+    - Back to buy some stuff?
     isPlayerSpeaking: 00
 --- !u!61 &141037564
 BoxCollider2D:

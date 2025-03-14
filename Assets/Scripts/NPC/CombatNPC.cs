@@ -38,7 +38,7 @@ public class CombatNPC : NPC
         Debug.Log(songID);
 
         isInteracting = true;
-
+        gameManager.SetGameState(GameManager.GameState.Combat);
         Debug.Log("Playing dialogue");
         dialogueManager.StartDialogue(dialogue, portraitSprite, this);
     }
@@ -49,8 +49,9 @@ public class CombatNPC : NPC
 
         if (shouldLoadScene && !string.IsNullOrEmpty(sceneToLoad))
         {
+            
             SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
-            gameManager.SetGameState(GameManager.GameState.Combat); //update gamestate to combat
+            
         }
 
 

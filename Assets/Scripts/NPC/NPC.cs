@@ -32,7 +32,7 @@ public class NPC : Interactable
     public override void Interact() // Trigger dialogue
     {   
         isInteracting = true;
-
+        gameManager.SetGameState(GameManager.GameState.Combat); 
         if (!hasInteracted)
         {
             Debug.Log("Playing dialogue");
@@ -52,9 +52,7 @@ public class NPC : Interactable
 
         if (shouldLoadScene && !string.IsNullOrEmpty(sceneToLoad))
         {   
-            gameManager.SetGameState(GameManager.GameState.Combat); 
             SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Additive);
-            // Update game state to combat
 
         }
 

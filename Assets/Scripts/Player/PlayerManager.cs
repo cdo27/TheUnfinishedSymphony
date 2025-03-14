@@ -59,13 +59,24 @@ public class PlayerManager : MonoBehaviour
     //Test methods
     public void BuyItemPotion()
     {
-        BuyItem(1, 10);
+        BuyItem(1, 5);
     }
 
     public void BuyItemArmor()
     {
-        BuyItem(2, 10);
+        BuyItem(2, 6);
     }
+    public void BuyItemShield()
+    {
+        BuyItem(4, 10);
+    }
+
+    public void BuyItemWeapon()
+    {
+        BuyItem(5, 6);
+    }
+
+    
 
     public List<int> GetOwnedItems()
     {

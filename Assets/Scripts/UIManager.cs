@@ -35,6 +35,12 @@ public class UIManager : MonoBehaviour
     public GameObject posItem5;
     public GameObject posItem6;
 
+    //Shop
+    public GameObject shopItem1;
+    public GameObject shopItem2;
+    public GameObject shopItem3;
+    public GameObject shopItem4;
+
     // Map GameObjects
     public GameObject entranceMap;
     private GameManager gameManager;
@@ -61,6 +67,17 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerManager != null && shopUI.activeSelf)
+        {
+            List<int> ownedItems = playerManager.GetOwnedItems();
+
+            //check and disable shop items if already owned
+            shopItem1.SetActive(!ownedItems.Contains(1)); // item ID 1
+            shopItem2.SetActive(!ownedItems.Contains(2)); // item ID 2
+            shopItem3.SetActive(!ownedItems.Contains(4)); // item ID 4
+            shopItem4.SetActive(!ownedItems.Contains(5)); // item ID 5
+        }
+
         if(gameManager.currentState == GameManager.GameState.Game){
             showGameUI();
         }else{

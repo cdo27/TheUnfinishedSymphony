@@ -5,14 +5,38 @@ using UnityEngine;
 public class ThiefNPC : NPC
 {
     public Dialogue repeatDialogue;
+    public GameObject shopIndicator;
+
+    private bool shopIndicatorActivated = false; 
 
     void Start()
     {
-        //find UIManager in the current scene
         uiManager = FindObjectOfType<UIManager>();
+
+        if (shopIndicator != null)
+        {
+            shopIndicator.SetActive(false);
+        }
     }
 
-    public override void Interact() //trigger dialogue
+    void Update()
+    {
+        if (gameManager.hasCompletedCombatTut && !shopIndicatorActivated)
+        {
+            ActivateShopIndicator();
+        }
+    }
+
+    private void ActivateShopIndicator()
+    {
+        if (shopIndicator != null)
+        {
+            shopIndicator.SetActive(true);
+            shopIndicatorActivated = true;
+        }
+    }
+
+    public override void Interact()
     {   
         isInteracting = true;
         if (!hasInteracted)
@@ -23,7 +47,6 @@ public class ThiefNPC : NPC
         {
             FindObjectOfType<DialogueManager>().StartDialogue(repeatDialogue, portraitSprite, this);
         }
-        
     }
 
     public override void CompleteInteraction()

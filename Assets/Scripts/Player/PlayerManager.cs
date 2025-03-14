@@ -12,8 +12,7 @@ public class PlayerManager : MonoBehaviour
     public int hpCount = 3;
     public TextMeshProUGUI coinText;
 
-    private HashSet<int> collectedItems = new HashSet<int>(); //collected items
-    private HashSet<int> purchasedItems = new HashSet<int>(); //purchased items
+    private HashSet<int> ownedItems = new HashSet<int>(); 
 
     void Awake()
     {
@@ -33,44 +32,44 @@ public class PlayerManager : MonoBehaviour
 
     //-----Item Management----------------------
 
-    public void CollectItem(int itemID)
+    public void AddOwnedItem(int itemID)
     {
-        if (!collectedItems.Contains(itemID))
+        if (!ownedItems.Contains(itemID))
         {
-            collectedItems.Add(itemID);
-            Debug.Log("Collected Item ID: " + itemID);
+            ownedItems.Add(itemID);
+            Debug.Log("Owned Item ID: " + itemID);
         }
     }
 
     public void BuyItem(int itemID, int price)
     {
-        if (coinCount >= price && !purchasedItems.Contains(itemID))
+        if (coinCount >= price && !ownedItems.Contains(itemID))
         {
             coinCount -= price;
-            purchasedItems.Add(itemID);
+            ownedItems.Add(itemID);
             UpdateCoinUI();
             Debug.Log("Purchased Item ID: " + itemID);
         }
         else
         {
-            Debug.Log("Not enough coins or item already purchased.");
+            Debug.Log("Not enough coins or item already owned.");
         }
     }
 
     //Test methods
     public void BuyItemPotion()
     {
-        BuyItem(2, 10);
+        BuyItem(1, 10);
     }
 
     public void BuyItemArmor()
     {
-        BuyItem(1, 10);
+        BuyItem(2, 10);
     }
 
-    public List<int> GetPurchasedItems()
+    public List<int> GetOwnedItems()
     {
-        return new List<int>(purchasedItems);
+        return new List<int>(ownedItems);
     }
 
 

@@ -32,6 +32,10 @@ public class BeatManager : MonoBehaviour
     public GameObject greenShield;
     public GameObject purpleShield;
 
+    //for result count
+    public int[] attackResults = new int[4]; //0 = perfect hit, 1 = near miss, 2 = wrong key, 3 = failed hit
+    public int[] defendResults = new int[4]; //0 = perfect guard, 1 = weak guard, 2 = wrong key, 3 = failed guard
+
     //note hit messages
     public GameObject perfectHitMessage;
     public GameObject nearMissMessage;
@@ -75,6 +79,18 @@ public class BeatManager : MonoBehaviour
         {
             totalDefenseNotes += phase.Count;
         }
+
+        //clear results in case this is the player's second try
+        for (int i = 0; i < attackResults.Length; i++)
+        {
+            attackResults[i] = 0;
+        }
+
+        for (int i = 0; i < defendResults.Length; i++)
+        {
+            defendResults[i] = 0;
+        }
+
         combatStateManager.advantageBarManager.InitializeBar(totalAttackNotes, totalDefenseNotes);
 
         combatStateManager.currentSong.PlaySong(combatStateManager.songManager); //play the song
@@ -173,11 +189,13 @@ public class BeatManager : MonoBehaviour
 
             int hitResult = note.checkIfHit();
 
+            //nothing happens
             if (!correctKeyPressed && hitResult == 0 && hitResult == 3)
             {
                 continue;
             }
 
+            //actual handle
             if (correctKeyPressed)
             {
                 
@@ -188,16 +206,19 @@ public class BeatManager : MonoBehaviour
                     Invoke("HideHighlightedHitArea", 0.05f);
 
                     note.handleHit(combatStateManager.enemyHitPoint.transform.position);
-
+                    //perfect hit
                     if (hitResult == 2)
                     {
+                        attackResults[0]++;
                         perfectHitMessage.SetActive(true);
                         combatStateManager.advantageBarManager.HandleAttack("Perfect");
                         Invoke("HidePerfectHitMessage", 0.15f);
                         combatStateManager.combatAnimationManager.LucienPlayAttackAnimation();
                     }
+                    //near miss
                     else if (hitResult == 1)
                     {
+                        attackResults[1]++;
                         nearMissMessage.SetActive(true);
                         combatStateManager.advantageBarManager.HandleAttack("NearMiss");
                         Invoke("HideNearMissMessage", 0.15f);
@@ -206,6 +227,7 @@ public class BeatManager : MonoBehaviour
                     break;
                 }else if (!noteHit && hitResult == 3)
                 {
+                    attackResults[3]++;
                     noteHit = true;
                     note.handleFailedHit();
 
@@ -217,6 +239,7 @@ public class BeatManager : MonoBehaviour
 
             if (!noteHit &&  !correctKeyPressed && (hitResult == 1 || hitResult == 2))
             {
+                attackResults[2]++;
                 noteHit = true;
                 // Player pressed the wrong key at the right time
                 wrongKeyMessage.SetActive(true);
@@ -254,11 +277,13 @@ public class BeatManager : MonoBehaviour
 
                 if (hitResult == 2)
                 {
+                    defendResults[0]++;
                     perfectBlockMessage.SetActive(true);
                     Invoke("HidePerfectBlockMessage", 0.15f);
                 }
                 else if (hitResult == 1)
                 {
+                    defendResults[1]++;
                     nearMissBlockMessage.SetActive(true);
                     combatStateManager.advantageBarManager.HandleDefense("Partial");
                     Invoke("HideNearMissBlockMessage", 0.15f);

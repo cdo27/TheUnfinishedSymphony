@@ -33,9 +33,21 @@ public class CombatStateManager : MonoBehaviour
     public TMP_Text BPMText;
     public TMP_Text songLengthText;
 
-    public GameObject VictoryScreen;
-    public GameObject victoryContinueButton;
-    public GameObject DefeatScreen;
+    //result screen UI text
+    public GameObject ResultScreen;
+    public GameObject ResultContinueButton; 
+    public GameObject ResultTryAgainButton;
+    public TMP_Text resultTitle;
+    public TMP_Text resultMessage;
+    public TMP_Text perfectHitCountText;
+    public TMP_Text nearMissCountText;
+    public TMP_Text attackWrongKeyText;
+    public TMP_Text failedHitText;
+    public TMP_Text perfectGuardCountText;
+    public TMP_Text weakGuardCountText;
+    public TMP_Text defendWrongKeyText;
+    public TMP_Text failedBlockText;
+    public TMP_Text resultButtonText;
 
     public GameObject player;
     public GameObject enemy;
@@ -142,7 +154,7 @@ public class CombatStateManager : MonoBehaviour
             {
                 gameState = 198;
                 songManager.playVictorySong();
-                VictoryScreen.SetActive(true);
+                displayResultScreen();
 
             }
             else if (currentSong.songID == 000)
@@ -165,7 +177,7 @@ public class CombatStateManager : MonoBehaviour
             {
                 gameState = 199;
                 songManager.playDefeatSong();
-                DefeatScreen.SetActive(true);
+                displayResultScreen();
             }
         }
         //otherwise
@@ -265,10 +277,12 @@ public class CombatStateManager : MonoBehaviour
 
     public void OnSkipTutorialClick()
     {
-        selectSong();
-        beatManager.startSong();
-        StartScreen.SetActive(false);
-
+        if (gameState == 0)
+        {
+            selectSong();
+            beatManager.startSong();
+            StartScreen.SetActive(false);
+        }
     }
     public void OnStartTutorialClick()
     {
@@ -278,6 +292,44 @@ public class CombatStateManager : MonoBehaviour
 
     }
 
+    //for result screen
+    public void displayResultScreen()
+    {
+        //result title, message, and button text
+        if(gameState == 198)
+        {
+            resultTitle.text = "victory";
+            resultMessage.text = "Symphony Sheet Obtained";
+            if(currentSong.songID == 005 || currentSong.songID == 006 || currentSong.songID == 007)
+            {
+                resultMessage.text = "You have overcome the final obstacle!";
+            }
+            ResultContinueButton.SetActive(true);
+        }
+        else if (gameState == 199)
+        {
+            resultTitle.text = "defeat";
+            resultMessage.text = "Failed to Obtain Symphony Sheet";
+            ResultTryAgainButton.SetActive(true);
+        }
+
+        //attack phase result
+        perfectHitCountText.text = beatManager.attackResults[0].ToString();
+        nearMissCountText.text = beatManager.attackResults[1].ToString();
+        attackWrongKeyText.text = beatManager.attackResults[2].ToString();
+        failedHitText.text = beatManager.attackResults[3].ToString();
+
+        perfectGuardCountText.text = beatManager.defendResults[0].ToString();
+        weakGuardCountText.text = beatManager.defendResults[1].ToString();
+        defendWrongKeyText.text = beatManager.defendResults[2].ToString();
+        failedBlockText.text = beatManager.defendResults[3].ToString();
+
+        ResultScreen.SetActive(true);
+}
+
+   
+    //result button handling
+    
     public void OnContinueButtonClick()
     {
         songManager.stopSong();
@@ -309,6 +361,7 @@ public class CombatStateManager : MonoBehaviour
         gameState = 0;
         selectSong();
         beatManager.startSong();
-        DefeatScreen.SetActive(false);
+        ResultTryAgainButton.SetActive(false);
+        ResultScreen.SetActive(false);
     }
 }

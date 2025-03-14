@@ -124,6 +124,7 @@ public class Note : MonoBehaviour
         // Check if the note has passed the target position by checking its x position
         if (transform.position.x <= destroyPosition.x) 
         {
+            beatManager.attackResults[3]++;
             Destroy(gameObject);
         }
     }
@@ -275,6 +276,7 @@ public class Note : MonoBehaviour
                 // Destroy the note at the destroy position
                 if (transform.position == new Vector3(destroyPosition.x, destroyPosition.y, transform.position.z))
                 {
+                    beatManager.defendResults[3]++;
                     advantageBarManager.HandleDefense("Miss");
                     audioManager.playPlayerDamagedSound();
 

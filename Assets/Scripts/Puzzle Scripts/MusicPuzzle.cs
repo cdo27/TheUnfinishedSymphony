@@ -38,6 +38,7 @@ public class PuzzleMechanism : MonoBehaviour
     public Button toggleBackgroundButton;
     private int selectedMissingNoteIndex = -1;
     private int selectedNoteButtonIndex = -1;
+    private PlayerManager playerManager;
     public Button resetButton;
 
     void Start()
@@ -83,6 +84,7 @@ public class PuzzleMechanism : MonoBehaviour
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
+        playerManager = FindObjectOfType<PlayerManager>();
 
         if (gameManager == null)
         {
@@ -222,6 +224,10 @@ public class PuzzleMechanism : MonoBehaviour
         background2.gameObject.SetActive(isTutorialLevel);
 
         countdown = levelConfig.timeLimit;
+        if (playerManager != null && playerManager.GetOwnedItems().Contains(3))
+    {
+        countdown += 10f;
+    }
         playerSequence = new int[levelConfig.missingNotesCount];
         for (int i = 0; i < levelConfig.missingNotesCount; i++)
     {

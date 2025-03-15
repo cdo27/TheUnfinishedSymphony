@@ -55,6 +55,7 @@ public class CombatItemManager : MonoBehaviour
         Image item1IconImage = item1Icon.GetComponent<Image>();
         if (combatStateManager.playerManager.GetOwnedItems().Contains(1))
         {
+            Debug.Log("has potion!");
             hasItem1 = true;
             item1IconImage.sprite = item1IconSprite;
         }

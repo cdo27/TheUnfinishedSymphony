@@ -24,6 +24,7 @@ public class CombatStateManager : MonoBehaviour
     public AudioManager audioManager;
 
     public GameObject attackBar;
+    public GameObject advantageBar;
 
     public GameObject attackModeBanner;
     public GameObject defendModeBanner;
@@ -151,7 +152,7 @@ public class CombatStateManager : MonoBehaviour
 
     public void instantWin()
     {
-        gameState = 98;
+        gameState = 98;  
     }
     public void instantLose()
     {
@@ -171,6 +172,8 @@ public class CombatStateManager : MonoBehaviour
         //handles victory condition
         if (gameState == 98)
         {
+            attackBar.SetActive(false);
+            advantageBar.SetActive(false);
             //songManager.stopSong();
             if (currentSong.songID != 000)
             {
@@ -181,6 +184,7 @@ public class CombatStateManager : MonoBehaviour
             }
             else if (currentSong.songID == 000)
             {
+                songManager.stopSong();
                 beatManager.hideAllTutorialMessage();
                 StartScreen.SetActive(true);
                 gameState = 0;
@@ -190,8 +194,12 @@ public class CombatStateManager : MonoBehaviour
         }//defeat
         else if (gameState == 99)
         {
+            attackBar.SetActive(false);
+            advantageBar.SetActive(false);
             if (currentSong.songID == 000)
             {
+                songManager.stopSong();
+                beatManager.hideAllTutorialMessage();
                 StartScreen.SetActive(true);
                 gameState = 0;
             }
@@ -254,6 +262,22 @@ public class CombatStateManager : MonoBehaviour
         //currentSong = new BenedictSong();
     }
 
+    public void initilizeAdvantageBar() {
+        //calculate number of attack/defend notes for advantage bar scaling
+        // Get total number of attack notes
+        int totalAttackNotes = currentSong.attackBeatsToHit.Count;
+        Debug.Log("attack notes:  " + totalAttackNotes);
+
+        // Get total number of defense notes
+        int totalDefenseNotes = 0;
+        foreach (var phase in currentSong.defendBeatsToHit)
+        {
+            totalDefenseNotes += phase.Count;
+        }
+
+        advantageBarManager.InitializeBar(totalAttackNotes, totalDefenseNotes);
+    }
+
     void CheckModeSwitch(double currentTime)
     {
         // Check if it's time to switch to attack mode
@@ -313,6 +337,7 @@ public class CombatStateManager : MonoBehaviour
             selectSong();
             beatManager.startSong();
             StartScreen.SetActive(false);
+            advantageBar.SetActive(true);
         }
     }
     public void OnStartTutorialClick()
@@ -320,6 +345,7 @@ public class CombatStateManager : MonoBehaviour
         currentSong = new TestSong();
         beatManager.startSong();
         StartScreen.SetActive(false);
+        advantageBar.SetActive(true);
 
     }
 
@@ -392,6 +418,7 @@ public class CombatStateManager : MonoBehaviour
         gameState = 0;
         selectSong();
         beatManager.startSong();
+        advantageBar.SetActive(true);
         ResultTryAgainButton.SetActive(false);
         ResultScreen.SetActive(false);
     }

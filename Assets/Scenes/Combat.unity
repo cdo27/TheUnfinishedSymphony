@@ -1691,8 +1691,8 @@ Transform:
   m_GameObject: {fileID: 325850130}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.05, y: -2.32, z: 1.1826477}
-  m_LocalScale: {x: 0.45, y: 0.512069, z: 0.9193189}
+  m_LocalPosition: {x: 2.69, y: -2.45, z: 1.1826477}
+  m_LocalScale: {x: 0.57, y: 0.6486207, z: 1.1644706}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1212130177}
@@ -4024,7 +4024,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &826387558
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6461,7 +6461,7 @@ Transform:
   m_GameObject: {fileID: 1478442920}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.15, y: 3.15, z: 1.1826477}
+  m_LocalPosition: {x: 3.44, y: 3.15, z: 1.1826477}
   m_LocalScale: {x: 0.68, y: 0.7055173, z: 1.2666172}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7162,7 +7162,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -437.6001, y: 225.59998}
+  m_AnchoredPosition: {x: -437.60004, y: 225.59998}
   m_SizeDelta: {x: -933.6, y: -589.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1659017279
@@ -8125,6 +8125,7 @@ MonoBehaviour:
   songManager: {fileID: 587459920}
   audioManager: {fileID: 0}
   attackBar: {fileID: 842386282}
+  advantageBar: {fileID: 826387557}
   attackModeBanner: {fileID: 920321034}
   defendModeBanner: {fileID: 1124352118}
   StartScreen: {fileID: 1844289614}
@@ -8363,7 +8364,7 @@ Transform:
   m_GameObject: {fileID: 1866318587}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.15, y: 2.08, z: 1.1826477}
+  m_LocalPosition: {x: 2.92, y: 1.74, z: 1.1826477}
   m_LocalScale: {x: 0.75, y: 0.7055173, z: 1.2666172}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class AdvantageBarManager : MonoBehaviour
     public RectTransform rightBar; // Reference to the right bar's RectTransform
     public RectTransform energyClash; // Reference to the energy clashing image's RectTransform
     private float advantage = 30f; // Starts in the middle (0 to 100)
+
     private float barWidth; // Total width of the advantage bar
 
     private int totalAttackNotes = 1; // Prevent divide by zero
@@ -26,7 +28,8 @@ public class AdvantageBarManager : MonoBehaviour
 
     // Call this function to initialize the attack and defense notes
     public void InitializeBar(int attackNotes, int defenseNotes)
-    { 
+    {
+        advantage = 30f;
         // Apply potion effect if the player has it
         if (combatStateManager.combatItemManager.hasItem1)
         {
@@ -156,10 +159,7 @@ public class AdvantageBarManager : MonoBehaviour
     // Update the UI to reflect the current advantage value
     private void UpdateUI()
     {
-        // Ensure barWidth is always updated dynamically
-        barWidth = leftBar.rect.width + rightBar.rect.width;
-
-        // Calculate left and right bar sizes based on the advantage
+        // Recalculate the width based on the advantage and the original bar width
         float leftBarSize = (advantage / 100f) * barWidth;
         float rightBarSize = barWidth - leftBarSize; // Ensure it always adds up to barWidth
 

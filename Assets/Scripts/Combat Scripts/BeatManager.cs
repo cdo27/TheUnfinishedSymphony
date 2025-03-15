@@ -71,29 +71,10 @@ public class BeatManager : MonoBehaviour
         crotchet = 60.0f / songBPM; // calculate uration of a single beat
         noteSpawner.setNoteSpeed(); // update note speed based on BPM
 
-        //calculate number of attack/defend notes for advantage bar scaling
-        // Get total number of attack notes
-        int totalAttackNotes = combatStateManager.currentSong.attackBeatsToHit.Count;
+        attackResults = new int[4]; 
+        defendResults = new int[4]; 
 
-        // Get total number of defense notes
-        int totalDefenseNotes = 0;
-        foreach (var phase in combatStateManager.currentSong.defendBeatsToHit)
-        {
-            totalDefenseNotes += phase.Count;
-        }
-
-        //clear results in case this is the player's second try
-        for (int i = 0; i < attackResults.Length; i++)
-        {
-            attackResults[i] = 0;
-        }
-
-        for (int i = 0; i < defendResults.Length; i++)
-        {
-            defendResults[i] = 0;
-        }
-
-        combatStateManager.advantageBarManager.InitializeBar(totalAttackNotes, totalDefenseNotes);
+    combatStateManager.initilizeAdvantageBar();
 
         combatStateManager.currentSong.PlaySong(combatStateManager.songManager); //play the song
         dspTimeSongStart = AudioSettings.dspTime; // save reference time for future calculations
@@ -479,7 +460,7 @@ public class BeatManager : MonoBehaviour
                 tutorialAMessage.SetActive(false);
                 tutorialBMessage.SetActive(true);
                 break;
-            case 24:
+            case 28:
                 tutorialBMessage.SetActive(false);
                 tutorialCMessage.SetActive(true);
                 break;
@@ -498,10 +479,7 @@ public class BeatManager : MonoBehaviour
             case 92:
                 tutorialEMessage.SetActive(false);
                 tutorialFMessage.SetActive(true);
-                break;
-            case 100:
-                tutorialFMessage.SetActive(false);
-                break;
+                break;  
             case 104:
                 tutorialGMessage.SetActive(true);
                 break;
@@ -559,6 +537,7 @@ public class BeatManager : MonoBehaviour
                 break;
             case 160:
                 tutorialHMessage.SetActive(false);
+                tutorialFMessage.SetActive(false);
                 break;
 
 

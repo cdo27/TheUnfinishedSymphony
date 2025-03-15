@@ -1716,7 +1716,7 @@ MonoBehaviour:
   levelThreeConfig: {fileID: 11400000, guid: 796bf9ba6a87283439bd7b5826fe0b6b, type: 2}
   background1: {fileID: 1807806163}
   background2: {fileID: 831027741}
-  defaultMissingNoteSprite: {fileID: 21300000, guid: 29d04dbe90b81734f97e52e4730f5a07, type: 3}
+  defaultMissingNoteSprite: {fileID: 21300000, guid: 29b86019dcb3244988fb327697694459, type: 3}
   toggleBackgroundButton: {fileID: 1729575569}
   resetButton: {fileID: 1122803026}
 --- !u!81 &599624489

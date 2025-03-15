@@ -218,10 +218,18 @@ public class DialogueManager : MonoBehaviour
 
         if (currentNPC != null)
         {
-            currentNPC.CompleteInteraction();
+            StartCoroutine(EndDialogueWithDelay(currentNPC));
+            //currentNPC.CompleteInteraction();
         }
         Debug.Log("Dialogue ended");
         
+    }
+
+    private IEnumerator EndDialogueWithDelay(NPC npc)
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        npc.CompleteInteraction();
     }
 
     public void StartDoorDialogue(Dialogue dialogue, Sprite npcPortraitSprite, Door door)

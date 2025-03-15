@@ -5,9 +5,16 @@ using UnityEngine;
 
 public class ConstantUI : MonoBehaviour
 {
+    public static ConstantUI Instance;
 
-    void Awake()
+    private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(Instance.gameObject);
+        }
+
+        Instance = this;
         DontDestroyOnLoad(gameObject);
     }
 }

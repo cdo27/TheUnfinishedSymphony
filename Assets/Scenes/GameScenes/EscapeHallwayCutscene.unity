@@ -2541,6 +2541,11 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 1646097255958028904, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
   m_PrefabInstance: {fileID: 1825856857}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1825856859 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3270807966193417136, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
+  m_PrefabInstance: {fileID: 1825856857}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1860135466
 GameObject:
   m_ObjectHideFlags: 0
@@ -2972,7 +2977,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!320 &1984673703
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -2992,6 +2997,8 @@ PlayableDirector:
     value: {fileID: 1825856858}
   - key: {fileID: -1317337883821519054, guid: a36894cf69a468846936c493e47b3d68, type: 2}
     value: {fileID: 703381073}
+  - key: {fileID: 6288920089309947132, guid: a36894cf69a468846936c493e47b3d68, type: 2}
+    value: {fileID: 1825856859}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1984673704

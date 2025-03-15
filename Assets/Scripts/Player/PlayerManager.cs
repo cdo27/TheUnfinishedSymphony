@@ -8,16 +8,24 @@ using TMPro;
 //Keep track of coin count, support spirits, items of player
 public class PlayerManager : MonoBehaviour
 {
+     public static PlayerManager Instance;
     public int coinCount = 0;
     public int hpCount = 3;
     public TextMeshProUGUI coinText;
 
     private HashSet<int> ownedItems = new HashSet<int>(); 
 
-    void Awake()
+    private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(Instance.gameObject);
+        }
+
+        Instance = this;
         DontDestroyOnLoad(gameObject);
     }
+
 
     public void UpdateCoinCount(int amount)
     {
@@ -34,7 +42,7 @@ public class PlayerManager : MonoBehaviour
 
     private void UpdateCoinUI()
     {
-        coinText.text = "x " + coinCount.ToString();
+        if (coinText != null) coinText.text = "x " + coinCount.ToString();
     }
 
     //-----Item Management----------------------

@@ -6,6 +6,7 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
+    public static DialogueManager Instance;
     private GameManager gameManager;
     private AudioManager audioManager;
 
@@ -34,8 +35,14 @@ public class DialogueManager : MonoBehaviour
     private ChoiceDialogue currentChoiceDialogue;
     private bool choiceMade = false;
 
-    void Awake()
+    private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(Instance.gameObject);
+        }
+
+        Instance = this;
         DontDestroyOnLoad(gameObject);
     }
     
@@ -211,10 +218,18 @@ public class DialogueManager : MonoBehaviour
 
         if (currentNPC != null)
         {
-            currentNPC.CompleteInteraction();
+            StartCoroutine(EndDialogueWithDelay(currentNPC));
+            //currentNPC.CompleteInteraction();
         }
         Debug.Log("Dialogue ended");
         
+    }
+
+    private IEnumerator EndDialogueWithDelay(NPC npc)
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        npc.CompleteInteraction();
     }
 
     public void StartDoorDialogue(Dialogue dialogue, Sprite npcPortraitSprite, Door door)

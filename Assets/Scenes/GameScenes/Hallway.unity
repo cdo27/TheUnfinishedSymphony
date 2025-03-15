@@ -1231,6 +1231,57 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &439713963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 439713964}
+  - component: {fileID: 439713965}
+  m_Layer: 0
+  m_Name: Movement2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &439713964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439713963}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.697644, y: -1.567499, z: -8.387838}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &439713965
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439713963}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 71a250af8949a3042a3dd0bb79a5900e, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -4572261295757496587, guid: 71a250af8949a3042a3dd0bb79a5900e, type: 2}
+    value: {fileID: 1317423908}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &554738149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1296,6 +1347,8 @@ MonoBehaviour:
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 0}
   BenedictNPC: {fileID: 1317423903}
+  BenedictAfter: {fileID: 439713963}
+  benedictAfterTriggered: 0
   ThiefNPC: {fileID: 0}
   FirstMovement: {fileID: 0}
   SecondMovement: {fileID: 0}
@@ -1896,6 +1949,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9137140702899087228, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
   m_PrefabInstance: {fileID: 1010591948}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1010591950 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3270807966193417136, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
+  m_PrefabInstance: {fileID: 1010591948}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1114046033
 GameObject:
   m_ObjectHideFlags: 0
@@ -2403,6 +2461,8 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: -2006996768058306568, guid: 40cde0874275fde4195b37b9c5c47206, type: 2}
     value: {fileID: 1317423908}
+  - key: {fileID: 1109245526090672823, guid: 40cde0874275fde4195b37b9c5c47206, type: 2}
+    value: {fileID: 1010591950}
   m_ExposedReferences:
     m_References: []
 --- !u!114 &1317423907
@@ -3966,3 +4026,4 @@ SceneRoots:
   - {fileID: 1571527780}
   - {fileID: 1714090157}
   - {fileID: 1726487102}
+  - {fileID: 439713964}

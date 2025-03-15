@@ -2574,27 +2574,23 @@ MonoBehaviour:
     npcName: Aldric
     sentences:
     - "Lucien\u2026 you came."
-    - A-Aldric? Is that you? What happened? What do you want from me?
-    - "The symphony\u2026 it demands completion, Lucien. It has waited too long,
-      trapped in silence, just as I have."
-    - "You expect me to finish it? I\u2014I\u2019m not you. I don\u2019t even know
-      where to start."
-    - "You must, Lucien. You are the only one who can. You carry my name\u2026 my
-      talent\u2026 and now, my fate. Nothing is set right until it is done, no one
-      can leave, not me not you..."
-    - "But how... how do I finish it on my own?\r"
-    - The symphony is fragmented, scattered across these halls. Some movements were
-      stolen, others lost to time.
-    - I don't know where to start, this place is huge.
-    - 'In here, music transcends life and death, the past and the present. Lucien,
-      you can hear the voices of those who once stood here and witness the stories
-      that once happened. '
-    - But you must tread carefully. Not all voices wish to be remembered. Not all
-      shadows wish to remain in silence.
+    - A-Aldric? Is that you? What happened?
+    - I tragically got myself killed and trapped as a spirit here when working on
+      my last symphony...
+    - What is this place?
+    - 'This Opera is cursed with dark magic ever since my death. This curse can only
+      be broken once the symphony is finished. '
+    - "And you want me to finish it? Me? I don't even know where to start, this place
+      is huge...\r"
+    - The symphony is fragmented into 4 Movements, erased and scattered across these
+      halls, or even stolen by the Vengeful Spirits.
+    - Vengeful Spirits?
+    - They are spirits of those who were cursed and trapped here when I died. You
+      must tread carefully.
     - "Are you coming with me...?\r\r\n"
-    - "I cannot...I am bound to this room. But here\u2026 the first movement. I have
+    - "I cannot...I am bound to this room. But here\u2026 The First Movement. I have
       held onto it, but it remains incomplete. Let me show you."
-    isPlayerSpeaking: 000100010001000100000100
+    isPlayerSpeaking: 0001000100010001000100
   afterDialogue:
     npcName: Aldric
     sentences:
@@ -6092,10 +6088,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d736a4a80da14415689122b9ca31b6f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HallwayDoorUnlocked: {fileID: 21300000, guid: 47d6e241ea5a0444d919b0e3dd99497b, type: 3}
-  FirstDoorUnlocked: {fileID: 0}
-  SecondDoorUnlocked: {fileID: 0}
-  ThirdDoorUnlocked: {fileID: 0}
 --- !u!1 &1204558757
 GameObject:
   m_ObjectHideFlags: 0
@@ -6390,7 +6382,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: 3}
+  m_AnchoredPosition: {x: 2, y: 8.5}
   m_SizeDelta: {x: 100, y: 39}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1245955239
@@ -7140,7 +7132,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 13.8, y: -37.9}
+  m_AnchoredPosition: {x: 13.8, y: -68.01}
   m_SizeDelta: {x: 124.53, y: 48.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1324478161
@@ -7236,6 +7228,7 @@ RectTransform:
   - {fileID: 1616827669}
   - {fileID: 1245955238}
   - {fileID: 1324478160}
+  - {fileID: 1558749355}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -8409,6 +8402,81 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1558749354
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1558749355}
+  - component: {fileID: 1558749357}
+  - component: {fileID: 1558749356}
+  m_Layer: 5
+  m_Name: Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1558749355
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558749354}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1344531434}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 6.9, y: -30.5}
+  m_SizeDelta: {x: 110, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1558749356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558749354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: e8e27bf62b8aa4bf7baa60c62482c9ed, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1558749357
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558749354}
+  m_CullTransparentMesh: 1
 --- !u!1 &1566673178
 GameObject:
   m_ObjectHideFlags: 0

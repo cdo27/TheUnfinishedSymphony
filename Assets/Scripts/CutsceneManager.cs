@@ -43,6 +43,8 @@ public class CutsceneManager : MonoBehaviour
 
     [Header("Final Cutscenes")]
     public NPC BenedictNPC; //played after wing 3
+    public GameObject BenedictAfter; //played after benedictnps dialogue ends
+    public bool benedictAfterTriggered = false;
 
 
     //EscapeHallwayScenes
@@ -91,6 +93,11 @@ public class CutsceneManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(BenedictNPC != null && BenedictNPC.hasInteracted && benedictAfterTriggered != true){
+            benedictAfterTriggered = true;
+            BenedictAfter.SetActive(true);
+        }
+
         if(ThiefNPC != null){
             if(ThiefNPC.hasInteracted == true){
                 playSecondMovement();

@@ -216,6 +216,7 @@ public class Note : MonoBehaviour
         {
             beatManager.combatStateManager.combatAnimationManager.LucienPlayHurtAnimation();
         }
+        if(beatManager.combatStateManager.combatItemManager.perfectShieldActive == true) beatManager.combatStateManager.audioManager.playMusicBlockSound();
         Destroy(gameObject); // Remove the note after animation
     }
 
@@ -259,6 +260,11 @@ public class Note : MonoBehaviour
     void defendNoteUpdate()
     {
         double currentDspTime = AudioSettings.dspTime;
+        if(beatManager.combatStateManager.combatItemManager.perfectShieldActive == true && currentDspTime >= targetHitTime)
+        {
+            duringDestroyAnimation = true;
+            StartCoroutine(defendDestroyAnimation(1));
+        }
 
         // Determine when to start charging (currently set to 0.25s before the hit time)
         double chargeStartTime = targetHitTime - 0.25;

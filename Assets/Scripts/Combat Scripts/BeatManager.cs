@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using Unity.VisualScripting;
+using static UnityEngine.Rendering.DebugUI;
 
 public class BeatManager : MonoBehaviour
 {
@@ -121,6 +122,12 @@ public class BeatManager : MonoBehaviour
         {
             CheckAndSpawnNotes(); // Check and spawn notes based on beats before they arrive
             CheckAndDeleteNotes(); // check if there's any destroyed notes, if yes remove from list
+
+            //perfect shield
+            if (Input.GetKeyDown(KeyCode.E) && combatStateManager.gameState == 2 && processingDefendList != 0 && combatStateManager.combatItemManager.hasItem4 == true && combatStateManager.combatItemManager.perfectShieldActive == false)
+            {
+                combatStateManager.combatItemManager.activatePerfectShield();
+            }
 
             // Player hit
             if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow) ||
@@ -371,7 +378,7 @@ public class BeatManager : MonoBehaviour
                     {
                         // If we are not already processing a list, store its size
                         if (processingDefendList == 0)
-                        {    
+                        {  
                             processingDefendList = 1;  // Mark as processing
 
                             currentDefendListSize = combatStateManager.currentSong.defendBeatsToHit[0].Count;  // Store list size
@@ -412,6 +419,7 @@ public class BeatManager : MonoBehaviour
                             {
                                 if (enemySwitchToAttack != true)
                                 {
+                                    if (combatStateManager.combatItemManager.hasItem4 == true)  combatStateManager.combatItemManager.deactivatePerfectShield();
                                     enemySwitchToAttack = true;
                                     combatStateManager.combatAnimationManager.EnemyPlayAttackAnimation();
                                 }
@@ -591,11 +599,16 @@ public class BeatManager : MonoBehaviour
         Invoke(nameof(HideActiveShield), 0.1f);
     }
 
-    void HideActiveShield()
+    public void HideActiveShield()
     {
         redShield.SetActive(false);
         greenShield.SetActive(false);
         purpleShield.SetActive(false);
+        if (combatStateManager.combatItemManager.hasItem4 == true)
+        {
+            combatStateManager.combatItemManager.deactivatePerfectShield();
+            combatStateManager.combatItemManager.perfectShieldKey.SetActive(false);
+        }
     }
 
     void HideHighlightedHitArea()

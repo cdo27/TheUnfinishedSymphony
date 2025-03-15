@@ -5,7 +5,6 @@ using UnityEngine;
 public class AdvantageBarManager : MonoBehaviour
 {
     public CombatStateManager combatStateManager;
-    public PlayerManager playerManager;
     public RectTransform leftBar; // Reference to the left bar's RectTransform
     public RectTransform rightBar; // Reference to the right bar's RectTransform
     public RectTransform energyClash; // Reference to the energy clashing image's RectTransform
@@ -27,21 +26,12 @@ public class AdvantageBarManager : MonoBehaviour
 
     // Call this function to initialize the attack and defense notes
     public void InitializeBar(int attackNotes, int defenseNotes)
-    {
-        playerManager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
-
-        // Optionally, check if the playerManager was found
-        if (playerManager == null)
-        {
-            Debug.LogError("PlayerManager not found in the scene.");
-        }
-
+    { 
         // Apply potion effect if the player has it
-        if (playerManager.GetOwnedItems().Contains(1)) // Assuming item ID 1 is the potion
+        if (combatStateManager.combatItemManager.hasItem1)
         {
             advantage = 40f; // Increase advantage by 10 when the potion is used
         }
-
         totalAttackNotes = Mathf.Max(attackNotes, 1);
         totalDefenseNotes = Mathf.Max(defenseNotes, 1);
 
@@ -105,7 +95,7 @@ public class AdvantageBarManager : MonoBehaviour
         }
 
         // Apply weapon effect if the player has it
-        if (playerManager.GetOwnedItems().Contains(5)) // Assuming item ID 1 is the armor
+        if (combatStateManager.combatItemManager.hasItem5) // Assuming item ID 1 is the armor
         {
             moveAmount *= 1.2f; // damage x 1.2
         }
@@ -130,12 +120,13 @@ public class AdvantageBarManager : MonoBehaviour
                 moveAmount = defenseUnit; // Full penalty
                 break;
         }
+
         // Apply armor effect if the player has it
-        if (playerManager.GetOwnedItems().Contains(2)) // Assuming item ID 1 is the armor
+        if (combatStateManager.combatItemManager.hasItem2) // Assuming item ID 1 is the armor
         {
             moveAmount *= 0.8f; // reduced damage taken during the defense phase
         }
-
+ 
         advantage = Mathf.Clamp(advantage - moveAmount, 0f, 100f);
         UpdateUI();
     }

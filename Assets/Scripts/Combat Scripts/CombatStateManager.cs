@@ -15,8 +15,10 @@ public class CombatStateManager : MonoBehaviour
 
     public SceneController sceneController;
     public GameManager gameManager;
+    public PlayerManager playerManager;
     public BeatManager beatManager;
     public AdvantageBarManager advantageBarManager;
+    public CombatItemManager combatItemManager;
     public CombatAnimationManager combatAnimationManager;
     public SongManager songManager;
     public AudioManager audioManager;
@@ -59,6 +61,8 @@ public class CombatStateManager : MonoBehaviour
     public Sprite yellowSpiritSprite;
     public Sprite blueSpiritSprite;
     public Sprite aldricSprite;
+    public Sprite benedictSprite;
+    public Sprite escapeSprite;
 
     // Just for testing
     public TMP_Text modeText;
@@ -66,6 +70,8 @@ public class CombatStateManager : MonoBehaviour
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+
+        playerManager = FindObjectOfType<PlayerManager>();
         sceneController = FindObjectOfType<SceneController>();
 
         if (gameManager != null && gameManager.audioManager != null)
@@ -88,10 +94,21 @@ public class CombatStateManager : MonoBehaviour
             Debug.LogError("AudioManager not found in the scene!");
         }
 
+        //set up items
+        combatItemManager.itemInitilize();
+
 
         //set up the proper song
         selectSong();
         StartScreen.SetActive(true);
+
+        //set up intro screen
+        songNameText.text = currentSong.songName;
+        enemyNameText.text = currentSong.enemyName;
+        songLengthText.text = currentSong.songLength.ToString() + " seconds";
+        BPMText.text = currentSong.BPM.ToString();
+
+
         //set up the sprites and animators for enemies
         //Animator enemyAnimator = enemy.GetComponent<Animator>();
         SpriteRenderer enemySpriteRenderer = enemy.GetComponent<SpriteRenderer>();
@@ -121,19 +138,14 @@ public class CombatStateManager : MonoBehaviour
         }
         else if (currentSong.songID == 006)
         {
-            combatAnimationManager.setEnemyAnimator(5);
-            enemySpriteRenderer.sprite = aldricSprite;
+            combatAnimationManager.setEnemyAnimator(6);
+            enemySpriteRenderer.sprite = benedictSprite;
         }
         else if (currentSong.songID == 007)
         {
             combatAnimationManager.setEnemyAnimator(5);
             enemySpriteRenderer.sprite = aldricSprite;
         }
-        songNameText.text = currentSong.songName;
-        enemyNameText.text = currentSong.enemyName;
-        songLengthText.text = currentSong.songLength.ToString() + " seconds";
-        BPMText.text = currentSong.BPM.ToString();
-
 
     }
 
@@ -239,7 +251,7 @@ public class CombatStateManager : MonoBehaviour
         }
 
         currentSong.songID = gameManager.currentSong;
-        //currentSong = new Wing3Song();
+        //currentSong = new BenedictSong();
     }
 
     void CheckModeSwitch(double currentTime)
@@ -251,6 +263,7 @@ public class CombatStateManager : MonoBehaviour
             if (currentTime >= attackModeTime)
             {
                 gameState = 1; // Attack mode
+                beatManager.HideActiveShield();
                 audioManager.playChangeTurnSound();
                 StartCoroutine(ShowTurnBannerWithDelay(0));
                 attackBar.SetActive(true);

@@ -16,6 +16,8 @@ public class CombatAnimationManager : MonoBehaviour
     public RuntimeAnimatorController blueSpiritAnimator;
     public RuntimeAnimatorController yellowSpiritAnimator;
     public RuntimeAnimatorController aldricBossAnimator;
+    public RuntimeAnimatorController benedictBossAnimator;
+    public RuntimeAnimatorController escapeBossAnimator;
 
     public void setEnemyAnimator(int number)
     {
@@ -34,6 +36,12 @@ public class CombatAnimationManager : MonoBehaviour
                 enemyAnimator.runtimeAnimatorController = yellowSpiritAnimator;
                 break;
             case 5:
+                enemyAnimator.runtimeAnimatorController = aldricBossAnimator;
+                break;
+            case 6:
+                enemyAnimator.runtimeAnimatorController = benedictBossAnimator;
+                break;
+            case 7:
                 enemyAnimator.runtimeAnimatorController = aldricBossAnimator;
                 break;
         }

@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip hitSoundA;
     public AudioClip enemyNotePop;
     public AudioClip musicBlock;
+    public AudioClip perfectShieldSound;
     public AudioClip playerDamaged;
     public AudioClip explosion;
     public AudioClip endEnemyNoteSpawn;
@@ -53,6 +54,11 @@ public class AudioManager : MonoBehaviour
     public void playMusicBlockSound()
     {
         combatAudioSource.PlayOneShot(musicBlock);
+    }
+
+    public void playPerfectShieldSound()
+    {
+        combatAudioSource.PlayOneShot(perfectShieldSound);
     }
 
     public void playPlayerDamagedSound()

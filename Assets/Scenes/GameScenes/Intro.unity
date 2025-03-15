@@ -4433,6 +4433,7 @@ MonoBehaviour:
   hitSoundA: {fileID: 8300000, guid: bb30531ecf53ca54c94a3a77027a6b2c, type: 3}
   enemyNotePop: {fileID: 8300000, guid: d6cf4ff042e24dd4889a8622f1e15083, type: 3}
   musicBlock: {fileID: 8300000, guid: 5e8d94a6cb7c59544a083a9cd380a7bb, type: 3}
+  perfectShieldSound: {fileID: 8300000, guid: 9d9a5cee23c7f384fbf2bbbeefd68355, type: 3}
   playerDamaged: {fileID: 8300000, guid: eece0b407f1a12342b1543195eda19af, type: 3}
   explosion: {fileID: 8300000, guid: 03c361c23bf588441a8c0e60dc8f2291, type: 3}
   endEnemyNoteSpawn: {fileID: 8300000, guid: 37e8d210d16be6e4ba419e9d05003e66, type: 3}

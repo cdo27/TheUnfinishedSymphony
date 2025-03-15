@@ -391,9 +391,10 @@ MonoBehaviour:
   dialogue:
     npcName: 'Ending 2: Moral Path'
     sentences:
-    - After defeating Aldric, Lucien escapes the grand opera house.
-    - Lucien exposes the truth of Aldric and Beendict's death and what had occured
-      in the grand opera house.
+    - The Grand Opera House collapses as the curse is now broken with a symphony
+      written the way Benedict wanted it to be.
+    - Lucien exposes the truth of Aldric and Benedict's death and what had occured
+      in the Grand Opera House.
     - "Lucien is disgraced by his family and Aldric\u2019s circle for revealing the
       truth, and his music career takes a hit."
     - However, Benedict granted him partnership over the rewritten requiem, allowing

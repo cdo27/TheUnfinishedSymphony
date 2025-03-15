@@ -12,13 +12,34 @@ public class UIManager : MonoBehaviour
     public GameObject shopUI;
     public GameObject gameUI;
     public GameObject menuUI;
+    public GameObject exitUI;
     public GameObject letterUI;
     public ScrollingTextUI typewriterUI;
 
     //inventory 
     public GameObject inventoryUI;
+
+    //inventory item prefabs
     public GameObject inventoryItem1;
     public GameObject inventoryItem2;
+    public GameObject inventoryItem3;
+    public GameObject inventoryItem4;
+    public GameObject inventoryItem5;
+    public GameObject inventoryItem6;
+
+    //UI Item panel positions
+    public GameObject posItem1;
+    public GameObject posItem2;
+    public GameObject posItem3;
+    public GameObject posItem4;
+    public GameObject posItem5;
+    public GameObject posItem6;
+
+    //Shop
+    public GameObject shopItem1;
+    public GameObject shopItem2;
+    public GameObject shopItem3;
+    public GameObject shopItem4;
 
     // Map GameObjects
     public GameObject entranceMap;
@@ -46,6 +67,17 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerManager != null && shopUI.activeSelf)
+        {
+            List<int> ownedItems = playerManager.GetOwnedItems();
+
+            //check and disable shop items if already owned
+            shopItem1.SetActive(!ownedItems.Contains(1)); // item ID 1
+            shopItem2.SetActive(!ownedItems.Contains(2)); // item ID 2
+            shopItem3.SetActive(!ownedItems.Contains(4)); // item ID 4
+            shopItem4.SetActive(!ownedItems.Contains(5)); // item ID 5
+        }
+
         if(gameManager.currentState == GameManager.GameState.Game){
             showGameUI();
         }else{
@@ -78,30 +110,58 @@ public class UIManager : MonoBehaviour
 
     public void ShowInventoryUI()
     {
-        if (inventoryUI != null)
+        if (inventoryUI == null) return;
+
+        Debug.Log("Showing inventory");
+        inventoryUI.SetActive(true);
+
+        //get owned items
+        List<int> ownedItems = playerManager.GetOwnedItems();
+
+        GameObject[] itemPoints = { posItem1, posItem2, posItem3, posItem4, posItem5, posItem6 };
+
+        foreach (GameObject point in itemPoints)
         {
-            Debug.Log("Showing inventory");
-            inventoryUI.SetActive(true);
-
-            if (playerManager != null && playerManager.GetPurchasedItems().Contains(1))
+            if (point.transform.childCount > 0)
             {
-                inventoryItem1.SetActive(true);
+                Destroy(point.transform.GetChild(0).gameObject);
+            }
+        }
+
+        for (int i = 0; i < ownedItems.Count && i < itemPoints.Length; i++)
+        {
+            int itemID = ownedItems[i];
+            GameObject itemPrefab = GetItemPrefabByID(itemID);
+
+            if (itemPrefab != null)
+            {
+                GameObject newItem = Instantiate(itemPrefab, itemPoints[i].transform);
+                newItem.transform.localPosition = Vector3.zero;
+                newItem.transform.localScale = Vector3.one;
             }
             else
             {
-                inventoryItem1.SetActive(false);
-            }
-
-            if (playerManager != null && playerManager.GetPurchasedItems().Contains(2))
-            {
-                inventoryItem2.SetActive(true);
-            }
-            else
-            {
-                inventoryItem2.SetActive(false);
+                Debug.LogWarning("No prefab for item ID: " + itemID);
             }
         }
     }
+
+    private GameObject GetItemPrefabByID(int itemID)
+    {
+        switch (itemID)
+        {
+            case 1: return inventoryItem1;
+            case 2: return inventoryItem2;
+            case 3: return inventoryItem3;
+            case 4: return inventoryItem4;
+            case 5: return inventoryItem5;
+            case 6: return inventoryItem6;
+            default: return null;
+        }
+    }
+
+    
+
 
     public void HideShopUI()
     {
@@ -118,6 +178,36 @@ public class UIManager : MonoBehaviour
             shopUI.SetActive(true);
         }
     }
+
+    //EXIT UI
+
+    public void HideExitUI()
+    {
+        if (exitUI != null)
+        {
+            exitUI.SetActive(false);
+        }
+    }
+
+    public void ShowExitUI()
+    {
+        if (exitUI != null)
+        {
+            exitUI.SetActive(true);
+        }
+    }
+
+    public void YesExitGame()
+    {
+        if (exitUI != null)
+        {
+            SceneManager.LoadScene("Intro", LoadSceneMode.Single);
+        }
+    }
+
+
+
+
 
     public void playButton()
     {

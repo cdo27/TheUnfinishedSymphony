@@ -37,7 +37,7 @@ public class AdvantageBarManager : MonoBehaviour
         }
 
         // Apply potion effect if the player has it
-        if (playerManager.GetPurchasedItems().Contains(2)) // Assuming item ID 2 is the potion
+        if (playerManager.GetOwnedItems().Contains(1)) // Assuming item ID 2 is the potion
         {
             advantage = 50f; // Increase advantage by 20 when the potion is used
         }
@@ -125,7 +125,7 @@ public class AdvantageBarManager : MonoBehaviour
                 break;
         }
         // Apply armor effect if the player has it
-        if (playerManager.GetPurchasedItems().Contains(1)) // Assuming item ID 1 is the armor
+        if (playerManager.GetOwnedItems().Contains(2)) // Assuming item ID 1 is the armor
         {
             moveAmount *= 0.5f; // Halve the damage taken during the defense phase
         }

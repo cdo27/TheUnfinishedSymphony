@@ -68,6 +68,22 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Check for Inventory key presses or Exit 
+        if (currentState == GameState.Game)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Debug.Log("Inventory opened");
+                uiManager.ShowInventoryUI();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Debug.Log("Exit pressed");
+                uiManager.ShowExitUI();
+            }
+        }
+
         if (hasCompletedPuzzleTut && !hasTriggeredAfterPuzzleTutCutscene){
             hasTriggeredAfterPuzzleTutCutscene = true;
             audioManager.PlaySheetCollectSound();

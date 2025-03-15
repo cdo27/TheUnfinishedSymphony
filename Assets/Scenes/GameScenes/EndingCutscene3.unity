@@ -393,8 +393,8 @@ MonoBehaviour:
     sentences:
     - Aldric and Benedict both remain consumed by the symphony, stuck in a cycle
       of obsession.
-    - The opera house awaits the next victim. Lucien continues his music career as
-      a struggling music conductor, having full freedom and independence on his work.
+    - 'The opera house awaits the next victim. Lucien continues his music career
+      independently, free from the name of the grandpa who he onced admired so much. '
     isPlayerSpeaking: 0000
   afterDialogue:
     npcName: 

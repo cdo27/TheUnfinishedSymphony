@@ -34,7 +34,7 @@ public class RecorderManager : MonoBehaviour
         player = FindObjectOfType<PlayerController>();
         sentences = new Queue<string>();
         isPlayerSpeakingQueue = new Queue<bool>(); //check what sentences the player is speaking
-        
+
     }
 
     void Update()

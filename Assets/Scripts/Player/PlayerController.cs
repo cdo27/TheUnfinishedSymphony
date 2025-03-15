@@ -111,7 +111,7 @@ public class PlayerController: MonoBehaviour
             audioManager.StopWalkingSound();
         }
 
-        Debug.Log($"MoveX: {moveX}, MoveY: {moveY}");
+        //Debug.Log($"MoveX: {moveX}, MoveY: {moveY}");
     }
 
 

@@ -489,10 +489,12 @@ MonoBehaviour:
   dialogue:
     npcName: 'Ending 1: Selfish Path'
     sentences:
-    - "After defeating Benedict\u2019s spirit, Lucien is guided out by Aldric."
+    - "After defeating Benedict\u2019s spirit, Lucien is guided out by Aldric. The
+      Opera House collapses as the curse is broken."
+    - The Opera House collapses as the curse is broken.
     - "He is recognized as Aldric\u2019s true heir and his music career skyrockets."
-    - "Lucien\u2019s music has an eerie, otherworldly influence as he remains haunted
-      by what happened at the opera house."
+    - "However...Lucien\u2019s music has an eerie, otherworldly influence as he remains
+      haunted by what happened at the opera house."
     isPlayerSpeaking: 000000
   afterDialogue:
     npcName: 'Ending 1: Selfish Path'

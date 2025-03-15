@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance;
     public Button exitButton;
     
     public GameObject shopUI;
@@ -52,8 +53,14 @@ public class UIManager : MonoBehaviour
     //Symphony Progress Update
     public TextMeshProUGUI symphonyProgress;
 
-    void Awake()
+    private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(Instance.gameObject);
+        }
+
+        Instance = this;
         DontDestroyOnLoad(gameObject);
     }
 

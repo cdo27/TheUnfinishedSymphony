@@ -135,11 +135,18 @@ public class PlayerController: MonoBehaviour
     }
 
     void CollectCoin(GameObject coin)
-{
-    playerManager.UpdateCoinCount(1); // Update the coin count
-    FindObjectOfType<AudioManager>().PlayCoinCollectSound();
-    Destroy(coin); // Destroy the coin object
-}
+    {
+        Coin coinScript = coin.GetComponent<Coin>();
+        if (coinScript != null)
+        {
+            CoinManager.Instance.CollectCoin(coinScript.coinID);
+        }
+
+        playerManager.UpdateCoinCount(1);
+        FindObjectOfType<AudioManager>().PlayCoinCollectSound();
+        Destroy(coin);
+
+    }
 
 
     //----------------Interact Code-----------------------------------------

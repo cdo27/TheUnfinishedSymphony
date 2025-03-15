@@ -6,6 +6,7 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
+    public static DialogueManager Instance;
     private GameManager gameManager;
     private AudioManager audioManager;
 
@@ -34,8 +35,14 @@ public class DialogueManager : MonoBehaviour
     private ChoiceDialogue currentChoiceDialogue;
     private bool choiceMade = false;
 
-    void Awake()
+    private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(Instance.gameObject);
+        }
+
+        Instance = this;
         DontDestroyOnLoad(gameObject);
     }
     

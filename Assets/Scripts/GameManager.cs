@@ -10,6 +10,8 @@ States: Menu, Game, CutScene, Puzzle, Combat, End
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+
     public enum GameState
     {
         Menu,
@@ -44,10 +46,15 @@ public class GameManager : MonoBehaviour
     public PuzzleLevelConfig PuzzleTwo;
     public PuzzleLevelConfig PuzzleThree;
 
-    
-    
-    void Awake()
+
+    private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(Instance.gameObject);
+        }
+
+        Instance = this;
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
         ReassignCutsceneManager();

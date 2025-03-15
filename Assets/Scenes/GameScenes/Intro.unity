@@ -245,6 +245,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4627609898971288282, guid: 0b116f08206a4544d9da8d60778662b7, type: 3}
+      propertyPath: coinID
+      value: intro_coin_2
+      objectReference: {fileID: 0}
     - target: {fileID: 7209240446823105298, guid: 0b116f08206a4544d9da8d60778662b7, type: 3}
       propertyPath: m_Name
       value: Coin (1)
@@ -2652,6 +2656,50 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.371932, y: 0.825439, z: -0.027582146}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &445759924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 445759926}
+  - component: {fileID: 445759925}
+  m_Layer: 0
+  m_Name: CoinManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &445759925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445759924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ed4b9735c68564c95b7416fb571a39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &445759926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445759924}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.1089928, y: -7.699867, z: 0.0686393}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11292,6 +11340,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4627609898971288282, guid: 0b116f08206a4544d9da8d60778662b7, type: 3}
+      propertyPath: coinID
+      value: intro_coin_1
+      objectReference: {fileID: 0}
     - target: {fileID: 7209240446823105298, guid: 0b116f08206a4544d9da8d60778662b7, type: 3}
       propertyPath: m_Name
       value: Coin
@@ -11417,8 +11469,9 @@ SceneRoots:
   - {fileID: 1651437098}
   - {fileID: 408850392}
   - {fileID: 1423077127}
-  - {fileID: 962912484}
+  - {fileID: 445759926}
   - {fileID: 1060242956}
+  - {fileID: 962912484}
   - {fileID: 1889439883}
   - {fileID: 8472165209581653832}
   - {fileID: 946634704}

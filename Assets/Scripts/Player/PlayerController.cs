@@ -15,6 +15,7 @@ public class PlayerController: MonoBehaviour
     private GameManager gameManager;
     private PlayerManager playerManager;
     private AudioManager audioManager;
+    private CoinManager coinManager;
 
     public float interactRange = 1f;
     public KeyCode interactKey = KeyCode.F; //F to interact
@@ -28,6 +29,7 @@ public class PlayerController: MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         playerManager = FindObjectOfType<PlayerManager>();
         audioManager = FindObjectOfType<AudioManager>(); 
+        coinManager = FindObjectOfType<CoinManager>();
 
          if (interactionText != null)
         {

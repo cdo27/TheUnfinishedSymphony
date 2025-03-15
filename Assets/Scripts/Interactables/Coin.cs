@@ -6,6 +6,11 @@ public class Coin : MonoBehaviour
 
     private void Start()
     {
+        if (CoinManager.Instance == null)
+        {
+            return;
+        }
+
         if (CoinManager.Instance.IsCoinCollected(coinID))
         {
             Destroy(gameObject);

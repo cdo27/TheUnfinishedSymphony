@@ -2072,7 +2072,7 @@ MonoBehaviour:
     - Door is locked.
     isPlayerSpeaking: 00
   doorNumber: 1
-  sceneToLoad: HallwayCutscene
+  sceneToLoad: BossRoom
 --- !u!61 &971783954
 BoxCollider2D:
   m_ObjectHideFlags: 0

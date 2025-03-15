@@ -370,7 +370,7 @@ private bool IsAllInputsMade()
 
         if (isCorrect)
         {
-            feedbackText.text = "Finish the Puzzle!";
+            feedbackText.text = "Music Sheet Completed!";
             PauseTimer();
             ShowExitButton();
 

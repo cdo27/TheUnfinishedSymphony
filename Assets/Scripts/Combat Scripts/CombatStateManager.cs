@@ -35,7 +35,7 @@ public class CombatStateManager : MonoBehaviour
 
     //result screen UI text
     public GameObject ResultScreen;
-    public GameObject ResultContinueButton; 
+    public GameObject ResultContinueButton;
     public GameObject ResultTryAgainButton;
     public TMP_Text resultTitle;
     public TMP_Text resultMessage;
@@ -99,7 +99,7 @@ public class CombatStateManager : MonoBehaviour
         {
             combatAnimationManager.setEnemyAnimator(1);
             enemySpriteRenderer.sprite = thiefSprite;
-        }else if (currentSong.songID == 002)
+        } else if (currentSong.songID == 002)
         {
             combatAnimationManager.setEnemyAnimator(2);
             enemySpriteRenderer.sprite = redSpiritSprite;
@@ -119,12 +119,22 @@ public class CombatStateManager : MonoBehaviour
             combatAnimationManager.setEnemyAnimator(5);
             enemySpriteRenderer.sprite = aldricSprite;
         }
+        else if (currentSong.songID == 006)
+        {
+            combatAnimationManager.setEnemyAnimator(5);
+            enemySpriteRenderer.sprite = aldricSprite;
+        }
+        else if (currentSong.songID == 007)
+        {
+            combatAnimationManager.setEnemyAnimator(5);
+            enemySpriteRenderer.sprite = aldricSprite;
+        }
         songNameText.text = currentSong.songName;
         enemyNameText.text = currentSong.enemyName;
         songLengthText.text = currentSong.songLength.ToString() + " seconds";
         BPMText.text = currentSong.BPM.ToString();
 
-        
+
     }
 
     public void instantWin()
@@ -162,14 +172,14 @@ public class CombatStateManager : MonoBehaviour
                 beatManager.hideAllTutorialMessage();
                 StartScreen.SetActive(true);
                 gameState = 0;
-            }  
+            }
             modeText.text = "YOU WIN";
 
         }//defeat
         else if (gameState == 99)
         {
             if (currentSong.songID == 000)
-            {  
+            {
                 StartScreen.SetActive(true);
                 gameState = 0;
             }
@@ -191,7 +201,7 @@ public class CombatStateManager : MonoBehaviour
                 CheckModeSwitch(currentTime);
             }
         }
-        
+
     }
 
 
@@ -219,8 +229,16 @@ public class CombatStateManager : MonoBehaviour
         {
             currentSong = new AldricSong();
         }
+        else if (gameManager.currentSong == 006)
+        {
+            currentSong = new BenedictSong();
+        }
+        else if (gameManager.currentSong == 007)
+        {
+            currentSong = new EscapeSong();
+        }
 
-        currentSong.songID = gameManager.currentSong;  
+        currentSong.songID = gameManager.currentSong;
         //currentSong = new Wing3Song();
     }
 
@@ -262,7 +280,7 @@ public class CombatStateManager : MonoBehaviour
         //soundManager.playBannerSound();
         if (turn == 0)
         {
-           attackModeBanner.SetActive(true);
+            attackModeBanner.SetActive(true);
         }
         else if (turn == 1)
         {
@@ -296,11 +314,11 @@ public class CombatStateManager : MonoBehaviour
     public void displayResultScreen()
     {
         //result title, message, and button text
-        if(gameState == 198)
+        if (gameState == 198)
         {
             resultTitle.text = "victory";
             resultMessage.text = "Symphony Sheet Obtained";
-            if(currentSong.songID == 005 || currentSong.songID == 006 || currentSong.songID == 007)
+            if (currentSong.songID == 005 || currentSong.songID == 006 || currentSong.songID == 007)
             {
                 resultMessage.text = "You have overcome the final obstacle!";
             }
@@ -325,11 +343,11 @@ public class CombatStateManager : MonoBehaviour
         failedBlockText.text = beatManager.defendResults[3].ToString();
 
         ResultScreen.SetActive(true);
-}
+    }
 
-   
+
     //result button handling
-    
+
     public void OnContinueButtonClick()
     {
         songManager.stopSong();
@@ -349,7 +367,7 @@ public class CombatStateManager : MonoBehaviour
         {
             gameManager.hasCompletedCombat3 = true;
         }
-        else if (currentSong.songID == 005)
+        else if (currentSong.songID == 005 || currentSong.songID == 005 ||  currentSong.songID == 005)
         {
             gameManager.hasCompletedFinal = true;
         }

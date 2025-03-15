@@ -406,7 +406,7 @@ public class CombatStateManager : MonoBehaviour
         {
             gameManager.hasCompletedCombat3 = true;
         }
-        else if (currentSong.songID == 005 || currentSong.songID == 005 ||  currentSong.songID == 005)
+        else if (currentSong.songID == 005 || currentSong.songID == 006 ||  currentSong.songID == 007)
         {
             gameManager.hasCompletedFinal = true;
         }

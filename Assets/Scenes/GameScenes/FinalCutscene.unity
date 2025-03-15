@@ -2938,7 +2938,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1932242359
 Transform:
   m_ObjectHideFlags: 0
@@ -3079,7 +3079,7 @@ MonoBehaviour:
   uiManager: {fileID: 0}
   isCompleted: 0
   displayImage: 0
-  songID: 5
+  songID: 6
 --- !u!212 &1932242365
 SpriteRenderer:
   m_ObjectHideFlags: 0

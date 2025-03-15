@@ -1344,7 +1344,7 @@ MonoBehaviour:
   uiManager: {fileID: 0}
   isCompleted: 0
   displayImage: 0
-  songID: 5
+  songID: 7
 --- !u!212 &1172511165
 SpriteRenderer:
   m_ObjectHideFlags: 0

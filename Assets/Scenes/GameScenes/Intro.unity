@@ -2119,9 +2119,10 @@ MonoBehaviour:
   sceneToLoad: 
   portraitSprite: {fileID: 21300000, guid: eaa82fd2c8df87c43957949e6e0ba6a0, type: 3}
   dialogue:
-    npcName: cut 2
+    npcName: 
     sentences:
-    - Lucien second scene
+    - Lucien remembers the days when his grandfather would visit, sitting beside
+      him at the piano, guiding his hands across the keys with warmth and patience.
     isPlayerSpeaking: 00
   afterDialogue:
     npcName: 'Ending 1: Selfish Path'
@@ -4514,9 +4515,10 @@ MonoBehaviour:
   sceneToLoad: 
   portraitSprite: {fileID: 21300000, guid: eaa82fd2c8df87c43957949e6e0ba6a0, type: 3}
   dialogue:
-    npcName: cut 4
+    npcName: 
     sentences:
-    - Lucien fourth scene
+    - "As he enters the House, the air is thick with something unseen\u2026 unheard\u2026
+      waiting."
     isPlayerSpeaking: 00
   afterDialogue:
     npcName: 'Ending 1: Selfish Path'
@@ -5761,7 +5763,8 @@ MonoBehaviour:
   dialogue:
     npcName: cut 3
     sentences:
-    - Lucien third scene
+    - The brave young man steps through the door, determined to find out what happened
+      to his beloved grandpa...
     isPlayerSpeaking: 00
   afterDialogue:
     npcName: 'Ending 1: Selfish Path'
@@ -6770,10 +6773,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d736a4a80da14415689122b9ca31b6f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HallwayDoorUnlocked: {fileID: 0}
-  FirstDoorUnlocked: {fileID: 0}
-  SecondDoorUnlocked: {fileID: 0}
-  ThirdDoorUnlocked: {fileID: 0}
 --- !u!1 &1204558757
 GameObject:
   m_ObjectHideFlags: 0
@@ -9951,9 +9950,10 @@ MonoBehaviour:
   sceneToLoad: 
   portraitSprite: {fileID: 21300000, guid: eaa82fd2c8df87c43957949e6e0ba6a0, type: 3}
   dialogue:
-    npcName: cut 1
+    npcName: 
     sentences:
-    - Lucien first scene
+    - Driven by a deep curiosity and unwavering admiration for his grandfather, Lucien
+      arrives at the Grand Opera House, just as he was told.
     isPlayerSpeaking: 00
   afterDialogue:
     npcName: 'Ending 1: Selfish Path'
@@ -10113,9 +10113,10 @@ MonoBehaviour:
   sceneToLoad: 
   portraitSprite: {fileID: 21300000, guid: eaa82fd2c8df87c43957949e6e0ba6a0, type: 3}
   dialogue:
-    npcName: cut 5
+    npcName: 
     sentences:
-    - Lucien fifth scene
+    - The door behind him shut closed, sealed with something dark and twisted, pulsing
+      with a quiet, sinister strength.
     isPlayerSpeaking: 00
   afterDialogue:
     npcName: 'Ending 1: Selfish Path'
@@ -10454,7 +10455,7 @@ MonoBehaviour:
     composer, a visionary, a man whose music once echoed through the halls of the
     Grand Opera. \n\nBut what they do not speak of is the silence I left behind.
     My greatest work, my final symphony, remains unfinished, its notes lost to time.\n\nYou,
-    Lucien, are more than my great-grandson. You carry my blood, my talent, my legacy.
+    Lucien, are more than my grandson. You carry my blood, my talent, my legacy.
     From the moment you first touched a baton, I knew the music lived within you.
     \n\nNow, I ask you to listen, to step into the past and complete what I could
     not.\n\n\u2014Aldric Vasseur"

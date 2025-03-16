@@ -749,7 +749,7 @@ Animator:
   m_GameObject: {fileID: 134057236}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c163dc3783f8d094f8ece0f83a210a8c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 96e4324d3ebd92d4e8929841f78acd03, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1783,8 +1783,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -186.70003, y: 77.49999}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -155.6, y: 78.3}
+  m_SizeDelta: {x: 256.7, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &449230766
 MonoBehaviour:
@@ -5948,7 +5948,7 @@ MonoBehaviour:
   yellowSpiritAnimator: {fileID: 9100000, guid: 2fce9a213bd38004ab913547b9c2d733, type: 2}
   aldricBossAnimator: {fileID: 9100000, guid: 96e4324d3ebd92d4e8929841f78acd03, type: 2}
   benedictBossAnimator: {fileID: 9100000, guid: c163dc3783f8d094f8ece0f83a210a8c, type: 2}
-  escapeBossAnimator: {fileID: 0}
+  escapeBossAnimator: {fileID: 9100000, guid: bffafff38a2a5cf43b0aa241df2a4f34, type: 2}
 --- !u!1 &1346249120
 GameObject:
   m_ObjectHideFlags: 0
@@ -7158,7 +7158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -437.60004, y: 225.59998}
+  m_AnchoredPosition: {x: -437.6001, y: 225.59998}
   m_SizeDelta: {x: -933.6, y: -589.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1659017279
@@ -8153,7 +8153,7 @@ MonoBehaviour:
   blueSpiritSprite: {fileID: 21300000, guid: 7d378346ea22da84594a5e48a19f23fd, type: 3}
   aldricSprite: {fileID: 21300000, guid: 864a6168db9f08f43bb8d76261ee3e33, type: 3}
   benedictSprite: {fileID: 21300000, guid: 977c65444806d9c40af18cc5e9709fe0, type: 3}
-  escapeSprite: {fileID: 0}
+  escapeSprite: {fileID: 21300000, guid: 1085111b112127644a1b20c8606d1ec4, type: 3}
   modeText: {fileID: 1659017279}
 --- !u!4 &1825297036
 Transform:

@@ -600,7 +600,7 @@ Transform:
   m_GameObject: {fileID: 690494514}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.6576, y: -2.7487, z: 0}
+  m_LocalPosition: {x: 13.01, y: -2.7487, z: 0}
   m_LocalScale: {x: 0.92691284, y: 0.92691284, z: 10.924252}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -933,7 +933,7 @@ Transform:
   m_GameObject: {fileID: 1234906675}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13.3107, y: -2.1135, z: 0}
+  m_LocalPosition: {x: 12.6631, y: -2.1135, z: 0}
   m_LocalScale: {x: 27.441376, y: 19.311432, z: 117.85628}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1374,6 +1374,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d7608c4e1acca644a6d5182ac282624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IntroPanel: {fileID: 0}
+  IntroBackground: {fileID: 0}
+  CutsceneImage: {fileID: 0}
+  introImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Cut1Text: {fileID: 0}
+  Cut2Text: {fileID: 0}
+  Cut3Text: {fileID: 0}
+  Cut4Text: {fileID: 0}
+  Cut5Text: {fileID: 0}
   TutorialAldric: {fileID: 0}
   TutorialThief: {fileID: 0}
   DummyThief: {fileID: 0}
@@ -1395,6 +1409,8 @@ MonoBehaviour:
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 0}
   BenedictNPC: {fileID: 0}
+  BenedictAfter: {fileID: 0}
+  benedictAfterTriggered: 0
   ThiefNPC: {fileID: 0}
   FirstMovement: {fileID: 0}
   SecondMovement: {fileID: 0}

@@ -5761,7 +5761,7 @@ MonoBehaviour:
   sceneToLoad: 
   portraitSprite: {fileID: 21300000, guid: eaa82fd2c8df87c43957949e6e0ba6a0, type: 3}
   dialogue:
-    npcName: cut 3
+    npcName: ' '
     sentences:
     - The brave young man steps through the door, determined to find out what happened
       to his beloved grandpa...
@@ -6773,6 +6773,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d736a4a80da14415689122b9ca31b6f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HallwayDoorUnlocked: {fileID: 0}
+  FirstDoorUnlocked: {fileID: 0}
+  SecondDoorUnlocked: {fileID: 0}
+  ThirdDoorUnlocked: {fileID: 0}
 --- !u!1 &1204558757
 GameObject:
   m_ObjectHideFlags: 0

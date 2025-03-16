@@ -3,9 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CutsceneManager : MonoBehaviour
 {
+    [Header("IntroCutscene")]
+
+    public GameObject IntroPanel;
+    public GameObject IntroBackground;
+    public Image CutsceneImage;
+    [SerializeField] private Sprite[] introImages = new Sprite[5];
+    public NPC Cut1Text;
+    public NPC Cut2Text;
+    public NPC Cut3Text;
+    public NPC Cut4Text;
+    public NPC Cut5Text;
+    private bool isCutsceneActive = false;
+    private GameManager gameManager;
+    private DialogueManager dialogueManager;
+
 
     //tutorial NPC
     [Header("Tutorial Elements")]
@@ -90,6 +106,12 @@ public class CutsceneManager : MonoBehaviour
     //     DontDestroyOnLoad(gameObject);
     // }
 
+    void Start(){
+        gameManager = FindObjectOfType<GameManager>();
+        dialogueManager = FindObjectOfType<DialogueManager>();
+    }
+    
+
     // Update is called once per frame
     void Update()
     {
@@ -138,6 +160,69 @@ public class CutsceneManager : MonoBehaviour
     }
 
     //Cutscenes
+
+    public void PlayIntroCutscene()
+    { 
+        if (isCutsceneActive)
+        {
+            Debug.Log("Cutscene already active, skipping.");
+            return;
+        }
+
+        if (Cut1Text == null || Cut2Text == null || Cut3Text == null || Cut4Text == null)
+        {
+            Debug.LogWarning("Intro cutscene NPCs not fully assigned!");
+            return;
+        }
+
+        StartCoroutine(PlayIntroCutsceneSequence());
+    }
+
+    public bool IsCutsceneActive()
+    {
+        return isCutsceneActive;
+    }
+
+    private IEnumerator PlayIntroCutsceneSequence()
+    {
+        isCutsceneActive = true;
+        gameManager.SetGameState(GameManager.GameState.CutScene);
+        IntroPanel.SetActive(true);
+
+        CanvasGroup canvasGroup = IntroPanel.GetComponent<CanvasGroup>();
+        if (canvasGroup == null) canvasGroup = IntroPanel.AddComponent<CanvasGroup>();
+        canvasGroup.alpha = 1f;
+
+        NPC[] cutsceneNPCs = { Cut1Text, Cut2Text, Cut3Text, Cut4Text, Cut5Text  };
+
+        for (int i = 0; i < cutsceneNPCs.Length; i++)
+        {
+            CutsceneImage.sprite = introImages[i];
+            cutsceneNPCs[i].Interact();
+
+            while (dialogueManager.IsDialogueActive())
+            {
+                yield return null;
+            }
+        }
+
+
+        float fadeDuration = 0.5f;
+        float elapsed = 0f;
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            canvasGroup.alpha = 1f - (elapsed / fadeDuration);
+            yield return null;
+        }
+        canvasGroup.alpha = 0f;
+
+        IntroPanel.SetActive(false);
+        IntroBackground.SetActive(false);
+        gameManager.SetGameState(GameManager.GameState.Game);
+        isCutsceneActive = false;
+        Debug.Log("Intro cutscene ended");
+    }
 
     public void afterPuzzleTut()
     { //play after player has completed puzzle tutorial

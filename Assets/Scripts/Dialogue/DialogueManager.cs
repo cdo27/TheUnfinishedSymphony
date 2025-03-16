@@ -35,6 +35,8 @@ public class DialogueManager : MonoBehaviour
     private ChoiceDialogue currentChoiceDialogue;
     private bool choiceMade = false;
 
+    private bool isDialogueActive = false;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -58,6 +60,8 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue, Sprite npcPortraitSprite, NPC npc)
     {
+        isDialogueActive = true;
+
         Debug.Log("Starting dialogue for: " + dialogue.npcName);
         currentNPC = npc;
         currentChoiceDialogue = dialogue as ChoiceDialogue;
@@ -213,6 +217,8 @@ public class DialogueManager : MonoBehaviour
         animator.SetBool("isOpen", false);
         choicePanel.SetActive(false);
         isChoiceActive = false;
+        isDialogueActive = false;
+
         gameManager.SetGameState(GameManager.GameState.Game);
         audioManager?.StopDialogueSFX();
 
@@ -223,6 +229,11 @@ public class DialogueManager : MonoBehaviour
         }
         Debug.Log("Dialogue ended");
         
+    }
+
+    public bool IsDialogueActive()
+    {
+        return isDialogueActive;
     }
 
     private IEnumerator EndDialogueWithDelay(NPC npc)

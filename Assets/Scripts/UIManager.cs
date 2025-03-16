@@ -47,6 +47,8 @@ public class UIManager : MonoBehaviour
     private GameManager gameManager;
     private PlayerManager playerManager;
 
+    private CutsceneManager cutsceneManager;
+
     //Puzzle Image
     public GameObject puzzleImage;
 
@@ -69,6 +71,8 @@ public class UIManager : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         playerManager = FindObjectOfType<PlayerManager>();
+
+        cutsceneManager= FindObjectOfType<CutsceneManager>();
     }
 
     // Update is called once per frame
@@ -229,17 +233,55 @@ public class UIManager : MonoBehaviour
 
     public void letterButton()
     {
-        if (letterUI != null)
-        {
-            FadeOutAndHide(letterUI);
+        // if (letterUI != null)
+        // {
+        //     FadeOutAndHide(letterUI);
 
-            gameManager.StopIntroMusic(); 
-            gameManager.SetGameState(GameManager.GameState.Game);
+        //     gameManager.StopIntroMusic(); 
+        //     gameManager.SetGameState(GameManager.GameState.Game);
 
         
+        // }
+
+        if (letterUI != null)
+        {
+            StartCoroutine(LetterButtonSequence());
         }
 
          
+    }
+
+    private IEnumerator LetterButtonSequence()
+    {
+        CanvasGroup letterCanvasGroup = letterUI.GetComponent<CanvasGroup>();
+        if (letterCanvasGroup == null) letterCanvasGroup = letterUI.AddComponent<CanvasGroup>();
+        CanvasGroup cutsceneCanvasGroup = cutsceneManager.IntroPanel.GetComponent<CanvasGroup>();
+        if (cutsceneCanvasGroup == null) cutsceneCanvasGroup = cutsceneManager.IntroPanel.AddComponent<CanvasGroup>();
+
+        cutsceneManager.IntroPanel.SetActive(true);
+        cutsceneCanvasGroup.alpha = 0f;
+
+        float fadeDuration = 1.0f;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = elapsedTime / fadeDuration;
+            letterCanvasGroup.alpha = 1f - alpha;
+            cutsceneCanvasGroup.alpha = alpha;
+
+            if (elapsedTime >= fadeDuration * 0.5f && !cutsceneManager.IsCutsceneActive())
+            {
+                gameManager.StopIntroMusic();
+                cutsceneManager.PlayIntroCutscene();
+            }
+
+            yield return null;
+        }
+
+        letterCanvasGroup.alpha = 0f;
+        letterUI.SetActive(false);
     }
 
     public void showGameUI() //show coin count and inventory button

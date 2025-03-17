@@ -360,5 +360,9 @@ public class UIManager : MonoBehaviour
         }
         //FindObjectOfType<AudioManager>().PlaySheetCollectSound();
     }
+
+    void doExitGame() {
+        Application.Quit();
+    }
     
 }

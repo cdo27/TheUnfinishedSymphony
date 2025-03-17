@@ -14,6 +14,7 @@ public class PlayerController: MonoBehaviour
 
     private GameManager gameManager;
     private PlayerManager playerManager;
+    private DialogueManager dialogueManager;
     private AudioManager audioManager;
     private CoinManager coinManager;
 
@@ -30,6 +31,7 @@ public class PlayerController: MonoBehaviour
         playerManager = FindObjectOfType<PlayerManager>();
         audioManager = FindObjectOfType<AudioManager>(); 
         coinManager = FindObjectOfType<CoinManager>();
+        dialogueManager = FindObjectOfType<DialogueManager>();
 
          if (interactionText != null)
         {
@@ -65,8 +67,9 @@ public class PlayerController: MonoBehaviour
 
     //----------------Movement Code-----------------------------------------
     public void StopPlayerMovement(){
+        Debug.Log("stopping player movement");
         canMove = false;
-        animator.SetBool("IsMoving", false);
+        animator.SetBool("isMoving", false);
         animator.SetInteger("MoveX", 0);
         animator.SetInteger("MoveY", 0);
     }
@@ -120,7 +123,10 @@ public class PlayerController: MonoBehaviour
 
 
     private void FixedUpdate(){ //updates player position with moveDir
-        playerRigidbody2D.MovePosition(transform.position + moveDir * playerSpeed * Time.deltaTime);
+        if (canMove) 
+        {
+            playerRigidbody2D.MovePosition(transform.position + moveDir * playerSpeed * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

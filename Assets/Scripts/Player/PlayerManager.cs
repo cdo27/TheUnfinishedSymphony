@@ -31,7 +31,11 @@ public class PlayerManager : MonoBehaviour
     {
         if (ownedItems.Contains(6))
         {
-            amount *= 2;
+            int randomChance = Random.Range(0, 2);
+            if (randomChance == 1)
+            {
+                amount *= 2;
+            }
         }
 
         coinCount += amount;

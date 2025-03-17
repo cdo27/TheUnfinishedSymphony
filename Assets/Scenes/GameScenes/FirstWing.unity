@@ -3651,6 +3651,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d7608c4e1acca644a6d5182ac282624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IntroPanel: {fileID: 0}
+  IntroBackground: {fileID: 0}
+  CutsceneImage: {fileID: 0}
+  introImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Cut1Text: {fileID: 0}
+  Cut2Text: {fileID: 0}
+  Cut3Text: {fileID: 0}
+  Cut4Text: {fileID: 0}
+  Cut5Text: {fileID: 0}
   TutorialAldric: {fileID: 0}
   TutorialThief: {fileID: 0}
   DummyThief: {fileID: 0}
@@ -3672,6 +3686,8 @@ MonoBehaviour:
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 0}
   BenedictNPC: {fileID: 0}
+  BenedictAfter: {fileID: 0}
+  benedictAfterTriggered: 0
   ThiefNPC: {fileID: 0}
   FirstMovement: {fileID: 0}
   SecondMovement: {fileID: 0}
@@ -4599,7 +4615,7 @@ Animator:
   m_GameObject: {fileID: 3749956570654672982}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a1b1e394c9b484247b8f246ea3ad65cf, type: 2}
+  m_Controller: {fileID: 9100000, guid: ea8d0b6ecd502bb479a974dd241e53b7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

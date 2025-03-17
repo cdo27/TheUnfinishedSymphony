@@ -7,7 +7,7 @@ using TMPro;
 public class PlayerController: MonoBehaviour
 {
     public bool canMove = true;
-    private const float playerSpeed = 13f;
+    private const float playerSpeed = 11f;
     private Vector3 moveDir;
     private Rigidbody2D playerRigidbody2D;
     public Animator animator;
@@ -50,8 +50,10 @@ public class PlayerController: MonoBehaviour
         if (gameManager.currentState == GameManager.GameState.Game){
             HandleMovement();
             DetectInteractable();
+            
         } else{
             interactionText.gameObject.SetActive(false);
+            
         }
 
         if (Input.GetKeyDown(interactKey) && currentInteractable != null)
@@ -65,6 +67,8 @@ public class PlayerController: MonoBehaviour
     public void StopPlayerMovement(){
         canMove = false;
         animator.SetBool("IsMoving", false);
+        animator.SetInteger("MoveX", 0);
+        animator.SetInteger("MoveY", 0);
     }
 
     public void StartPlayerMovement(){

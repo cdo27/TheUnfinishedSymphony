@@ -105,7 +105,13 @@ public class CombatItemManager : MonoBehaviour
         }
     }
 
-    
+
+    //critical weapon randomization(){
+    public bool decideIfCriticalHit()
+    {
+        return Random.value <= 0.2f; // 20% chance to return true
+    }
+
     //perfect shield activation
     public void activatePerfectShield()
     {

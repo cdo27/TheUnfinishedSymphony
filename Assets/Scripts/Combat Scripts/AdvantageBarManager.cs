@@ -80,7 +80,7 @@ public class AdvantageBarManager : MonoBehaviour
     }
 
     // Call this function to handle attacks
-    public void HandleAttack(string hitType)
+    public void HandleAttack(string hitType, bool isCriticalHit)
     {
         float moveAmount = 0f;
 
@@ -98,9 +98,9 @@ public class AdvantageBarManager : MonoBehaviour
         }
 
         // Apply weapon effect if the player has it
-        if (combatStateManager.combatItemManager.hasItem5) // Assuming item ID 1 is the armor
+        if(isCriticalHit == true)
         {
-            moveAmount *= 1.2f; // damage x 1.2
+            moveAmount *= 1.5f;
         }
 
         advantage = Mathf.Clamp(advantage + moveAmount, 0f, 100f);

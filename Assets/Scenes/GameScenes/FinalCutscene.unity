@@ -1129,16 +1129,24 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: f35f12e472f2dc04a9adf906ed4081b5, type: 2}
     - target: {fileID: 6030058371112432877, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
       propertyPath: m_SceneBindings.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6030058371112432877, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
       propertyPath: m_SceneBindings.Array.data[1].key
       value: 
       objectReference: {fileID: 7533265550636147189, guid: f35f12e472f2dc04a9adf906ed4081b5, type: 2}
     - target: {fileID: 6030058371112432877, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
+      propertyPath: m_SceneBindings.Array.data[2].key
+      value: 
+      objectReference: {fileID: -1801677505736053362, guid: f35f12e472f2dc04a9adf906ed4081b5, type: 2}
+    - target: {fileID: 6030058371112432877, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
       propertyPath: m_SceneBindings.Array.data[1].value
       value: 
       objectReference: {fileID: 813674197}
+    - target: {fileID: 6030058371112432877, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
+      propertyPath: m_SceneBindings.Array.data[2].value
+      value: 
+      objectReference: {fileID: 735038556}
     - target: {fileID: 7999804287017886458, guid: 472caf8fdca150a4daa7fc045041ffb8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.3
@@ -2654,6 +2662,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d7608c4e1acca644a6d5182ac282624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IntroPanel: {fileID: 0}
+  IntroBackground: {fileID: 0}
+  CutsceneImage: {fileID: 0}
+  introImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Cut1Text: {fileID: 0}
+  Cut2Text: {fileID: 0}
+  Cut3Text: {fileID: 0}
+  Cut4Text: {fileID: 0}
+  Cut5Text: {fileID: 0}
   TutorialAldric: {fileID: 0}
   TutorialThief: {fileID: 0}
   DummyThief: {fileID: 0}
@@ -2675,6 +2697,8 @@ MonoBehaviour:
   DummyDueterno: {fileID: 0}
   monologueWing3: {fileID: 0}
   BenedictNPC: {fileID: 0}
+  BenedictAfter: {fileID: 0}
+  benedictAfterTriggered: 0
   ThiefNPC: {fileID: 0}
   FirstMovement: {fileID: 0}
   SecondMovement: {fileID: 0}

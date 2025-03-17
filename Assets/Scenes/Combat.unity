@@ -3421,6 +3421,7 @@ MonoBehaviour:
   item2IconSprite: {fileID: 21300000, guid: b3cea9a8643fd88488b2b9b242c88c88, type: 3}
   item5IconSprite: {fileID: 21300000, guid: d76b2da58158bd2438f9b0821a79d30a, type: 3}
   emptyIconSprite: {fileID: 21300000, guid: f74a52eda088e8b48896684c2c19a5b9, type: 3}
+  item5ActiveIconSprite: {fileID: 21300000, guid: 78090e23e42c73d4fbb6554213c27a3b, type: 3}
   perfectShield: {fileID: 202744666}
   perfectShieldIcon: {fileID: 1641914429}
   perfectShieldKey: {fileID: 2695665}

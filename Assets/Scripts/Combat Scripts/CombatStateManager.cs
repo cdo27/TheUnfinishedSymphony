@@ -144,8 +144,8 @@ public class CombatStateManager : MonoBehaviour
         }
         else if (currentSong.songID == 007)
         {
-            combatAnimationManager.setEnemyAnimator(5);
-            enemySpriteRenderer.sprite = aldricSprite;
+            combatAnimationManager.setEnemyAnimator(7);
+            enemySpriteRenderer.sprite = escapeSprite;
         }
 
     }

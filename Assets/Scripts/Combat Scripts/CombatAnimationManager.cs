@@ -42,7 +42,7 @@ public class CombatAnimationManager : MonoBehaviour
                 enemyAnimator.runtimeAnimatorController = benedictBossAnimator;
                 break;
             case 7:
-                enemyAnimator.runtimeAnimatorController = aldricBossAnimator;
+                enemyAnimator.runtimeAnimatorController = escapeBossAnimator;
                 break;
         }
     }

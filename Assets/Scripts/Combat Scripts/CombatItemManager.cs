@@ -25,6 +25,9 @@ public class CombatItemManager : MonoBehaviour
     public Sprite item5IconSprite;
     public Sprite emptyIconSprite;
 
+    //UI related to critical weapon
+    public Sprite item5ActiveIconSprite;
+
     //UI related to perfect shield
     public GameObject perfectShield;
     public GameObject perfectShieldIcon;
@@ -110,6 +113,20 @@ public class CombatItemManager : MonoBehaviour
     public bool decideIfCriticalHit()
     {
         return Random.value <= 0.2f; // 20% chance to return true
+    }
+
+    public void FlashingWeaponIcon()
+    {
+        StartCoroutine(FlashIcon());
+    }
+
+    private IEnumerator FlashIcon()
+    {
+        Image item5IconImage = item5Icon.GetComponent<Image>(); // Get the Image component
+
+        item5IconImage.sprite = item5ActiveIconSprite; // Change to active icon
+        yield return new WaitForSeconds(0.1f); // Brief delay
+        item5IconImage.sprite = item5IconSprite; // Revert back
     }
 
     //perfect shield activation

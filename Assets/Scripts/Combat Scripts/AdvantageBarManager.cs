@@ -40,8 +40,8 @@ public class AdvantageBarManager : MonoBehaviour
 
         // Ensure 90% perfect hits overcome decay and reach 100
         float maxPushRight = 70f; // Moves from center (50) to full right (100)
-        attackUnit = maxPushRight / (0.6f * totalAttackNotes); // Adjusted for 60% success
-        defenseUnit = (maxPushRight / 1.4f) / (0.6f * totalDefenseNotes);
+        attackUnit = maxPushRight / (0.8f * totalAttackNotes); // Adjusted for 60% success
+        defenseUnit = (maxPushRight / 1.6f) / (0.6f * totalDefenseNotes);
 
         // Set decay rate so it applies constant pressure
         decayRate = maxPushRight / (combatStateManager.currentSong.songLength * 12.5f);

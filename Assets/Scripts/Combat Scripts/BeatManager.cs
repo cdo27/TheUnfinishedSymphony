@@ -197,6 +197,10 @@ public class BeatManager : MonoBehaviour
                     if(combatStateManager.combatItemManager.hasItem5 == true)
                     {
                         isCriticalHit = combatStateManager.combatItemManager.decideIfCriticalHit();
+                        if(isCriticalHit == true)
+                        {
+                            combatStateManager.combatItemManager.FlashingWeaponIcon();
+                        }
                     }
                     note.handleAttackHit(combatStateManager.enemyHitPoint.transform.position, isCriticalHit);
                     //perfect hit

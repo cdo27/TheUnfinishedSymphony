@@ -11,6 +11,7 @@ public class Note : MonoBehaviour
     public Sprite redAttackSprite;
     public Sprite greenAttackSprite;
     public Sprite purpleAttackSprite;
+    public Sprite criticalAttackSprite;
     public Sprite redExplosionSprite;
     public Sprite greenExplosionSprite;
     public Sprite purpleExplosionSprite;
@@ -133,14 +134,13 @@ public class Note : MonoBehaviour
     }
 
     //when note hit, the note will rush to the enemy before being destroyed if attack note.
-    public void handleHit(Vector3 enemyPosition)
+    public void handleAttackHit(Vector3 enemyPosition, bool isCriticalHit)
     {
-        if (mode == 2) // Defend note
+        if(isCriticalHit == true)
         {
-            duringDestroyAnimation = true;
-            StartCoroutine(defendDestroyAnimation(1));
+            spriteRenderer.sprite = criticalAttackSprite;
         }
-        else if (mode == 1) // Attack note
+        else
         {
             switch (beat.noteType)
             {
@@ -154,13 +154,19 @@ public class Note : MonoBehaviour
                     spriteRenderer.sprite = purpleAttackSprite;
                     break;
             }
-            
-            // Move the note instantly up by 3 units
-            transform.position = new Vector3(transform.position.x - 2, transform.position.y + 3, transform.position.z);
-
-            // Animate the note moving towards the enemy
-            StartCoroutine(MoveTowardsEnemy(enemyPosition));
         }
+             
+        // Move the note instantly up by 3 units
+        transform.position = new Vector3(transform.position.x - 2, transform.position.y + 3, transform.position.z);
+
+        // Animate the note moving towards the enemy
+        StartCoroutine(MoveTowardsEnemy(enemyPosition));
+    }
+
+    public void handleDefendHit(Vector3 enemyPosition)
+    {  
+        duringDestroyAnimation = true;
+        StartCoroutine(defendDestroyAnimation(1)); 
     }
 
     //for when the player hit too early or too late

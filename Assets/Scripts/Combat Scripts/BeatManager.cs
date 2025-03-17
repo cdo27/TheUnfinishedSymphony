@@ -193,14 +193,18 @@ public class BeatManager : MonoBehaviour
                     noteHit = true;
                     highLightedHitArea.SetActive(true);
                     Invoke("HideHighlightedHitArea", 0.05f);
-
-                    note.handleHit(combatStateManager.enemyHitPoint.transform.position);
+                    bool isCriticalHit = false;
+                    if(combatStateManager.combatItemManager.hasItem5 == true)
+                    {
+                        isCriticalHit = combatStateManager.combatItemManager.decideIfCriticalHit();
+                    }
+                    note.handleAttackHit(combatStateManager.enemyHitPoint.transform.position, isCriticalHit);
                     //perfect hit
                     if (hitResult == 2)
                     {
                         attackResults[0]++;
                         perfectHitMessage.SetActive(true);
-                        combatStateManager.advantageBarManager.HandleAttack("Perfect");
+                        combatStateManager.advantageBarManager.HandleAttack("Perfect", isCriticalHit);
                         Invoke("HidePerfectHitMessage", 0.15f);
                         combatStateManager.combatAnimationManager.LucienPlayAttackAnimation();
                     }
@@ -209,7 +213,7 @@ public class BeatManager : MonoBehaviour
                     {
                         attackResults[1]++;
                         nearMissMessage.SetActive(true);
-                        combatStateManager.advantageBarManager.HandleAttack("NearMiss");
+                        combatStateManager.advantageBarManager.HandleAttack("NearMiss", isCriticalHit);
                         Invoke("HideNearMissMessage", 0.15f);
                         combatStateManager.combatAnimationManager.LucienPlayAttackAnimation();
                     }
@@ -270,7 +274,7 @@ public class BeatManager : MonoBehaviour
                     Invoke("HideHighlightedHitArea", 0.05f);
 
                     combatStateManager.audioManager.playMusicBlockSound();
-                    note.handleHit(combatStateManager.enemyHitPoint.transform.position);
+                    note.handleDefendHit(combatStateManager.enemyHitPoint.transform.position);
 
                     if (hitResult == 2)
                     {

@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         //Check for Inventory key presses or Exit 
         if (currentState == GameState.Game)
         {

@@ -58,9 +58,17 @@ public class DialogueManager : MonoBehaviour
         choicePanel.SetActive(false);
     }
 
+    void Update()
+    {
+        if (player == null){
+            player = FindObjectOfType<PlayerController>();
+        }
+    }
+
     public void StartDialogue(Dialogue dialogue, Sprite npcPortraitSprite, NPC npc)
     {
         isDialogueActive = true;
+        if (player!= null) player.StopPlayerMovement();
 
         Debug.Log("Starting dialogue for: " + dialogue.npcName);
         currentNPC = npc;
@@ -227,6 +235,8 @@ public class DialogueManager : MonoBehaviour
             StartCoroutine(EndDialogueWithDelay(currentNPC));
             //currentNPC.CompleteInteraction();
         }
+
+        if (player!= null) player.StartPlayerMovement();
         Debug.Log("Dialogue ended");
         
     }
